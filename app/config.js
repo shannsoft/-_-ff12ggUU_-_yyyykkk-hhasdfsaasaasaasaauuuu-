@@ -1,0 +1,3 @@
+AppRoot.constant('AppConfig',(function(){
+	
+})());
