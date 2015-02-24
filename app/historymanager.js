@@ -1,4 +1,4 @@
-AppRoot.factory('HistoryManager',["AppConfig", function(AppConfig) {
+AppRoot.factory('HistoryManager',["AppConfig", function(AppConfig) { 
 var HistoryManager = {},
 	undoRedoHistory = [];
 	undoRedoObject = {prejson:'', postJson:'', activeObject:''};
