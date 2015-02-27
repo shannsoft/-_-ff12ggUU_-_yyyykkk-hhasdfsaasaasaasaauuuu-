@@ -1,0 +1,383 @@
+/* Empty. Add your own CSS if you like */
+*{padding:0px;margin:0px;}
+
+body{font-family: Raleway-Regular;}
+
+@font-face {
+	font-family: Raleway-Regular;
+	src: url("../fonts/Raleway-Regular.ttf") format("truetype");
+}
+
+.bar.bar-positive{border-color:transparent !important;
+background-color:transparent !important;}
+
+.bar-positive .button.button-clear{color: #202020 !important;
+font-weight: bolder;}
+
+.pane {
+    background:#e4e4e4 url(../img/ionic-bg.png) no-repeat center -0.5em fixed !important; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+.menu-icon i{color:#858585;padding:0px 0.7em;width:2em;}
+.menu-icon img{margin-right:0.5em;margin-left:0.5em;}
+.bar.bar-assertive{border-color: #E4E4E4 !important;
+background-color: #EDEDED !important;
+background-image: linear-gradient(0deg, #E4E4E4, #D2D2D2 50%, transparent 50%) !important;
+color: #F57A6A !important;}
+
+.bar.bar-assertive .title{color: #F57A6A !important;
+text-transform: uppercase;
+font-size: 1.3em;}
+
+.menu{background-color: #F0F0F0 !important;}
+
+a.item{letter-spacing: 0.12em;
+font-size: 0.99em;
+color: #3C3B3B;
+padding-left: 2em;}
+
+.item{padding: 9px 15px;background-color: #F0F0F0 !important;border:1px solid #E4E4E4;}
+
+.title_nabakalebara{min-height: 2.8em;
+background: #efefee;
+opacity: 0.8;
+font-family: Raleway-Regular;
+font-size: 1.99em;
+line-height: 2.7em;
+letter-spacing: 0.179em;
+flex: 0 0 97% !important;
+max-width: 97% !important;
+margin: 0 auto !important;
+border-radius: 6px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+-webkit-box-shadow: 0 4px 2px -2px #D7D7D7;
+-moz-box-shadow: 0 4px 2px -2px #D7D7D7;
+box-shadow: 0 4px 2px -2px #D7D7D7;
+}
+.about-nabakalebara h1{font-size:1.4em;color:#555;margin:5px 0px;}
+.about-nabakalebara p{color:#555;padding-left:10px;line-height:24px;}
+.title_nabakalebara p{color:#524d45;text-align:center !important;}
+.nabakalebara-img img{width:100%;}
+.top-margin{margin-top: 3em;
+margin-bottom: 5px;}
+
+.dashboard_item{width:100%;
+height:8.5em;
+border-radius:6px;
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background:#efefee;
+text-align:center;
+-webkit-box-shadow: 0 4px 2px -2px #D7D7D7;
+-moz-box-shadow: 0 4px 2px -2px #D7D7D7;
+box-shadow: 0 4px 2px -2px #D7D7D7;}
+
+.dashboard_item p{text-align:center;
+font-size:1.5em;
+color:#59514a;
+letter-spacing:0.12em;}
+
+.dashboard_item i{
+font-size:3em;
+color:#f57a6a;
+display:inline-block;
+padding:0.7em 0em 0.15em 0em;
+}
+.parking-icon img{padding:0.7em 0em 0.15em 0em;}
+.powered-by{letter-spacing:0.12em;
+text-align:right;
+margin-top:2em;
+font-size:0.95em;}
+.about-nabakalebara-submenu i{font-size: 1.5em !important;
+color: #555;
+position: relative;
+top: 0.4em;
+left: 0.2em;}
+a{text-decoration:none;}
+.about-nabakalebara-submenu{padding-top: 0px !important;}
+.about-nabakalebara-submenu h2{top:4px !important;position:relative !important;line-height:30px !important;}
+
+.box_menu a{text-decoration:none;}
+.right-menubar{float: right;
+padding: 0em 1em;
+cursor: pointer;}
+.notification i{
+margin-right:1em;
+margin-top:1em;
+}
+.schedule-time{font-size:0.89em;color:#555; padding:0px;margin:0px !important;}
+.schedule-time i{font-size:0.85em !important; top:0px !important}
+.schedule-desc{color:#555;font-size:0.9em !important;padding:10px 0px;}
+.temple-schedule h2{font-size:1.3em !important;}
+.title_nabakalebara i{font-size: 0.6em;
+color: #777;
+float: right;
+position: relative;
+bottom: -65px;
+right: 6px;}
+.input-date{border:none !important;}
+.card, .list-inset{margin:0px !important;border: none !important;}
+.top-margin a{text-decoration:none;}
+.logo a{width: 44px;
+margin-left: 2em;
+height: 45px;
+float: none;
+position: relative;
+z-index: 99;
+left: 1.5em;
+display: inline-block;
+top: 0.4em;}
+
+.breadcrumb{position: relative;
+bottom: 0.5em;
+font-size: 1em;
+letter-spacing: 0.7px;
+color: #414141;
+width: auto;
+left: 1.3em;}
+
+/*-----------------------------------------Parking----------------------------------------------*/
+.parking{width:100%;
+float:left;
+border-radius:6px;
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background:#efefee;
+-webkit-box-shadow: 0 4px 2px -2px #D7D7D7;
+-moz-box-shadow: 0 4px 2px -2px #D7D7D7;
+box-shadow: 0 4px 2px -2px #D7D7D7;}
+
+.parking-place{float: left;
+padding-top: 0.8em;}
+
+.search-bar{width:100% !important;
+}
+
+.search-bar-insert{width:80% !important;float:right !important;}
+
+.parking-place div{float:left;
+width:100%;}
+
+.parking-place i{float:left;font-size:1em;margin:2px 4px;
+color:#444;}
+
+.parking-place p{float: left;
+font-family: Raleway-Regular;
+font-size: 0.9em;
+letter-spacing: 0.1em;
+color: #595353;}
+
+.parking .right_map{text-align:left; letter-spacing:0.12em;}
+
+.parking .right_map i{font-size:1.25em;color:#ff604b;position:relative;top:-2px;}
+
+.parking .right_map a{text-decoration:none; color:#595353;padding-left:5px;}
+
+.bar.item-input-inset .item-input-wrapper input{font-family: Raleway-regular;
+letter-spacing: 0.1em;}
+
+h1{font-weight:normal;
+color:#ff604b;
+letter-spacing: 0.11em;
+padding:0px 1em;
+font-family:Raleway-Regular;
+font-size:2.2em;}
+/*-------------------------------------Money-----------------------------------------*/
+.money-dashboard{
+width:96%;
+border-radius:6px;
+-moz-border-radius:6px;
+-webkit-border-radius:6px;
+background:#efefee;
+padding-bottom: 0px;
+margin:15px auto;
+-webkit-box-shadow: 0 4px 2px -2px #D7D7D7;
+-moz-box-shadow: 0 4px 2px -2px #D7D7D7;
+box-shadow: 0 4px 2px -2px #D7D7D7;}
+.money-dashboard h2{font-family: raleway-Regular;
+font-size: 1em;
+color: #555;
+position:relative;
+top:7px;
+letter-spacing: 0.1em;}
+.atm-number{width:40px;height:40px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;border:1px solid #ff604b;position:relative;
+top:10px;}
+.atm-number h2{font-family: raleway-Regular;
+font-size: 1.35em;
+position: relative;
+top: 7px;
+left: 8px;}
+.money-dashboard a{text-decoration:none;}
+.convert{
+width: 100%;
+padding: 12px 5px;
+border-radius: 4px;
+letter-spacing: 0.5px;
+background: #F5F5F5;
+border: 1px solid #DDDDDD;
+box-shadow: 0 4px 2px -2px #DBDADA;
+-webkit-box-shadow: 0 4px 2px -2px #DBDADA;
+-moz-box-shadow: 0 4px 2px -2px #DBDADA;
+-o-box-shadow: 0 4px 2px -2px #DBDADA;
+box-shadow: 0 4px 2px -2px #DBDADA;
+text-align:center;
+color: #555;
+font-size: 1.15em;
+cursor: pointer;}
+.indian-rupee{color:#1f8ccd !important;font-size:0.9em !important;}
+.us-dollar{color:#ffa526 !important;font-size:0.9em !important;}
+.usd-rate{font-size:0.8em !important;}
+.convert i{color:#1c8ecd;}
+.convert_main{margin:1em 0px;}
+.convert_result h1{font-size:1.3em;color:#555;}
+.convert_result h2{font-size:1.1em;color:#555;}
+.convert_result{margin-top:1.5em !important;
+background: #fff;}
+/*------------------------Event-Price------------------------------------------*/
+.event-price .atm-number{width:50px;height:50px;border-radius:50%;
+-webkit-border-radius:50%;-moz-border-radius:50%;
+border:1px solid #ff604b;position:relative;top:6px !important
+}
+.event-price .atm-number h2 span{font-size:0.7em;}
+.event-price .atm-number h2{line-height:35px;font-size:0.98em;}
+.event-price img{margin-top:7px;}
+.event-image img{width:100%;}
+.event-details ul li{font-family: raleway-Regular;
+font-size: 0.85em;
+color: #555;
+position: relative;
+letter-spacing: 0.1em;
+line-height: 23px;}
+.event-details h1{font-size: 1.3em;
+color: #555;
+padding: 2px;
+}
+.map-marker-right{width:4em;
+background:#d3d3d3;
+-webkit-border-radius:7px;
+-moz-border-radius:7px;
+-khtml-border-radius:7px;
+height:5em;
+position:relative;
+top:2em;
+text-align:center;
+-webkit-box-shadow: 0 4px 2px -2px #B0B0B0;
+-moz-box-shadow: 0 4px 2px -2px #B0B0B0;
+box-shadow: 0 4px 2px -2px #B0B0B0;
+}
+.enter-amount input{border-radius: 4px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+-khtml-border-radius:4px;
+padding: 1.8em;
+font-size: 0.9em;}
+.map-marker-right i{font-size:3em;line-height:1.5em;color:#A61D1D;}
+
+/*----------------------Emergency Contacts------------------------------------------------*/
+.contacts-dashboard div i{color:#30302f; font-size:2.5em;position:relative;top:6px;}
+.contacts-dashboard h2 i{font-size: 1em;
+top: 0px;color:#555}
+.temple-administrator ul li i{font-size: 0.98em;
+top: 0px;
+color: #555;}
+.temple-administrator ul li{font-family: Raleway-Regular;
+color: #555;
+position: relative;
+letter-spacing: 0.1em;
+}
+.temple-administrator ul{padding-top:0em !important;}
+.contacts-dashboard .atm-number{position:relative;top:0px;}
+.contacts-dashboard .call i{color: rgb(12, 100, 12);
+font-size: 2em;
+position: relative;
+top: 13px;
+padding: 0px 1px;}
+.hospital-map{color:#f77969 !important;}
+/*----------------------------Route Maps--------------------------------------------*/
+.map-start{padding-left:1.8em;font-size:1.2em;position: relative;
+top: 0.1em
+}
+/*---------------------------------------Stay---------------------------------------------------------*/
+.train-details h2{font-size: 1em;
+padding-left: 0.5em;
+letter-spacing: 0px !important;}
+h2 .stay{display:inline-block;}
+.contacts-dashboard li{line-height: 32px;
+font-size: 1em;
+padding-left: 0.3em;}
+.train-details ul li i{font-size: 0.7em;
+top: 0px;
+padding: 0px 4px;}
+.traffic-in-holidays a{ float:left;}
+.traffic-in-holidays i{font-size:1.5em !important; color:#555;position:relative;line-height:2.5em !important; left:0.2em;}
+.traffic-in-holidays h2{line-height:3em;}
+.holiday{color:#555;font-weight:normal;font-size:1.1em;font-family:Raleway-Regular;letter-spacing:0.5px;position:relative;top:5px;}
+.buses p{padding:10px;font-size:1em;letter-spacing:1.3px;}
+.hotel-details i{font-size:1em !important; top:0px !important;padding-right:2px;}
+.hotel-details ul{padding-top:0px !important}
+.trauma-care-link i{color:#f57a6a !important;}
+.trauma-care-link a{color:#555;}
+.hotel-details ul li{font-family: raleway-Regular;
+font-size: 1em;
+color: #555;
+position: relative;}
+.rating-outpage{padding-left:2em;display:inline;margin-left:6px;}
+.rating-outpage i{color:#fb9c15 !important;}
+.hf-heading{color:#fb9c15 !important;font-size:1.1em !important}
+.facilities-hotel ul li span{color:#fb9c15 !important;}
+.facilities-hotel ul{margin-left:0.6em;}
+.click-call i{position:relative;
+top:1em !important;}
+.hotel-socials i{font-size: 2.2em;
+position: relative;
+top: 15px;
+padding:0px 8px;}
+.hotel-map{color:rgb(150, 8, 8);}
+.phone-dial{color:rgb(20, 84, 20);}
+.hotel-email{color:rgb(150, 8, 8)}
+.travel h2{line-height:3em;}
+.stay h2{line-height:3.6em;}
+.travel div i{line-height:1.5em;top:0px !important}
+.travel div img{margin-top:0.5em;}
+.transparent{color:transparent !important;}
+.hotel-inner {background:#fff;margin:0 auto;}
+.hotel-margin{margin-top:15px;}
+.hotel-inner h2{font-size:.9em;color:#555;font-family:Raleway-Regular;padding-left:0.6em;line-height:2.5em;}
+.hotel-inner i{padding-right:4px;}
+.money h2{line-height:2.8em;}
+.map-about a, .email-about a , .call-about a{background:#f99c57;text-decoration:none !important;border-radius: 4px;
+-webkit-border-radius:4px;
+-moz-border-radius:4px;
+width:100%;
+display:block;
+color:#555;
+padding-left:0.5em;
+}
+.email-about a{background:#face65 !important;}
+.email-about a{background:#4cd7ff !important;}
+.facilities-hotel p{font-size:0.9em;color:#555;letter-spacing:0.5px;padding:0px 5px;}
+.facilities-hotel h2{font-size:1.2em;font-family:Raleway-Regular;color:#555;padding:20px 0px 0px 0px;}
+.facility{padding-left:10px;font-size:1.2em;font-family:Raleway-Regular;color:#555;}
+.facilities-hotel ul li{color:#555;letter-spacing:0.5px;font-size:0.9em;}
+.rating i{color:#eebd51;}
+.rating{margin-top:20px;}
+ .google-maps {
+        position: relative;
+        padding-bottom: 75%; // This is the aspect ratio
+        height: 0;
+        overflow: hidden;
+    }
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+	.icici-branchlist{width:100% !important;border:none !important;}
+.footer-logo img{float:right;}
+
+

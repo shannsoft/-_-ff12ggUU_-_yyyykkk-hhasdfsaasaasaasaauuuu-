@@ -2,4 +2,4 @@
 angular.module('birthday', []);
 
 // Lastly, define your "main" module and inject all other modules as dependencies
-var AppRoot = angular.module('appMain',['birthday']);
+var AppRoot = angular.module('appMain',['ionic','home']);
