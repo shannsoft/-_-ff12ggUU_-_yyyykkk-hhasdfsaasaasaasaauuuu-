@@ -10723,11 +10723,18 @@ forEach({
   },
 
   html: function(element, value) {
-    if (isUndefined(value)) {
-      return element.innerHTML;
+    try{
+
+      if (isUndefined(value)) {
+        return element.innerHTML;
+      }
+      jqLiteDealoc(element, true);
+      element.innerHTML = value;
     }
-    jqLiteDealoc(element, true);
-    element.innerHTML = value;
+    catch(e)
+    {
+      console.log("Error  "+e);
+    }
   },
 
   empty: jqLiteEmpty

@@ -31,5 +31,8 @@ AppRoot.config(function($routeProvider) {
 			.when('/', {
 				templateUrl : 'views/view.html',
 				controller  : 'MainController'
-			});
+			})
+			 .otherwise({
+	        redirectTo: '/'
+	      });
 	});

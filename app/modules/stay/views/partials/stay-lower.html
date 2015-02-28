@@ -1,78 +1,20 @@
-<div>
+<div class="stay_lower">
       <ion-view class="pane">
         <ion-content>
-		 
-		  <div class="row money-dashboard stay">
-		     <a href="hotel-details.html"  class="col col-25">
+		 <div class="row money-dashboard stay" ng-repeat="option in stayOptionList">
+		     <a href="{{option.detailPage}}"  class="col col-25">
 			   <div>
-			       <img src="img/hotels.jpg" />
+			       <img src="{{option.iconImgPath}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="hotel-details.html"  class="col col-70"> 
+			 <a href="{{option.detailPage}}"  class="col col-70"> 
 			   <div>
-			      <h2 class="stay">Hotels</h2>
+			      <h2 class="stay">{{option.label}}</h2>
 			   </div><!--col-50 end-->
 			 </a>
 			   
 		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard stay">
-		     <a href="guesthouse-details.html" class="col col-25">
-			   <div>
-			       <img src="img/guest-house.jpg" />
-			    </div><!--col-33 ned-->
-			 </a>
-			  
-			 <a href="guesthouse-details.html" class="col col-70">
-			   <div>
-			      <h2 class="stay">Guest House</h2>
-			   </div><!--col-50 end-->
-			  </a>
-			
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard stay">
-		     <a href="restaurants-details.html"  class="col col-25">
-			   <div>
-			       <img src="img/restaurants.jpg" />
-			    </div><!--col-33 ned-->
-			  </a>
-				
-			 <a href="restaurants-details.html"  class="col col-70"> 
-			   <div>
-			      <h2 class="stay">Restaurants</h2>
-			   </div><!--col-50 end-->
-			  </a>
-			 
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard stay">
-		    <a href="coffee-shop-details.html"  class="col col-25">
-			   <div>
-			       <img src="img/coffee.jpg" />
-			    </div><!--col-33 ned-->
-			</a>
-			
-			 <a href="coffee-shop-details.html"  class="col col-70">
-			   <div>
-			      <h2 class="stay">Coffee Shop</h2>
-			   </div><!--col-50 end-->
-			 </a>
-		  </div><!--row end-->
-		  
-		  <div class="row">
-		     <div class="col col-50">
-			  
-			 </div><!--col-50 end-->
-			 
-			  <div class="col col-50">
-			      <p class="powered-by">Powered by</p>
-				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
-
-			 </div><!--col-50 end-->
-		  </div><!--row end-->
-		  
-        </ion-content>
+		  </ion-content>
       </ion-view>
    </div>

@@ -2,78 +2,22 @@
       <ion-view class="pane">
         <ion-content>
 		 
-		  <div class="row money-dashboard contacts-dashboard travel">
-		     <a href="train-details.html"  class="col col-20">
+		  <div class="row money-dashboard contacts-dashboard travel" ng-repeat="option in travelOptionList">
+		     <a href="{{option.detailLink}}"  class="col col-20">
 			   <div>
-			    <i class="fa fa-road"></i>
+			    <i class="{{option.iconClass}}"></i>
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="train-details.html"  class="col col-80"> 
+			 <a href="{{option.detailLink}}"  class="col col-80"> 
 			   <div>
-			      <h2>Train</h2>
+			      <h2>{{option.info}}</h2>
 			   </div><!--col-50 end-->
 			 </a>
 			   
 		  </div><!--row end-->
 		  
-		   <div class="row money-dashboard contacts-dashboard travel">
-		     <a href="bus-details.html" class="col col-20">
-			   <div>
-			       <i class="fa fa-bus"></i>
-			    </div><!--col-33 ned-->
-			 </a>
-			  
-			 <a href="bus-details.html" class="col col-80">
-			   <div>
-			      <h2>Bus</h2>
-			   </div><!--col-50 end-->
-			  </a>
-			 
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard contacts-dashboard travel">
-		     <a href="flight-details.html" class="col col-20">
-			   <div>
-			     <i class="fa fa-plane"></i>
-			    </div><!--col-33 ned-->
-			  </a>
-				
-			 <a href="flight-details.html"  class="col col-80"> 
-			   <div>
-			      <h2>Flights</h2>
-			   </div><!--col-50 end-->
-			  </a>
-			   
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard contacts-dashboard travel">
-		    <a href="traffic-information.html"  class="col col-20">
-			   <div>
-			      <img src="img/traffic-symbol.png" />
-			    </div><!--col-33 ned-->
-			</a>
-			
-			 <a href="traffic-information.html"  class="col col-80">
-			   <div>
-			      <h2>Traffic Mobility Plan </h2>
-			   </div><!--col-50 end-->
-			 </a>
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard contacts-dashboard travel">
-		    <a href="fuel-pump.html"  class="col col-20">
-			   <div>
-			     <i class="fa fa-tachometer"></i>
-			    </div><!--col-33 ned-->
-			</a>
-			
-			 <a href="fuel-pump.html"  class="col col-80">
-			   <div>
-			      <h2>Fuel Pump </h2>
-			   </div><!--col-50 end-->
-			 </a>
-		  </div><!--row end-->
+		   
 		  
 		  <div class="row">
 		     <div class="col col-50">

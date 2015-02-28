@@ -12,17 +12,17 @@
 		 </div><!--col col-100 end-->
 		   
 		  </div><!--title-nabakalebara end-->
-		  <div class="row money-dashboard event-price">
-		     <a href="event-details.html" class="col col-25">
+		  <div class="row money-dashboard event-price" ng-repeat="option in eventOptionList">
+		     <a href="{{option.detailLink}}" class="col col-25">
 			   <div>
-			       <img src="img/event.jpg" />
+			       <img src="{{option.icon}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="event-details.html" class="col col-60"> 
+			 <a href="{{option.detailLink}}" class="col col-60"> 
 			   <div>
-			      <h2>Event Name</h2>
-				   <h2>Location</h2>
+			      <h2>{{option.eventName}}</h2>
+				   <h2>{{option.eventLocation}}</h2>
 			   </div><!--col-50 end-->
 			 </a>
 			   
@@ -36,79 +36,7 @@
 			 
 		  </div><!--row end-->
 		  
-		   <div class="row money-dashboard event-price">
-		     <a href="event-details.html" class="col col-25">
-			   <div>
-			       <img src="img/event-odishi.jpg" />
-			    </div><!--col-33 ned-->
-			 </a>
-			  
-			 <a href="event-details.html" class="col col-60">
-			   <div>
-			      <h2>Odishi Dance</h2>
-				  <h2>Puri Mandir</h2>
-			   </div><!--col-50 end-->
-			  </a>
-			  
-			  <a href="event-details.html" class="col col-20">
-			    <div>
-			       <div class="atm-number">
-				    <h2><span> Rs</span> 99 </h2>
-				   </div><!--atm-number end-->
-			   </div><!--col-50 end-->
-			  </a>
-			 
-			 
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard event-price">
-		     <a href="event-details.html" class="col col-25">
-			   <div>
-			       <img src="img/event-kalia.jpg" />
-			    </div><!--col-33 ned-->
-			  </a>
-				
-			 <a href="event-details.html" class="col col-60"> 
-			   <div>
-			      <h2>Sand Art</h2>
-				  <h2>Puri Beach</h2>
-			   </div><!--col-50 end-->
-			  </a>
-			   
-			  <a href="event-details.html" class="col col-20">
-			    <div>
-			       <div class="atm-number">
-				    <h2 class="free"> Free </h2>
-				   </div><!--atm-number end-->
-			   </div><!--col-50 end-->
-			  </a>
-			 
-			 
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard event-price">
-		    <a href="event-details.html" class="col col-25">
-			   <div>
-			       <img src="img/event-bharat.jpg" />
-			    </div><!--col-33 ned-->
-			</a>
-			
-			 <a href="event-details.html" class="col col-60">
-			   <div>
-			      <h2>Bharatnatyam </h2>
-				  <h2>Puri road </h2>
-			   </div><!--col-50 end-->
-			 </a>
-			   
-			   <a href="event-details.html" class="col col-20">
-			    <div>
-			       <div class="atm-number">
-				    <h2> <span> Rs</span> 25 </h2>
-				   </div><!--atm-number end-->
-			   </div><!--col-50 end-->
-			  </a>
-			 
-		  </div><!--row end-->
+		   
 		  
 		  <div class="row">
 		     <div class="col col-50">
