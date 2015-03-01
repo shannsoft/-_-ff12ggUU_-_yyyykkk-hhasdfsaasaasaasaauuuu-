@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       separator: ';',
     },
     dist: {
-      src: 'app/modules/*.js',
+      src: ['app/modules/**/*.js',],
       dest: 'libenc.js',
     },
   }
