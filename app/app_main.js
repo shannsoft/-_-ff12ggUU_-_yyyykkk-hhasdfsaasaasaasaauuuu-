@@ -51,6 +51,34 @@ AppRoot.config(function($routeProvider) {
 				templateUrl : 'modules/parking/views/view.html',
 				controller  : 'parkingController'
 			})
+			.when('/train-details', {
+				templateUrl : 'modules/travel/views/partials/train-details.html',
+				controller  : 'travelController'
+			})
+			.when('/bus-details', {
+				templateUrl : 'modules/travel/views/partials/bus-details.html',
+				controller  : 'travelController'
+			})
+			.when('/flight-details', {
+				templateUrl : 'modules/travel/views/partials/flight-details.html',
+				controller  : 'travelController'
+			})
+			.when('/traffic-information', {
+				templateUrl : 'modules/travel/views/partials/traffic-information.html',
+				controller  : 'travelController'
+			})
+			.when('/fuel-pump', {
+				templateUrl : 'modules/travel/views/partials/fuel-pump.html',
+				controller  : 'travelController'
+			})
+			.when('/traffic-in-normal-days', {
+				templateUrl : 'modules/travel/views/partials/traffic-in-normal-days.html',
+				controller  : 'travelController'
+			})
+			.when('/traffic-in-holidays', {
+				templateUrl : 'modules/travel/views/partials/traffic-in-holidays.html',
+				controller  : 'travelController'
+			})
 			.when('/', {
 				templateUrl : 'views/view.html',
 				controller  : 'MainController'
