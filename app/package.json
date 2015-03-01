@@ -1,0 +1,16 @@
+{
+  "name": "nabakalebara",
+  "version": "1.0.0",
+  "description": "ionic mobile app",
+  "main": "angular.js",
+  "scripts": {
+    "test": "grunt qunit"
+  },
+  "author": "Rajendra kumar sahoo",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.0"
+  }
+}
