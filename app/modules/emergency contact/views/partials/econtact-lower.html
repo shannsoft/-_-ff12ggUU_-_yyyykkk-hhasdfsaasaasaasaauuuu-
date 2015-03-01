@@ -1,0 +1,32 @@
+<div>
+      <ion-view class="pane">
+        <ion-content>		 
+		  <div class="row money-dashboard contacts-dashboard travel" ng-repeat="option in emerContactOptionList">
+		     <a href="{{option.detailLink}}"  class="col col-20">
+			   <div>
+			      <i class="{{option.icon}}"></i>
+			    </div>
+			 </a>
+			 <a href="{{option.detailLink}}"  class="col col-80"> 
+			   <div>
+			      <h2>{{option.info}}</h2>
+			   </div>
+			 </a>
+		  </div>
+
+		 
+		  <div class="row">
+		     <div class="col col-50">
+			  
+			 </div><!--col-50 end-->
+			 
+			  <div class="col col-50">
+			      <p class="powered-by">Powered by</p>
+				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
+
+			 </div><!--col-50 end-->
+		  </div><!--row end-->
+		  
+        </ion-content>
+      </ion-view>
+   </div>

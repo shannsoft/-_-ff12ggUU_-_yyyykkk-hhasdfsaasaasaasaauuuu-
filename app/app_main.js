@@ -4,9 +4,11 @@ angular.module('travel', []);
 angular.module('stay', []);
 angular.module('money', []);
 angular.module('events', []);
+angular.module('emerContact', []);
+angular.module('parking', []);
 
 // Lastly, define your "main" module and inject all other modules as dependencies
-var AppRoot = angular.module('appMain',['ngRoute','ionic','home','travel','stay','money','events']);
+var AppRoot = angular.module('appMain',['ngRoute','ionic','home','travel','stay','money','events','emerContact','parking']);
 AppRoot.config(function($routeProvider) {
 		$routeProvider
 
@@ -28,11 +30,20 @@ AppRoot.config(function($routeProvider) {
 				templateUrl : 'modules/events/views/view.html',
 				controller  : 'eventsController'
 			})
+			.when('/contacts', {
+				templateUrl : 'modules/emergency contact/views/view.html',
+				controller  : 'emerContactController'
+			})
+			.when('/parking', {
+				templateUrl : 'modules/parking/views/view.html',
+				controller  : 'parkingController'
+			})
 			.when('/', {
 				templateUrl : 'views/view.html',
 				controller  : 'MainController'
 			})
 			 .otherwise({
 	        redirectTo: '/'
+
 	      });
 	});
