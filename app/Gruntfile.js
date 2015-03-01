@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     },
     dist: {
       src: 'app/modules/*.js',
-      dest: 'app/libenc.js',
+      dest: 'libenc.js',
     },
   }
   });
