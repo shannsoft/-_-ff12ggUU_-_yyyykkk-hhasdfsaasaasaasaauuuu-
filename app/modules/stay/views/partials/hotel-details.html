@@ -1,0 +1,62 @@
+<div>
+	
+	<ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include>
+
+
+	<ion-view class="pane">
+        <ion-content>
+		  <div class="row  top-margin">
+		   <div class="col col-100 ">
+		    <form class="list list-inset">
+			 <label class="item item-input item-select">
+              <div class="input-label">
+               Search 
+              </div>
+				<select>
+				 <option> By Price</option>
+				  <option>Search By Price</option>
+				</select>
+             </label>
+			</form>
+		   </div><!--col-30 end-->
+		   
+		  </div><!--title-nabakalebara end-->
+		  <div class="row money-dashboard contacts-dashboard hotel-details hand-icon" ng-repeat="hotel in hotels">
+		     <a  class="col col-25 " ng-click="getHotelDetails(hotel,$index)">
+			   <div>
+			      <img src="{{hotel.imageLink}}" />
+			    </div><!--col-33 ned-->
+			 </a>
+			  
+			 <a  class="col col-70" ng-click="getHotelDetails(hotel)"> 
+			   <div>
+			      <ul>
+			       <li> <i class="fa fa-building"></i>{{hotel.hotelName}}</li>
+				   <li> <i class="fa fa-map-marker"> </i> {{hotel.hotelAddress}}</li>
+				 	<li class="rating-outpage">
+				    	<i class="fa fa-star" ng-repeat="star in createArr(hotel.stars)"> </i>
+				    </li>
+
+			   </ul>
+			   </div><!--col-50 end-->
+			 </a>
+			  
+		  </div><!--row end-->
+		  
+		   
+		  
+		  <div class="row">
+		     <div class="col col-50">
+			  
+			 </div><!--col-50 end-->
+			 
+			  <div class="col col-50">
+			      <p class="powered-by">Powered by</p>
+				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
+
+			 </div><!--col-50 end-->
+		  </div><!--row end-->
+		  
+        </ion-content>
+      </ion-view>
+</div>

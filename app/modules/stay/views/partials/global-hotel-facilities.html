@@ -1,0 +1,150 @@
+<div>
+	
+	<ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include>
+
+	<ion-view class="pane">
+        <ion-content>
+		  <div class="row hotel-inner">
+		    <div class="col col-100">
+			   <div class="event-image">
+			       <img src="img/hotel-facilities.jpg" />
+			  </div><!--div-->
+			  </div>
+		     </div><!--row end-->
+			  
+			<div class="row hotel-inner hotel-margin">
+			   <div class="col col-25">
+			    <div class="hotel-about about">
+			     <h2> About</h2>
+				 </div><!--hotel-about end-->
+			   </div><!--col-40 end-->
+			    <div class="col col-25">
+				 <div class="call-about">
+				   <h2>  <a href="#"> <i class="fa fa-phone"></i> Call </a> </h2>
+				  </div><!--call-about end-->
+			   </div><!--col-40 end-->
+			    <div class="col col-25">
+				<div class="email-about">
+				  <h2> <a href="#"> <i class="fa fa-paper-plane"></i> Email </a> </h2>
+				  </div><!--call-about end-->
+			   </div><!--col-40 end-->
+			    <div class="col col-25">
+			      <div class="map-about">
+				  <h2>	<a href="parking-map.html"> <i class="fa fa-map-marker"></i> Map </a> </h2>
+				  </div>
+			   </div><!--col-40 end-->
+			</div><!--row end-->
+		     <div class="row facilities-hotel">
+			   <div class="col col-70">
+			      <h2>{{currrentHotelFacility.hotelName}}</h2>
+			   </div><!--col-50 end-->
+			   <div class="col col-25">
+			     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+			   </div><!--col-50 end-->
+			 </div><!--row end-->
+				 <div class="row facilities-hotel">
+					   <div class="col col-60">
+							<ul> 
+								 <li class="hf-heading">Number of Rooms/ Beds.</li>
+								 <li>{{currrentHotelFacility.deluxeRoom.name}}<span>:{{currrentHotelFacility.deluxeRoom.capacity}}</span></li>
+								 <li>{{currrentHotelFacility.cottage.name}}<span>:{{currrentHotelFacility.cottage.capacity}}</span></li>
+								 <li>{{currrentHotelFacility.exclusiveDelux.name}}<span>:{{currrentHotelFacility.exclusiveDelux.capacity}}</span></li>
+								 <li>{{currrentHotelFacility.villa.name}}<span>:{{currrentHotelFacility.villa.capacity}}</span></li>
+								 <li>{{currrentHotelFacility.exclusiveVilla.name}}<span>:{{currrentHotelFacility.exclusiveVilla.capacity}}</span></li>
+								 
+							</ul>
+					   </div><!--col-50 end-->
+					   	 
+					   <div class="col col-20">
+					       <ul>
+							 <li class="hf-heading">E.P.</li>
+							 <li>{{currrentHotelFacility.deluxeRoom.ep}}</li>
+							 <li>{{currrentHotelFacility.cottage.ep}}</li>
+							 <li>{{currrentHotelFacility.exclusiveDelux.ep}}</li>
+							 <li>{{currrentHotelFacility.villa.ep}}</li>
+							 <li>{{currrentHotelFacility.exclusiveVilla.ep}}</li>
+							<!--  <li>{{currrentHotelFacility.conferenceHall.ep}}</li> -->
+				          </ul>
+					   </div><!--col-50 end-->
+					    <div class="col col-20">
+					       <ul>
+							 <li class="hf-heading">A.P.</li>
+							<li>{{currrentHotelFacility.deluxeRoom.ap}}</li>
+							 <li>{{currrentHotelFacility.cottage.ap}}</li>
+							 <li>{{currrentHotelFacility.exclusiveDelux.ap}}</li>
+							 <li>{{currrentHotelFacility.villa.ap}}</li>
+							 <li>{{currrentHotelFacility.exclusiveVilla.ap}}</li>
+					         <!-- <li>2800</li> -->
+				          </ul>
+					   </div><!--col-50 end-->
+				 </div><!--facilities-hotel end-->
+		
+			   <div class="row facilities-hotel">
+		          <div class="col col-90">
+			        <h2 class="hf-heading">Conference hall(Capacity and rent if available) with A.C and Non A.c</h2>
+					  <ul>
+					    <li>CH:4(A/C)</li>
+						<li>Capacity:{{currrentHotelFacility.conferenceHall.capacity}}</li>
+						<li>Rent:{{currrentHotelFacility.conferenceHall.rent}}</li>
+					 </ul>
+			      </div><!--col-50 end-->
+				  <div class="col col-10">
+			      </div><!--col-50 end-->
+			 </div><!--row end-->
+			 
+			 
+			   <div class="row facilities-hotel">
+		          <div class="col col-90">
+			        <h2 class="hf-heading">Facilities Available</h2>
+					  <ul>
+					    <li>{{currrentHotelFacility.facilitiesAvailable}}</li>
+						
+					 </ul>
+			      </div><!--col-50 end-->
+				  <div class="col col-10">
+			  
+			      </div><!--col-50 end-->
+			 </div><!--row end-->
+			 
+			   <div class="row facilities-hotel">
+		          <div class="col col-90">
+			        <h2 class="hf-heading">Reservation Authority</h2>
+					  <ul>
+					    <li>{{currrentHotelFacility.reservationAuthority}}</li>
+					 </ul>
+			      </div><!--col-50 end-->
+				  <div class="col col-10">
+			  
+			      </div><!--col-50 end-->
+			 </div><!--row end-->
+			 
+			 <div class="row facilities-hotel">
+		          <div class="col col-90">
+			        <h2 class="hf-heading">Contacts</h2>
+					  <ul>
+					    <li>{{currrentHotelFacility.hotelName}}</li>
+						<li>Ph:({{currrentHotelFacility.contacts.stdCode}}) {{currrentHotelFacility.contacts.phone}}</li>
+						<li>Fax:{{currrentHotelFacility.contacts.fax}}</li>
+					 </ul>
+			      </div><!--col-50 end-->
+				  <div class="col col-10">
+			  
+			      </div><!--col-50 end-->
+			 </div><!--row end-->
+			 
+		  <div class="row">
+		     <div class="col col-50">
+			  
+			 </div><!--col-50 end-->
+			 
+			  <div class="col col-50">
+			      <p class="powered-by">Powered by</p>
+				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
+
+			 </div><!--col-50 end-->
+		  </div><!--row end-->
+		  
+        </ion-content>
+      </ion-view>
+
+</div>

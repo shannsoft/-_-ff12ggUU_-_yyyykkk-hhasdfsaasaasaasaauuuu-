@@ -43,6 +43,7 @@ AppRoot.config(function($routeProvider) {
 				templateUrl : 'modules/events/views/view.html',
 				controller  : 'eventsController'
 			})
+<<<<<<< Updated upstream
 			.when('/contacts', {
 				templateUrl : 'modules/emergency contact/views/view.html',
 				controller  : 'emerContactController'
@@ -78,6 +79,27 @@ AppRoot.config(function($routeProvider) {
 			.when('/traffic-in-holidays', {
 				templateUrl : 'modules/travel/views/partials/traffic-in-holidays.html',
 				controller  : 'travelController'
+
+			.when('/hotel-details', {
+				templateUrl : 'modules/stay/views/partials/hotel-details.html',
+				controller  : 'stayController'
+			})
+			.when('/global-hotel-facilities', {
+				templateUrl : 'modules/stay/views/partials/global-hotel-facilities.html',
+				controller  : 'stayController'
+			})
+			.when('/guesthouse-details', {
+				templateUrl : 'modules/stay/views/partials/guesthouse-details.html',
+				controller  : 'stayController'
+			})
+			.when('/restaurants-details', {
+				templateUrl : 'modules/stay/views/partials/restaurants-details.html',
+				controller  : 'stayController'
+			})
+			.when('/coffee-shop-details', {
+				templateUrl : 'modules/stay/views/partials/coffee-shop-details.html',
+				controller  : 'stayController'
+
 			})
 			.when('/', {
 				templateUrl : 'views/view.html',
