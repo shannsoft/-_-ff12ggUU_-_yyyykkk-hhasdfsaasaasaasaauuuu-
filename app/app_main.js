@@ -1,12 +1,12 @@
 // Define all your modules with no dependencies
-angular.module('home', []);
-angular.module('travel', []);
-angular.module('stay', []);
-angular.module('money', []);
-angular.module('events', []);
-angular.module('emerContact', []);
-angular.module('parking', []);
-angular.module('aboutUs', []);
+angular.module('home',[]);
+angular.module('travel',[]);
+angular.module('stay',[]);
+angular.module('money',[]);
+angular.module('events',[]);
+angular.module('emerContact',[]);
+angular.module('parking',[]);
+angular.module('aboutUs',[]);
 
 // Lastly, define your "main" module and inject all other modules as dependencies
 var AppRoot = angular.module('appMain',['ngRoute','ionic','home','travel','stay','money','events','emerContact','parking','aboutUs']);
@@ -43,7 +43,6 @@ AppRoot.config(function($routeProvider) {
 				templateUrl : 'modules/events/views/view.html',
 				controller  : 'eventsController'
 			})
-<<<<<<< Updated upstream
 			.when('/contacts', {
 				templateUrl : 'modules/emergency contact/views/view.html',
 				controller  : 'emerContactController'
@@ -79,6 +78,7 @@ AppRoot.config(function($routeProvider) {
 			.when('/traffic-in-holidays', {
 				templateUrl : 'modules/travel/views/partials/traffic-in-holidays.html',
 				controller  : 'travelController'
+				})
 
 			.when('/hotel-details', {
 				templateUrl : 'modules/stay/views/partials/hotel-details.html',
@@ -109,4 +109,4 @@ AppRoot.config(function($routeProvider) {
 	        redirectTo: '/'
 
 	      });
-	});
+	})
