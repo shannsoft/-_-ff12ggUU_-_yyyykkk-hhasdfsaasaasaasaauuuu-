@@ -135,11 +135,59 @@ header('Access-Control-Allow-Origin: *');
                 $arr = array();
                 return $arr;
             }
-		public function getCountries()
+        public function getCountries()
+        {	
+        	$sql="SELECT * FROM country";
+            $countryFromValue = mysql_query($sql, $this->db);
+			$countryArray['country'] = array ();
+			$i=0;
+			while($row = mysql_fetch_array($countryFromValue)) {
+			$countryArray['country'][$i]['CountryID']= $row['CountryID'];
+			$countryArray['country'][$i]['CountryName']= $row['CountryName'];
+			$countryArray['country'][$i]['ISDCode']= $row['ISDCode'];
+			$countryArray['country'][$i]['Currency']= $row['Currency'];
+			$i++;
+			}
+			echo json_encode($hotelsArray);
+        }
+        public function getCity()
+        {	
+        	$sql="SELECT * FROM city";
+            $cityFromValue = mysql_query($sql, $this->db);
+			$cityArray['city'] = array ();
+			$i=0;
+			while($row = mysql_fetch_array($cityFromValue)) {
+			$cityArray['city'][$i]['CityID']= $row['CityID'];
+			$cityArray['country'][$i]['CityName']= $row['CityName'];
+			$cityArray['country'][$i]['StateID']= $row['StateID'];
+			$cityArray['country'][$i]['CountryID']= $row['CountryID'];
+			$i++;
+			}
+			echo json_encode($hotelsArray);
+        }
+        public function getHotelDetails()
         {
-            $sql = "select * from country";
-            $rows = $this->executeGenericDQLQuery($sql);
-            echo json_encode($rows);
+			$sql="SELECT * FROM hotels";
+			$hotelsFromValue = mysql_query($sql, $this->db);
+			$hotelsArray['hotels'] = array ();
+			$i=0;
+			while($row = mysql_fetch_array($hotelsFromValue)) {
+			$hotelsArray['hotels'][$i]['HotelID']= $row['HotelID'];
+			$hotelsArray['hotels'][$i]['Name']= $row['Name'];
+			$hotelsArray['hotels'][$i]['Address']= $row['Address'];
+			$hotelsArray['hotels'][$i]['Phone']= $row['Phone'];
+			$hotelsArray['hotels'][$i]['Phone2']= $row['Phone2'];
+			$hotelsArray['hotels'][$i]['Phone3']= $row['Phone3'];
+			$hotelsArray['hotels'][$i]['Fax']= $row['Fax'];
+			$hotelsArray['hotels'][$i]['Mobile']= $row['Mobile'];
+			$hotelsArray['hotels'][$i]['Email']= $row['Email'];
+			$hotelsArray['hotels'][$i]['Website']= $row['Website'];
+			$hotelsArray['hotels'][$i]['Category']= $row['Category'];
+			$hotelsArray['hotels'][$i]['NoOfRooms']= $row['NoOfRooms'];
+			$hotelsArray['hotels'][$i]['CityId']= $row['CityId'];
+			$i++;
+			}
+			echo json_encode($hotelsArray);
         }
 		
 
