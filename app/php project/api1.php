@@ -189,7 +189,6 @@ header('Access-Control-Allow-Origin: *');
 			}
 			echo json_encode($hotelsArray);
         }
-		
 	}
 	
 	$api = new API;
