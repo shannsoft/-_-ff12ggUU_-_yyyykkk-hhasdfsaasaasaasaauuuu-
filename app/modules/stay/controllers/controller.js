@@ -1,4 +1,4 @@
-angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout', function ($scope,$rootScope,$timeout){
+angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService', function ($scope,$rootScope,$timeout,MainService){
     $scope.stayOptionList = [
       {label:"Hotels",detailPage:"#hotel-details" , iconImgPath: "img/hotels.jpg"},
       {label:"Guest House",detailPage:"#guesthouse-details" , iconImgPath: "img/guest-house.jpg"},
@@ -56,17 +56,16 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
        }
        return starArr;
     }
-    $scope.getHotelDetails = function(hotelObj,pIndex)
+    $scope.storeHotelDetails = function(hotelObj,pIndex)
     {
       // console.log(hotelObj) ;
       // fetching details of hotel and storing in model
-      $timeout(function() {
-
-        $scope.currrentHotelFacility = $scope.globalHotelFacilities[0];
-        console.log($scope.currrentHotelFacility);
+      MainService.setCurrrentHotelFacility($scope.globalHotelFacilities[0]);
         window.location = hotelObj.urlPath;
-        
-      });
+    }
+    $scope.getHotelDetails = function()
+    {
+      $scope.currrentHotelFacility = MainService.getCurrrentHotelFacility();
     }
 
      /*codes for hotel partial details ends*/
