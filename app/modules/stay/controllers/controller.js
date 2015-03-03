@@ -1,4 +1,4 @@
-angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService', function ($scope,$rootScope,$timeout,MainService){
+angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', function ($scope,$rootScope,$timeout,MainService,AppModelService){
     $scope.stayOptionList = [
       {label:"Hotels",detailPage:"#hotel-details" , iconImgPath: "img/hotels.jpg"},
       {label:"Guest House",detailPage:"#guesthouse-details" , iconImgPath: "img/guest-house.jpg"},
@@ -14,7 +14,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         {hotelName:"Hotel Shakti International",urlPath:"#global-hotel-facilities",hotelAddress:" VIP Road, Puri",imageLink:"img/hotel-2.jpg",stars:3}
     ];
     $scope.globalHotelFacilities = [
-      /*{
+      {
         call: 9583318028,
         email : "rajendra@gmail.com",
         map:"Toshali puri",
@@ -28,7 +28,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         facilitiesAvailable : "R,B,SP,CH,CC,TT,PS,DC,LIB,IG,Pvt.Beach Yoga, Spa, MC.",
         reservationAuthority:"Manager",
         contacts:{stdCode:"06752",phone:"250572, 250571, 250573",fax:"250899"}
-      },*/
+      }/*,
    
       {
               call: 8908962437,
@@ -44,7 +44,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
               facilitiesAvailable : "R,B,SP,CH,CC,TT,PS,DC,LIB,IG,Pvt.Beach Yoga, Spa, MC.",
               reservationAuthority:"Manager",
               contacts:{stdCode:"06752",phone:"250572, 250571, 250573",fax:"250899"}
-      }
+      }*/
          
 
     ];
@@ -60,12 +60,12 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     {
       // console.log(hotelObj) ;
       // fetching details of hotel and storing in model
-      MainService.setCurrrentHotelFacility($scope.globalHotelFacilities[0]);
+      AppModelService.setCurrrentHotelFacility($scope.globalHotelFacilities[0]);
         window.location = hotelObj.urlPath;
     }
     $scope.getHotelDetails = function()
     {
-      $scope.currrentHotelFacility = MainService.getCurrrentHotelFacility();
+      $scope.currrentHotelFacility = AppModelService.getCurrrentHotelFacility();
     }
 
      /*codes for hotel partial details ends*/
