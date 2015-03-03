@@ -53,7 +53,24 @@ header('Access-Control-Allow-Origin: *');
 			}
 			//$this->response('invalid', 406);
 		}
-		
+		public function json($data){
+                if(is_array($data))
+                {
+                        $formatted= json_encode($data);
+                        return $this->formatJson($formatted);
+                }
+        }
+        private function formatJson($jsonData)
+        {
+            $formatted = $jsonData;
+            $formatted = str_replace('"{', '{', $formatted);
+            $formatted = str_replace('}"', '}', $formatted);
+            
+            $formatted = str_replace('\\', '', $formatted);
+            
+            
+            return $formatted;
+        }
 		private function isValidCall($apiKey)
 		{
 			$flag=false;
@@ -188,6 +205,17 @@ header('Access-Control-Allow-Origin: *');
 			$i++;
 			}
 			echo json_encode($hotelsArray);
+        }
+
+        public function getFacilities(){
+        	$sql="select * from facilities";
+        	$rows = $this->executeGenericDQLQuery($sql);
+        	echo json_encode($rows);
+        }
+        public function getHotelRoomDetails(){
+        	$sql="select * from hotel_rooms";
+        	$rows = $this->executeGenericDQLQuery($sql);
+        	$this->response($this->json($rows), 200);
         }
 	}
 	

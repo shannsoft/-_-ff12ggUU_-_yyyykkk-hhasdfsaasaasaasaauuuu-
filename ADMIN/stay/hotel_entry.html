@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="">
+<html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 </head>
-<body>
+<body ng-controller="hotelController" ng-init="init()">
 	Hotel Name : <input type="text" ng-model="hotelName"><br/>
 	Hotel Address : <textarea ng-model="h_add"></textarea> <br/>
 	Hotel Phone1 : <input type="number" ng-model="phone1"><br/>
@@ -13,15 +13,92 @@
 	Hotel Fax : <input type="number" ng-model="fax"><br/>
 	Hotel mail : <input type="text" ng-model="mail"><br/>
 	Hotel webSite : <input type="text" ng-model="webSite"><br/>
-	Hotel category : <input type="number" ng-model="webSite"><br/>
+	Hotel category : <input type="number" ng-model="starCount"><br/>
+	No of Rooms : <input type="number" ng-model="roomCount"><br/>
+	icon image path : <input type="number" ng-model="iconImage"><br/>
+	Home image path : <input type="number" ng-model="homeImage"><br/>
 	City : 
 	<select ng-model="city">
 		<option>city</option>
 		<option>city</option>
 		<option>city</option>
 		<option>city</option>
-	</select>
-	
+	</select><br/>
+	facilities : <br/>
+	<ul>
+		<li ng-repeat="facility in facilities">
+			{{facility.name}}: <input type="checkbox" ng-checked="facility"><br/>
+		</li>
+	</ul><br/>
+	Room facilities : <br/>
+	<ul>
+		<table>
+			<tr>
+				<td>Room type :</td>
+				<td>No of rooms :</td>
+				<td>Ep :</td>
+				<td>AP :</td>
+			</tr>
+			<tr ng-repeat="room in roomFacilities">
+				<td>{{room.name}}</td>
+				<td><input type="text" value="{{room.noOfRooms}}" ng-model="room.noOfRooms"></td>
+				<td><input type="text" value="{{room.priceStarts}}" ng-model="room.priceStarts"></td>
+				<td><input type="text" value="{{room.priceEnds}}" ng-model="room.priceEnds"></td>
+			</tr>
+
+		</table>
+
+	</ul><br/>
+
+	<input type="button" value="submit" ng-click="onSubmit()" />
+	<script type="text/javascript">
+	var app = angular.module("app",[]);
+	app.controller("hotelController",["$scope","$http",function($scope,$http) {
+		$scope.facilities = [];
+		$scope.roomFacilities = [];
+
+		$scope.getFacilities =function()
+		{
+			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getFacilities").then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.id = pRes.data[i].id;
+					obj.name = pRes.data[i].name;
+					$scope.facilities.push(obj);
+				}
+			});
+		}
+		$scope.getHotelRoomDetails =function()
+		{
+			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getHotelRoomDetails").then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.id = pRes.data[i].id;
+					obj.name = pRes.data[i].name;
+					obj.noOfRooms = pRes.data[i].NoOfRooms;
+					obj.priceStarts = pRes.data[i].PriceStarts;
+					obj.priceEnds = pRes.data[i].PriceEnds;
+					$scope.roomFacilities.push(obj);
+				}
+			});
+		}
+		$scope.init = function(){
+			$scope.getFacilities();
+			$scope.getHotelRoomDetails();
+		}
+		$scope.onSubmit = function(){
+			console.log($scope.facilities);
+		}
+
+	}]);
+
+
+
+	</script>
+
+
 
 </body>
 </html>
