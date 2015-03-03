@@ -11,7 +11,7 @@
 			 <i class="icon ion-search placeholder-icon"></i>
 			  <input type="text" placeholder="Source" />
 			</form>
-		   </div><!--col-50 end-->
+		   </div>
 		   
 		   <div class="col col-50">
 		     <p class="map-start"> To </p>
@@ -19,79 +19,27 @@
 			 <i class="icon ion-search placeholder-icon"></i>
 			  <input type="text" placeholder="Destination" />
 			</form>
-		   </div><!--col-50 end-->
-		  </div><!--row end-->
+		   </div>
+		  </div>
 		
-		  <div class="row money-dashboard contacts-dashboard train-details">
+		  <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="bus in busDetails">
 		     <div class="col col-50">
-			   <h2>Pujarinee Bus</h2>
+			   <h2>{{bus.busName}}</h2>
 			   <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 08:35</li>
-			       <li><i class="fa fa-bus"></i> Kolkata</li>
+			      <li><i class="fa fa-clock-o"> </i>{{bus.StartsAt}}</li>
+			      <li><i class="fa fa-bus"></i>{{bus.FromStation}}</li>
 			   </ul>
 			 </div>
 			 
-			  <div class="col col-50">
-			    <h2 class="transparent">.</h2>
-			     <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 14:05</li>
-			       <li><i class="fa fa-bus"></i> Puri</li>
-			   </ul>
+			 <div class="col col-50">
+			    <h2>{{bus.busNumber}}</h2>
+			    <ul>
+			      <li> <i class="fa fa-clock-o"></i>Duration:<span>{{bus.Duration}}</span> Hrs</li>
+			      <li><i class="fa fa-bus"></i>{{bus.ToStation}}</li>
+			   	</ul>
 			 </div>
 			 
-		  </div><!--row end-->
-		    
-		      <div class="row money-dashboard contacts-dashboard train-details">
-			   <div class="col col-50">
-			    <h2>Shreeram Bus</h2>
-			   <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 09:15</li>
-			       <li> <i class="fa fa-bus"></i> Kolkata</li>
-			   </ul>
-			 </div>
-			 
-			  <div class="col col-50">
-			    <h2 class="transparent">.</h2>
-			     <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 18:05</li>
-			       <li> <i class="fa fa-bus"></i> Puri</li>
-			   </ul>
-			 </div>
-			 
-		  </div><!--row end-->
-
-		   <div class="row money-dashboard contacts-dashboard train-details">
-		         <div class="col col-50">
-				   <h2>Friends Bus</h2>
-			     <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 03:15</li>
-			       <li> <i class="fa fa-bus"></i> Kolkata</li>
-			   </ul>
-			 </div>
-			 
-			  <div class="col col-50">
-			    <h2 class="transparent">.</h2>
-			     <ul>
-			      <li><i class="fa fa-clock-o"> </i> 8:05</li>
-			       <li> <i class="fa fa-bus"></i> Puri</li>
-			   </ul>
-			 </div>
-		  </div><!--row end-->
-		  
-		 
-		  
-		  <div class="row">
-		     <div class="col col-50">
-			  
-			 </div><!--col-50 end-->
-			 
-			  <div class="col col-50">
-			      <p class="powered-by">Powered by</p>
-				  <div class="footer-logo"> <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
- </div>
-
-			 </div><!--col-50 end-->
-		  </div><!--row end-->
+		  </div>
 		  
         </ion-content>
       </ion-view>

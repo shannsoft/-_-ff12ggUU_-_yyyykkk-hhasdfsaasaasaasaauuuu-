@@ -26,11 +26,12 @@
 			    <h2>{{train.trainName}}</h2>
 			      <ul>  
 			         <li><i class="fa fa-clock-o"></i>{{train.startAt}}</li>
-			         <li><i class="fa fa-road"></i>{{train.fromStation}}<span>(Sunday, Monday, Tuesday)</span></li>
+			         <li><i class="fa fa-road"></i>{{train.fromStation}}</li>
 			     </ul>
+			    <h2>Running :{{train.availability}}</h2>
 			    </div>
 			    <div class="col col-50">
-				    <h2 class="transparent">.</h2>
+				    <h2>{{train.trainNumber}}</h2>
 				    <ul>
 				       <li><i class="fa fa-clock-o"></i>{{train.reachesAt}}</li>
 				       <li> <i class="fa fa-road"></i>{{train.toStation}}</li>
