@@ -27,7 +27,7 @@
 	facilities : <br/>
 	<ul>
 		<li ng-repeat="facility in facilities">
-			{{facility.name}}: <input type="checkbox" ng-checked="facility"><br/>
+			{{facility.facility}}: <input type="checkbox" ng-checked="facility"><br/>
 		</li>
 	</ul><br/>
 	Room facilities : <br/>
@@ -40,10 +40,10 @@
 				<td>AP :</td>
 			</tr>
 			<tr ng-repeat="room in roomFacilities">
-				<td>{{room.name}}</td>
-				<td><input type="text" value="{{room.noOfRooms}}" ng-model="room.noOfRooms"></td>
-				<td><input type="text" value="{{room.priceStarts}}" ng-model="room.priceStarts"></td>
-				<td><input type="text" value="{{room.priceEnds}}" ng-model="room.priceEnds"></td>
+				<td>{{room.room_type}}</td>
+				<td><input type="text" value="{{room.NoOfRooms}}" ng-model="room.NoOfRooms"></td>
+				<td><input type="text" value="{{room.PriceStarts}}" ng-model="room.PriceStarts"></td>
+				<td><input type="text" value="{{room.PriceEnds}}" ng-model="room.PriceEnds"></td>
 			</tr>
 
 		</table>
@@ -64,7 +64,7 @@
 				{
 					var obj = {};
 					obj.id = pRes.data[i].id;
-					obj.name = pRes.data[i].name;
+					obj.facility = pRes.data[i].facility;
 					$scope.facilities.push(obj);
 				}
 			});
@@ -76,10 +76,10 @@
 				{
 					var obj = {};
 					obj.id = pRes.data[i].id;
-					obj.name = pRes.data[i].name;
-					obj.noOfRooms = pRes.data[i].NoOfRooms;
-					obj.priceStarts = pRes.data[i].PriceStarts;
-					obj.priceEnds = pRes.data[i].PriceEnds;
+					obj.room_type = pRes.data[i].room_type;
+					obj.NoOfRooms = pRes.data[i].NoOfRooms;
+					obj.PriceStarts = pRes.data[i].PriceStarts;
+					obj.PriceEnds = pRes.data[i].PriceEnds;
 					$scope.roomFacilities.push(obj);
 				}
 			});

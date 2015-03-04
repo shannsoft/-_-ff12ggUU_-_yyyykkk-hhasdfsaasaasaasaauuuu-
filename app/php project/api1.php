@@ -210,12 +210,29 @@ header('Access-Control-Allow-Origin: *');
         public function getFacilities(){
         	$sql="select * from facilities";
         	$rows = $this->executeGenericDQLQuery($sql);
-        	echo json_encode($rows);
+        	$hotelFacilities= array();
+        	for($i=0;$i<sizeof($rows);$i++)
+        	{
+        		$hotelFacilities[$i]['id'] = $rows[$i]['id'];
+        		$hotelFacilities[$i]['facility'] = $rows[$i]['facility'];
+        	}
+        	$this->response($this->json($hotelFacilities), 200);
         }
         public function getHotelRoomDetails(){
         	$sql="select * from hotel_rooms";
         	$rows = $this->executeGenericDQLQuery($sql);
-        	$this->response($this->json($rows), 200);
+        	$hotelDetails= array();
+        	for($i=0;$i<sizeof($rows);$i++)
+        	{
+        		$hotelDetails[$i]['id'] = $rows[$i]['id'];
+        		$hotelDetails[$i]['room_type'] = $rows[$i]['room_type'];
+        		$hotelDetails[$i]['NoOfRooms'] = $rows[$i]['NoOfRooms'];
+        		$hotelDetails[$i]['PriceStarts'] = $rows[$i]['PriceStarts'];
+        		$hotelDetails[$i]['PriceEnds'] = $rows[$i]['PriceEnds'];
+        		
+        		
+        	}
+        	$this->response($this->json($hotelDetails), 200);
         }
         public function getTempleSchedule(){
         	$sql="select * from hotel_rooms";
