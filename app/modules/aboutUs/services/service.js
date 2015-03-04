@@ -1,8 +1,7 @@
-AppRoot.factory('HomeService',['$http','AppConfig','$rootScope', function($http,AppConfig,$rootScope) {
-    var _apiKey = "A610^Gx{!=3l##i*905Q";
+AppRoot.factory('HomeService',['$http','AppConfig','$rootScope', function($http,AppConfig) {
     return{
-    	getCountries : function(){
-    		var response = $http.get(AppConfig.apiPath+"reqmethod=getCountries");
+    	getTempleSchedule : function(pDate){
+    		var response = $http.get(AppConfig.apiPath+'reqmethod=getTempleSchedule'+"&date="+pDate);
     		return response;
     	}
     }
