@@ -380,4 +380,7 @@ padding-left:0.5em;
 	.icici-branchlist{width:100% !important;border:none !important;}
 .footer-logo img{float:right;}
 
+.disabled-day{opacity:0.5;}
+.day{font-weight: bold;}
+
 

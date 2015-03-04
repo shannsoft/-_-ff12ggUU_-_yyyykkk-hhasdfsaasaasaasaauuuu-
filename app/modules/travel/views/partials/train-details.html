@@ -1,6 +1,5 @@
 <div id='train-list'>
 	<ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include>
-	
 	<ion-view class="pane">
         <ion-content>		
 		 <div class="row  top-margin">
@@ -20,15 +19,29 @@
 			</form>
 		   </div>
 		  </div>
+		 <div class="row money-dashboard">
+		   <div class="icici-branchlist" style="width:50% !important">
+		     <label class="item item-input item-select">
+              <div class="input-label">
+              Day
+              </div>
+             <select>
+              <option>Cuttack</option>
+              <option selected>Puri</option>
+              <option>Bhubaneswar</option>
+             </select>
+           </label>
+		  </div>
+		  </div>
 		   
 		    <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="train in trainDetails">
 			  <div class="col col-50">
-			    <h2>{{train.trainName}}</h2>
+			    <h2 ng-click="gotoLink(train.weblink)"><u>{{train.trainName}}</u></h2>
 			      <ul>  
 			         <li><i class="fa fa-clock-o"></i>{{train.startAt}}</li>
 			         <li><i class="fa fa-road"></i>{{train.fromStation}}</li>
+			         <li><i class="fa fa-list-alt"></i><span class="day disabled-day"> S </span><span class="day"> M </span><span class="day disabled-day"> T </span><span class="day"> W </span><span class="day disabled-day"> T </span><span class="day"> F </span><span class="day disabled-day"> S </span></li>
 			     </ul>
-			    <h2>Running :{{train.availability}}</h2>
 			    </div>
 			    <div class="col col-50">
 				    <h2>{{train.trainNumber}}</h2>

@@ -17,30 +17,36 @@ angular.module("travel").controller("travelController",['$scope','$rootScope', f
         '{'+
             '"TrainID": "1",'+
             '"TrainNumber": "47544",'+
-            '"TrainName": "Dhauli Express",'+
+            '"TrainName": "Puri - Rourkela Passenger",'+
             '"FromStation": "Puri",'+
-            '"ToStation": "Bhubaneswar",'+
-            '"StartAt": "10:00",'+
-            '"ReachesAt": "11:30",'+
-            '"Availabilty": ['+
-                '"Sun",'+
-                '"Tue",'+
-                '"Fri"'+
-            ']'+
+            '"ToStation": "Rourkela",'+
+            '"StartAt": "03:30",'+
+            '"ReachesAt": "20:25",'+
+            '"Sunday": "0",'+
+            '"Monday": "1",'+
+            '"Tuesday": "0",'+
+            '"Wednesday": "1",'+
+            '"Thursday": "0",'+
+            '"Friday": "1",'+
+            '"Saturday": "0",'+
+            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
         '},'+
         '{'+
             '"TrainID": "2",'+
-            '"TrainNumber": "47577",'+
-            '"TrainName": "Neel Express",'+
+            '"TrainNumber": "12743",'+
+            '"TrainName": "Puri - Surat Weekly Express",'+
             '"FromStation": "Hyderabad",'+
             '"ToStation": "Puri",'+
-            '"StartAt": "09:15",'+
-            '"ReachesAt": "18:05",'+
-            '"Availabilty": ['+
-                '"Sun",'+
-                '"Mon",'+
-                '"Fri"'+
-            ']'+
+            '"StartAt": "19:45",'+
+            '"ReachesAt": "03:20",'+
+            '"Sunday": "0",'+
+            '"Monday": "1",'+
+            '"Tuesday": "0",'+
+            '"Wednesday": "1",'+
+            '"Thursday": "0",'+
+            '"Friday": "1",'+
+            '"Saturday": "0",'+
+            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-surat-wkly-express-1275.html"'+
         '},'+
         '{'+
             '"TrainID": "1",'+
@@ -50,11 +56,14 @@ angular.module("travel").controller("travelController",['$scope','$rootScope', f
             '"ToStation": "Bhubaneswar",'+
             '"StartAt": "10:00",'+
             '"ReachesAt": "11:30",'+
-            '"Availabilty": ['+
-                '"Sun",'+
-                '"Tue",'+
-                '"Fri"'+
-            ']'+
+            '"Sunday": "0",'+
+            '"Monday": "1",'+
+            '"Tuesday": "0",'+
+            '"Wednesday": "1",'+
+            '"Thursday": "0",'+
+            '"Friday": "1",'+
+            '"Saturday": "0",'+
+            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
         '},'+
         '{'+
             '"TrainID": "2",'+
@@ -64,11 +73,14 @@ angular.module("travel").controller("travelController",['$scope','$rootScope', f
             '"ToStation": "Puri",'+
             '"StartAt": "09:15",'+
             '"ReachesAt": "18:05",'+
-            '"Availabilty": ['+
-                '"Sun",'+
-                '"Mon",'+
-                '"Fri"'+
-            ']'+
+            '"Sunday": "0",'+
+            '"Monday": "1",'+
+            '"Tuesday": "0",'+
+            '"Wednesday": "1",'+
+            '"Thursday": "0",'+
+            '"Friday": "1",'+
+            '"Saturday": "0",'+
+            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
         '},'+
         '{'+
             '"TrainID": "1",'+
@@ -78,25 +90,14 @@ angular.module("travel").controller("travelController",['$scope','$rootScope', f
             '"ToStation": "Bhubaneswar",'+
             '"StartAt": "10:00",'+
             '"ReachesAt": "11:30",'+
-            '"Availabilty": ['+
-                '"Sun",'+
-                '"Tue",'+
-                '"Fri"'+
-            ']'+
-        '},'+
-        '{'+
-            '"TrainID": "2",'+
-            '"TrainNumber": "47577",'+
-            '"TrainName": "Neel Express",'+
-            '"FromStation": "Hyderabad",'+
-            '"ToStation": "Puri",'+
-            '"StartAt": "09:15",'+
-            '"ReachesAt": "18:05",'+
-            '"Availabilty": ['+
-                '"Sun",'+
-                '"Mon",'+
-                '"Fri"'+
-            ']'+
+            '"Sunday": "0",'+
+            '"Monday": "1",'+
+            '"Tuesday": "0",'+
+            '"Wednesday": "1",'+
+            '"Thursday": "0",'+
+            '"Friday": "1",'+
+            '"Saturday": "0",'+
+            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
         '}]}';
 
 	var parseData = JSON.parse($scope.trainInfo);
@@ -109,9 +110,20 @@ angular.module("travel").controller("travelController",['$scope','$rootScope', f
     trainDetails.reachesAt = parseData.trains[i].ReachesAt;
     trainDetails.fromStation = parseData.trains[i].FromStation;
     trainDetails.toStation = parseData.trains[i].ToStation;
-		trainDetails.availability = parseData.trains[i].Availabilty;
+	trainDetails.sunday = parseData.trains[i].Sunday;
+    trainDetails.monday = parseData.trains[i].Monday;
+    trainDetails.tuesday = parseData.trains[i].Tuesday;
+    trainDetails.wednesday = parseData.trains[i].Wednesday;
+    trainDetails.thursday = parseData.trains[i].Thursday;
+    trainDetails.friday = parseData.trains[i].Friday;
+    trainDetails.saturday = parseData.trains[i].Saturday;
+    trainDetails.weblink = parseData.trains[i].WebLink;
     $scope.trainDetails.push(trainDetails);
 	});
+
+    $scope.gotoLink = function(pLink){
+        window.open(pLink);
+    }
 	/*
 	This is END control for train information partial
   	*/
@@ -174,6 +186,69 @@ angular.module("travel").controller("travelController",['$scope','$rootScope', f
 
      /*
     This is END control for Bus Information partial
+    */
+
+    /*
+    This is starting control for Flight information partial
+    */
+    
+    $scope.flightDetails = [];
+    $scope.flightInfo = '{'+
+    '"flights": ['+
+        '{'+
+            '"FlightID": "1",'+
+            '"FlightNumber": "6E 368",'+
+            '"FlightName": "Indigo",'+
+            '"FromAirport": "Bhubaneswar",'+
+            '"ToAirport": "New Delhi",'+
+            '"StartsAt": "21:25",'+
+            '"ReachesAt": "23:35",'+
+            '"Sunday": "0",'+
+            '"Monday": "1",'+
+            '"Tuesday": "0",'+
+            '"Wednesday": "1",'+
+            '"Thursday": "0",'+
+            '"Friday": "1",'+
+            '"Saturday": "0"'+
+        '},'+
+        '{'+
+            '"FlightID": "1",'+
+            '"FlightNumber": "6E 368",'+
+            '"FlightName": "Reliance",'+
+            '"FromAirport": "Bangalore",'+
+            '"ToAirport": "BBSR",'+
+            '"StartsAt": "21:25",'+
+            '"ReachesAt": "23:35",'+
+            '"Sunday": "0",'+
+            '"Monday": "1",'+
+            '"Tuesday": "0",'+
+            '"Wednesday": "1",'+
+            '"Thursday": "0",'+
+            '"Friday": "1",'+
+            '"Saturday": "0"'+
+        '}]}';
+
+    var parseData = JSON.parse($scope.flightInfo);
+    $(parseData.flights).each(function(i){
+   
+    var flightDetails = {};
+    flightDetails.flightName = parseData.flights[i].FlightName;
+    flightDetails.flightNumber = parseData.flights[i].FlightNumber;
+    flightDetails.startAt = parseData.flights[i].StartsAt;
+    flightDetails.reachesAt = parseData.flights[i].ReachesAt;
+    flightDetails.fromAirport = parseData.flights[i].FromAirport;
+    flightDetails.toAirport = parseData.flights[i].ToAirport;
+    flightDetails.sunday = parseData.flights[i].Sunday;
+    flightDetails.monday = parseData.flights[i].Monday;
+    flightDetails.tuesday = parseData.flights[i].Tuesday;
+    flightDetails.wednesday = parseData.flights[i].Wednesday;
+    flightDetails.thursday = parseData.flights[i].Thursday;
+    flightDetails.friday = parseData.flights[i].Friday;
+    flightDetails.saturday = parseData.flights[i].Saturday;
+    $scope.flightDetails.push(flightDetails);
+    });
+    /*
+    This is END control for Flight information partial
     */
 
     

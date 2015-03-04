@@ -78,7 +78,11 @@ AppRoot.config(function($routeProvider) {
 			.when('/traffic-in-holidays', {
 				templateUrl : 'modules/travel/views/partials/traffic-in-holidays.html',
 				controller  : 'travelController'
-				})
+			})
+			.when('/traffic-details', {
+				templateUrl : 'modules/travel/views/partials/traffic-details.html',
+				controller  : 'travelController'
+			})
 
 			.when('/hotel-details', {
 				templateUrl : 'modules/stay/views/partials/hotel-details.html',

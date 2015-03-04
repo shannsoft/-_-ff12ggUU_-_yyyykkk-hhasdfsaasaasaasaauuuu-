@@ -11,87 +11,33 @@
 			 <i class="icon ion-search placeholder-icon"></i>
 			  <input type="text" placeholder="Source" />
 			</form>
-		   </div><!--col-50 end-->
-		   
+		   </div>		   
 		   <div class="col col-50">
 		     <p class="map-start"> To </p>
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
 			  <input type="text" placeholder="Destination" />
 			</form>
-		   </div><!--col-50 end-->
-		  </div><!--row end-->
+		   </div>
+		  </div>
 		   
-		  <div class="row money-dashboard contacts-dashboard train-details">
-		  
-		     <div class="col col-50">
-			   <h2>Indigo</h2>
+		  <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="flight in flightDetails">
+		    <div class="col col-50">
+			   <h2>{{flight.flightName}}</h2>
 			   <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 6:40</li>
-			       <li>  <i class="fa fa-plane"></i> Bangalore</li>
+			      <li><i class="fa fa-clock-o"></i>{{flight.startAt}}</li>
+			      <li><i class="fa fa-plane"></i>{{flight.fromAirport}}</li>
+			      <li><i class="fa fa-list-alt"></i><span class="day disabled-day"> S </span><span class="day"> M </span><span class="day disabled-day"> T </span><span class="day"> W </span><span class="day disabled-day"> T </span><span class="day"> F </span><span class="day disabled-day"> S </span></li>
 			   </ul>
-			 </div>
-			 
-			  <div class="col col-50">
-			  <h2 class="transparent">.</h2>
-			     <ul>
-			      <li>  <i class="fa fa-clock-o"> </i> 07:45</li>
-			       <li>  <i class="fa fa-plane"></i> BBSR</li>
+			</div>
+			<div class="col col-50">
+			  <h2>{{flight.flightNumber}}</h2>
+			    <ul>
+			      <li><i class="fa fa-clock-o"> </i>{{flight.reachesAt}}</li>
+			      <li><i class="fa fa-plane"></i>{{flight.toAirport}}</li>
 			   </ul>
-			 </div>
-			 
-		  </div><!--row end-->
-	
-		      <div class="row money-dashboard contacts-dashboard train-details">
-			   <div class="col col-50">
-			   <h2>Air India</h2>
-			   <ul>
-			      <li>  <i class="fa fa-clock-o"> </i> 05:45</li>
-			       <li> <i class="fa fa-plane"></i> Ahmadabad</li>
-			   </ul>
-			 </div>
-			 
-			  <div class="col col-50">
-			    <h2 class="transparent">.</h2>
-			     <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 06:50</li>
-			       <li>  <i class="fa fa-plane"></i> BBSR</li>
-			   </ul>
-			 </div>
-			 
-		  </div><!--row end-->
-		   <div class="row money-dashboard contacts-dashboard train-details">
-		         <div class="col col-50">
-				    <h2>Indigo</h2>
-			       <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 12:25</li>
-			       <li>  <i class="fa fa-plane"></i> Bhopal</li>
-			   </ul>
-			 </div>
-			 
-			  <div class="col col-50">
-			    <h2 class="transparent">.</h2>
-			     <ul>
-			      <li> <i class="fa fa-clock-o"> </i> 13:45</li>
-			       <li>  <i class="fa fa-plane"></i> BBSR</li>
-			   </ul>
-			 </div>
-		  </div><!--row end-->
-		  
-		 
-		  
-		  <div class="row">
-		     <div class="col col-50">
-			  
-			 </div><!--col-50 end-->
-			 
-			  <div class="col col-50">
-			      <p class="powered-by">Powered by</p>
-				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
-
-			 </div><!--col-50 end-->
-		  </div><!--row end-->
-		  
+			</div> 
+		  </div>		  
         </ion-content>
       </ion-view>
 </div>
