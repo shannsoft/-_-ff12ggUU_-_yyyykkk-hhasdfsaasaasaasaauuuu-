@@ -69,6 +69,8 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     }
 
      /*codes for hotel partial details ends*/
-  	//console.log("stayController",$scope.hotels,$scope.stayOptionList) ;
+     
+
+  	
 
 }]);
