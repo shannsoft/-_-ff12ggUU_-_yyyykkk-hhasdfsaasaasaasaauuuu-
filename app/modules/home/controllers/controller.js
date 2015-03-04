@@ -1,4 +1,4 @@
-angular.module("home").controller("homeController",['$scope','$rootScope','HomeService', function($scope,$rootScope,HomeService){
+angular.module("home").controller("homeController",['$scope','$rootScope','MainService', function($scope,$rootScope,MainService){
   $scope.MenuOptionList = [
   		{detailLink:"index.html",icon:"fa fa-qrcode",info:"Dashboard"},
   		{detailLink:"#travel",icon:"fa fa-plane",info:"Travel"},
