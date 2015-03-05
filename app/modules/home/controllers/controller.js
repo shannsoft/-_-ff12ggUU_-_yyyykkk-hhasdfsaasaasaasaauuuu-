@@ -1,4 +1,5 @@
-angular.module("home").controller("homeController",['$scope','$rootScope','MainService', function($scope,$rootScope,MainService){
+angular.module("home").controller("homeController",['$scope','$rootScope','MainService','MainEvent', function($scope,$rootScope,MainService,MainEvent){
+  $scope.contentUrl = 'modules/home/views/partials/mainMenu.html';
   $scope.MenuOptionList = [
   		{detailLink:"index.html",icon:"fa fa-qrcode",info:"Dashboard"},
   		{detailLink:"#travel",icon:"fa fa-plane",info:"Travel"},
@@ -10,5 +11,10 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
   		{detailLink:"route-map.html",icon:"fa fa-map-marker",info:"Route Map"}, 				
   		{detailLink:"template-schedule.html",icon:"fa fa-file-text",info:"About Nabkalebara"}, 				
   		{detailLink:"template-schedule.html",icon:"fa fa-calendar",info:"Temple Schedule"}, 				
-  	];
+  ];
+  $scope.changeContentUrl = function(contentURL,link){
+    $scope.contentUrl = pURL;
+    window.location = link; 
+  }
+
 }]);	
