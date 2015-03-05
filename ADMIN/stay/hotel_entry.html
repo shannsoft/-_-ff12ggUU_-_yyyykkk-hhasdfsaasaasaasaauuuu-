@@ -2,6 +2,7 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<h3> Hotel entry form</h3>
 </head>
 <body ng-controller="hotelController" ng-init="init()">
 	Hotel Name : <input type="text" ng-model="hotelName"><br/>
@@ -17,17 +18,22 @@
 	No of Rooms : <input type="number" ng-model="roomCount"><br/>
 	icon image path : <input type="number" ng-model="iconImage"><br/>
 	Home image path : <input type="number" ng-model="homeImage"><br/>
+	Countries : 
+	<select ng-model="country">
+		<option ng-repeat="country in countries">{{country.CountryName}}</option>
+	</select>
+	States : 
+	<select ng-model="state">
+		<option ng-repeat="state in states">{{state.StateName}}</option>
+	</select>
 	City : 
 	<select ng-model="city">
-		<option>city</option>
-		<option>city</option>
-		<option>city</option>
-		<option>city</option>
+		<option ng-repeat="city in cities">{{city.CityName}}</option>
 	</select><br/>
 	facilities : <br/>
 	<ul>
 		<li ng-repeat="facility in facilities">
-			{{facility.facility}}: <input type="checkbox" ng-checked="facility"><br/>
+			{{facility.facility}}: <input type="checkbox" ng-model="facility.check"><br/>
 		</li>
 	</ul><br/>
 	Room facilities : <br/>
@@ -56,6 +62,9 @@
 	app.controller("hotelController",["$scope","$http",function($scope,$http) {
 		$scope.facilities = [];
 		$scope.roomFacilities = [];
+		$scope.countries = [];
+		$scope.states = [];
+		$scope.cities = [];
 
 		$scope.getFacilities =function()
 		{
@@ -65,6 +74,7 @@
 					var obj = {};
 					obj.id = pRes.data[i].id;
 					obj.facility = pRes.data[i].facility;
+					obj.check = false;
 					$scope.facilities.push(obj);
 				}
 			});
@@ -84,12 +94,55 @@
 				}
 			});
 		}
+		$scope.getCountry = function(){
+			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getCountries").then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.id = pRes.data[i].id;
+					obj.CountryName = pRes.data[i].CountryName;
+					$scope.countries.push(obj);
+				}
+			});
+		}
+		$scope.getStates = function(){
+			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getStates").then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.StateID = pRes.data[i].StateID;
+					obj.StateName = pRes.data[i].StateName;
+					obj.CountryID = pRes.data[i].CountryID;
+					$scope.states.push(obj);
+				}
+			});
+		}
+		$scope.getCities = function(){
+			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getCity").then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.CityID = pRes.data[i].CityID;
+					obj.CityName = pRes.data[i].CityName;
+					$scope.cities.push(obj);
+				}
+			});
+		}
+
 		$scope.init = function(){
+			$scope.getCountry();
+			$scope.getStates();
+			$scope.getCities();
 			$scope.getFacilities();
 			$scope.getHotelRoomDetails();
 		}
 		$scope.onSubmit = function(){
-			console.log($scope.facilities);
+			// console.log($scope.facilities);
+			console.log($scope.country) //country
+			console.log($scope.state) //state
+			console.log($scope.city) //city
+			console.log($scope.roomFacilities) //roomFacilities
+			console.log($scope.facilities) //facilities
 		}
 
 	}]);

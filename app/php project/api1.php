@@ -155,56 +155,73 @@ header('Access-Control-Allow-Origin: *');
         public function getCountries()
         {	
         	$sql="SELECT * FROM country";
-            $countryFromValue = mysql_query($sql, $this->db);
-			$countryArray['country'] = array ();
-			$i=0;
-			while($row = mysql_fetch_array($countryFromValue)) {
-			$countryArray['country'][$i]['CountryID']= $row['CountryID'];
-			$countryArray['country'][$i]['CountryName']= $row['CountryName'];
-			$countryArray['country'][$i]['ISDCode']= $row['ISDCode'];
-			$countryArray['country'][$i]['Currency']= $row['Currency'];
-			$i++;
+   			$rows = $this->executeGenericDQLQuery($sql);
+			$countryDetails = array();
+			for($i=0;$i<sizeof($rows);$i++)
+			{
+				$countryDetails[$i]['id'] = $rows[$i]['ContryID'];
+				$countryDetails[$i]['CountryName'] = $rows[$i]['CountryName'];
+				$countryDetails[$i]['ISDCode'] = $rows[$i]['ISDCode'];
+				$countryDetails[$i]['Currency'] = $rows[$i]['Currency'];
+
 			}
-			echo json_encode($hotelsArray);
+			$this->response($this->json($countryDetails), 200);
+        }
+        public function getStates()
+        {	
+        	$sql="SELECT * FROM states";
+   			$rows = $this->executeGenericDQLQuery($sql);
+			$statesDetails = array();
+			for($i=0;$i<sizeof($rows);$i++)
+			{
+				$statesDetails[$i]['StateID'] = $rows[$i]['StateID'];
+				$statesDetails[$i]['StateName'] = $rows[$i]['StateName'];
+				$statesDetails[$i]['CountryID'] = $rows[$i]['CountryID'];
+				
+
+			}
+			$this->response($this->json($statesDetails), 200);
         }
         public function getCity()
         {	
         	$sql="SELECT * FROM city";
-            $cityFromValue = mysql_query($sql, $this->db);
-			$cityArray['city'] = array ();
-			$i=0;
-			while($row = mysql_fetch_array($cityFromValue)) {
-			$cityArray['city'][$i]['CityID']= $row['CityID'];
-			$cityArray['country'][$i]['CityName']= $row['CityName'];
-			$cityArray['country'][$i]['StateID']= $row['StateID'];
-			$cityArray['country'][$i]['CountryID']= $row['CountryID'];
-			$i++;
+            $rows = $this->executeGenericDQLQuery($sql);
+			$cityDetails = array();
+			for($i=0;$i<sizeof($rows);$i++)
+			{
+				$cityDetails[$i]['CityID'] = $rows[$i]['CityID'];
+				$cityDetails[$i]['CityName'] = $rows[$i]['CityName'];
+				$cityDetails[$i]['StateID'] = $rows[$i]['StateID'];
+				$cityDetails[$i]['CountryID'] = $rows[$i]['CountryID'];
+				
 			}
-			echo json_encode($hotelsArray);
+			$this->response($this->json($cityDetails), 200);
         }
         public function getHotelDetails()
         {
 			$sql="SELECT * FROM hotels";
-			$hotelsFromValue = mysql_query($sql, $this->db);
-			$hotelsArray['hotels'] = array ();
-			$i=0;
-			while($row = mysql_fetch_array($hotelsFromValue)) {
-			$hotelsArray['hotels'][$i]['HotelID']= $row['HotelID'];
-			$hotelsArray['hotels'][$i]['Name']= $row['Name'];
-			$hotelsArray['hotels'][$i]['Address']= $row['Address'];
-			$hotelsArray['hotels'][$i]['Phone']= $row['Phone'];
-			$hotelsArray['hotels'][$i]['Phone2']= $row['Phone2'];
-			$hotelsArray['hotels'][$i]['Phone3']= $row['Phone3'];
-			$hotelsArray['hotels'][$i]['Fax']= $row['Fax'];
-			$hotelsArray['hotels'][$i]['Mobile']= $row['Mobile'];
-			$hotelsArray['hotels'][$i]['Email']= $row['Email'];
-			$hotelsArray['hotels'][$i]['Website']= $row['Website'];
-			$hotelsArray['hotels'][$i]['Category']= $row['Category'];
-			$hotelsArray['hotels'][$i]['NoOfRooms']= $row['NoOfRooms'];
-			$hotelsArray['hotels'][$i]['CityId']= $row['CityId'];
-			$i++;
+			$rows = $this->executeGenericDQLQuery($sql);
+			$hotelDetails = array();
+			for($i=0;$i<sizeof($rows);$i++)
+			{
+				$hotelDetails[$i]['id'] = $rows[$i]['id'];
+				$hotelDetails[$i]['Name'] = $rows[$i]['Name'];
+				$hotelDetails[$i]['Address'] = $rows[$i]['Address'];
+				$hotelDetails[$i]['Phone1'] = $rows[$i]['Phone1'];
+				$hotelDetails[$i]['Phone2'] = $rows[$i]['Phone2'];
+				$hotelDetails[$i]['Phone3'] = $rows[$i]['Phone3'];
+				$hotelDetails[$i]['Fax'] = $rows[$i]['Fax'];
+				$hotelDetails[$i]['Mobile'] = $rows[$i]['Mobile'];
+				$hotelDetails[$i]['Email'] = $rows[$i]['Email'];
+				$hotelDetails[$i]['Website'] = $rows[$i]['Website'];
+				$hotelDetails[$i]['Category'] = $rows[$i]['Category'];
+				$hotelDetails[$i]['Facilities'] = $rows[$i]['Facilities'];
+				$hotelDetails[$i]['CityId'] = $rows[$i]['CityId'];
+				$hotelDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
+				$hotelDetails[$i]['home_image'] = $rows[$i]['home_image'];
+				
 			}
-			echo json_encode($hotelsArray);
+			$this->response($this->json($hotelDetails), 200);
         }
 
         public function getFacilities(){
