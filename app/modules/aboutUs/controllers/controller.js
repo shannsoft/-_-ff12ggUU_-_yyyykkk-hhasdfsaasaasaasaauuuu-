@@ -6,7 +6,10 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
   	/*
 	This is starting control for train information partial
   	*/
-    
+    $scope.date='';
+    $scope.changeDate=function(pdata){
+        console.log('$scope.date'+$scope.date,pdata);
+    };
   	$scope.scheduleDetails = [];
   	$scope.templeScheduleList = '{'+
     '"schedules": ['+
