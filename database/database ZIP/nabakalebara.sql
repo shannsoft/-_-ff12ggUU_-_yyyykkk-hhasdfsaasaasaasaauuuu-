@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 04, 2015 at 10:11 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Mar 05, 2015 at 05:34 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,6 +19,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `nabakalebara`
 --
+CREATE DATABASE IF NOT EXISTS `nabakalebara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `nabakalebara`;
 
 -- --------------------------------------------------------
 
@@ -54,11 +57,6 @@ CREATE TABLE IF NOT EXISTS `bus` (
   `CityId` int(11) NOT NULL,
   PRIMARY KEY (`BusID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `bus`
---
-
 
 -- --------------------------------------------------------
 
@@ -137,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) NOT NULL,
   `Address` varchar(500) NOT NULL,
-  `Phone` varchar(20) NOT NULL,
+  `Phone1` varchar(20) NOT NULL,
   `Phone2` varchar(20) NOT NULL,
   `Phone3` varchar(20) NOT NULL,
   `Fax` varchar(50) NOT NULL,
@@ -156,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
 -- Dumping data for table `hotels`
 --
 
-INSERT INTO `hotels` (`id`, `Name`, `Address`, `Phone`, `Phone2`, `Phone3`, `Fax`, `Mobile`, `Email`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
+INSERT INTO `hotels` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Fax`, `Mobile`, `Email`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
 (1, 'Hotel Toshali Sands', 'Puri Konark Marine Drive, Puri-2 ', '250572', '250571', '250573', '250899', '0', 'tosalisands@tosalian', 'www.toshalisands.com', '4 Star', 'R,B,SP,CH,CC,TT,PS,DC,LIB,IG,Pvt. Beach Yoga,Spa,MC.', 1, NULL, NULL),
 (2, 'Hotel May Fair Beach Resort', 'C. T. Road, Puri ', '227800', '0', '0', '224242', '0', 'puri@mayfairhotels.com', 'www.mayfairhotels.com/mayfair-puri/', '3 Star', 'R,B,SP,CH,TT,G,CC, CTV,Spa', 1, NULL, NULL),
 (3, 'Hotel Hans Coco Palms', 'Baliapanda, Puri ', '230038', '230951', '230952', '230165', '0', 'Hanscocopalms@hanshotels.com', 'www.hanshotels.com/puri/', '3 Star', 'R,B,SP,CH,CTV, TT, LIB., MC, CC, Wi Fi, LS,DC,CS', 1, NULL, NULL),
@@ -205,10 +203,10 @@ INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `Price
 -- --------------------------------------------------------
 
 --
--- Table structure for table `state`
+-- Table structure for table `states`
 --
 
-CREATE TABLE IF NOT EXISTS `state` (
+CREATE TABLE IF NOT EXISTS `states` (
   `StateID` int(11) NOT NULL AUTO_INCREMENT,
   `StateName` varchar(50) NOT NULL,
   `CountryID` int(11) NOT NULL,
@@ -216,10 +214,10 @@ CREATE TABLE IF NOT EXISTS `state` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `state`
+-- Dumping data for table `states`
 --
 
-INSERT INTO `state` (`StateID`, `StateName`, `CountryID`) VALUES
+INSERT INTO `states` (`StateID`, `StateName`, `CountryID`) VALUES
 (1, 'odisha', 1);
 
 -- --------------------------------------------------------
@@ -246,11 +244,6 @@ CREATE TABLE IF NOT EXISTS `train` (
   `CityID` int(11) NOT NULL,
   PRIMARY KEY (`TrainID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `train`
---
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
