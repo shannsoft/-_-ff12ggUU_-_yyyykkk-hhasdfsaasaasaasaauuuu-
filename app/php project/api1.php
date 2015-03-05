@@ -217,6 +217,11 @@ header('Access-Control-Allow-Origin: *');
         	$rows = $this->executeGenericDQLQuery($sql);
         	$this->response($this->json($rows), 200);
         }
+        public function getTempleSchedule(){
+        	$sql="select * from hotel_rooms";
+        	$rows = $this->executeGenericDQLQuery($sql);
+        	$this->response($this->json($rows), 200);
+        }
 	}
 	
 	$api = new API;

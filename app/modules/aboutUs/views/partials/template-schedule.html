@@ -7,11 +7,11 @@
 			    <form class="item item-input list list-inset ng-pristine ng-valid">
 				 <label class="item item-input input-date">
 	               <span class="input-label"> <i class="fa fa-calendar"></i> </span>
-				    <input type="date" ng-model="date" ng-change="changeDate(date)"/>
-				     <!-- <span ng-click='fetchSchedule()'>search</span> -->
+				    <input type="date" ng-model='date' ng-change='fetchSchedule(date)'/>
+				    <!--  <button ng-click='fetchSchedule(date)'></button> -->
 				  </label>
 				</form>
-				<span ng-click='fetchSchedule(date)'>search</span>
+				<!-- <button ng-click='fetchSchedule(date)'></button> -->
 			 </div><!--col col-100 end-->
 			 </div><!--row end-->
 			  <div class="row money-dashboard contacts-dashboard temple-schedule" ng-repeat="schedule in scheduleDetails">

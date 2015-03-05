@@ -1,4 +1,4 @@
-angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope', function ($scope,$rootScope){
+angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope','MainService', function ($scope,$rootScope,MainService){
   	 $scope.aboutUsOptionList = [
   		{label:"Temple Schedule",detailPage:"template-schedule.html" , iconImgPath: "img/hotels.jpg"},
   		{label:" About Nabakalebara",detailPage:"about-nabakalebara.html" , iconImgPath: "img/guest-house.jpg"},
@@ -6,10 +6,17 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
   	/*
 	This is starting control for train information partial
   	*/
-    $scope.date='';
-    $scope.changeDate=function(pdata){
-        console.log('$scope.date'+$scope.date,pdata);
+    $scope.fetchSchedule=function(pval){
+      var value=$scope.convert(pval);
+      MainService.getTempleSchedule(value);
     };
+    $scope.convert=function(str) {
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth()+1)).slice(-2),
+        day  = ("0" + date.getDate()).slice(-2);
+    return [ date.getFullYear(),mnth,day].join("-");
+    };
+
   	$scope.scheduleDetails = [];
   	$scope.templeScheduleList = '{'+
     '"schedules": ['+
