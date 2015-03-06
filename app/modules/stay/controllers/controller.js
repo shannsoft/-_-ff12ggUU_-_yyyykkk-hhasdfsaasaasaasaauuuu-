@@ -1,10 +1,18 @@
 angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', function ($scope,$rootScope,$timeout,MainService,AppModelService){
-    $scope.stayOptionList = [
-      {label:"Hotels",detailPage:"#hotel-details" , iconImgPath: "img/hotels.jpg"},
-      {label:"Guest House",detailPage:"#guesthouse-details" , iconImgPath: "img/guest-house.jpg"},
-      {label:"Restaurants",detailPage:"#restaurants-details" , iconImgPath: "img/restaurants.jpg"},
-      {label:"Coffee Shop",detailPage:"#coffee-shop-details" , iconImgPath: "img/coffee.jpg"}
-    ];
+    
+    $scope.initStay = function(){
+      $scope.contentUrl='modules/stay/views/partials/stay-lower.html';
+      $scope.stayOptionList = [
+        {label:"Hotels",detailPage:"#hotel-details" , iconImgPath: "img/hotels.jpg"},
+        {label:"Guest House",detailPage:"#guesthouse-details" , iconImgPath: "img/guest-house.jpg"},
+        {label:"Restaurants",detailPage:"#restaurants-details" , iconImgPath: "img/restaurants.jpg"},
+        {label:"Coffee Shop",detailPage:"#coffee-shop-details" , iconImgPath: "img/coffee.jpg"}
+      ];
+        $scope.menuOptionList = AppModelService.getMenuOptions();
+    }
+
+
+
     /*codes for hotel partial details starts*/
     $scope.currrentHotelFacility = {};
     $scope.hotels = [

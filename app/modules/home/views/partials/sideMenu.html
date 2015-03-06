@@ -16,7 +16,7 @@
     </div>
     </ion-nav-bar> 
     <ion-nav-view>
-        <ng-include data-src="contentUrl" class="wrapper block"></ng-include>
+        <ng-include src="contentUrl" class="wrapper block"></ng-include>
    </ion-nav-view>
   </ion-side-menu-content> 
   <ion-side-menu side="left">
@@ -25,7 +25,7 @@
     </ion-header-bar>
     <ion-content overflow-scroll="true" class="has-header">
       <ul class="list">
-			  <li ng-repeat="option in MenuOptionList"> 
+			  <li ng-repeat="option in menuOptionList"> 
           <a href="{{option.detailLink}}" class="item" menu-close>
             <span class="menu-icon"><i class="{{option.icon}}"></i></span> {{option.info}} 
           </a>
