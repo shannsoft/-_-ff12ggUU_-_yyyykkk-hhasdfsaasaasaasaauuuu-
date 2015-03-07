@@ -1,5 +1,6 @@
 angular.module("money").controller("moneyController",['$scope','$rootScope','AppModelService', function ($scope,$rootScope,AppModelService){
   	$scope.initMoney = function(){
+      console.log("initMoney");
       $scope.contentUrl='modules/money/views/partials/money-lower.html';
       $scope.heading = 'Money';
       $scope.menuOptionList = AppModelService.getMenuOptions();

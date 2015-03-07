@@ -1,6 +1,6 @@
 angular.module("home").controller("homeController",['$scope','$rootScope','MainService','AppModelService','MainEvent', function($scope,$rootScope,MainService,AppModelService,MainEvent){
   $scope.homeInit = function(){
-
+    console.log("homeInit");
     $scope.contentUrl = 'modules/home/views/partials/mainMenu.html';
     $scope.heading = 'Home';
     $scope.menuOptionList = AppModelService.getMenuOptions();

@@ -1,6 +1,7 @@
 angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', function ($scope,$rootScope,$timeout,MainService,AppModelService){
     
     $scope.initStay = function(){
+      console.log("initStay");
       $scope.contentUrl='modules/stay/views/partials/stay-lower.html';
       $scope.heading = 'Stay';
       $scope.menuOptionList = AppModelService.getMenuOptions();

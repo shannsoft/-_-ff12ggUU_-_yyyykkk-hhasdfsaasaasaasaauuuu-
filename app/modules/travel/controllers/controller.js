@@ -1,15 +1,16 @@
 angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService', function ($scope,$rootScope,AppModelService){
   	
     $scope.initTravel = function(){
+        console.log("initTravel");
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
       $scope.heading = 'Travel';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.travelOptionList = [
-        {detailLink:"#train-details",iconClass:"fa fa-road",info:"Train"},
-        {detailLink:"#bus-details",iconClass:"fa fa-bus",info:"Bus"},
-        {detailLink:"#flight-details",iconClass:"fa fa-plane",info:"Flights"},
-        {detailLink:"#traffic-information",iconClass:"fa fa-plane",info:"Traffic Mobility Plan"},
-        {detailLink:"#fuel-pump",iconClass:"fa fa-tachometer",info:"Fuel Pump"},
+        {detailLink:"#train-details",contentUrl:"modules/travel/views/partials/train-details.html",iconClass:"fa fa-road",info:"Train"},
+        {detailLink:"#bus-details",contentUrl:"modules/travel/views/partials/bus-details.html",iconClass:"fa fa-bus",info:"Bus"},
+        {detailLink:"#flight-details",contentUrl:"modules/travel/views/partials/flight-details.html",iconClass:"fa fa-plane",info:"Flights"},
+        {detailLink:"#traffic-information",contentUrl:"modules/travel/views/partials/traffic-information.html",iconClass:"fa fa-plane",info:"Traffic Mobility Plan"},
+        {detailLink:"#fuel-pump",contentUrl:"modules/travel/views/partials/fuel-pump.html",iconClass:"fa fa-tachometer",info:"Fuel Pump"},
       ];
     }
 
@@ -256,6 +257,10 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     /*
     This is END control for Flight information partial
     */
+    $scope.routeSubView = function(pUrl){
+        console.log("trainDetailsInit  ",pUrl);
+        $scope.contentUrl = pUrl;
+    }
 
     
 }]);
