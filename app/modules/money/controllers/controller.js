@@ -1,4 +1,9 @@
-angular.module("money").controller("moneyController",['$scope','$rootScope', function ($scope,$rootScope){
+angular.module("money").controller("moneyController",['$scope','$rootScope','AppModelService', function ($scope,$rootScope,AppModelService){
+  	$scope.initMoney = function(){
+      $scope.contentUrl='modules/money/views/partials/money-lower.html';
+      $scope.heading = 'Money';
+      $scope.menuOptionList = AppModelService.getMenuOptions();
+    }
   	$scope.moneyOptionList = [
   		{detailLink:"icici-atm.html",icon:"img/atm.png",info:"Nearest ATM"},
   		{detailLink:"icici-branches.html",icon:"img/branches.png",info:"Branches"},

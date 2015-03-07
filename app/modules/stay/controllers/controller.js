@@ -2,13 +2,14 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     
     $scope.initStay = function(){
       $scope.contentUrl='modules/stay/views/partials/stay-lower.html';
+      $scope.heading = 'Stay';
+      $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.stayOptionList = [
         {label:"Hotels",detailPage:"#hotel-details" , iconImgPath: "img/hotels.jpg"},
         {label:"Guest House",detailPage:"#guesthouse-details" , iconImgPath: "img/guest-house.jpg"},
         {label:"Restaurants",detailPage:"#restaurants-details" , iconImgPath: "img/restaurants.jpg"},
         {label:"Coffee Shop",detailPage:"#coffee-shop-details" , iconImgPath: "img/coffee.jpg"}
       ];
-        $scope.menuOptionList = AppModelService.getMenuOptions();
     }
 
 

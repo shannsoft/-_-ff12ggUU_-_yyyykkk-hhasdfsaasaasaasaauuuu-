@@ -1,8 +1,15 @@
-angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope','MainService', function ($scope,$rootScope,MainService){
-  	 $scope.aboutUsOptionList = [
-  		{label:"Temple Schedule",detailPage:"template-schedule.html" , iconImgPath: "img/hotels.jpg"},
-  		{label:" About Nabakalebara",detailPage:"about-nabakalebara.html" , iconImgPath: "img/guest-house.jpg"},
-  	];
+angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope','MainService','AppModelService', function ($scope,$rootScope,MainService,AppModelService){
+  	$scope.initAboutUs = function(){
+      $scope.contentUrl='modules/aboutUs/views/partials/aboutUs-lower.html';
+      $scope.heading = 'About Us';
+      $scope.menuOptionList = AppModelService.getMenuOptions();
+      $scope.aboutUsOptionList = [
+        {label:"Temple Schedule",detailPage:"template-schedule.html" , iconImgPath: "img/hotels.jpg"},
+        {label:" About Nabakalebara",detailPage:"about-nabakalebara.html" , iconImgPath: "img/guest-house.jpg"},
+      ];
+    };
+
+    
   	/*
 	This is starting control for train information partial
   	*/

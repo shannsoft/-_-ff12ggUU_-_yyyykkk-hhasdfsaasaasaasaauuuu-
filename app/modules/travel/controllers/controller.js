@@ -1,11 +1,17 @@
-angular.module("travel").controller("travelController",['$scope','$rootScope', function ($scope,$rootScope){
-  	$scope.travelOptionList = [
-  		{detailLink:"#train-details",iconClass:"fa fa-road",info:"Train"},
-  		{detailLink:"#bus-details",iconClass:"fa fa-bus",info:"Bus"},
-  		{detailLink:"#flight-details",iconClass:"fa fa-plane",info:"Flights"},
-  		{detailLink:"#traffic-information",iconClass:"fa fa-plane",info:"Traffic Mobility Plan"},
-  		{detailLink:"#fuel-pump",iconClass:"fa fa-tachometer",info:"Fuel Pump"},
-  	];
+angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService', function ($scope,$rootScope,AppModelService){
+  	
+    $scope.initTravel = function(){
+      $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
+      $scope.heading = 'Travel';
+      $scope.menuOptionList = AppModelService.getMenuOptions();
+      $scope.travelOptionList = [
+        {detailLink:"#train-details",iconClass:"fa fa-road",info:"Train"},
+        {detailLink:"#bus-details",iconClass:"fa fa-bus",info:"Bus"},
+        {detailLink:"#flight-details",iconClass:"fa fa-plane",info:"Flights"},
+        {detailLink:"#traffic-information",iconClass:"fa fa-plane",info:"Traffic Mobility Plan"},
+        {detailLink:"#fuel-pump",iconClass:"fa fa-tachometer",info:"Fuel Pump"},
+      ];
+    }
 
   	/*
 	This is starting control for train information partial

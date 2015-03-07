@@ -2,6 +2,7 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
   $scope.homeInit = function(){
 
     $scope.contentUrl = 'modules/home/views/partials/mainMenu.html';
+    $scope.heading = 'Home';
     $scope.menuOptionList = AppModelService.getMenuOptions();
   }
   $scope.changeContentUrl = function(contentURL,link){

@@ -7,7 +7,7 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left"> 
         </button>
       </ion-nav-buttons>
-      <div class="logo"> <a href="#/"><img src="img/logo.png" /></a> <span class="breadcrumb"> Home 
+      <div class="logo"> <a href="#/"><img src="img/logo.png" /></a> <span class="breadcrumb"> {{heading}} 
         <div class="right-menubar">
 		      <div class="signup"></div>
 		      <div class="notification"><i class="fa fa-ellipsis-v sign-in"></i> <span class="badge badge-assertive">3</span> </div>
@@ -21,7 +21,7 @@
   </ion-side-menu-content> 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-assertive">
-      <h1 class="title">Menu</h1>
+      <h1 class="title">{{heading}}</h1>
     </ion-header-bar>
     <ion-content overflow-scroll="true" class="has-header">
       <ul class="list">
