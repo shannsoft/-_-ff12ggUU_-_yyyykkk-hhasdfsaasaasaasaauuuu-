@@ -2,12 +2,13 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
 	<h3> Hotel entry form</h3>
 </head>
 <body ng-controller="hotelController" ng-init="init()">
 	Hotel Name : <input type="text" ng-model="hotelName"><br/>
 	Hotel Address : <textarea ng-model="h_add"></textarea> <br/>
-	Hotel Phone1 : <input type="number" ng-model="phone1"><br/>
+	Hotel Phone1 : <input type="number" ng-model="phone1" ng-valid><br/>
 	Hotel Phone2 : <input type="number" ng-model="phone2"><br/>
 	Hotel Phone3 : <input type="number" ng-model="phone3"><br/>
 	Hotel mobile : <input type="number" ng-model="mobile"><br/>
@@ -19,11 +20,11 @@
 	icon image path : <input type="number" ng-model="iconImage"><br/>
 	Home image path : <input type="number" ng-model="homeImage"><br/>
 	Countries : 
-	<select ng-model="country">
+	<select ng-model="country" ng-change="onSelectCountry(country)">
 		<option ng-repeat="country in countries">{{country.CountryName}}</option>
 	</select>
 	States : 
-	<select ng-model="state">
+	<select ng-model="state" ng-change="onStateSelect(state)">
 		<option ng-repeat="state in states">{{state.StateName}}</option>
 	</select>
 	City : 
@@ -105,8 +106,12 @@
 				}
 			});
 		}
-		$scope.getStates = function(){
-			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getStates").then(function(pRes){
+		$scope.onSelectCountry = function(pCountry){
+			
+			$scope.getStates(pCountry)
+		}
+		$scope.getStates = function(pCountry){
+			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getStates&country="+pCountry).then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -117,8 +122,12 @@
 				}
 			});
 		}
-		$scope.getCities = function(){
-			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getCity").then(function(pRes){
+		$scope.onStateSelect = function(pState){
+			$scope.getCities(pState);
+			// console.log(pState);
+		}
+		$scope.getCities = function(pState){
+			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getCity&state="+pState).then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -131,19 +140,46 @@
 
 		$scope.init = function(){
 			$scope.getCountry();
-			$scope.getStates();
-			$scope.getCities();
+			$scope.getStates('');
+			$scope.getCities('');
 			$scope.getFacilities();
 			$scope.getHotelRoomDetails();
 		}
 		$scope.onSubmit = function(){
 			// console.log($scope.facilities);
-			console.log($scope.country) //country
-			console.log($scope.state) //state
-			console.log($scope.city) //city
-			console.log($scope.roomFacilities) //roomFacilities
-			console.log($scope.facilities) //facilities
+			var hotelData = {};
+			hotelData.hotelName = $scope.hotelName;
+			hotelData.hotelAddress = $scope.h_add;
+			hotelData.phone1 = $scope.phone1;
+			hotelData.phone2 = $scope.phone2;
+			hotelData.Phone3 = $scope.Phone3;
+			hotelData.mobile = $scope.mobile;
+			hotelData.fax = $scope.fax;
+			hotelData.mail = $scope.mail;
+			hotelData.webSite = $scope.webSite;
+			hotelData.starCount = $scope.starCount;
+			hotelData.roomCount = $scope.roomCount;
+			hotelData.country = $scope.country;
+			hotelData.state = $scope.state;
+			hotelData.city = $scope.city;
+			hotelData.facilities = $scope.facilities;
+			hotelData.roomFacilities = $scope.roomFacilities;
+
+			var _serializedData = $.param({reqmethod: 'postHotelDetails', hotelData:hotelData});
+            var _responsePromise = $http({
+                    method: 'POST',
+                    url: 'http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php',
+                    data: _serializedData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+            }).then(function(pRes){
+            	console.log(pRes.data);
+            });
+
+
 		}
+					
 
 	}]);
 

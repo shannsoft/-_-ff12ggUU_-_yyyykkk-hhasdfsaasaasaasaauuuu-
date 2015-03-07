@@ -169,7 +169,13 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getStates()
         {	
-        	$sql="SELECT * FROM states";
+            $countryName = $this->_request['country'];
+            $sql="SELECT * FROM states s";
+            if($countryName!='' && $countryName!='undefined')
+            {
+                $sql.=" join country c on s.CountryID = c.ContryID where c.CountryName = '".$countryName."'";
+            }
+            //echo $sql;
    			$rows = $this->executeGenericDQLQuery($sql);
 			$statesDetails = array();
 			for($i=0;$i<sizeof($rows);$i++)
@@ -184,7 +190,13 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getCity()
         {	
-        	$sql="SELECT * FROM city";
+            $stateName = $this->_request['state'];
+        	$sql="SELECT * FROM city c ";
+            if($stateName!='' && $stateName!='undefined')
+            {
+                $sql.=" join states s on c.StateID = s.StateID where s.StateName='".$stateName."'";
+            }
+            //echo $sql;
             $rows = $this->executeGenericDQLQuery($sql);
 			$cityDetails = array();
 			for($i=0;$i<sizeof($rows);$i++)
@@ -197,6 +209,7 @@ header('Access-Control-Allow-Origin: *');
 			}
 			$this->response($this->json($cityDetails), 200);
         }
+        /* stay  service starts */
         public function getHotelDetails()
         {
 			$sql="SELECT * FROM hotels";
@@ -251,6 +264,98 @@ header('Access-Control-Allow-Origin: *');
         	}
         	$this->response($this->json($hotelDetails), 200);
         }
+
+        public function postHotelDetails(){
+           $hotelData =  $this->_request['hotelData'];
+           //print_r($hotelData);
+
+
+
+           $facilitiesIds ='';
+           $failedIndex='';
+           for($i=0 ; $i<sizeof($hotelData['facilities']);$i++)
+           {
+              if($hotelData['facilities'][$i]['check']=="true")
+              {
+
+                $facilitiesIds.=$hotelData['facilities'][$i]['id'].",";
+              } 
+           }
+           echo $facilitiesIds;
+           
+
+
+           // // check for exising hotel name
+           // $sql="select * from  hotels where name='".$hotelData['hotelName']."'";
+           // $rows = $this->executeGenericDQLQuery($sql);
+
+           // if(sizeof($rows)>0)
+           // {
+           //      //hotel exists , activate  update
+
+           // }
+           // else
+           // {
+           //   $sql="insert into hotels(Name,Address,Phone1,Phone2,Phone3,Fax,Mobile,Email,Website,Category,Facilities,CityId,icon_image,home_image)".
+           //   "values()";
+           //   //NOt exists"
+           // }
+
+            
+        }
+        /* stay  service ends */
+
+        /* TRAVEL service starts  */
+        public function getTrainDetails(){
+
+            $sql="select * from train t";
+            $rows = $this->executeGenericDQLQuery($sql);
+            $trainDetails= array();
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $trainDetails[$i]['TrainID'] = $rows[$i]['TrainID'];
+              $trainDetails[$i]['TrainNumber'] = $rows[$i]['TrainNumber'];
+              $trainDetails[$i]['TrainName'] = $rows[$i]['TrainName'];
+              $trainDetails[$i]['FromStation'] = $rows[$i]['FromStation'];
+              $trainDetails[$i]['ToStation'] = $rows[$i]['ToStation'];
+              $trainDetails[$i]['StartAt'] = $rows[$i]['StartAt'];
+              $trainDetails[$i]['ReachesAt'] = $rows[$i]['ReachesAt'];
+              $trainDetails[$i]['Monday'] = $rows[$i]['Monday'];
+              $trainDetails[$i]['Tuesday'] = $rows[$i]['Tuesday'];
+              $trainDetails[$i]['Wednesday'] = $rows[$i]['Wednesday'];
+              $trainDetails[$i]['Thursday'] = $rows[$i]['Thursday'];
+              $trainDetails[$i]['Friday'] = $rows[$i]['Friday'];
+              $trainDetails[$i]['Saturday'] = $rows[$i]['Saturday'];
+              $trainDetails[$i]['Sunday'] = $rows[$i]['Sunday'];
+              $trainDetails[$i]['CityID'] = $rows[$i]['CityID'];
+              $trainDetails[$i]['WebLink'] = $rows[$i]['WebLink'];
+           }
+            $this->response($this->json($trainDetails), 200);
+
+        }
+
+        public function getBusDetails(){
+
+            $sql="select * from bus b";
+            $rows = $this->executeGenericDQLQuery($sql);
+            $busDetails= array();
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $busDetails[$i]['BusID'] = $rows[$i]['BusID'];
+              $busDetails[$i]['BusNumber'] = $rows[$i]['BusNumber'];
+              $busDetails[$i]['BusName'] = $rows[$i]['BusName'];
+              $busDetails[$i]['FromStation'] = $rows[$i]['FromStation'];
+              $busDetails[$i]['ToStation'] = $rows[$i]['ToStation'];
+              $busDetails[$i]['StartsAt'] = $rows[$i]['StartsAt'];
+              $busDetails[$i]['ReachesAt'] = $rows[$i]['ReachesAt'];
+              $busDetails[$i]['CityId'] = $rows[$i]['CityId'];
+              
+           }
+            $this->response($this->json($busDetails), 200);
+
+        }
+
+        /* TRAVEL service ends  */
         public function getTempleSchedule(){
         	$sql="select * from hotel_rooms";
         	$rows = $this->executeGenericDQLQuery($sql);
