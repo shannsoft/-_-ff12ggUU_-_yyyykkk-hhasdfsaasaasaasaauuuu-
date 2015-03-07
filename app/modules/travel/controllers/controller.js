@@ -1,5 +1,4 @@
-angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService', function ($scope,$rootScope,AppModelService){
-  	
+angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService', function ($scope,$rootScope,AppModelService,travelService){
     $scope.initTravel = function(){
         console.log("initTravel");
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
@@ -17,116 +16,17 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
   	/*
 	This is starting control for train information partial
   	*/
+    $scope.days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     
-  	$scope.trainDetails = [];
-  	$scope.trainInfo = '{'+
-    '"trains": ['+
-        '{'+
-            '"TrainID": "1",'+
-            '"TrainNumber": "47544",'+
-            '"TrainName": "Puri - Rourkela Passenger",'+
-            '"FromStation": "Puri",'+
-            '"ToStation": "Rourkela",'+
-            '"StartAt": "03:30",'+
-            '"ReachesAt": "20:25",'+
-            '"Sunday": "0",'+
-            '"Monday": "1",'+
-            '"Tuesday": "0",'+
-            '"Wednesday": "1",'+
-            '"Thursday": "0",'+
-            '"Friday": "1",'+
-            '"Saturday": "0",'+
-            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
-        '},'+
-        '{'+
-            '"TrainID": "2",'+
-            '"TrainNumber": "12743",'+
-            '"TrainName": "Puri - Surat Weekly Express",'+
-            '"FromStation": "Hyderabad",'+
-            '"ToStation": "Puri",'+
-            '"StartAt": "19:45",'+
-            '"ReachesAt": "03:20",'+
-            '"Sunday": "0",'+
-            '"Monday": "1",'+
-            '"Tuesday": "0",'+
-            '"Wednesday": "1",'+
-            '"Thursday": "0",'+
-            '"Friday": "1",'+
-            '"Saturday": "0",'+
-            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-surat-wkly-express-1275.html"'+
-        '},'+
-        '{'+
-            '"TrainID": "1",'+
-            '"TrainNumber": "47544",'+
-            '"TrainName": "Dhauli Express",'+
-            '"FromStation": "Puri",'+
-            '"ToStation": "Bhubaneswar",'+
-            '"StartAt": "10:00",'+
-            '"ReachesAt": "11:30",'+
-            '"Sunday": "0",'+
-            '"Monday": "1",'+
-            '"Tuesday": "0",'+
-            '"Wednesday": "1",'+
-            '"Thursday": "0",'+
-            '"Friday": "1",'+
-            '"Saturday": "0",'+
-            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
-        '},'+
-        '{'+
-            '"TrainID": "2",'+
-            '"TrainNumber": "47577",'+
-            '"TrainName": "Neel Express",'+
-            '"FromStation": "Hyderabad",'+
-            '"ToStation": "Puri",'+
-            '"StartAt": "09:15",'+
-            '"ReachesAt": "18:05",'+
-            '"Sunday": "0",'+
-            '"Monday": "1",'+
-            '"Tuesday": "0",'+
-            '"Wednesday": "1",'+
-            '"Thursday": "0",'+
-            '"Friday": "1",'+
-            '"Saturday": "0",'+
-            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
-        '},'+
-        '{'+
-            '"TrainID": "1",'+
-            '"TrainNumber": "47544",'+
-            '"TrainName": "Dhauli Express",'+
-            '"FromStation": "Puri",'+
-            '"ToStation": "Bhubaneswar",'+
-            '"StartAt": "10:00",'+
-            '"ReachesAt": "11:30",'+
-            '"Sunday": "0",'+
-            '"Monday": "1",'+
-            '"Tuesday": "0",'+
-            '"Wednesday": "1",'+
-            '"Thursday": "0",'+
-            '"Friday": "1",'+
-            '"Saturday": "0",'+
-            '"WebLink": "http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html"'+
-        '}]}';
-
-	var parseData = JSON.parse($scope.trainInfo);
-	$(parseData.trains).each(function(i){
-   
-    var trainDetails = {};
-    trainDetails.trainName = parseData.trains[i].TrainName;
-    trainDetails.trainNumber = parseData.trains[i].TrainNumber;
-    trainDetails.startAt = parseData.trains[i].StartAt;
-    trainDetails.reachesAt = parseData.trains[i].ReachesAt;
-    trainDetails.fromStation = parseData.trains[i].FromStation;
-    trainDetails.toStation = parseData.trains[i].ToStation;
-	trainDetails.sunday = parseData.trains[i].Sunday;
-    trainDetails.monday = parseData.trains[i].Monday;
-    trainDetails.tuesday = parseData.trains[i].Tuesday;
-    trainDetails.wednesday = parseData.trains[i].Wednesday;
-    trainDetails.thursday = parseData.trains[i].Thursday;
-    trainDetails.friday = parseData.trains[i].Friday;
-    trainDetails.saturday = parseData.trains[i].Saturday;
-    trainDetails.weblink = parseData.trains[i].WebLink;
-    $scope.trainDetails.push(trainDetails);
-	});
+    $scope.fetchTrainDetails = function(){
+        $scope.trainDetails = [];
+        travelService.getTrainDetails().then(function(pRes){
+            var trainDetails = pRes.data;
+            $(trainDetails).each(function(i){
+                $scope.trainDetails.push(trainDetails[i]);
+            });
+        });
+    }
 
     $scope.gotoLink = function(pLink){
         window.open(pLink);
@@ -138,58 +38,17 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     /*
     This is start control for Bus Information partial
     */
-    $scope.busDetails = [];
-    $scope.busInfo = '{'+
-    '"buses": ['+
-        '{'+
-            '"BusID": "1",'+
-            '"BusNumber": "OD 02 C 5420",'+
-            '"BusName": "Nilachal Dham",'+
-            '"FromStation": "Puri",'+
-            '"ToStation": "Bhubaneswar",'+
-            '"StartsAt": "10:00 AM",'+
-            '"Duration": "2:15"'+
-        '},'+
-        '{'+
-            '"BusID": "2",'+
-            '"BusNumber": "OD 02 C 5421",'+
-            '"BusName": "Dash $ Dash",'+
-            '"FromStation": "Puri",'+
-            '"ToStation": "Bhubaneswar",'+
-            '"StartsAt": "10:00 AM",'+
-            '"Duration": "1:45"'+
-        '},'+
-        '{'+
-            '"BusID": "3",'+
-            '"BusNumber": "OD 02 C 5422",'+
-            '"BusName": "Maha Bahu",'+
-            '"FromStation": "Puri",'+
-            '"ToStation": "Bhubaneswar",'+
-            '"StartsAt": "10:00 AM",'+
-            '"Duration": "2"'+
-        '},'+
-        '{'+
-            '"BusID": "4",'+
-            '"BusNumber": "OD 02 C 5423",'+
-            '"BusName": "Jai Jagannath",'+
-            '"FromStation": "Puri",'+
-            '"ToStation": "Bhubaneswar",'+
-            '"StartsAt": "10:00 AM",'+
-            '"Duration": "2"'+
-        '}]}';
 
-    var parseData = JSON.parse($scope.busInfo);
-    $(parseData.buses).each(function(i){
-   
-    var busDetails = {};
-    busDetails.busName = parseData.buses[i].BusName;
-    busDetails.busNumber = parseData.buses[i].BusNumber;
-    busDetails.StartsAt = parseData.buses[i].StartsAt;
-    busDetails.Duration = parseData.buses[i].Duration;
-    busDetails.FromStation = parseData.buses[i].FromStation;
-    busDetails.ToStation = parseData.buses[i].ToStation;
-    $scope.busDetails.push(busDetails);
-    });
+    $scope.fetchBusDetails = function(){
+       $scope.busDetails = [];
+        travelService.getBusDetails().then(function(pRes){
+            var busDetails = pRes.data;
+            $(busDetails).each(function(i){
+                $scope.busDetails.push(busDetails[i]);
+            });
+            console.log($scope.busDetails);
+        });
+    }
 
      /*
     This is END control for Bus Information partial

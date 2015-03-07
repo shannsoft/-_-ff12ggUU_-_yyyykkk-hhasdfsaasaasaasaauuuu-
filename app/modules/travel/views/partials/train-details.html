@@ -1,4 +1,4 @@
-<div id='train-list'>
+<div id='train-list' ng-init="fetchTrainDetails()">
 	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include> -->
 	<ion-view class="pane">
         <ion-content>		
@@ -26,9 +26,7 @@
               Day
               </div>
              <select>
-              <option>Cuttack</option>
-              <option selected>Puri</option>
-              <option>Bhubaneswar</option>
+              <option ng-repeat="day in days" value="day">{{day}}</option>
              </select>
            </label>
 		  </div>
@@ -36,18 +34,18 @@
 		   
 		    <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="train in trainDetails">
 			  <div class="col col-50">
-			    <h2 ng-click="gotoLink(train.weblink)"><u>{{train.trainName}}</u></h2>
+			    <h2 ng-click="gotoLink(train.WebLink)"><u>{{train.TrainName}}</u></h2>
 			      <ul>  
-			         <li><i class="fa fa-clock-o"></i>{{train.startAt}}</li>
-			         <li><i class="fa fa-road"></i>{{train.fromStation}}</li>
+			         <li><i class="fa fa-clock-o"></i>{{train.StartAt}}</li>
+			         <li><i class="fa fa-road"></i>{{train.FromStation}}</li>
 			         <li><i class="fa fa-list-alt"></i><span class="day disabled-day"> S </span><span class="day"> M </span><span class="day disabled-day"> T </span><span class="day"> W </span><span class="day disabled-day"> T </span><span class="day"> F </span><span class="day disabled-day"> S </span></li>
 			     </ul>
 			    </div>
 			    <div class="col col-50">
-				    <h2>{{train.trainNumber}}</h2>
+				    <h2>{{train.TrainNumber}}</h2>
 				    <ul>
-				       <li><i class="fa fa-clock-o"></i>{{train.reachesAt}}</li>
-				       <li> <i class="fa fa-road"></i>{{train.toStation}}</li>
+				       <li><i class="fa fa-clock-o"></i>{{train.ReachesAt}}</li>
+				       <li> <i class="fa fa-road"></i>{{train.ToStation}}</li>
 				    </ul>
 			    </div>
 		  	</div>		  

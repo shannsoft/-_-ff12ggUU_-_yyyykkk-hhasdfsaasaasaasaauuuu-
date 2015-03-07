@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 05, 2015 at 05:34 AM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Host: localhost
+-- Generation Time: Mar 07, 2015 at 03:22 AM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,8 +18,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `nabakalebara`
 --
-CREATE DATABASE IF NOT EXISTS `nabakalebara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `nabakalebara`;
 
 -- --------------------------------------------------------
 
@@ -48,15 +45,23 @@ INSERT INTO `about` (`AboutID`, `AboutName`) VALUES
 
 CREATE TABLE IF NOT EXISTS `bus` (
   `BusID` int(11) NOT NULL AUTO_INCREMENT,
-  `BusNumber` int(11) NOT NULL,
+  `BusNumber` varchar(20) NOT NULL,
   `BusName` varchar(100) NOT NULL,
   `FromStation` varchar(100) NOT NULL,
   `ToStation` varchar(100) NOT NULL,
-  `StartsAt` time NOT NULL,
-  `ReachesAt` time NOT NULL,
+  `StartsAt` varchar(11) NOT NULL,
+  `Duration` varchar(11) NOT NULL,
   `CityId` int(11) NOT NULL,
   PRIMARY KEY (`BusID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `bus`
+--
+
+INSERT INTO `bus` (`BusID`, `BusNumber`, `BusName`, `FromStation`, `ToStation`, `StartsAt`, `Duration`, `CityId`) VALUES
+(1, 'OD 02 C 5420', 'Nilachal Dham', 'Puri', 'Bhubaneswar', '10:00 AM', '2 : 15', 1),
+(2, 'OD 02 C 5421', 'Dash $ Dash', 'Puri', 'Bhubaneswar', '10:30 AM', '2 : 00', 1);
 
 -- --------------------------------------------------------
 
@@ -242,8 +247,17 @@ CREATE TABLE IF NOT EXISTS `train` (
   `Saturday` tinyint(4) NOT NULL,
   `Sunday` tinyint(4) NOT NULL,
   `CityID` int(11) NOT NULL,
+  `WebLink` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`TrainID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `train`
+--
+
+INSERT INTO `train` (`TrainID`, `TrainNumber`, `TrainName`, `FromStation`, `ToStation`, `StartAt`, `ReachesAt`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`, `CityID`, `WebLink`) VALUES
+(1, 47544, 'Puri - Rourkela Passenger', 'Puri', 'Rourkela', '03:30:00', '20:25:00', 1, 0, 1, 0, 1, 0, 0, 1, ' http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html'),
+(2, 12743, 'Puri - Surat Weekly Express', 'Hyderabad', 'Puri', '19:45:00', '03:20:00', 1, 0, 1, 0, 1, 0, 0, 2, 'http://www.prokerala.com/travel/indian-railway/trains/puri-surat-wkly-express-1275.html');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

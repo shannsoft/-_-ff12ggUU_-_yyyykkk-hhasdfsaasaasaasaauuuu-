@@ -1,4 +1,4 @@
-<div id='bus-list'>
+<div id='bus-list' ng-init="fetchBusDetails()">
 	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include> -->
 	
 	<ion-view class="pane">
@@ -24,7 +24,7 @@
 		
 		  <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="bus in busDetails">
 		     <div class="col col-50">
-			   <h2>{{bus.busName}}</h2>
+			   <h2>{{bus.BusName}}</h2>
 			   <ul>
 			      <li><i class="fa fa-clock-o"> </i>{{bus.StartsAt}}</li>
 			      <li><i class="fa fa-bus"></i>{{bus.FromStation}}</li>
@@ -32,7 +32,7 @@
 			 </div>
 			 
 			 <div class="col col-50">
-			    <h2>{{bus.busNumber}}</h2>
+			    <h2>{{bus.BusNumber}}</h2>
 			    <ul>
 			      <li> <i class="fa fa-clock-o"></i>Duration:<span>{{bus.Duration}}</span> Hrs</li>
 			      <li><i class="fa fa-bus"></i>{{bus.ToStation}}</li>

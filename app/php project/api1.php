@@ -347,7 +347,7 @@ header('Access-Control-Allow-Origin: *');
               $busDetails[$i]['FromStation'] = $rows[$i]['FromStation'];
               $busDetails[$i]['ToStation'] = $rows[$i]['ToStation'];
               $busDetails[$i]['StartsAt'] = $rows[$i]['StartsAt'];
-              $busDetails[$i]['ReachesAt'] = $rows[$i]['ReachesAt'];
+              $busDetails[$i]['Duration'] = $rows[$i]['Duration'];
               $busDetails[$i]['CityId'] = $rows[$i]['CityId'];
               
            }
