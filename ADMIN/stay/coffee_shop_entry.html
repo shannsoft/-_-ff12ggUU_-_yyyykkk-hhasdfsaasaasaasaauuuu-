@@ -5,19 +5,19 @@
 	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
 	<h3> Hotel entry form</h3>
 </head>
-<body ng-controller="hotelController" ng-init="init()">
-	Hotel Name : <input type="text" ng-model="hotelName"><br/>
-	Hotel Address : <textarea ng-model="h_add"></textarea> <br/>
-	Hotel Phone1 : <input type="number" ng-model="phone1" ng-valid><br/>
-	Hotel Phone2 : <input type="number" ng-model="phone2" ng-valid><br/>
-	Hotel Phone3 : <input type="number" ng-model="phone3" ng-valid><br/>
-	Hotel mobile : <input type="number" ng-model="mobile" ng-valid><br/>
-	Hotel Fax : <input type="number" ng-model="fax"><br/>
-	Hotel mail : <input type="text" ng-model="mail"><br/>
-	Reservation Authority : <input type="text" ng-model="reserv_auth"><br/>
-	Hotel webSite : <input type="text" ng-model="webSite"><br/>
-	Hotel category : <input type="number" ng-model="starCount"><br/>
-	No of Rooms : <input type="number" ng-model="roomCount"><br/>
+<body ng-controller="cofeeShopsController" ng-init="init()">
+	 Name : <input type="text" ng-model="guesthouse_name"><br/>
+	Address : <textarea ng-model="address"></textarea> <br/>
+	Phone1 : <input type="number" ng-model="phone1" ng-valid><br/>
+	Phone2 : <input type="number" ng-model="phone2" ng-valid><br/>
+	Phone3 : <input type="number" ng-model="phone3" ng-valid><br/>
+	mobile : <input type="number" ng-model="mobile" ng-valid><br/>
+	<!-- Fax : <input type="number" ng-model="fax"><br/>
+	mail : <input type="text" ng-model="mail"><br/> -->
+	<!-- Reservation Authority : <input type="text" ng-model="reserv_auth"><br/> -->
+	webSite : <input type="text" ng-model="webSite"><br/>
+	category : <input type="number" ng-model="starCount"><br/>
+	<!-- No of Rooms : <input type="number" ng-model="roomCount"><br/> -->
 	icon image path : <input type="text" ng-model="iconImage"><br/>
 	Home image path : <input type="text" ng-model="homeImage"><br/>
 	Countries : 
@@ -38,7 +38,7 @@
 			{{facility.facility}}: <input type="checkbox" ng-model="facility.check"><br/>
 		</li>
 	</ul><br/>
-	Room facilities : <br/>
+	<!-- Room facilities : <br/>
 	<ul>
 		<table>
 			<tr>
@@ -56,14 +56,14 @@
 
 		</table>
 
-	</ul><br/>
+	</ul><br/> -->
 
 	<input type="button" value="submit" ng-click="onSubmit()" />
 	<script type="text/javascript">
 	var app = angular.module("app",[]);
-	app.controller("hotelController",["$scope","$http",function($scope,$http) {
+	app.controller("cofeeShopsController",["$scope","$http",function($scope,$http) {
 		$scope.facilities = [];
-		$scope.roomFacilities = [];
+		//$scope.roomFacilities = [];
 		$scope.countries = [];
 		$scope.states = [];
 		$scope.cities = [];
@@ -81,21 +81,21 @@
 				}
 			});
 		}
-		$scope.getHotelRoomDetails =function()
-		{
-			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getHotelRoomDetails").then(function(pRes){
-				for(i in pRes.data)
-				{
-					var obj = {};
-					obj.id = pRes.data[i].id;
-					obj.room_type = pRes.data[i].room_type;
-					obj.NoOfRooms = pRes.data[i].NoOfRooms;
-					obj.PriceStarts = pRes.data[i].PriceStarts;
-					obj.PriceEnds = pRes.data[i].PriceEnds;
-					$scope.roomFacilities.push(obj);
-				}
-			});
-		}
+		// $scope.getHotelRoomDetails =function()
+		// {
+		// 	var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getHotelRoomDetails").then(function(pRes){
+		// 		for(i in pRes.data)
+		// 		{
+		// 			var obj = {};
+		// 			obj.id = pRes.data[i].id;
+		// 			obj.room_type = pRes.data[i].room_type;
+		// 			obj.NoOfRooms = pRes.data[i].NoOfRooms;
+		// 			obj.PriceStarts = pRes.data[i].PriceStarts;
+		// 			obj.PriceEnds = pRes.data[i].PriceEnds;
+		// 			$scope.roomFacilities.push(obj);
+		// 		}
+		// 	});
+		// }
 		$scope.getCountry = function(){
 			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getCountries").then(function(pRes){
 				for(i in pRes.data)
@@ -144,32 +144,32 @@
 			$scope.getStates('');
 			$scope.getCities('');
 			$scope.getFacilities();
-			$scope.getHotelRoomDetails();
+			//$scope.getHotelRoomDetails();
 		}
 		$scope.onSubmit = function(){
 			// console.log($scope.facilities);
-			var hotelData = {};
-			hotelData.hotelName = $scope.hotelName;
-			hotelData.hotelAddress = $scope.h_add;
-			hotelData.phone1 = $scope.phone1;
-			hotelData.phone2 = $scope.phone2;
-			hotelData.phone3 = $scope.phone3;
-			hotelData.mobile = $scope.mobile;
-			hotelData.fax = $scope.fax;
-			hotelData.mail = $scope.mail;
-			hotelData.webSite = $scope.webSite;
-			hotelData.reserv_auth = $scope.reserv_auth;
-			hotelData.starCount = $scope.starCount;
-			hotelData.roomCount = $scope.roomCount;
-			hotelData.country = $scope.country;
-			hotelData.state = $scope.state;
-			hotelData.city = $scope.city;
-			hotelData.facilities = $scope.facilities;
-			hotelData.roomFacilities = $scope.roomFacilities;
-			hotelData.iconImgPath = $scope.iconImage;
-			hotelData.homeImgPath = $scope.homeImage;
+			var cofeeShopData = {};
+			cofeeShopData.name = $scope.guesthouse_name;
+			cofeeShopData.address = $scope.address;
+			cofeeShopData.phone1 = $scope.phone1;
+			cofeeShopData.phone2 = $scope.phone2;
+			cofeeShopData.phone3 = $scope.phone3;
+			cofeeShopData.mobile = $scope.mobile;
+			// cofeeShopData.fax = $scope.fax;
+			// cofeeShopData.mail = $scope.mail;
+			cofeeShopData.webSite = $scope.webSite;
+			//cofeeShopData.reserv_auth = $scope.reserv_auth;
+			cofeeShopData.starCount = $scope.starCount;
+			// cofeeShopData.roomCount = $scope.roomCount;
+			cofeeShopData.country = $scope.country;
+			cofeeShopData.state = $scope.state;
+			cofeeShopData.city = $scope.city;
+			cofeeShopData.facilities = $scope.facilities;
+			//hotelData.roomFacilities = $scope.roomFacilities;
+			cofeeShopData.iconImgPath = $scope.iconImage;
+			cofeeShopData.homeImgPath = $scope.homeImage;
 
-			var _serializedData = $.param({reqmethod: 'postHotelDetails', hotelData:hotelData});
+			var _serializedData = $.param({reqmethod: 'postCofeeShopDetails', cofeeShopData:cofeeShopData});
             var _responsePromise = $http({
                     method: 'POST',
                     url: 'http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php',
