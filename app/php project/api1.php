@@ -176,38 +176,46 @@ header('Access-Control-Allow-Origin: *');
                 $sql.=" join country c on s.CountryID = c.ContryID where c.CountryName = '".$countryName."'";
             }
             //echo $sql;
-   			$rows = $this->executeGenericDQLQuery($sql);
-			$statesDetails = array();
-			for($i=0;$i<sizeof($rows);$i++)
-			{
-				$statesDetails[$i]['StateID'] = $rows[$i]['StateID'];
-				$statesDetails[$i]['StateName'] = $rows[$i]['StateName'];
-				$statesDetails[$i]['CountryID'] = $rows[$i]['CountryID'];
-				
+       			$rows = $this->executeGenericDQLQuery($sql);
+    			$statesDetails = array();
+    			for($i=0;$i<sizeof($rows);$i++)
+    			{
+    				$statesDetails[$i]['StateID'] = $rows[$i]['StateID'];
+    				$statesDetails[$i]['StateName'] = $rows[$i]['StateName'];
+    				$statesDetails[$i]['CountryID'] = $rows[$i]['CountryID'];
+    				
 
-			}
-			$this->response($this->json($statesDetails), 200);
+    			}
+    			$this->response($this->json($statesDetails), 200);
         }
         public function getCity()
         {	
             $stateName = $this->_request['state'];
-        	$sql="SELECT * FROM city c ";
-            if($stateName!='' && $stateName!='undefined')
-            {
-                $sql.=" join states s on c.StateID = s.StateID where s.StateName='".$stateName."'";
-            }
-            //echo $sql;
-            $rows = $this->executeGenericDQLQuery($sql);
-			$cityDetails = array();
-			for($i=0;$i<sizeof($rows);$i++)
-			{
-				$cityDetails[$i]['CityID'] = $rows[$i]['CityID'];
-				$cityDetails[$i]['CityName'] = $rows[$i]['CityName'];
-				$cityDetails[$i]['StateID'] = $rows[$i]['StateID'];
-				$cityDetails[$i]['CountryID'] = $rows[$i]['CountryID'];
-				
-			}
-			$this->response($this->json($cityDetails), 200);
+            	$sql="SELECT * FROM city c ";
+                if($stateName!='' && $stateName!='undefined')
+                {
+                    $sql.=" join states s on c.StateID = s.StateID where s.StateName='".$stateName."'";
+                }
+                //echo $sql;
+                $rows = $this->executeGenericDQLQuery($sql);
+    			$cityDetails = array();
+    			for($i=0;$i<sizeof($rows);$i++)
+    			{
+    				$cityDetails[$i]['CityID'] = $rows[$i]['CityID'];
+    				$cityDetails[$i]['CityName'] = $rows[$i]['CityName'];
+    				$cityDetails[$i]['StateID'] = $rows[$i]['StateID'];
+    				$cityDetails[$i]['CountryID'] = $rows[$i]['CountryID'];
+    				
+    			}
+    			$this->response($this->json($cityDetails), 200);
+        }
+          
+        public function getCityIdByName($cityName)
+        {
+             $sql = "select * from city where CityName ='".$cityName."'";
+              $rows = $this->executeGenericDQLQuery($sql);
+              $cityId = $rows[0]['CityID'];
+              return  $cityId;    
         }
         /* stay  service starts */
         public function getHotelDetails()
@@ -281,27 +289,149 @@ header('Access-Control-Allow-Origin: *');
                 $facilitiesIds.=$hotelData['facilities'][$i]['id'].",";
               } 
            }
-           echo $facilitiesIds;
+           $facilitiesIds = substr($facilitiesIds,0,strlen($facilitiesIds)-1);
+
+           $sql="select * from hotels where Name="."'".$hotelData['hotelName']."'";//.$hotelData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            // hotel exists activate update
            
+           }
+           else
+           {
+              // get cityId
+              // $sql = "select * from city where CityName ='".$hotelData['city']."'";
+              // $rows = $this->executeGenericDQLQuery($sql);
+              $cityId = $this->getCityIdByName($hotelData['city']);
+              // insert hotel details
+              $sql = "insert into hotels(Name,Address,Phone1,Phone2,Phone3,Mobile,Fax,Email,Website,reservation_authority,Category,Facilities,CityId,icon_image,home_image) values('".$hotelData['hotelName']."','".$hotelData['hotelAddress']."' , ".$hotelData['phone1'].",".$hotelData['phone2'].",".$hotelData['phone3'].",".$hotelData['mobile'].",".$hotelData['fax'].",'".$hotelData['mail']."','".$hotelData['webSite']."','".$hotelData['reserv_auth']."',".$hotelData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$hotelData['iconImgPath']."','".$hotelData['homeImgPath']."')";
 
+              $hotelId= $this->executeGenericInsertQuery($sql);
+             
+              // insert into hotel rooms with hotel id as foreign key
+              for($i=0;$i<sizeof($hotelData['roomFacilities']);$i++)
+              {
+                $sql="insert into hotel_rooms(room_type,NoOfRooms,PriceStarts,PriceEnds,hotel_id) values('".$hotelData['roomFacilities'][$i]['room_type']."',".$hotelData['roomFacilities'][$i]['NoOfRooms'].",".$hotelData['roomFacilities'][$i]['PriceStarts'].",".$hotelData['roomFacilities'][$i]['PriceEnds'].",".$hotelId.")";
+                $this->executeGenericInsertQuery($sql);
 
-           // // check for exising hotel name
-           // $sql="select * from  hotels where name='".$hotelData['hotelName']."'";
-           // $rows = $this->executeGenericDQLQuery($sql);
+              }
+           }
+        }
 
-           // if(sizeof($rows)>0)
-           // {
-           //      //hotel exists , activate  update
+        public function postGuestHouseDetails(){
+           $guestHouseData =  $this->_request['guestHouseData'];
+           //print_r($guestHouseData);
+           $facilitiesIds ='';
+           $failedIndex='';
+           for($i=0 ; $i<sizeof($guestHouseData['facilities']);$i++)
+           {
+              if($guestHouseData['facilities'][$i]['check']=="true")
+              {
 
-           // }
-           // else
-           // {
-           //   $sql="insert into hotels(Name,Address,Phone1,Phone2,Phone3,Fax,Mobile,Email,Website,Category,Facilities,CityId,icon_image,home_image)".
-           //   "values()";
-           //   //NOt exists"
-           // }
+                $facilitiesIds.=$guestHouseData['facilities'][$i]['id'].",";
+              } 
+           }
+           $facilitiesIds = substr($facilitiesIds,0,strlen($facilitiesIds)-1);
 
-            
+           $sql="select * from guest_house where Name="."'".$guestHouseData['name']."'";//.$guestHouseData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            // echo "guest house exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($guestHouseData['city']);
+              //$cityId = 1;
+              // insert guest_house details
+              $sql = "insert into guest_house(Name,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$guestHouseData['name']."','".$guestHouseData['address']."' , ".$guestHouseData['phone1'].",".$guestHouseData['phone2'].",".$guestHouseData['phone3'].",".$guestHouseData['mobile'].",'".$guestHouseData['webSite']."',".$guestHouseData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$guestHouseData['iconImgPath']."','".$guestHouseData['iconImgPath']."')";
+
+              $guestHouseId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
+        }
+
+        public function postResturantDetails(){
+           $resturantData =  $this->_request['resturantData'];
+           //print_r($resturantData);
+           $facilitiesIds ='';
+           $failedIndex='';
+           for($i=0 ; $i<sizeof($resturantData['facilities']);$i++)
+           {
+              if($resturantData['facilities'][$i]['check']=="true")
+              {
+
+                $facilitiesIds.=$resturantData['facilities'][$i]['id'].",";
+              } 
+           }
+           $facilitiesIds = substr($facilitiesIds,0,strlen($facilitiesIds)-1);
+
+           $sql="select * from resturants where Name="."'".$resturantData['name']."'";//.$resturantData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            // echo "guest house exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($resturantData['city']);
+              //$cityId = 1;
+              // insert resturants details
+              $sql = "insert into resturants(Name,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$resturantData['name']."','".$resturantData['address']."' , ".$resturantData['phone1'].",".$resturantData['phone2'].",".$resturantData['phone3'].",".$resturantData['mobile'].",'".$resturantData['webSite']."',".$resturantData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$resturantData['iconImgPath']."','".$resturantData['iconImgPath']."')";
+
+              $guestHouseId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
+        }
+        public function postCofeeShopDetails(){
+           $cofeeShopData =  $this->_request['cofeeShopData'];
+           //print_r($cofeeShopData);
+           $facilitiesIds ='';
+           $failedIndex='';
+           for($i=0 ; $i<sizeof($cofeeShopData['facilities']);$i++)
+           {
+              if($cofeeShopData['facilities'][$i]['check']=="true")
+              {
+
+                $facilitiesIds.=$cofeeShopData['facilities'][$i]['id'].",";
+              } 
+           }
+           $facilitiesIds = substr($facilitiesIds,0,strlen($facilitiesIds)-1);
+
+           $sql="select * from coffee_shops where Name="."'".$cofeeShopData['name']."'";//.$cofeeShopData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            // echo "guest house exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($cofeeShopData['city']);
+              //$cityId = 1;
+              // insert coffee_shops details
+              $sql = "insert into coffee_shops(Name,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$cofeeShopData['name']."','".$cofeeShopData['address']."' , ".$cofeeShopData['phone1'].",".$cofeeShopData['phone2'].",".$cofeeShopData['phone3'].",".$cofeeShopData['mobile'].",'".$cofeeShopData['webSite']."',".$cofeeShopData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$cofeeShopData['iconImgPath']."','".$cofeeShopData['iconImgPath']."')";
+
+              $guestHouseId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
         }
         /* stay  service ends */
 
