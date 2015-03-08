@@ -6,10 +6,10 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       $scope.heading = 'Stay';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.stayOptionList = [
-        {label:"Hotels",detailPage:"#hotel-details" , iconImgPath: "img/hotels.jpg"},
-        {label:"Guest House",detailPage:"#guesthouse-details" , iconImgPath: "img/guest-house.jpg"},
-        {label:"Restaurants",detailPage:"#restaurants-details" , iconImgPath: "img/restaurants.jpg"},
-        {label:"Coffee Shop",detailPage:"#coffee-shop-details" , iconImgPath: "img/coffee.jpg"}
+        {label:"Hotels",detailPage:"#hotel-details" ,contentUrl:"modules/stay/views/partials/hotel-details.html", iconImgPath: "img/hotels.jpg"},
+        {label:"Guest House",detailPage:"#guesthouse-details" ,contentUrl:"modules/stay/views/partials/guesthouse-details.html", iconImgPath: "img/guest-house.jpg"},
+        {label:"Restaurants",detailPage:"#restaurants-details",contentUrl:"modules/stay/views/partials/restaurants-details.html" , iconImgPath: "img/restaurants.jpg"},
+        {label:"Coffee Shop",detailPage:"#coffee-shop-details",contentUrl:"modules/stay/views/partials/coffee-shop-details.html" , iconImgPath: "img/coffee.jpg"}
       ];
     }
 
@@ -79,7 +79,10 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     }
 
      /*codes for hotel partial details ends*/
-     
+     $scope.routeSubView = function(pUrl){
+        console.log("trainDetailsInit  ",pUrl);
+        $scope.contentUrl = pUrl;
+    }
 
   	
 

@@ -2,13 +2,13 @@
       <ion-view class="pane">
         <ion-content>
 		 <div class="row money-dashboard stay" ng-repeat="option in stayOptionList">
-		     <a href="{{option.detailPage}}"  class="col col-25" >
+		     <a ng-click="routeSubView(option.contentUrl)"  class="col col-25" >
 			   <div>
 			       <img src="{{option.iconImgPath}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="{{option.detailPage}}"  class="col col-70" > 
+			 <a ng-click="routeSubView(option.contentUrl)"  class="col col-70" > 
 			   <div>
 			      <h2 class="stay">{{option.label}}</h2>
 			   </div><!--col-50 end-->
