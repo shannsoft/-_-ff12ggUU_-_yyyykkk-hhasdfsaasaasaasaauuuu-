@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+</head>
+<body ng-controller="scheduleController">
+	<table>
+		<tr>
+			<td>schedule Name :</td>
+			<td><input type="text" ng-model="scheduleName"></td>
+		</tr>
+		<tr>
+			<td>schedule Content :</td>
+			<td><textarea cols= '50' rows = '5' ng-model="scheduleContent"></textarea></td>
+		</tr>
+		<tr>
+			<td>Start Time:</td>
+			<td><input type="text" name="startTime" ng-model="startTime"/></td>
+		</tr>
+		<tr>
+			<td>End Time : </td>
+			<td><input type="text" name="endTime" ng-model="endTime"/></td>
+       				<!-- placeholder="HH:mm:ss" required -->
+		</tr>
+		<tr>
+			<td>Schedule Day : </td>
+			<td><select ng-model="day"><option ng-repeat="day in days" value="{{day}}">{{day}}</option></select></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="submit" ng-click="onSubmit()" /></td>
+		</tr>
+
+		
+	</table>
+	<script type="text/javascript">
+		var app = angular.module("app",[]);
+		app.controller("scheduleController",["$scope","$http",function($scope,$http) {
+			$scope.days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+			//$scope.startTime = new Date(1970, 0, 1, 14, 57, 0);
+			//$scope.endTime = new Date(1970, 0, 1, 15, 57, 0);
+			$scope.scheduleName='';
+			$scope.scheduleContent='';
+			$scope.startTime='';
+			$scope.endTime='';
+			$scope.day='';
+			$scope.onSubmit = function(){
+				console.log($scope.scheduleName,$scope.scheduleContent,$scope.startTime,$scope.endTime,$scope.day);
+             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php'+ '?reqmethod=postScheduleDetails&scheduleName='+$scope.scheduleName+'&scheduleContent='+$scope.scheduleContent+'&startTime='+$scope.startTime+'&endTime='+$scope.endTime+'&day='+$scope.day);
+         	}
+
+		}]);
+	</script>
+
+
+
+</body>
+</html>

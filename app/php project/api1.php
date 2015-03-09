@@ -274,19 +274,19 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getTempleSchedule(){
           $day =  $this->_request['day'];
-          $sql="select * from schedule where day = $day";
+          $sql="select * from schedule where day = '$day'";
           $rows = $this->executeGenericDQLQuery($sql);
-          $scheduleDetails= array();
+          $scheduleDetails['schedule']= array();
           for($i=0;$i<sizeof($rows);$i++)
           {
-            $scheduleDetails[$i]['id'] = $rows[$i]['id'];
-            $scheduleDetails[$i]['schedule_name'] = $rows[$i]['schedule_name'];
-            $scheduleDetails[$i]['schedule_content'] = $rows[$i]['schedule_content'];
-            $scheduleDetails[$i]['startTime'] = $rows[$i]['startTime'];
-            $scheduleDetails[$i]['end_time'] = $rows[$i]['end_time'];
-            $scheduleDetails[$i]['day'] = $day
+            $scheduleDetails['schedule'][$i]['id'] = $rows[$i]['id'];
+            $scheduleDetails['schedule'][$i]['schedule_name'] = $rows[$i]['schedule_name'];
+            $scheduleDetails['schedule'][$i]['schedule_content'] = $rows[$i]['schedule_content'];
+            $scheduleDetails['schedule'][$i]['start_time'] = $rows[$i]['start_time'];
+            $scheduleDetails['schedule'][$i]['end_time'] = $rows[$i]['end_time'];
+            $scheduleDetails['schedule'][$i]['day'] = $day;
           }
-          $this->response($this->json($hotelDetails), 200);
+          $this->response($this->json($scheduleDetails), 200);
         }
         public function postScheduleDetails(){
            $scheduleName =  $this->_request['scheduleName'];
@@ -523,13 +523,6 @@ header('Access-Control-Allow-Origin: *');
            }
             $this->response($this->json($busDetails), 200);
 
-        }
-
-        /* TRAVEL service ends  */
-        public function getTempleSchedule(){
-        	$sql="select * from hotel_rooms";
-        	$rows = $this->executeGenericDQLQuery($sql);
-        	$this->response($this->json($rows), 200);
         }
 	}
 	

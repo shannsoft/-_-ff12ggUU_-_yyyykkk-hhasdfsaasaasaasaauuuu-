@@ -18,22 +18,15 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
       var value=$scope.convert(pval);
       MainService.getTempleSchedule(value);
     };
-    /*$scope.getTempleSchedule=function(pval){
-      //var value=$scope.convert(pval);
-      console.log(pval);
-      AppModelService.getTempleSchedule(pval);
-    };*/
     $scope.getTempleSchedule = function (pval) {
-        //$scope.designAddSubCategories = [];
+        $scope.templeScheduleList = [];
         AppModelService.getTempleSchedule(pval).then(function(pRes){
-          //console.log(pRes.data);
-             /*for(var i=0;i<pRes.data.length;i++){
-                var temp = {};
-                temp.id =  pRes.data[i].id;
-                temp.name = pRes.data[i].sub_category;
-                $scope.designAddSubCategories.push(temp);
-            } */
+        var scheduleDetails = pRes.data.schedule;
+         $(scheduleDetails).each(function(i){
+                $scope.templeScheduleList.push(scheduleDetails[i]);
+            });
         });
+         console.log($scope.templeScheduleList);
     };
     $scope.convert=function(str) {
     var date = new Date(str),
@@ -44,7 +37,7 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
 
   	$scope.scheduleDetails = [];
     $scope.days = ['monday','tuesday','wednessday','throusday','friday','satterday','sunday'];
-  	$scope.templeScheduleList = '{'+
+  	/*$scope.templeScheduleList = '{'+
     '"schedules": ['+
         '{'+
             '"ScheduleId": "1",'+
@@ -82,8 +75,8 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
             '"StartDate": "5-4-2015",'+
             '"EndDate": "9-4-2015"'+
         '}]}';
-
-	var parseData = JSON.parse($scope.templeScheduleList);
+*/
+	/*var parseData = JSON.parse($scope.templeScheduleList);
 	$(parseData.schedules).each(function(i){
    
     var scheduleDetails = {};
@@ -94,5 +87,5 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
     scheduleDetails.StartDate = parseData.schedules[i].StartDate;
     scheduleDetails.EndDate = parseData.schedules[i].EndDate;
     $scope.scheduleDetails.push(scheduleDetails);
-	});
+	});*/
 }]);

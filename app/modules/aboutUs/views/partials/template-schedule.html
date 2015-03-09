@@ -16,14 +16,14 @@
 				<!-- <button ng-click='fetchSchedule(date)'></button> -->
 			 </div><!--col col-100 end-->
 			 </div><!--row end-->
-			  <div class="row money-dashboard contacts-dashboard temple-schedule" ng-repeat="schedule in scheduleDetails">
+			  <div class="row money-dashboard contacts-dashboard temple-schedule" ng-repeat="schedule in templeScheduleList">
 				 <div class="col col-100"> 
 				   <div>
-				      <h2>{{schedule.ScheduleName}}</h2>
-					  <p class="schedule-time"><i class="fa fa-calendar"></i>  5-4-2015 to 9-4-2015</p>
-					  <p class="schedule-time"><i class="fa fa-clock-o"></i>  11:30 A.M to 02:30P.M</p>
+				      <h2>{{schedule.schedule_name}}</h2>
+					  <p class="schedule-time"><i class="fa fa-calendar"></i>{{schedule.day}}</p>
+					  <p class="schedule-time"><i class="fa fa-clock-o"></i> {{schedule.start_time}} to {{schedule.end_time}}</p>
 					  
-	<p class="schedule-desc">{{schedule.ScheduleContent}} </p>
+	<p class="schedule-desc">{{schedule.schedule_content}} </p>
 				   </div><!--col-50 end-->
 				 </div>
 			  </div><!--row end-->
