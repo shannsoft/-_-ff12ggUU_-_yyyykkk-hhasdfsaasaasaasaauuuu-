@@ -7,7 +7,7 @@
 		     <p class="map-start"> From </p>
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Source" ng-model="dataVal.sourceCity"/>
+			  <input type="text" placeholder="Source" ng-model="searchVal.sourceCity"/>
 			</form>
 		   </div>
 		   
@@ -15,7 +15,7 @@
 		     <p class="map-start"> To </p>
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Destination" ng-model="dataVal.destinationCity"/>
+			  <input type="text" placeholder="Destination" ng-model="searchVal.destinationCity"/>
 			</form>
 		   </div>
 		  </div>
@@ -25,7 +25,7 @@
               <div class="input-label">
               Day
               </div>
-             <select ng-model="dataVal.byDay">
+             <select ng-model="searchVal.byDay">
              	<option ng-selected="true" value="">Select Day</option>
                 <option ng-repeat="day in days" value="{{day}}" >{{day}}</option>
              </select>
