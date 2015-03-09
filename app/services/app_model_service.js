@@ -21,24 +21,15 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
 
 
 
-   /*global varibale for Stay starts*/
-   		/*##########  Global variable for  hotels starts*/
-   		var CurrrentHotelFacility = {};
-   		/*##########  Global variable for  hotels Ends*/
-   	var setCurrrentHotelFacility = function(pObj){
-   		CurrrentHotelFacility = pObj;
-   	},
-   	getCurrrentHotelFacility = function(){
-   		return CurrrentHotelFacility;
-   	};
+   
+   		
     getTempleSchedule = function(pDay){
       var response = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php?'+'reqmethod=getTempleSchedule'+"&day="+pDay);
       return response;
     };
-   	/*global varibale for Stay ends*/
+   	
 	return{
-		setCurrrentHotelFacility:setCurrrentHotelFacility,
-      getCurrrentHotelFacility:getCurrrentHotelFacility,
+		
 		getMenuOptions:getMenuOptions,
     getTempleSchedule:getTempleSchedule
 

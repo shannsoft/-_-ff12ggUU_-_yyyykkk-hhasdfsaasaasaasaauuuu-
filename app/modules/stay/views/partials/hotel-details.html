@@ -1,4 +1,4 @@
-<div>
+<div ng-init="fetchHotelDetails()">
 	
 	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include> -->
 
@@ -22,19 +22,19 @@
 		   
 		  </div><!--title-nabakalebara end-->
 		  <div class="row money-dashboard contacts-dashboard hotel-details hand-icon" ng-repeat="hotel in hotels">
-		     <a  class="col col-25 " ng-click="storeHotelDetails(hotel,$index)">
+		     <a  class="col col-25 " ng-click="hotelFacility(hotel)">
 			   <div>
-			      <img src="{{hotel.imageLink}}" />
+			      <img src="{{hotel.iconImg}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a  class="col col-70" ng-click="storeHotelDetails(hotel)"> 
+			 <a  class="col col-70" ng-click="hotelFacility(hotel)"> 
 			   <div>
 			      <ul>
 			       <li> <i class="fa fa-building"></i>{{hotel.hotelName}}</li>
-				   <li> <i class="fa fa-map-marker"> </i> {{hotel.hotelAddress}}</li>
+				   <li> <i class="fa fa-map-marker"> </i> {{hotel.address}}</li>
 				 	<li class="rating-outpage">
-				    	<i class="fa fa-star" ng-repeat="star in createArr(hotel.stars)"> </i>
+				    	<i class="fa fa-star" ng-repeat="star in createArr(hotel.category)"> </i>
 				    </li>
 
 			   </ul>

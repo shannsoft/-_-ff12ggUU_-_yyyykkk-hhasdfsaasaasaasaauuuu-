@@ -220,31 +220,64 @@ header('Access-Control-Allow-Origin: *');
         /* stay  service starts */
         public function getHotelDetails()
         {
-			$sql="SELECT * FROM hotels";
-			$rows = $this->executeGenericDQLQuery($sql);
-			$hotelDetails = array();
-			for($i=0;$i<sizeof($rows);$i++)
-			{
-				$hotelDetails[$i]['id'] = $rows[$i]['id'];
-				$hotelDetails[$i]['Name'] = $rows[$i]['Name'];
-				$hotelDetails[$i]['Address'] = $rows[$i]['Address'];
-				$hotelDetails[$i]['Phone1'] = $rows[$i]['Phone1'];
-				$hotelDetails[$i]['Phone2'] = $rows[$i]['Phone2'];
-				$hotelDetails[$i]['Phone3'] = $rows[$i]['Phone3'];
-				$hotelDetails[$i]['Fax'] = $rows[$i]['Fax'];
-				$hotelDetails[$i]['Mobile'] = $rows[$i]['Mobile'];
-				$hotelDetails[$i]['Email'] = $rows[$i]['Email'];
-				$hotelDetails[$i]['Website'] = $rows[$i]['Website'];
-				$hotelDetails[$i]['Category'] = $rows[$i]['Category'];
-				$hotelDetails[$i]['Facilities'] = $rows[$i]['Facilities'];
-				$hotelDetails[$i]['CityId'] = $rows[$i]['CityId'];
-				$hotelDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
-				$hotelDetails[$i]['home_image'] = $rows[$i]['home_image'];
-				
-			}
-			$this->response($this->json($hotelDetails), 200);
-        }
 
+          $sql="select h.id hotelId , h.Name hotelName , h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
+                "h.Mobile mobile , h.Fax fax , h.Email email , h.Website webSite , h.reservation_authority reservationAuthority ,".
+                "h.Category category , h.Facilities facilitites , h.CityId cityId , h.icon_image iconImg, h.home_image homeImg , c.CityName".
+                 " from hotels h" .
+                 " join city c on c.CityID = h.CityId  ";
+               //echo $sql;
+          $rows = $this->executeGenericDQLQuery($sql);
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+            $hotelDetails[$i]['hotelId'] = $rows[$i]['hotelId'];
+            $hotelDetails[$i]['hotelName'] = $rows[$i]['hotelName'];
+            $hotelDetails[$i]['address'] = $rows[$i]['address'];
+            $hotelDetails[$i]['phone1'] = $rows[$i]['phone1'];
+            $hotelDetails[$i]['phone2'] = $rows[$i]['phone2'];
+            $hotelDetails[$i]['phone3'] = $rows[$i]['phone3'];
+            $hotelDetails[$i]['mobile'] = $rows[$i]['mobile'];
+            $hotelDetails[$i]['fax'] = $rows[$i]['fax'];
+            $hotelDetails[$i]['email'] = $rows[$i]['email'];
+            $hotelDetails[$i]['webSite'] = $rows[$i]['webSite'];
+            $hotelDetails[$i]['reservationAuthority'] = $rows[$i]['reservationAuthority'];
+            $hotelDetails[$i]['category'] = $rows[$i]['category'];
+            $hotelDetails[$i]['cityId'] = $rows[$i]['cityId'];
+            $hotelDetails[$i]['iconImg'] = $rows[$i]['iconImg'];
+            $hotelDetails[$i]['homeImg'] = $rows[$i]['homeImg'];
+            $hotelDetails[$i]['facilitites'] = $this->getFacilitiesByIds($rows[$i]['facilitites']);
+            $hotelDetails[$i]['roomDetails'] = $this->getRoomDetailsById($rows[$i]['hotelId']);
+
+            
+          }
+          $this->response($this->json($hotelDetails), 200); 
+
+    			
+        }
+        public function getRoomDetailsById($hotelId){
+          $sql = "select * from hotel_rooms r where r.hotel_id = $hotelId  ";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $rooms = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+            $rooms[$i]['room_type'] = $rows[$i]['room_type'];
+            $rooms[$i]['NoOfRooms'] = $rows[$i]['NoOfRooms'];
+            $rooms[$i]['PriceStarts'] = $rows[$i]['PriceStarts'];
+            $rooms[$i]['PriceEnds'] = $rows[$i]['PriceEnds'];
+          }
+          return $rooms;
+        }
+        public function getFacilitiesByIds($facilityIdArr){
+            $arr = array();
+            $sql = "select * from facilities where id in($facilityIdArr) ";
+            //echo $sql;
+            $rows = $this->executeGenericDQLQuery($sql);
+            for($i=0;$i<sizeof($rows);$i++)
+            {
+              array_push($arr, $rows[$i]['facility']);
+            }
+            return $arr;
+        }
         public function getFacilities(){
         	$sql="select * from facilities";
         	$rows = $this->executeGenericDQLQuery($sql);
@@ -345,9 +378,6 @@ header('Access-Control-Allow-Origin: *');
         public function postHotelDetails(){
            $hotelData =  $this->_request['hotelData'];
            //print_r($hotelData);
-
-
-
            $facilitiesIds ='';
            $failedIndex='';
            for($i=0 ; $i<sizeof($hotelData['facilities']);$i++)

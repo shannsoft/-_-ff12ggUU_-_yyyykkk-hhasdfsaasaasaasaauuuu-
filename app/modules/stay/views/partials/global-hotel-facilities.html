@@ -1,6 +1,6 @@
-<div ng-init="getHotelDetails()">
+<div ng-init="getSelectedHotel()">
 	
-	<ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include>
+	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include> -->
 
 	<ion-view class="pane">
         <ion-content>
@@ -36,7 +36,7 @@
 			</div><!--row end-->
 		     <div class="row facilities-hotel">
 			   <div class="col col-70">
-			      <h2>{{currrentHotelFacility.hotelName}}</h2>
+			      <h2>{{selectedHotel.hotelName}}</h2>
 			   </div><!--col-50 end-->
 			   <div class="col col-25">
 			     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
@@ -46,35 +46,21 @@
 					   <div class="col col-60">
 							<ul> 
 								 <li class="hf-heading">Number of Rooms/ Beds.</li>
-								 <li>{{currrentHotelFacility.deluxeRoom.name}}<span>:{{currrentHotelFacility.deluxeRoom.capacity}}</span></li>
-								 <li>{{currrentHotelFacility.cottage.name}}<span>:{{currrentHotelFacility.cottage.capacity}}</span></li>
-								 <li>{{currrentHotelFacility.exclusiveDelux.name}}<span>:{{currrentHotelFacility.exclusiveDelux.capacity}}</span></li>
-								 <li>{{currrentHotelFacility.villa.name}}<span>:{{currrentHotelFacility.villa.capacity}}</span></li>
-								 <li>{{currrentHotelFacility.exclusiveVilla.name}}<span>:{{currrentHotelFacility.exclusiveVilla.capacity}}</span></li>
-								 
+								  <li ng-repeat="rooms in selectedHotel.roomDetails">{{rooms.room_type}}<span>:{{rooms.NoOfRooms}}</span></li>
 							</ul>
 					   </div><!--col-50 end-->
 					   	 
 					   <div class="col col-20">
 					       <ul>
 							 <li class="hf-heading">E.P.</li>
-							 <li>{{currrentHotelFacility.deluxeRoom.ep}}</li>
-							 <li>{{currrentHotelFacility.cottage.ep}}</li>
-							 <li>{{currrentHotelFacility.exclusiveDelux.ep}}</li>
-							 <li>{{currrentHotelFacility.villa.ep}}</li>
-							 <li>{{currrentHotelFacility.exclusiveVilla.ep}}</li>
-							<!--  <li>{{currrentHotelFacility.conferenceHall.ep}}</li> -->
+							 <li ng-repeat="rooms in selectedHotel.roomDetails">{{rooms.PriceStarts}}</li>
+							 
 				          </ul>
 					   </div><!--col-50 end-->
 					    <div class="col col-20">
 					       <ul>
 							 <li class="hf-heading">A.P.</li>
-							<li>{{currrentHotelFacility.deluxeRoom.ap}}</li>
-							 <li>{{currrentHotelFacility.cottage.ap}}</li>
-							 <li>{{currrentHotelFacility.exclusiveDelux.ap}}</li>
-							 <li>{{currrentHotelFacility.villa.ap}}</li>
-							 <li>{{currrentHotelFacility.exclusiveVilla.ap}}</li>
-					         <!-- <li>2800</li> -->
+							 <li ng-repeat="rooms in selectedHotel.roomDetails">{{rooms.PriceEnds}}</li>
 				          </ul>
 					   </div><!--col-50 end-->
 				 </div><!--facilities-hotel end-->
@@ -84,8 +70,8 @@
 			        <h2 class="hf-heading">Conference hall(Capacity and rent if available) with A.C and Non A.c</h2>
 					  <ul>
 					    <li>CH:4(A/C)</li>
-						<li>Capacity:{{currrentHotelFacility.conferenceHall.capacity}}</li>
-						<li>Rent:{{currrentHotelFacility.conferenceHall.rent}}</li>
+						<li>Capacity:100 #####</li>
+						<li>Rent:100 ###</li>
 					 </ul>
 			      </div><!--col-50 end-->
 				  <div class="col col-10">
@@ -97,7 +83,7 @@
 		          <div class="col col-90">
 			        <h2 class="hf-heading">Facilities Available</h2>
 					  <ul>
-					    <li>{{currrentHotelFacility.facilitiesAvailable}}</li>
+					    <li>{{selectedHotel.facilitites.toString()}}</li>
 						
 					 </ul>
 			      </div><!--col-50 end-->
@@ -110,7 +96,7 @@
 		          <div class="col col-90">
 			        <h2 class="hf-heading">Reservation Authority</h2>
 					  <ul>
-					    <li>{{currrentHotelFacility.reservationAuthority}}</li>
+					    <li>{{selectedHotel.reservationAuthority}}</li>
 					 </ul>
 			      </div><!--col-50 end-->
 				  <div class="col col-10">
@@ -122,9 +108,9 @@
 		          <div class="col col-90">
 			        <h2 class="hf-heading">Contacts</h2>
 					  <ul>
-					    <li>{{currrentHotelFacility.hotelName}}</li>
-						<li>Ph:({{currrentHotelFacility.contacts.stdCode}}) {{currrentHotelFacility.contacts.phone}}</li>
-						<li>Fax:{{currrentHotelFacility.contacts.fax}}</li>
+					    <li>{{selectedHotel.hotelName}}</li>
+						<li>Ph:({{selectedHotel.phone1}}) {{selectedHotel.contacts.phone2}}</li>
+						<li>Fax:{{selectedHotel.fax}}</li>
 					 </ul>
 			      </div><!--col-50 end-->
 				  <div class="col col-10">
