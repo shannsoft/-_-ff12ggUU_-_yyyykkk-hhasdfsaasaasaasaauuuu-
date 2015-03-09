@@ -288,6 +288,32 @@ header('Access-Control-Allow-Origin: *');
           }
           $this->response($this->json($scheduleDetails), 200);
         }
+        public function postTrainDetails(){
+           $trainNumber =  $this->_request['trainNumber'];
+           $trainName =  $this->_request['trainName'];
+           $fromCity =  $this->_request['fromCity'];
+           $toCity =  $this->_request['toCity'];
+           $depValue =  $this->_request['depValue'];
+           $arrValue =  $this->_request['arrValue'];
+           $days =  $this->_request['days'];
+           $days = explode(",", $days);
+           $sql="select * from  train where TrainNumber=$trainNumber";
+           $rows = $this->executeGenericDQLQuery($sql);
+           $response = array();
+          if(sizeof($rows)>0)
+           {
+                $response['status'] = "already exist";
+
+           }
+           else
+           {
+             $sql="insert into train(TrainNumber,TrainName,FromStation,ToStation,StartAt,ReachesAt,WebLink,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)".
+             "values('$trainNumber','$trainName','$fromCity','$toCity','$depValue','$arrValue','',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
+             $response['status'] = "success";
+           }
+           $this->response($this->json($response), 200);
+            
+        }
         public function postScheduleDetails(){
            $scheduleName =  $this->_request['scheduleName'];
            $scheduleContent =  $this->_request['scheduleContent'];

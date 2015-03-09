@@ -26,7 +26,6 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
                 $scope.templeScheduleList.push(scheduleDetails[i]);
             });
         });
-         console.log($scope.templeScheduleList);
     };
     $scope.convert=function(str) {
     var date = new Date(str),

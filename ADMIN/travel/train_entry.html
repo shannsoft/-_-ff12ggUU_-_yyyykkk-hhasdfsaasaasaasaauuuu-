@@ -3,7 +3,7 @@
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 </head>
-<body ng-controller="trainController">
+<body ng-controller="trainController" ng-init="init()">
 	<table>
 		<tr>
 			<td>Train Number :</td>
@@ -23,15 +23,12 @@
 		</tr>
 		<tr>
 			<td>Departure:</td>
-			<td><input type="time" name="startTime" ng-model="depValue"
-       				placeholder="HH:mm:ss" required/></td>
+			<td><input type="text" name="startTime" ng-model="depValue"/></td>
 		</tr>
 		<tr>
 			<td>Arrive : </td>
-			<td><input type="time" name="startTime" ng-model="arrValue"
-       				placeholder="HH:mm:ss" required/></td>
+			<td><input type="text" name="endTime" ng-model="arrValue"/></td>
 		</tr>
-		<tr>
 			<td>Schedule : </td>
 			<td><span ng-repeat="day in days">{{day.name}} : <input type="checkbox" ng-model="day.status"></span></td>
 		</tr>
@@ -44,34 +41,49 @@
 	<script type="text/javascript">
 		var app = angular.module("app",[]);
 		app.controller("trainController",["$scope","$http",function($scope,$http) {
-			$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
 			$scope.fromCity = 'Select City';
-			$scope.depValue = new Date(1970, 0, 1, 14, 57, 0);
-			$scope.arrValue = new Date(1970, 0, 1, 15, 57, 0);
+			$scope.depValue = '';
+			$scope.arrValue = '';
 			$scope.days = [ 
-					{id:1,name:"Sun",status:false},
-					{id:2,name:"Mon",status:false},
-					{id:3,name:"Tue",status:false},
-					{id:3,name:"Wed",status:false},
-					{id:4,name:"Thu",status:false},
-					{id:5,name:"Fri",status:false},
-					{id:6,name:"Sat",status:false}
+					{id:1,name:"Monday",status:false},
+					{id:2,name:"Tuesday",status:false},
+					{id:3,name:"Wednesday",status:false},
+					{id:4,name:"Thursday",status:false},
+					{id:5,name:"Friday",status:false},
+					{id:6,name:"Saturday",status:false},
+					{id:7,name:"Sunday",status:false}
 			];
 			
 			$scope.getCities =function()
-			{
-				var response =  $http.get("http://localhost/application/app/php project/api1.php?reqmethod=getFacilities").then(function(pRes){
-					for(i in pRes.data)
-					{
-						
-					}
+			{	$scope.cities=[];
+				var response =  $http.get("http://localhost/Nabakalebara/app/php%20project/api1.php?reqmethod=getCity").then(function(pRes){
+					var citiDetails = pRes.data;
+			        angular.forEach(citiDetails,function(city,index){
+		                $scope.cities.push(city.CityName);
+		            });
 				});
+				console.log($scope.cities);
 			}
 			$scope.init = function(){
 				$scope.getCities();
 			}
 			$scope.onSubmit = function(){
-				console.log($scope.cities);
+				var days = [];
+				angular.forEach($scope.days,function(day,index){   
+				if(day.status == true)
+					days.push(1);
+				else
+					days.push(0);
+				});
+				console.log($scope.trainNumber);
+				console.log($scope.trainName);
+				console.log($scope.fromCity);
+				console.log($scope.toCity);
+				console.log($scope.depValue);
+				console.log($scope.arrValue);
+				console.log(days);
+	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php'+ '?reqmethod=postTrainDetails&trainNumber='+$scope.trainNumber+'&trainName='+$scope.trainName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days);
 			}
 		}]);
 	</script>
