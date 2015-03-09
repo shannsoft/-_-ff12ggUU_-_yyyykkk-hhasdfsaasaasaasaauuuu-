@@ -1,5 +1,4 @@
 angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService', function ($scope,$rootScope,AppModelService,travelService){
-    $scope.searchVal = {sourceCity:'',destinationCity:'',byDay:''};
     $scope.initTravel = function(){
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
       $scope.heading = 'Travel';
@@ -16,7 +15,8 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
   	/*
 	This is starting control for train information partial
   	*/
-    $scope.days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];    
+    $scope.days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']; 
+    $scope.searchVal = {sourceCity:'',destinationCity:'',byDay:''};   
     $scope.fetchTrainDetails = function(){
         $scope.trainDetails = [];
         travelService.getTrainDetails($scope.searchVal).then(function(pRes){
@@ -65,74 +65,30 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     /*
     This is starting control for Flight information partial
     */
+    $scope.searchFlight = {source:'',destination:'',byDay:''};
     $scope.getFlightDetails = function(){
        $scope.flightDetails = [];
-        travelService.getFlightDetails().then(function(pRes){
+        travelService.getFlightDetails($scope.searchFlight).then(function(pRes){
             var flightDetails = pRes.data;
             $(flightDetails).each(function(i){
                 $scope.flightDetails.push(flightDetails[i]);
             });
-            console.log($scope.flightDetails);
         });
     }
-   /* $scope.flightDetails = [];
-    $scope.flightInfo = '{'+
-    '"flights": ['+
-        '{'+
-            '"FlightID": "1",'+
-            '"FlightNumber": "6E 368",'+
-            '"FlightName": "Indigo",'+
-            '"FromAirport": "Bhubaneswar",'+
-            '"ToAirport": "New Delhi",'+
-            '"StartsAt": "21:25",'+
-            '"ReachesAt": "23:35",'+
-            '"Sunday": "0",'+
-            '"Monday": "1",'+
-            '"Tuesday": "0",'+
-            '"Wednesday": "1",'+
-            '"Thursday": "0",'+
-            '"Friday": "1",'+
-            '"Saturday": "0"'+
-        '},'+
-        '{'+
-            '"FlightID": "1",'+
-            '"FlightNumber": "6E 368",'+
-            '"FlightName": "Reliance",'+
-            '"FromAirport": "Bangalore",'+
-            '"ToAirport": "BBSR",'+
-            '"StartsAt": "21:25",'+
-            '"ReachesAt": "23:35",'+
-            '"Sunday": "0",'+
-            '"Monday": "1",'+
-            '"Tuesday": "0",'+
-            '"Wednesday": "1",'+
-            '"Thursday": "0",'+
-            '"Friday": "1",'+
-            '"Saturday": "0"'+
-        '}]}';
 
-    var parseData = JSON.parse($scope.flightInfo);
-    $(parseData.flights).each(function(i){
-   
-    var flightDetails = {};
-    flightDetails.flightName = parseData.flights[i].FlightName;
-    flightDetails.flightNumber = parseData.flights[i].FlightNumber;
-    flightDetails.startAt = parseData.flights[i].StartsAt;
-    flightDetails.reachesAt = parseData.flights[i].ReachesAt;
-    flightDetails.fromAirport = parseData.flights[i].FromAirport;
-    flightDetails.toAirport = parseData.flights[i].ToAirport;
-    flightDetails.sunday = parseData.flights[i].Sunday;
-    flightDetails.monday = parseData.flights[i].Monday;
-    flightDetails.tuesday = parseData.flights[i].Tuesday;
-    flightDetails.wednesday = parseData.flights[i].Wednesday;
-    flightDetails.thursday = parseData.flights[i].Thursday;
-    flightDetails.friday = parseData.flights[i].Friday;
-    flightDetails.saturday = parseData.flights[i].Saturday;
-    $scope.flightDetails.push(flightDetails);
-    });*/
+    $scope.serchFlight = function(){
+        $scope.flightDetails = [];
+        travelService.getFlightDetails($scope.searchFlight).then(function(pRes){
+            var flightDetails = pRes.data;
+            $(flightDetails).each(function(i){
+                $scope.flightDetails.push(flightDetails[i]);
+            });
+        });
+    }
     /*
     This is END control for Flight information partial
     */
+
     $scope.routeSubView = function(pUrl){
         console.log("trainDetailsInit  ",pUrl);
         $scope.contentUrl = pUrl;

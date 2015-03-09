@@ -9,16 +9,31 @@
 		     <p class="map-start"> From </p>
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Source" />
+			  <input type="text" placeholder="Source" ng-model="searchFlight.source"/>
 			</form>
 		   </div>		   
 		   <div class="col col-50">
 		     <p class="map-start"> To </p>
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Destination" />
+			  <input type="text" placeholder="Destination" ng-model="searchFlight.destination"/>
 			</form>
 		   </div>
+		  </div>
+		  <div class="row money-dashboard">
+		   <div class="icici-branchlist" style="width:50% !important">
+		     <label class="item item-input item-select">
+              <div class="input-label">
+              Day
+              </div>
+             <select ng-model="searchFlight.byDay">
+             	<option ng-selected="true" value="">Select Day</option>
+                <option ng-repeat="day in days" value="{{day}}" >{{day}}</option>
+             </select>
+
+           </label>
+           <button class="default" ng-click="serchFlight()">Search</button>
+		  </div>
 		  </div>
 		   
 		  <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="flight in flightDetails">
