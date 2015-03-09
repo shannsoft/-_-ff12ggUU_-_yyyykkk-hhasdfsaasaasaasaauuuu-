@@ -1,6 +1,6 @@
 angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService', function ($scope,$rootScope,AppModelService,travelService){
+    $scope.searchVal = {sourceCity:'',destinationCity:'',byDay:''};
     $scope.initTravel = function(){
-        console.log("initTravel");
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
       $scope.heading = 'Travel';
       $scope.menuOptionList = AppModelService.getMenuOptions();
@@ -16,11 +16,10 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
   	/*
 	This is starting control for train information partial
   	*/
-    $scope.days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    
+    $scope.days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];    
     $scope.fetchTrainDetails = function(){
         $scope.trainDetails = [];
-        travelService.getTrainDetails().then(function(pRes){
+        travelService.getTrainDetails($scope.searchVal).then(function(pRes){
             var trainDetails = pRes.data;
             $(trainDetails).each(function(i){
                 $scope.trainDetails.push(trainDetails[i]);
@@ -30,6 +29,16 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
 
     $scope.gotoLink = function(pLink){
         window.open(pLink);
+    }
+    $scope.serchTrain = function(){
+        console.log()
+      $scope.trainDetails = [];
+        travelService.getTrainDetails($scope.searchVal).then(function(pRes){
+            var trainDetails = pRes.data;
+            $(trainDetails).each(function(i){
+                $scope.trainDetails.push(trainDetails[i]);
+            });
+        }); 
     }
 	/*
 	This is END control for train information partial
