@@ -1,77 +1,27 @@
-<div>
+<div ng-init="fetchCoffeeShops()">
 	
 	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include -->>
 
 
 	<ion-view class="pane">
         <ion-content>
-		  <div class="row money-dashboard contacts-dashboard hotel-details">
+		  <div class="row money-dashboard contacts-dashboard hotel-details"
+		  		ng-repeat="shops in coffeeShops">
 		     <a href="coffeeshop-facility.html" class="col col-25">
 			   <div>
-			      <img src="img/hotel-1.jpg" />
+			      <img src="{{shops.icon_image}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
 			 <a href="coffeeshop-facility.html" class="col col-70"> 
 			   <div>
 			      <ul>
-			       <li> <i class="fa fa-building"></i> Hotel Vijoya </li>
-				   <li> <i class="fa fa-map-marker"></i>  Chakratirtha Road </li>
+			       <li> <i class="fa fa-building"></i> {{shops.Name}} </li>
+				   <li> <i class="fa fa-map-marker"></i>  {{shops.Address}} </li>
 			   </ul>
 			   </div><!--col-50 end-->
 			 </a>
 			  
-		  </div><!--row end-->
-		  
-		   <div class="row money-dashboard contacts-dashboard hotel-details">
-		     <a href="coffeeshop-facility.html" class="col col-25">
-			   <div>
-			     <img src="img/hotel-2.jpg" />
-			    </div><!--col-33 ned-->
-			 </a>
-			  
-			 <a href="coffeeshop-facility.html" class="col col-70">
-			   <div>
-			     <ul>
-			       <li> <i class="fa fa-building"></i> Hotel Arya Palace Puri</li>
-				   <li> <i class="fa fa-map-marker"></i>  Chakratirth Road Puri </li>
-			   </ul>
-			   </div><!--col-50 end-->
-			  </a>
-		  </div><!--row end-->
-		  
-		 <div class="row money-dashboard contacts-dashboard hotel-details">
-		     <a href="coffeeshop-facility.html" class="col col-25">
-			   <div>
-			     <img src="img/hotel-2.jpg" />
-			    </div><!--col-33 ned-->
-			 </a>
-			  
-			 <a href="coffeeshop-facility.html" class="col col-70">
-			   <div>
-			      <ul>
-			       <li> <i class="fa fa-building"></i> Star Hotels</li>
-				   <li> <i class="fa fa-map-marker"></i>  Swargdwara , Puri </li>
-			   </ul>
-			   </div><!--col-50 end-->
-			  </a>
-		  </div><!--row end-->
-		  
-		 <div class="row money-dashboard contacts-dashboard hotel-details">
-		     <a href="coffeeshop-facility.html" class="col col-25">
-			   <div>
-			     <img src="img/hotel-2.jpg" />
-			    </div><!--col-33 ned-->
-			 </a>
-			  
-			 <a href="coffeeshop-facility.html" class="col col-70">
-			   <div>
-			      <ul>
-			       <li> <i class="fa fa-building"></i> Hotel Holiday Resort</li>
-				   <li> <i class="fa fa-map-marker"></i>  Chakratirtha Road, Puri </li>
-			   </ul>
-			   </div><!--col-50 end-->
-			  </a>
 		  </div><!--row end-->
 		  
 		  <div class="row">

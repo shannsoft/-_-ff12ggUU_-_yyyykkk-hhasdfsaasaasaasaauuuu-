@@ -532,6 +532,83 @@ header('Access-Control-Allow-Origin: *');
               
            }
         }
+        public function getGuestHouseDetails(){
+          $sql = "select * from guest_house g join city c on g.CityId = c.CityID";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $guestHouseDetails = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+      
+            $guestHouseDetails[$i]['Name'] =$rows[$i]['Name'] ;
+            $guestHouseDetails[$i]['Address'] =$rows[$i]['Address'] ;
+            $guestHouseDetails[$i]['Phone1'] =$rows[$i]['Phone1'] ;
+            $guestHouseDetails[$i]['Phone2'] =$rows[$i]['Phone2'] ;
+            $guestHouseDetails[$i]['Phone3'] =$rows[$i]['Phone3'] ;
+            $guestHouseDetails[$i]['Mobile'] =$rows[$i]['Mobile'] ;
+            $guestHouseDetails[$i]['Website'] =$rows[$i]['Website'] ;
+            $guestHouseDetails[$i]['Category'] =$rows[$i]['Category'] ;
+            $guestHouseDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
+            $guestHouseDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
+            $guestHouseDetails[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $guestHouseDetails[$i]['home_image'] =$rows[$i]['home_image'] ;
+
+          
+          }
+          $this->response($this->json($guestHouseDetails), 200);
+
+        }
+        public function getResturantDetails(){
+          $sql = "select * from resturants r join city c on r.CityId = c.CityID";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $resturantDetails = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+      
+            $resturantDetails[$i]['Name'] =$rows[$i]['Name'] ;
+            $resturantDetails[$i]['Address'] =$rows[$i]['Address'] ;
+            $resturantDetails[$i]['Phone1'] =$rows[$i]['Phone1'] ;
+            $resturantDetails[$i]['Phone2'] =$rows[$i]['Phone2'] ;
+            $resturantDetails[$i]['Phone3'] =$rows[$i]['Phone3'] ;
+            $resturantDetails[$i]['Mobile'] =$rows[$i]['Mobile'] ;
+            $resturantDetails[$i]['Website'] =$rows[$i]['Website'] ;
+            $resturantDetails[$i]['Category'] =$rows[$i]['Category'] ;
+            $resturantDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
+            $resturantDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
+            $resturantDetails[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $resturantDetails[$i]['home_image'] =$rows[$i]['home_image'] ;
+            
+          
+          }
+          $this->response($this->json($resturantDetails), 200);
+
+        }
+
+
+        public function fetchCoffeeShops(){
+          $sql = "select * from coffee_shops cf join city c on cf.CityId = c.CityID";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $coffeeShops = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+      
+            $coffeeShops[$i]['Name'] =$rows[$i]['Name'] ;
+            $coffeeShops[$i]['Address'] =$rows[$i]['Address'] ;
+            $coffeeShops[$i]['Phone1'] =$rows[$i]['Phone1'] ;
+            $coffeeShops[$i]['Phone2'] =$rows[$i]['Phone2'] ;
+            $coffeeShops[$i]['Phone3'] =$rows[$i]['Phone3'] ;
+            $coffeeShops[$i]['Mobile'] =$rows[$i]['Mobile'] ;
+            $coffeeShops[$i]['Website'] =$rows[$i]['Website'] ;
+            $coffeeShops[$i]['Category'] =$rows[$i]['Category'] ;
+            $coffeeShops[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
+            $coffeeShops[$i]['CityId'] =$rows[$i]['CityId'] ;
+            $coffeeShops[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $coffeeShops[$i]['home_image'] =$rows[$i]['home_image'] ;
+            
+          
+          }
+          $this->response($this->json($coffeeShops), 200);
+
+        }
         /* stay  service ends */
 
         /* TRAVEL service starts  */

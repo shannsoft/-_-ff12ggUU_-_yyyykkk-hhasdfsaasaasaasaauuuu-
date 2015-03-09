@@ -18,11 +18,26 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
     },
     getSelectedHotel = function(){
       return selectedHotel ;
+    },
+    fetchGuestHouse = function(pName , pPrice){
+      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getGuestHouseDetails");
+      return response;
+    },
+    fetchResturant = function(pName , pPrice){
+      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getResturantDetails");
+      return response;
+    },
+    fetchCoffeeShops = function(pName , pPrice){
+      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=fetchCoffeeShops");
+      return response;
     };
   return{
    		
       fetchHotels:fetchHotels,
       setSelectedHotel:setSelectedHotel,
-      getSelectedHotel:getSelectedHotel
+      getSelectedHotel:getSelectedHotel,
+      fetchGuestHouse:fetchGuestHouse,
+      fetchResturant:fetchResturant,
+      fetchCoffeeShops:fetchCoffeeShops
    	}
 }]);

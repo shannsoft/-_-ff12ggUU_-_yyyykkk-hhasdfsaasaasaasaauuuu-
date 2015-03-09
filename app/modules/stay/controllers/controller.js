@@ -57,9 +57,54 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
 
      /*codes for hotel partial details ends*/
      $scope.routeSubView = function(pUrl){
-        //console.log("trainDetailsInit  ",pUrl);
         $scope.contentUrl = pUrl;
     }
+
+
+    /* guest house details starts*/
+    $scope.guestHouseList = [];
+    $scope.fetchGuestHouseDetails = function(pName , pPrice){
+      if(!pName) pName = '';
+      if(!pPrice) pPrice = '';
+      StayService.fetchGuestHouse(pName , pPrice).then(function(pRes){
+          $scope.guestHouseList = [];
+          $scope.guestHouseList = pRes.data;
+          console.log(pRes.data);
+
+          
+      });
+    }
+    /* guest house details ends*/
+    
+    /*resturant  details starts*/
+    $scope.resturants = [];
+    $scope.fetchResturantDetails = function(pName , pPrice){
+      if(!pName) pName = '';
+      if(!pPrice) pPrice = '';
+      StayService.fetchResturant(pName , pPrice).then(function(pRes){
+          $scope.resturants = [];
+          $scope.resturants = pRes.data;
+          //console.log(pRes.data);
+
+          
+      });
+    }
+    /*resturant  details ends*/
+
+    /*coffee  details starts*/
+    $scope.coffeeShops = [];
+    $scope.fetchCoffeeShops = function(pName , pPrice){
+      if(!pName) pName = '';
+      if(!pPrice) pPrice = '';
+      StayService.fetchCoffeeShops(pName , pPrice).then(function(pRes){
+          $scope.coffeeShops = [];
+          $scope.coffeeShops = pRes.data;
+          //console.log(pRes.data);
+
+          
+      });
+    }
+    /*resturant  details ends*/
 
   	
 
