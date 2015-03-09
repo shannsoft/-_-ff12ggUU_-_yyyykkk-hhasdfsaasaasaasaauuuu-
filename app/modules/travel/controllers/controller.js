@@ -46,7 +46,6 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
             $(busDetails).each(function(i){
                 $scope.busDetails.push(busDetails[i]);
             });
-            console.log($scope.busDetails);
         });
     }
 
@@ -57,8 +56,17 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     /*
     This is starting control for Flight information partial
     */
-    
-    $scope.flightDetails = [];
+    $scope.getFlightDetails = function(){
+       $scope.flightDetails = [];
+        travelService.getFlightDetails().then(function(pRes){
+            var flightDetails = pRes.data;
+            $(flightDetails).each(function(i){
+                $scope.flightDetails.push(flightDetails[i]);
+            });
+            console.log($scope.flightDetails);
+        });
+    }
+   /* $scope.flightDetails = [];
     $scope.flightInfo = '{'+
     '"flights": ['+
         '{'+
@@ -112,7 +120,7 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     flightDetails.friday = parseData.flights[i].Friday;
     flightDetails.saturday = parseData.flights[i].Saturday;
     $scope.flightDetails.push(flightDetails);
-    });
+    });*/
     /*
     This is END control for Flight information partial
     */

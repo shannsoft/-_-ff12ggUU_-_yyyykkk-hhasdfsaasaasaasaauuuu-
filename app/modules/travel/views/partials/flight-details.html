@@ -1,4 +1,4 @@
-<div id='flight-list'>
+<div id='flight-list' ng-init="getFlightDetails()">
 	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include> -->
 
 	<ion-view class="pane">
@@ -23,18 +23,18 @@
 		   
 		  <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="flight in flightDetails">
 		    <div class="col col-50">
-			   <h2>{{flight.flightName}}</h2>
+			   <h2>{{flight.FlightName}}</h2>
 			   <ul>
-			      <li><i class="fa fa-clock-o"></i>{{flight.startAt}}</li>
-			      <li><i class="fa fa-plane"></i>{{flight.fromAirport}}</li>
+			      <li><i class="fa fa-clock-o"></i>{{flight.StartsAt}}</li>
+			      <li><i class="fa fa-plane"></i>{{flight.FromAirport}}</li>
 			      <li><i class="fa fa-list-alt"></i><span class="day disabled-day"> S </span><span class="day"> M </span><span class="day disabled-day"> T </span><span class="day"> W </span><span class="day disabled-day"> T </span><span class="day"> F </span><span class="day disabled-day"> S </span></li>
 			   </ul>
 			</div>
 			<div class="col col-50">
-			  <h2>{{flight.flightNumber}}</h2>
+			  <h2>{{flight.FlightNumber}}</h2>
 			    <ul>
-			      <li><i class="fa fa-clock-o"> </i>{{flight.reachesAt}}</li>
-			      <li><i class="fa fa-plane"></i>{{flight.toAirport}}</li>
+			      <li><i class="fa fa-clock-o"> </i>{{flight.ReachesAt}}</li>
+			      <li><i class="fa fa-plane"></i>{{flight.ToAirport}}</li>
 			   </ul>
 			</div> 
 		  </div>		  

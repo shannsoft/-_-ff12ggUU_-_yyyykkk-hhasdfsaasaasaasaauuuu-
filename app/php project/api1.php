@@ -503,6 +503,30 @@ header('Access-Control-Allow-Origin: *');
             $this->response($this->json($trainDetails), 200);
 
         }
+        public function getFlightDetails(){
+
+            $sql="select * from flight f";
+            $rows = $this->executeGenericDQLQuery($sql);
+            $flightDetails= array();
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $flightDetails[$i]['FlightID'] = $rows[$i]['FlightID'];
+              $flightDetails[$i]['FlightNumber'] = $rows[$i]['FlightNumber'];
+              $flightDetails[$i]['FlightName'] = $rows[$i]['FlightName'];
+              $flightDetails[$i]['FromAirport'] = $rows[$i]['FromAirport'];
+              $flightDetails[$i]['ToAirport'] = $rows[$i]['ToAirport'];
+              $flightDetails[$i]['StartsAt'] = $rows[$i]['StartsAt'];
+              $flightDetails[$i]['ReachesAt'] = $rows[$i]['ReachesAt'];
+              $flightDetails[$i]['Sunday'] = $rows[$i]['Sunday'];
+              $flightDetails[$i]['Monday'] = $rows[$i]['Monday'];
+              $flightDetails[$i]['Tuesday'] = $rows[$i]['Tuesday'];
+              $flightDetails[$i]['Wednesday'] = $rows[$i]['Wednesday'];
+              $flightDetails[$i]['Thursday'] = $rows[$i]['Thursday'];
+              $flightDetails[$i]['Friday'] = $rows[$i]['Friday'];
+              $flightDetails[$i]['Saturday'] = $rows[$i]['Saturday'];     
+           }
+            $this->response($this->json($flightDetails), 200);
+        }
 
         public function getBusDetails(){
 
