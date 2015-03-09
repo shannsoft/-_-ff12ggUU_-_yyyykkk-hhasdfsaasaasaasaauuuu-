@@ -272,6 +272,46 @@ header('Access-Control-Allow-Origin: *');
         	}
         	$this->response($this->json($hotelDetails), 200);
         }
+        public function getTempleSchedule(){
+          $day =  $this->_request['day'];
+          $sql="select * from schedule where day = $day";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $scheduleDetails= array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+            $scheduleDetails[$i]['id'] = $rows[$i]['id'];
+            $scheduleDetails[$i]['schedule_name'] = $rows[$i]['schedule_name'];
+            $scheduleDetails[$i]['schedule_content'] = $rows[$i]['schedule_content'];
+            $scheduleDetails[$i]['startTime'] = $rows[$i]['startTime'];
+            $scheduleDetails[$i]['end_time'] = $rows[$i]['end_time'];
+            $scheduleDetails[$i]['day'] = $day
+          }
+          $this->response($this->json($hotelDetails), 200);
+        }
+        public function postScheduleDetails(){
+           $scheduleName =  $this->_request['scheduleName'];
+           $scheduleContent =  $this->_request['scheduleContent'];
+           $startTime =  $this->_request['startTime'];
+           $endTime =  $this->_request['endTime'];
+           $day =  $this->_request['day'];
+           $sql="select * from  schedule where schedule_name='$scheduleName'";
+           $rows = $this->executeGenericDQLQuery($sql);
+           $response = array();
+          if(sizeof($rows)>0)
+           {
+                $response['status'] = "already exist";
+
+           }
+           else
+           {
+             $sql="insert into schedule(schedule_name,schedule_content,start_time,end_time,day)".
+             "values('$scheduleName','$scheduleContent','$startTime','$endTime','$day')";
+             $this->executeGenericDMLQuery($sql);
+             $response['status'] = "success";
+           }
+           $this->response($this->json($response), 200);
+            
+        }
 
         public function postHotelDetails(){
            $hotelData =  $this->_request['hotelData'];

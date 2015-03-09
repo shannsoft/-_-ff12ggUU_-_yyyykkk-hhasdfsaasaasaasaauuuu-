@@ -4,12 +4,14 @@
 	        <ion-content>
 			 <div class="row money-dashboard  temple-schedule">
 			   <div class="col col-100">
+			   <!-- <select><option ng-repeat="day in days" ng-click='getTempleSchedule()' ng-model="day" value="{{day}}">{{day}}</option></select> -->
 			    <form class="item item-input list list-inset ng-pristine ng-valid">
 				 <label class="item item-input input-date">
-	               <span class="input-label"> <i class="fa fa-calendar"></i> </span>
-				    <input type="date" ng-model='date' ng-change='fetchSchedule(date)'/>
-				    <!--  <button ng-click='fetchSchedule(date)'></button> -->
+	               <!-- <span class="input-label"> <i class="fa fa-calendar"></i> </span>
+				    <input type="date" ng-model='date' ng-change='fetchSchedule(date)'/> -->
+				    <select ng-model="day" ng-change='getTempleSchedule(day)'><option ng-repeat="day in days" value="{{day}}">{{day}}</option></select>
 				  </label>
+				  <!-- <select><option ng-repeat="day in days" ng-select='getTempleSchedule()' ng-model="day" value="{{day}}">{{day}}</option></select> -->
 				</form>
 				<!-- <button ng-click='fetchSchedule(date)'></button> -->
 			 </div><!--col col-100 end-->

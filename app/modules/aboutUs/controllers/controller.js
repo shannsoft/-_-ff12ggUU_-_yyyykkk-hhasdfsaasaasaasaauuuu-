@@ -18,6 +18,23 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
       var value=$scope.convert(pval);
       MainService.getTempleSchedule(value);
     };
+    /*$scope.getTempleSchedule=function(pval){
+      //var value=$scope.convert(pval);
+      console.log(pval);
+      AppModelService.getTempleSchedule(pval);
+    };*/
+    $scope.getTempleSchedule = function (pval) {
+        //$scope.designAddSubCategories = [];
+        AppModelService.getTempleSchedule(pval).then(function(pRes){
+          //console.log(pRes.data);
+             /*for(var i=0;i<pRes.data.length;i++){
+                var temp = {};
+                temp.id =  pRes.data[i].id;
+                temp.name = pRes.data[i].sub_category;
+                $scope.designAddSubCategories.push(temp);
+            } */
+        });
+    };
     $scope.convert=function(str) {
     var date = new Date(str),
         mnth = ("0" + (date.getMonth()+1)).slice(-2),
@@ -26,6 +43,7 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
     };
 
   	$scope.scheduleDetails = [];
+    $scope.days = ['monday','tuesday','wednessday','throusday','friday','satterday','sunday'];
   	$scope.templeScheduleList = '{'+
     '"schedules": ['+
         '{'+

@@ -31,6 +31,10 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
    	getCurrrentHotelFacility = function(){
    		return CurrrentHotelFacility;
    	};
+    getTempleSchedule = function(pDay){
+      var response = $http.get('http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php'+'reqmethod=getTempleSchedule'+"&day="+pDay);
+      return response;
+    };
    	/*global varibale for Stay ends*/
 	return{
 		setCurrrentHotelFacility:setCurrrentHotelFacility,
