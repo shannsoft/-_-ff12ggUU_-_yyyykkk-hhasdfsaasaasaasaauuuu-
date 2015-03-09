@@ -19,6 +19,8 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
       MainService.getTempleSchedule(value);
     };
     $scope.getTempleSchedule = function (pval) {
+        if(!pval)
+            pval='';
         $scope.templeScheduleList = [];
         AppModelService.getTempleSchedule(pval).then(function(pRes){
         var scheduleDetails = pRes.data.schedule;

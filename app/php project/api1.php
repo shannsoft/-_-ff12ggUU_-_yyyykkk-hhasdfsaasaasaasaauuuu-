@@ -274,7 +274,9 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getTempleSchedule(){
           $day =  $this->_request['day'];
-          $sql="select * from schedule where day = '$day'";
+            $sql="select * from schedule";
+          if($day!='')
+            $sql.=" where day = '$day'";
           $rows = $this->executeGenericDQLQuery($sql);
           $scheduleDetails['schedule']= array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -296,6 +298,7 @@ header('Access-Control-Allow-Origin: *');
            $depValue =  $this->_request['depValue'];
            $arrValue =  $this->_request['arrValue'];
            $days =  $this->_request['days'];
+           $trainUrl =  $this->_request['trainUrl'];
            $days = explode(",", $days);
            $sql="select * from  train where TrainNumber=$trainNumber";
            $rows = $this->executeGenericDQLQuery($sql);
@@ -308,7 +311,7 @@ header('Access-Control-Allow-Origin: *');
            else
            {
              $sql="insert into train(TrainNumber,TrainName,FromStation,ToStation,StartAt,ReachesAt,WebLink,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)".
-             "values('$trainNumber','$trainName','$fromCity','$toCity','$depValue','$arrValue','',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
+             "values('$trainNumber','$trainName','$fromCity','$toCity','$depValue','$arrValue','$trainUrl',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
            }
            $this->response($this->json($response), 200);
@@ -503,8 +506,25 @@ header('Access-Control-Allow-Origin: *');
 
         /* TRAVEL service starts  */
         public function getTrainDetails(){
-
-            $sql="select * from train t";
+            $day =  $this->_request['day'];
+            $sourceCity =  $this->_request['sourceCity'];
+            $destinationCity =  $this->_request['destinationCity'];
+            if ($day=='' && $sourceCity=='' && $destinationCity=='')
+              $sql="select * from train";
+            else if($day=='' && $sourceCity!='' && $destinationCity=='')
+              $sql="select * from train where FromStation = '$sourceCity'";
+            else if($day=='' && $sourceCity!='' && $destinationCity!='')
+              $sql="select * from train where FromStation = '$sourceCity' AND ToStation = '$destinationCity'";
+            else if($day=='' && $sourceCity=='' && $destinationCity!='')
+              $sql="select * from train where ToStation = '$destinationCity' ";
+            else if($day!='' && $sourceCity!='' && $destinationCity!='')
+              $sql="select * from train where $day = 1 AND FromStation = '$sourceCity' AND ToStation = '$destinationCity' ";
+            else if($day!='' && $sourceCity=='' && $destinationCity!='')
+              $sql="select * from train where $day = 1 AND ToStation = '$destinationCity' ";
+            else if($day!='' && $sourceCity!='' && $destinationCity=='')
+              $sql="select * from train where FromStation = '$sourceCity' AND $day = 1";
+            else if($day!='' && $sourceCity=='' && $destinationCity=='')
+              $sql="select * from train where $day = 1";
             $rows = $this->executeGenericDQLQuery($sql);
             $trainDetails= array();
             for($i=0 ; $i<sizeof($rows);$i++)
@@ -531,7 +551,25 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getFlightDetails(){
 
-            $sql="select * from flight f";
+            $day =  $this->_request['day'];
+            $sourceCity =  $this->_request['sourceCity'];
+            $destinationCity =  $this->_request['destinationCity'];
+            if ($day=='' && $sourceCity=='' && $destinationCity=='')
+              $sql="select * from flight";
+            else if($day=='' && $sourceCity!='' && $destinationCity=='')
+              $sql="select * from flight where FromAirport = '$sourceCity'";
+            else if($day=='' && $sourceCity!='' && $destinationCity!='')
+              $sql="select * from flight where FromAirport = '$sourceCity' AND ToAirport = '$destinationCity'";
+            else if($day=='' && $sourceCity=='' && $destinationCity!='')
+              $sql="select * from flight where ToAirport = '$destinationCity' ";
+            else if($day!='' && $sourceCity!='' && $destinationCity!='')
+              $sql="select * from flight where $day = 1 AND FromAirport = '$sourceCity' AND ToAirport = '$destinationCity' ";
+            else if($day!='' && $sourceCity=='' && $destinationCity!='')
+              $sql="select * from flight where $day = 1 AND ToAirport = '$destinationCity' ";
+            else if($day!='' && $sourceCity!='' && $destinationCity=='')
+              $sql="select * from flight where FromAirport = '$sourceCity' AND $day = 1";
+            else if($day!='' && $sourceCity=='' && $destinationCity=='')
+              $sql="select * from flight where $day = 1";
             $rows = $this->executeGenericDQLQuery($sql);
             $flightDetails= array();
             for($i=0 ; $i<sizeof($rows);$i++)

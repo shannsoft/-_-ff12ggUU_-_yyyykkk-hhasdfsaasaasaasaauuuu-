@@ -33,6 +33,10 @@
 			<td><span ng-repeat="day in days">{{day.name}} : <input type="checkbox" ng-model="day.status"></span></td>
 		</tr>
 		<tr>
+			<td>Train Url :</td>
+			<td><input type="text" ng-model="trainUrl"></td>
+		</tr>
+		<tr>
 			<td></td>
 			<td><input type="button" value="submit" ng-click="onSubmit()" /></td>
 		</tr>
@@ -45,6 +49,7 @@
 			$scope.fromCity = 'Select City';
 			$scope.depValue = '';
 			$scope.arrValue = '';
+			$scope.trainUrl = '';
 			$scope.days = [ 
 					{id:1,name:"Monday",status:false},
 					{id:2,name:"Tuesday",status:false},
@@ -83,7 +88,7 @@
 				console.log($scope.depValue);
 				console.log($scope.arrValue);
 				console.log(days);
-	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php'+ '?reqmethod=postTrainDetails&trainNumber='+$scope.trainNumber+'&trainName='+$scope.trainName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days);
+	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php'+ '?reqmethod=postTrainDetails&trainNumber='+$scope.trainNumber+'&trainName='+$scope.trainName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days+'&trainUrl='+$scope.trainUrl);
 			}
 		}]);
 	</script>

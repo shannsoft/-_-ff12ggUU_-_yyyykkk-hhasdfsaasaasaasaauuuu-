@@ -2,7 +2,7 @@ AppRoot.factory('travelService',['$http','AppConfig','$rootScope', function($htt
 	return{
    		getTrainDetails : function(pData){
     		var response = $http.get(AppConfig.apiPath+'reqmethod=getTrainDetails&day='+pData.byDay+
-                            '$sourceCity='+pData.sourceCity+
+                            '&sourceCity='+pData.sourceCity+
                             '&destinationCity='+pData.destinationCity);
     		return response;
     	},
@@ -12,8 +12,8 @@ AppRoot.factory('travelService',['$http','AppConfig','$rootScope', function($htt
     	},
       getFlightDetails : function(pData){
         var response = $http.get(AppConfig.apiPath+'reqmethod=getFlightDetails&day='+pData.byDay+
-                            '&source='+pData.source+
-                            '&destination='+pData.destination);
+                            '&sourceCity='+pData.source+
+                            '&destinationCity='+pData.destination);
         return response;
       }
    	}
