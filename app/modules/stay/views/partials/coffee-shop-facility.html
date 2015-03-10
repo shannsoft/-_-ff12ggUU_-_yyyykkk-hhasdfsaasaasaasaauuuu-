@@ -1,12 +1,11 @@
-<div ng-init="getSelectedGuestHouse()">
+<div ng-init="getSelectedCoffeeShop()">
 	
-	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include> -->
 	<ion-view class="pane">
         <ion-content>
 		  <div class="row hotel-inner">
 		    <div class="col col-100">
 			   <div class="event-image">
-			       <img src="{{selectedGuestHouse.icon_image}}" />
+			       <img src="{{selectedCoffeeShop.icon_image}}" />
 			  </div><!--div-->
 			  </div>
 		     </div><!--row end-->
@@ -31,7 +30,7 @@
 			</div><!--row end-->
 		     <div class="row facilities-hotel">
 			   <div class="col col-70">
-			      <h2>{{selectedGuestHouse.Name}}</h2>
+			      <h2>{{selectedCoffeeShop.Name}}</h2>
 			   </div><!--col-50 end-->
 			   <div class="col col-25">
 			     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half"></i> </div>
@@ -39,15 +38,14 @@
 			 </div><!--row end-->
 			 <div class="row facilities-hotel">
 			    <p>
- 					Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-				</p>
+ 
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
 			 </div>
 			  <h2 class="facility"> Facilities </h2>
 			  <div class="row facilities-hotel facility">
 			    <div class="col col-50">
 			     <ul>
-				     <p ng-repeat="facility in selectedGuestHouse.Facilities"> <i class="fa fa-car"></i>{{facility}}</p>
-					 
+				     <p ng-repeat="facility in selectedCoffeeShop.Facilities"> <i class="fa fa-car"></i> Facility 1</p>
 				 </ul>
 				 </div><!--col-50 end-->
 				 
@@ -65,10 +63,10 @@
 		          <div class="col col-90">
 			        <h2>Contact</h2>
 					<ul>
-					    <li>{{selectedGuestHouse.Name}}</li>
-						<li>{{selectedGuestHouse.Address}}</li>
-						<li>Phone:{{selectedGuestHouse.Phone1}},{{selectedGuestHouse.Phone2}},{{selectedGuestHouse.Phone3}}</li>
-						<!-- <li>Fax:</li> -->
+					    <li>{{selectedCoffeeShop.Name}}</li>
+						<li>{{selectedCoffeeShop.Address}}</li>
+						<li>Phone:(06752){{selectedCoffeeShop.Phone1}},{{selectedCoffeeShop.Phone2}},{{selectedCoffeeShop.Phone3}}</li>
+						<!-- <li>Fax:(06752)222744</li> -->
 					</ul>
 			      </div><!--col-50 end-->
 				  <div class="col col-10">

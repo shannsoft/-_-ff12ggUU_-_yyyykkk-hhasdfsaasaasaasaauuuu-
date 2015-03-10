@@ -9,13 +9,13 @@
 		 
 		  <div class="row money-dashboard contacts-dashboard hotel-details"
 		        ng-repeat="house in guestHouseList">
-		     <a href="guesthouse-facility.html" class="col col-25">
+		     <a  class="col col-25" ng-click="guestHouseFacility(house)">
 			   <div>
 			      <img src="{{house.icon_image}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="guesthouse-facility.html" class="col col-70"> 
+			 <a  class="col col-70" ng-click="guestHouseFacility(house)"> 
 			   <div>
 			      <ul>
 			       <li> <i class="fa fa-building"></i>{{house.Name}} </li>

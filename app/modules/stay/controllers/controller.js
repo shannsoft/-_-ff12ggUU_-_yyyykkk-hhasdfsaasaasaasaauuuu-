@@ -50,12 +50,16 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       $scope.contentUrl = 'modules/stay/views/partials/global-hotel-facilities.html';
         //window.location = hotelObj.urlPath;
     }
+
+    
+
+
     $scope.getSelectedHotel = function()
     {
       $scope.selectedHotel = StayService.getSelectedHotel();
     }
 
-     /*codes for hotel partial details ends*/
+    /*codes for hotel partial details ends*/
      $scope.routeSubView = function(pUrl){
         $scope.contentUrl = pUrl;
     }
@@ -63,6 +67,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
 
     /* guest house details starts*/
     $scope.guestHouseList = [];
+    $scope.selectedGuestHouse = {};
     $scope.fetchGuestHouseDetails = function(pName , pPrice){
       if(!pName) pName = '';
       if(!pPrice) pPrice = '';
@@ -74,10 +79,25 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
           
       });
     }
+    $scope.guestHouseFacility = function(pHouse)
+    {
+      //console.log(hotelObj) ;
+      // fetching details of hotel and storing in model
+      StayService.setSelectedGuestHouse(pHouse);
+      $scope.contentUrl = 'modules/stay/views/partials/guesthouse-facility.html';
+        //window.location = hotelObj.urlPath;
+    }
+    $scope.getSelectedGuestHouse = function()
+    {
+      $scope.selectedGuestHouse = StayService.getSelectedGuestHouse();
+      console.log($scope.selectedGuestHouse);
+    }
+
     /* guest house details ends*/
     
     /*resturant  details starts*/
     $scope.resturants = [];
+    $scope.selectedResturant ={};
     $scope.fetchResturantDetails = function(pName , pPrice){
       if(!pName) pName = '';
       if(!pPrice) pPrice = '';
@@ -89,10 +109,20 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
           
       });
     }
+    $scope.resturantFacility = function(pResturant){
+      StayService.setSelectedResturant(pResturant);
+      $scope.contentUrl = 'modules/stay/views/partials/resturant-facility.html';
+        //window.location = hotelObj.urlPath;
+    }
+    $scope.getSelectedResturant = function(){
+      $scope.selectedResturant = StayService.getSelectedResturant();
+      //console.log($scope.selectedResturant);
+    }
     /*resturant  details ends*/
 
     /*coffee  details starts*/
     $scope.coffeeShops = [];
+    $scope.selectedCoffeeShop = {};
     $scope.fetchCoffeeShops = function(pName , pPrice){
       if(!pName) pName = '';
       if(!pPrice) pPrice = '';
@@ -103,6 +133,15 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
 
           
       });
+    }
+    $scope.coffeeShopFacility = function(pShop){
+        StayService.setSelectedCoffeeShop(pShop);
+      $scope.contentUrl = 'modules/stay/views/partials/coffee-shop-facility.html';
+        //window.location = hotelObj.urlPath;
+    }
+    $scope.getSelectedCoffeeShop = function(){
+        $scope.selectedCoffeeShop = StayService.getSelectedCoffeeShop();
+      console.log($scope.selectedCoffeeShop);
     }
     /*resturant  details ends*/
 

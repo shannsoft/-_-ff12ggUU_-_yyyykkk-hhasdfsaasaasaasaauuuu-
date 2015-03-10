@@ -8,17 +8,17 @@
 		 
 		  <div class="row money-dashboard contacts-dashboard hotel-details"
 		       ng-repeat="resturant in resturants">
-		     <a href="restaurant-facility.html" class="col col-25">
+		     <a ng-click="resturantFacility(resturant)" class="col col-25">
 			   <div>
 			      <img src="{{resturant.icon_image}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="restaurant-facility.html" class="col col-70"> 
+			 <a ng-click="resturantFacility(resturant)" class="col col-70"> 
 			   <div>
 			      <ul>
 			       <li> <i class="fa fa-building"></i> {{resturant.Name}} </li>
-				   <li> <i class="fa fa-map-marker"></i> {resturant.Address}} </li>
+				   <li> <i class="fa fa-map-marker"></i> {{resturant.Address}} </li>
 			   </ul>
 			   </div><!--col-50 end-->
 			 </a>

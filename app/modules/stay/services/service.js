@@ -1,7 +1,11 @@
 AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,AppConfig,$rootScope) {
 	
-      var selectedHotel = {};
-     
+      var selectedHotel = {},
+          selectedGuestHouse={},
+          CurrrentHotelFacility={},
+          selectedResturant={},
+          selectedCoffeeShop={};
+
     var setCurrrentHotelFacility = function(pObj){
       CurrrentHotelFacility = pObj;
     },
@@ -18,6 +22,24 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
     },
     getSelectedHotel = function(){
       return selectedHotel ;
+    },
+    setSelectedGuestHouse = function(pHouse){
+       selectedGuestHouse = pHouse;
+    },
+    getSelectedGuestHouse = function(){
+       return selectedGuestHouse;
+    },
+    setSelectedResturant = function(pResturant){
+      selectedResturant = pResturant;
+    },
+    getSelectedResturant = function(){
+       return selectedResturant;
+    },
+    setSelectedCoffeeShop = function(pShop){
+      selectedCoffeeShop = pShop;
+    },
+    getSelectedCoffeeShop = function(){
+       return selectedCoffeeShop;
     },
     fetchGuestHouse = function(pName , pPrice){
       var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getGuestHouseDetails");
@@ -38,6 +60,12 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
       getSelectedHotel:getSelectedHotel,
       fetchGuestHouse:fetchGuestHouse,
       fetchResturant:fetchResturant,
-      fetchCoffeeShops:fetchCoffeeShops
+      fetchCoffeeShops:fetchCoffeeShops,
+      setSelectedGuestHouse:setSelectedGuestHouse,
+      getSelectedGuestHouse:getSelectedGuestHouse,
+      setSelectedResturant:setSelectedResturant,
+      getSelectedResturant:getSelectedResturant,
+      setSelectedCoffeeShop:setSelectedCoffeeShop,
+      getSelectedCoffeeShop:getSelectedCoffeeShop
    	}
 }]);

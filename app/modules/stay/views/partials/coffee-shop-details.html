@@ -7,13 +7,13 @@
         <ion-content>
 		  <div class="row money-dashboard contacts-dashboard hotel-details"
 		  		ng-repeat="shops in coffeeShops">
-		     <a href="coffeeshop-facility.html" class="col col-25">
+		     <a ng-click="coffeeShopFacility(shops)" class="col col-25">
 			   <div>
 			      <img src="{{shops.icon_image}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="coffeeshop-facility.html" class="col col-70"> 
+			 <a ng-click="coffeeShopFacility(shops)" class="col col-70"> 
 			   <div>
 			      <ul>
 			       <li> <i class="fa fa-building"></i> {{shops.Name}} </li>
