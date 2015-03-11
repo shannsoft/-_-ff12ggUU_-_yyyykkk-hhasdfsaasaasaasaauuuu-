@@ -1,0 +1,33 @@
+<ion-view class="pane">
+        <ion-content>
+		  <div class="row " ng-repeat="option in trafficElement">
+		   <div class="row box_menu">
+			 <div class="parking traffic-in-holidays" >	
+		       <a ng-click="changeTravelType(option.contentUrl, option.info)"  class="col col-20">
+			   <div>
+			     <i class="{{option.iconClass}}"></i>
+			    </div>
+			 </a>
+			 <a ng-click="changeTravelType(option.contentUrl, option.info)" class="col col-80">
+			   <div>
+			      <h2 class="holiday">{{option.info}}</h2>
+			   </div>
+			 </a>
+		  </div>
+	    </div>
+	 </div>		  
+		  
+		  <div class="row">
+		     <div class="col col-50">
+			  
+			 </div><!--col-50 end-->
+			 
+			  <div class="col col-50">
+			      <p class="powered-by">Powered by</p>
+				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
+
+			 </div><!--col-50 end-->
+		  </div><!--row end-->
+		  
+        </ion-content>
+      </ion-view>

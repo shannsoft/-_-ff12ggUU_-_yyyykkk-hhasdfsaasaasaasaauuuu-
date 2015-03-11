@@ -15,6 +15,11 @@ AppRoot.factory('travelService',['$http','AppConfig','$rootScope', function($htt
                             '&sourceCity='+pData.source+
                             '&destinationCity='+pData.destination);
         return response;
+      },
+      getTrafficInfo : function(daytype, travelType){
+        var response = $http.get(AppConfig.apiPath+'reqmethod=getTrafficInfo&dayType='+daytype+
+                            '&travelType='+travelType);
+        return response;
       }
    	}
 }]);

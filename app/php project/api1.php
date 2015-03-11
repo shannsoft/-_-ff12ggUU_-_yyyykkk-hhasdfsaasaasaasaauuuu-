@@ -719,6 +719,17 @@ header('Access-Control-Allow-Origin: *');
             $this->response($this->json($busDetails), 200);
 
         }
+
+        public function getTrafficInfo(){
+          $dayType =  $this->_request['dayType'];
+          $travelType =  $this->_request['travelType'];
+
+          $sql = "select Details_Info from traffic_mobility where Day_Type = '$dayType' AND Travel_Mode = '$travelType'";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $trafficInfo = array();
+          $trafficInfo['Info'] = $rows[0]['Details_Info'];
+          $this->response($this->json($trafficInfo), 200);
+        }
 	}
 	
 	$api = new API;

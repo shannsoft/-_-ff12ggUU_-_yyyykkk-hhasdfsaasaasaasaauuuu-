@@ -1,6 +1,8 @@
 AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($http,AppConfig,$rootScope) {
 	
    /* global data for all modules starts*/
+  var datType = '',
+      travelType = '';
    var menuOptionList = [
         {detailLink:"index.html",icon:"fa fa-qrcode",info:"Dashboard"},
         {detailLink:"#travel",icon:"fa fa-plane",info:"Travel"},
@@ -15,7 +17,21 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
     ]
     getMenuOptions = function(){
          return menuOptionList;
-    }
+    },
+    setDayType = function(pData){
+      datType = pData;
+    },
+    getDayType = function(){
+      return datType;
+    },
+    setTravelType = function(pData){
+      travelType = pData;
+    },
+    getTravelType = function(){
+      return travelType;
+    },
+
+
 
    /* global data for all modules ends*/
 
@@ -31,7 +47,11 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
 	return{
 		
 		getMenuOptions:getMenuOptions,
-    getTempleSchedule:getTempleSchedule
+    getTempleSchedule:getTempleSchedule,
+    setDayType:setDayType,
+    getDayType:getDayType,
+    setTravelType:setTravelType,
+    getTravelType:getTravelType
 
 	}
 }]);

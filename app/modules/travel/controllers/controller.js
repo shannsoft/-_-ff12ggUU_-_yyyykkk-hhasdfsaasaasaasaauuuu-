@@ -2,6 +2,7 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     $scope.initTravel = function(){
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
       $scope.heading = 'Travel';
+      $scope.information = '';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.travelOptionList = [
         {detailLink:"#train-details",contentUrl:"modules/travel/views/partials/train-details.html",iconClass:"fa fa-road",info:"Train"},
@@ -10,7 +11,17 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         {detailLink:"#traffic-information",contentUrl:"modules/travel/views/partials/traffic-information.html",iconClass:"fa fa-plane",info:"Traffic Mobility Plan"},
         {detailLink:"#fuel-pump",contentUrl:"modules/travel/views/partials/fuel-pump.html",iconClass:"fa fa-tachometer",info:"Fuel Pump"},
       ];
+      $scope.trafficElement = [
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-bus",info:"Buses"},
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-bus",info:"Tourist Buses"},
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-truck",info:"Heavy/Medium Vehicle"},
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-bus",info:"Town Bus /Small City Bus"},
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-car",info:"Light Vehicles (Car/Sumo/Bolero/Scorpio)"},
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-taxi",info:"Auto Rickshaw (Three Wheelers)"},
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-motorcycle",info:"Two Wheelers"}
+      ];
     }
+
 
   	/*
 	This is starting control for train information partial
@@ -39,6 +50,10 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
                 $scope.trainDetails.push(trainDetails[i]);
             });
         }); 
+    }
+
+    $scope.bookIRCTC = function(){
+         window.open('https://www.irctc.co.in/eticketing/loginHome.jsf');
     }
 	/*
 	This is END control for train information partial
@@ -88,11 +103,33 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     /*
     This is END control for Flight information partial
     */
-
-    $scope.routeSubView = function(pUrl){
-        console.log("trainDetailsInit  ",pUrl);
+    /*
+    This is starting control for traffic Mobily plan
+    */
+    $scope.changeDayType = function(pUrl,pType){
+        AppModelService.setDayType(pType); 
         $scope.contentUrl = pUrl;
     }
 
+    $scope.changeTravelType = function(pUrl, pType){
+        AppModelService.setTravelType(pType); 
+        $scope.contentUrl = pUrl;  
+    }
+    $scope.fetchInformation = function(){
+        var dayType = AppModelService.getDayType(); 
+        var travelType = AppModelService.getTravelType();
+        console.log('dayType',dayType); 
+        console.log('travelType',travelType);
+        travelService.getTrafficInfo(dayType, travelType).then(function(pRes){
+           $scope.information = pRes.data.Info;
+        });
+    }
+    /*
+    This is END control for traffic Mobily plan
+    */
+
+    $scope.routeSubView = function(pUrl){
+        $scope.contentUrl = pUrl;
+    }
     
 }]);

@@ -1,12 +1,11 @@
-<div id="traffic-details">
-	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include> -->
+<div id="traffic-details" ng-init="fetchInformation()">
 	<ion-view class="pane">
         <ion-content>
 			<div class="row ">
 			   	<div class="row box_menu">
 					<div class="parking traffic-in-holidays buses">
 				      	<p> 
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+				      		{{information}}
 						</p>
 				   	</div>
 		    	</div>
