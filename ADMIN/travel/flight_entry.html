@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+</head>
+<body ng-controller="flightController" ng-init="init()">
+	<table>
+		<tr>
+			<td>Flight Number :</td>
+			<td><input type="text" ng-model="flightNumber"></td>
+		</tr>
+		<tr>
+			<td>Flight Name :</td>
+			<td><input type="text" ng-model="flightName"></td>
+		</tr>
+		<tr>
+			<td>From Airport :</td>
+			<td><select ng-model="fromCity"><option ng-selected="$index == 0" ng-repeat="item in cities" value="{{item}}">{{item}}</option></select></td>
+		</tr>
+		<tr>
+			<td>To Airport :</td>
+			<td><select ng-model="toCity"><option ng-selected="$index == 0" ng-repeat="item in cities" value="{{item}}">{{item}}</option></select></td>
+		</tr>
+		<tr>
+			<td>Departure:</td>
+			<td><input type="text" name="startTime" ng-model="depValue"/></td>
+		</tr>
+		<tr>
+			<td>Arrive : </td>
+			<td><input type="text" name="endTime" ng-model="arrValue"/></td>
+		</tr>
+			<td>Schedule : </td>
+			<td><span ng-repeat="day in days">{{day.name}} : <input type="checkbox" ng-model="day.status"></span></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="submit" ng-click="onSubmit()" /></td>
+		</tr>
+		
+	</table>
+	<script type="text/javascript">
+		var app = angular.module("app",[]);
+		app.controller("flightController",["$scope","$http",function($scope,$http) {
+			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			$scope.fromCity = 'Select City';
+			$scope.depValue = '';
+			$scope.arrValue = '';
+			$scope.trainUrl = '';
+			$scope.days = [ 
+					{id:1,name:"Monday",status:false},
+					{id:2,name:"Tuesday",status:false},
+					{id:3,name:"Wednesday",status:false},
+					{id:4,name:"Thursday",status:false},
+					{id:5,name:"Friday",status:false},
+					{id:6,name:"Saturday",status:false},
+					{id:7,name:"Sunday",status:false}
+			];
+			
+			$scope.getCities =function()
+			{	$scope.cities=[];
+				var response =  $http.get("http://localhost/Nabakalebara/app/php%20project/api1.php?reqmethod=getCity").then(function(pRes){
+					var citiDetails = pRes.data;
+			        angular.forEach(citiDetails,function(city,index){
+		                $scope.cities.push(city.CityName);
+		            });
+				});
+				console.log($scope.cities);
+			}
+			$scope.init = function(){
+				$scope.getCities();
+			}
+			$scope.onSubmit = function(){
+				var days = [];
+				angular.forEach($scope.days,function(day,index){   
+				if(day.status == true)
+					days.push(1);
+				else
+					days.push(0);
+				});
+				console.log($scope.flightNumber);
+				console.log($scope.flightName);
+				console.log($scope.fromCity);
+				console.log($scope.toCity);
+				console.log($scope.depValue);
+				console.log($scope.arrValue);
+				console.log(days);
+	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php'+ '?reqmethod=postFlightDetails&flightNumber='+$scope.flightNumber+'&flightName='+$scope.flightName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days);
+			}
+		}]);
+	</script>
+
+
+
+</body>
+</html>

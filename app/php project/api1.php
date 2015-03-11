@@ -350,6 +350,57 @@ header('Access-Control-Allow-Origin: *');
            $this->response($this->json($response), 200);
             
         }
+        public function postFlightDetails(){
+           $flightNumber =  $this->_request['flightNumber'];
+           $flightName =  $this->_request['flightName'];
+           $fromCity =  $this->_request['fromCity'];
+           $toCity =  $this->_request['toCity'];
+           $depValue =  $this->_request['depValue'];
+           $arrValue =  $this->_request['arrValue'];
+           $days =  $this->_request['days'];
+           $days = explode(",", $days);
+           $sql="select * from  flight where FlightNumber=$flightNumber";
+           $rows = $this->executeGenericDQLQuery($sql);
+           $response = array();
+          if(sizeof($rows)>0)
+           {
+                $response['status'] = "already exist";
+
+           }
+           else
+           {
+             $sql="insert into flight(FlightNumber,FlightName,FromAirport,ToAirport,StartsAt,ReachesAt,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)".
+             "values('$flightNumber','$flightName','$fromCity','$toCity','$depValue','$arrValue',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
+             $response['status'] = "success";
+           }
+           $this->response($this->json($response), 200);
+            
+        }
+        public function postBusDetails(){
+           $busNumber =  $this->_request['busNumber'];
+           $busName =  $this->_request['busName'];
+           $fromCity =  $this->_request['fromCity'];
+           $toCity =  $this->_request['toCity'];
+           $depValue =  $this->_request['depValue'];
+           $duration =  $this->_request['duration'];
+           $sql="select * from  bus where BusNumber=$busNumber";
+           $rows = $this->executeGenericDQLQuery($sql);
+           $response = array();
+          if(sizeof($rows)>0)
+           {
+                $response['status'] = "already exist";
+
+           }
+           else
+           {
+             $sql="insert into bus(BusNumber,BusName,FromStation,ToStation,StartsAt,  Duration)".
+             "values('$busNumber','$busName','$fromCity','$toCity','$depValue','$duration')";             
+             $this->executeGenericDMLQuery($sql);
+             $response['status'] = "success";
+           }
+           $this->response($this->json($response), 200);
+            
+        }
         public function postScheduleDetails(){
            $scheduleName =  $this->_request['scheduleName'];
            $scheduleContent =  $this->_request['scheduleContent'];
