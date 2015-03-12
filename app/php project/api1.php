@@ -831,6 +831,37 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($branches), 200);
           
         }
+        public function addNotification(){
+          /*$title =  $this->_request['title'];
+          $detail =  $this->_request['detail'];*/
+          $title =  "Demo title ";
+          $detail =  "Demo detail";
+          $date =  date('Y-m-d');
+          // $time =  time();
+          //*$dateTime =  date('Y-m-d H:i:s')."";
+          /*$dateTime = explode(" ", $dateTime);
+          $date = $dateTime[0];
+          $time = strtotime($dateTime[1]);*/
+          $sql = "Insert into notification(title,detail,date_value) values ".
+          " ('".$title."' , '".$detail."' ,$date)";
+          $this->executeGenericInsertQuery($sql);
+          //echo $date."  ...............  ".$time;
+          
+        }
+        public function getNotification(){
+          $sql = "select * from notification order by id desc";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $notifications = array();
+          for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $notifications[$i]['id'] = $rows[$i]['id'];
+              $notifications[$i]['title'] = $rows[$i]['title'];
+              $notifications[$i]['detail'] = $rows[$i]['detail'];
+
+           }
+          $this->response($this->json($notifications), 200);
+
+        }
         /*money service Ends */
 	}
 	
