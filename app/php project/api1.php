@@ -781,6 +781,57 @@ header('Access-Control-Allow-Origin: *');
           $trafficInfo['Info'] = $rows[0]['Details_Info'];
           $this->response($this->json($trafficInfo), 200);
         }
+
+
+
+        /*money service starts  */
+
+        public function getBranches(){
+          //$cityId =  $this->_request['cityId'];
+          $sql = "select * from branches b";
+          if(isset($cityId))
+          {
+            $sql=" join city c on c.CityID = b.city_id where c.CityID = $cityId";
+          }
+          $rows = $this->executeGenericDQLQuery($sql);
+          $branches = array();
+          for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $branches[$i]['id'] = $rows[$i]['id'];
+              $branches[$i]['Name'] = $rows[$i]['Name'];
+              $branches[$i]['address'] = $rows[$i]['address'];
+              $branches[$i]['contact_number'] = $rows[$i]['contact_number'];
+              $branches[$i]['branch_manager'] = $rows[$i]['branch_manager'];
+              $branches[$i]['forex_manager'] = $rows[$i]['forex_manager'];
+              $branches[$i]['city_id'] = $rows[$i]['city_id'];
+
+           }
+          $this->response($this->json($branches), 200);
+        }
+        public function getForexBranches(){
+          //$cityId =  $this->_request['cityId'];
+          $sql = "select * from forex_branch f";
+          if(isset($cityId))
+          {
+            $sql=" join city c on c.CityID = f.city_id where c.CityID = $cityId";
+          }
+          $rows = $this->executeGenericDQLQuery($sql);
+          $branches = array();
+          for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $branches[$i]['id'] = $rows[$i]['id'];
+              $branches[$i]['Name'] = $rows[$i]['Name'];
+              $branches[$i]['address'] = $rows[$i]['address'];
+              $branches[$i]['contact_number'] = $rows[$i]['contact_number'];
+              $branches[$i]['branch_manager'] = $rows[$i]['branch_manager'];
+              $branches[$i]['forex_manager'] = $rows[$i]['forex_manager'];
+              $branches[$i]['city_id'] = $rows[$i]['city_id'];
+              
+           }
+          $this->response($this->json($branches), 200);
+          
+        }
+        /*money service Ends */
 	}
 	
 	$api = new API;
