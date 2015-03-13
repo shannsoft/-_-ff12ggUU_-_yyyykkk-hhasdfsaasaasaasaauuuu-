@@ -105,6 +105,21 @@ AppRoot.config(function($routeProvider) {
 				controller  : 'stayController'
 
 			})
+			.when('/temp-accomdation-details', {
+				templateUrl : 'modules/stay/views/partials/temp-accomdation-details.html',
+				controller  : 'stayController'
+
+			})
+			.when('/utilities', {
+				templateUrl : 'modules/utilities/views/view.html',
+				controller  : 'utilitiesController'
+
+			})
+			.when('/toilet-details', {
+				templateUrl : 'modules/utilities/views/partials/toilet-details.html',
+				controller  : 'utilitiesController'
+
+			})
 			.when('/', {
 				templateUrl : 'views/view.html',
 				controller  : 'MainController'

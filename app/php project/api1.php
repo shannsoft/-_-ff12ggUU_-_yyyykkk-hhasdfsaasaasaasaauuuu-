@@ -660,6 +660,46 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($coffeeShops), 200);
 
         }
+        public function fetchAccomodations(){
+          $sql = "select * from temp_accomodation ta";
+          if(isset($cityId))
+            $sql=" join city c on ta.CityId = c.CityID";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $tempAccm = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+      
+            $tempAccm[$i]['id'] =$rows[$i]['id'] ;
+            $tempAccm[$i]['name'] =$rows[$i]['name'] ;
+            $tempAccm[$i]['address'] =$rows[$i]['address'] ;
+            $tempAccm[$i]['contact'] =$rows[$i]['contact'] ;
+            $tempAccm[$i]['authority'] =$rows[$i]['authority'] ;
+            $tempAccm[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $tempAccm[$i]['cityId'] =$rows[$i]['cityId'] ;
+           }
+          $this->response($this->json($tempAccm), 200);
+
+        }
+        public function fetchTiolets(){
+          $sql = "select * from tiolet t";
+          if(isset($cityId))
+            $sql=" join city c on t.CityId = c.CityID";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $tiolets = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+      
+            $tiolets[$i]['id'] =$rows[$i]['id'] ;
+            $tiolets[$i]['name'] =$rows[$i]['name'] ;
+            $tiolets[$i]['address'] =$rows[$i]['address'] ;
+            $tiolets[$i]['contact'] =$rows[$i]['contact'] ;
+            $tiolets[$i]['authority'] =$rows[$i]['authority'] ;
+            $tiolets[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $tiolets[$i]['cityId'] =$rows[$i]['cityId'] ;
+           }
+          $this->response($this->json($tiolets), 200);
+
+        }
         /* stay  service ends */
 
         /* TRAVEL service starts  */

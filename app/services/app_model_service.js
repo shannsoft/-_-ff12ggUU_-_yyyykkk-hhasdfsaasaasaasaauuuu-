@@ -9,6 +9,7 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
         {detailLink:"#stay",icon:"fa fa-home",info:"Stay"},
         {detailLink:"#money",icon:"fa fa-inr",info:"Money"},        
         {detailLink:"#events",icon:"fa fa-users",info:"Events"},        
+        {detailLink:"#utilities",icon:"fa fa-users",info:"Utilities"},        
         {detailLink:"#parking",icon:"fa fa-taxi",info:"Parking"},         
         {detailLink:"#contacts",icon:"fa fa-book",info:"Emergency Contact"},        
         {detailLink:"route-map.html",icon:"fa fa-map-marker",info:"Route Map"},         

@@ -11,4 +11,8 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     console.log(contentURL,link);
   }
 
+  $rootScope.showNoty = function(){
+    alert(0);
+  }
+
 }]);	

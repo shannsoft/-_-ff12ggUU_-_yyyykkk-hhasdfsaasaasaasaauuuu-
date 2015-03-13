@@ -9,7 +9,8 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         {label:"Hotels",detailPage:"#hotel-details" ,contentUrl:"modules/stay/views/partials/hotel-details.html", iconImgPath: "img/hotels.jpg"},
         {label:"Guest House",detailPage:"#guesthouse-details" ,contentUrl:"modules/stay/views/partials/guesthouse-details.html", iconImgPath: "img/guest-house.jpg"},
         {label:"Restaurants",detailPage:"#restaurants-details",contentUrl:"modules/stay/views/partials/restaurants-details.html" , iconImgPath: "img/restaurants.jpg"},
-        {label:"Coffee Shop",detailPage:"#coffee-shop-details",contentUrl:"modules/stay/views/partials/coffee-shop-details.html" , iconImgPath: "img/coffee.jpg"}
+        {label:"Coffee Shop",detailPage:"#coffee-shop-details",contentUrl:"modules/stay/views/partials/coffee-shop-details.html" , iconImgPath: "img/coffee.jpg"},
+        {label:"Temporary Accomodation",detailPage:"#temp-accomdation-details",contentUrl:"modules/stay/views/partials/temp-accomdation-details.html" , iconImgPath: "img/coffee.jpg"}
       ];
     }
 
@@ -144,6 +145,33 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       console.log($scope.selectedCoffeeShop);
     }
     /*resturant  details ends*/
+
+    /*temporary accomodation strats*/
+    $scope.tempAccomdations = [];
+    $scope.selectedCoffeeShop = {};
+    $scope.fetchAccomodations = function(pName , pPrice){
+      if(!pName) pName = '';
+      if(!pPrice) pPrice = '';
+      StayService.fetchAccomodations(pName , pPrice).then(function(pRes){
+          $scope.tempAccomdations = [];
+          $scope.tempAccomdations = pRes.data;
+          //console.log(pRes.data);
+
+          
+      });
+    }
+    /*$scope.coffeeShopFacility = function(pShop){
+        StayService.setSelectedCoffeeShop(pShop);
+      $scope.contentUrl = 'modules/stay/views/partials/coffee-shop-facility.html';
+        //window.location = hotelObj.urlPath;
+    }
+    $scope.getSelectedCoffeeShop = function(){
+        $scope.selectedCoffeeShop = StayService.getSelectedCoffeeShop();
+      console.log($scope.selectedCoffeeShop);
+    }*/
+
+
+    /*temporary accomodation ends*/
 
   	
 

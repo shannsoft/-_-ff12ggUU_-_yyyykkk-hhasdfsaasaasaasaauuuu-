@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2015 at 07:17 PM
+-- Generation Time: Mar 13, 2015 at 11:06 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `coffee_shops` (
 --
 
 INSERT INTO `coffee_shops` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Name', 'Address', '10', '20', '30', '40', 'webSite', '4', '1,4,6', 1, 'con image pat', 'con image pat');
+(1, 'Name', 'Address', '10', '20', '30', '40', 'webSite', '4', '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -279,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `guest_house` (
 --
 
 INSERT INTO `guest_house` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Name', 'Address', '10', '20', '30', '40', 'webSite', '4', '1,5', 1, 'icon image path', 'icon image path');
+(1, 'Name', 'Address', '10', '20', '30', '40', 'webSite', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -313,29 +313,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
 --
 
 INSERT INTO `hotels` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Hotel Toshali Sands', 'Puri Konark Marine Drive, Puri-2 ', '250572', '250571', '250573', '0', '250899', 'tosalisands@tosalian', 'www.toshalisands.com', NULL, '4 Star', 'R,B,SP,CH,CC,TT,PS,DC,LIB,IG,Pvt. Beach Yoga,Spa,MC.', 1, NULL, NULL),
-(2, 'Hotel May Fair Beach Resort', 'C. T. Road, Puri ', '227800', '0', '0', '0', '224242', 'puri@mayfairhotels.com', 'www.mayfairhotels.com/mayfair-puri/', NULL, '3 Star', 'R,B,SP,CH,TT,G,CC, CTV,Spa', 1, NULL, NULL),
-(3, 'Hotel Hans Coco Palms', 'Baliapanda, Puri ', '230038', '230951', '230952', '0', '230165', 'Hanscocopalms@hanshotels.com', 'www.hanshotels.com/puri/', NULL, '3 Star', 'R,B,SP,CH,CTV, TT, LIB., MC, CC, Wi Fi, LS,DC,CS', 1, NULL, NULL),
-(4, 'Hotel Shakti International', 'VIP Road, Puri-752001', '222388', '222488', '0', '0', '228784', 'shakti_int@yahoo.co.in', 'www.shaktiinternational.in', NULL, '3 Star', 'R,CH,CC,TT,DC, H&C,LS,SP', 1, NULL, NULL),
-(5, 'Hotel Ananya Resorts', 'Bankimuhan,VIP Road, Puri', '220031', '220032', '0', '0', '0', 'ananya.resorts@gmail.com', 'www.ananyaresorts.in', NULL, 'HSG', 'R ,SP ,TT,BAR,DC, LS,PP,p', 1, NULL, NULL),
-(6, ' Hotel Anjana Resort', 'Gopal Ballav Road, Puri', '222117', '0', '0', '0', '0', '', 'www.hotelcontactnumber.in/anjana-hotel-hotel-9675.', NULL, 'HSG', 'R,TT,CTV', 1, NULL, NULL),
-(7, 'Hotel Arya Palace', 'C.T.Road, Puri', '232688', '232689', '0', '0', '0', '', 'www.aryagroupofhotels.com/', NULL, 'HSG', 'TV,LS, DC, TT, R,DC, PP,Baby Food.', 1, NULL, NULL),
-(8, 'Hotel Ashray', 'Infront of Sankaracharya Matha, Goudabad Sahi,Puri.', '231742', '254142', '0', '0', '254142', '', 'www.hotelashray.in', NULL, 'HSG', 'R,SS,PP,TV, LS, DC, H&C', 1, NULL, NULL),
-(9, 'Hotel Asian Inn', 'New Marine Drive Road, Puri', '231307', '231347', '0', '0', '231348', '', 'www.hotelasianinn.in', NULL, 'HSG', 'R,Tel,H&C,MC,TT,LS,DC,CR,SS,ART, CTV,Lift,Locker', 1, NULL, NULL),
-(10, 'Hotel Banga Laxmi', 'New Marine Drive Road,  Swargadwar,Puri', '230711', '231811', '0', '0', '0', '', 'hotelbangalaxmi.com', NULL, 'HSG', 'R,Bar, PP,Tel,H&C, TT,LS,DC,CR,SS,ARTCTV,Lift,Locker,CR, TD,CH,Ayurvedi Massage', 1, NULL, NULL),
-(11, 'Hotel Basil Rock', 'Chaktratirtha Road,Puri', '233240', '233250', '0', '0', '0', '', 'www.tripadvisor.in/Basil_Hotel', NULL, 'HSG', 'R ,PP,DC,CTV,DC,TT  SS,LS,ATM in the Campus', 1, NULL, NULL),
-(12, 'Blue Lily Beach Resort', 'Sipasarubali,Baliapanda Puri-752001,Odisha', '230371', '230372', '0', '9583003751', '0', 'reservation@bluelilybeachresort.com ', 'www.bluelilybeachresort.com', NULL, 'HSG', 'R,SP,CH,Bar,SPA, Lawn,Gym, Coffee shop,CTV,Tel, H&C,LS,DC,TT', 1, NULL, NULL),
-(13, 'Hotel Bideshi Ghar ', 'Swargadwar, Puri', '223143', '225161', '0', '0', '0', '', 'www.bideshghar.com/', NULL, 'HSG', 'R,LS,DC,SS', 1, NULL, NULL),
-(14, 'Hotel Camellia', 'New Marine Drive Road,puri', '231424', '254131', '231084', '0', '0', 'camellia.resorts@gmail.com', 'www.cameliagroup.org', NULL, 'HSG', 'TV, LS, DC, TT, R, SP,CH, IG,  Free transport to  Rly. Station.', 1, NULL, NULL),
-(15, ' Hotel Chanakya ', 'B.N.R.  C. T. Road, Puri-2 ', '223006', '0', '0', '0', '222063', 'therail@gmail.com ', 'www.therail.com', NULL, 'HSG', 'R,  PP,CTV, TT DC,  H&C,LS', 1, NULL, NULL),
-(16, 'Hotel The Chariot', 'Sipasurabali, Puri-752001', '231900', '0', '0', '0', '231912', 'brijsons08yahoo.com', 'www.thechariotpuri.com', NULL, 'HSG', 'R,SP,CC ,HC, TT,DC,CTV,PP, TD,CC,LS, Gm&Health Club', 1, NULL, NULL),
-(17, 'Dalmia Atithi Vihar', 'C.T. Road, Puri-2', '225557', '226861', '0', '0', '222694', 'dalmiavihar@sancharnet.in', '', NULL, 'HSG', 'R(Veg),PP, CTV, TT, DC, H&C,LS Recreation Hall Check Out: 24 hours', 1, NULL, NULL),
-(18, 'Hotel Deep Resort', 'Sea-Beach, Puri', '220848', '0', '0', '0', '0', '', 'www.deepresorts.com/', NULL, 'HSG', 'R,TV, LS,TT', 1, NULL, NULL),
-(19, ' Hotel Deepak', 'CT Road, Puri', '222370', '321909', '0', '0', '0', 'reservation@deeepak.com, ddgsons@gmail.com', 'www.deepak.com', NULL, 'HSG', 'LS,Tel,CTV,TT,CR,PP ', 1, NULL, NULL),
-(20, ' Hotel Dolphin', 'Swargadwar Road, Puri', '231453', '0', '0', '9938872137', '0', '', 'www.hoteldolphin.in/', NULL, 'HSG', 'CTV,R,DC,TT, Roof top Garden,CR', 1, NULL, NULL),
-(21, 'Demo hotel1', 'Demo hotel address', '93301', '93302', '93303', '93304', '93305', 'Hotel mail :', 'Hotel webSite', NULL, '4', '2,4,5', 1, 'icon image path', 'Home image path'),
-(22, 'Demo hotel2', 'Demo hotel2 address', '93301', '93302', '93303', '93304', '93305', 'Hotel mail :', 'Hotel webSite', NULL, '4', '2,4,5', 1, 'icon image path', 'Home image path'),
-(23, 'Demo hotel 3', 'Demo hotel 3  address', '10', '20', '30', '40', '50', '', 'Hotel webSite', 'Reservation Authority', '4', '4,6', 1, 'con image path', 'Home image path');
+(23, 'Demo hotel 3', 'Demo hotel 3  address', '10', '20', '30', '40', '50', '', 'Hotel webSite', 'Reservation Authority', '4', '4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -370,6 +348,28 @@ INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `Price
 (11, 'Exclusive Deluxe', 100, 1000, 10000, 23),
 (12, 'Deluxe room', 100, 1000, 10000, 23),
 (13, 'Exclusive Deluxe', 100, 1000, 10000, 23);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+CREATE TABLE IF NOT EXISTS `notification` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `detail` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`id`, `title`, `detail`) VALUES
+(11, 'Demo title ', 'Demo detail'),
+(12, 'Demo title ', 'Demo detail'),
+(13, 'Demo title ', 'Demo detail');
 
 -- --------------------------------------------------------
 
@@ -447,6 +447,58 @@ CREATE TABLE IF NOT EXISTS `states` (
 
 INSERT INTO `states` (`StateID`, `StateName`, `CountryID`) VALUES
 (1, 'odisha', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp_accomodation`
+--
+
+CREATE TABLE IF NOT EXISTS `temp_accomodation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
+  `authority` varchar(100) DEFAULT NULL,
+  `cityId` int(11) NOT NULL DEFAULT '0',
+  `icon_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `temp_accomodation`
+--
+
+INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
+(1, 'name 1', 'address1', '1234567890', 'authority 1', 1, 'img/hotels.jpg'),
+(2, 'name 2', 'address2', '1234567890', 'authority 2', 1, 'img/hotels.jpg'),
+(3, 'name 3', 'address3', '1234567890', 'authority 3', 1, 'img/hotels.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tiolet`
+--
+
+CREATE TABLE IF NOT EXISTS `tiolet` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
+  `authority` varchar(100) DEFAULT NULL,
+  `cityId` int(11) NOT NULL DEFAULT '0',
+  `icon_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `tiolet`
+--
+
+INSERT INTO `tiolet` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
+(1, 'toilet 1', 'address 1 ', '9658632154', 'XYZ', 1, 'img/hotels.jpg'),
+(2, 'toilet 2', 'address 2 ', '9658632154', 'avgb', 1, 'img/hotels.jpg'),
+(3, 'toilet 2', 'address 2 ', '9658632154', 'avgb', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 

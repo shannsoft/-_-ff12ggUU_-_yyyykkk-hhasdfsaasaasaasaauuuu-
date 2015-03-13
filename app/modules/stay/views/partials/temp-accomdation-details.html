@@ -1,0 +1,41 @@
+<div ng-init="fetchAccomodations()">
+	
+	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include -->>
+
+
+	<ion-view class="pane">
+        <ion-content>
+		  <div class="row money-dashboard contacts-dashboard hotel-details"
+		  		ng-repeat="tempAcc in tempAccomdations">
+		     <a  class="col col-25">
+			   <div>
+			      <img src="{{tempAcc.icon_image}}" />
+			    </div><!--col-33 ned-->
+			 </a>
+			  
+			 <a  class="col col-70"> 
+			   <div>
+			      <ul>
+			       <li> <i class="fa fa-building"></i> {{tempAcc.name}} </li>
+				   <li> <i class="fa fa-map-marker"></i>  {{tempAcc.address}} </li>
+			   </ul>
+			   </div><!--col-50 end-->
+			 </a>
+			  
+		  </div><!--row end-->
+		  
+		  <div class="row">
+		     <div class="col col-50">
+			  
+			 </div><!--col-50 end-->
+			 
+			  <div class="col col-50">
+			      <p class="powered-by">Powered by</p>
+				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
+
+			 </div><!--col-50 end-->
+		  </div><!--row end-->
+		  
+        </ion-content>
+      </ion-view>
+</div>
