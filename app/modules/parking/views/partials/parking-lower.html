@@ -1,93 +1,23 @@
-<div class="parking_lower">
-	<ion-view class="pane">
+<div>
+      <ion-view class="pane">
         <ion-content>
-		  <div class="row">
-		     <div class="col col-100 box_menu">
-			   <div class="parking">
-			     <div class="col col-100 parking-place">
-				 
-					   <div>
-						  <p> <i class="fa fa-building-o"></i>
-						       Talabania Parking Place</p>
-					   </div><!--span end-->
-					   
-					   <div>
-						  <p> <i class="fa fa-location-arrow"></i>
-						       Puri Road (NH- 203)</p>
-					   </div><!--span end-->
-					    
-					    <div class="right_map">
-				      <p> <a href="parking-map.html"> 
-					      <i class="fa fa-map-marker"></i>
-						    View Map</a> </p>
-			     </div><!--right-map end-->
-				 </div><!--parking-place end-->
-				 
+		 
+		  <div class="row money-dashboard contacts-dashboard travel" ng-repeat="option in parkingPlaces">
+		     <a  ng-click="routeSubView(option.contentUrl)"  class="col col-20">
+			   <div>
+			    <i class="{{option.icon}}"></i>
+			    </div><!--col-33 ned-->
+			 </a>
+			  
+			 <a  ng-click="routeSubView(option.contentUrl)" class="col col-80"> 
+			   <div>
+			      <h2>{{option.info}}</h2>
+			   </div><!--col-50 end-->
+			 </a>
 			   
-			   </div><!--parking end-->
-			   
-			 </div><!--col-50 end-->
 		  </div><!--row end-->
 		  
-		  
-		    <div class="row">
-		     <div class="col col-100 box_menu">
-			   <div class="parking">
-			     <div class="col col-100 parking-place">
-				 
-					   <div>
-						  <p> <i class="fa fa-building-o"></i>
-						       S.C.S College Puri</p>
-					   </div><!--span end-->
-					   
-					   <div>
-						  <p> <i class="fa fa-location-arrow"></i>
-						       Srikethra  Road (NH- 20)</p>
-					   </div><!--span end-->
-					    
-					    <div class="right_map">
-				      <p> <a href="parking-map.html"> 
-					      <i class="fa fa-map-marker"></i>
-						    View Map</a> </p>
-			     </div><!--right-map end-->
-				 </div><!--parking-place end-->
-				
-				 
-			   </div><!--parking end-->
-			   
-			 </div><!--col-50 end-->
-		  </div><!--row end-->
-		  
-		  
-		    <div class="row">
-		     <div class="col col-100 box_menu">
-			   <div class="parking">
-			     <div class="col col-100 parking-place">
-				 
-					   <div>
-						  <p> <i class="fa fa-building-o"></i>
-						       Puri Zilla School</p>
-					   </div><!--span end-->
-					   
-					   <div>
-						  <p> <i class="fa fa-location-arrow"></i>
-						       Jagannath Road (NH- 23)</p>
-					   </div><!--span end-->
-					   
-					    <div class="right_map">
-				      <p> <a href="parking-map.html"> 
-					      <i class="fa fa-map-marker"></i>
-						    View Map</a> </p>
-			     </div><!--right-map end-->
-				 
-				 </div><!--parking-place end-->
-				 
-			    
-				 
-			   </div><!--parking end-->
-			   
-			 </div><!--col-50 end-->
-		  </div><!--row end-->
+		   
 		  
 		  <div class="row">
 		     <div class="col col-50">
@@ -102,5 +32,5 @@
 		  </div><!--row end-->
 		  
         </ion-content>
-      </ion-view> 
-</div>
+      </ion-view>
+   </div>

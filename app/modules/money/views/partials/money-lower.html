@@ -3,7 +3,7 @@
         <ion-content>
 		 
 		  <div class="row money-dashboard money" ng-repeat="option in moneyOptionList">
-		     <a href="{{option.detailLink}}"  class="col col-25">
+		     <a ng-click="routeSubView(option.contentUrl)"  class="col col-25">
 			   <div>
 			       <img src="{{option.icon}}" />
 			    </div><!--col-33 ned-->

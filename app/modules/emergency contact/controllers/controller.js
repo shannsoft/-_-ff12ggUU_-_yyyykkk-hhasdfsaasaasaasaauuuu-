@@ -5,11 +5,19 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
       $scope.heading = 'Emergency Contact';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.emerContactOptionList = [
-  		{detailLink:"#hospital-puri",iconClass:"fa fa-ambulance",info:"Hospitals in Puri"},
-  		{detailLink:"#trauma-care",iconClass:"fa fa-medkit",info:"Trauma Care"},
-  		{detailLink:"#temple-administration",iconClass:"fa fa-university",info:"Temple Administration"},
-  		{detailLink:"#local-authorities",iconClass:"fa fa-users",info:"Local Authorities"},
+  		{detailLink:"",contentUrl:"modules/emergency contact/views/partials/localAuthority.html",iconClass:"fa fa-users",info:"Local Authorities"},
+      {detailLink:"",contentUrl:"modules/emergency contact/views/partials/temple-administration.html",iconClass:"fa fa-university",info:"Temple Administration"},
+      {detailLink:"",contentUrl:"modules/emergency contact/views/partials/health-care.html",iconClass:"fa fa-medkit",info:"Health Care & Sanitation"}
   	  ];
+      $scope.healthcareList = [
+      {detailLink:"",contentUrl:"modules/emergency contact/views/partials/localAuthority.html",icon:"fa fa-users",info:"Hospital At Puri"},
+      {detailLink:"",contentUrl:"modules/emergency contact/views/partials/temple-administration.html",icon:"fa fa-university",info:"Trauma Care"},
+      {detailLink:"",contentUrl:"modules/emergency contact/views/partials/health-care.html",icon:"fa fa-medkit",info:"Temporary Toilet"},
+      {detailLink:"",contentUrl:"modules/emergency contact/views/partials/health-care.html",icon:"fa fa-medkit",info:"First AID Center"}
+      ];
+    }
+    $scope.routeSubView = function(pUrl){
+        $scope.contentUrl = pUrl;
     }
   	
 }]);
