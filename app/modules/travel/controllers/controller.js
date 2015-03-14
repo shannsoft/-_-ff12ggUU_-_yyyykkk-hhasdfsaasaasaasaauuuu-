@@ -118,8 +118,6 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     $scope.fetchInformation = function(){
         var dayType = AppModelService.getDayType(); 
         var travelType = AppModelService.getTravelType();
-        console.log('dayType',dayType); 
-        console.log('travelType',travelType);
         travelService.getTrafficInfo(dayType, travelType).then(function(pRes){
            $scope.information = pRes.data.Info;
         });

@@ -827,7 +827,7 @@ header('Access-Control-Allow-Origin: *');
         /*money service starts  */
 
         public function getBranches(){
-          //$cityId =  $this->_request['cityId'];
+          $cityId =  $this->_request['cityId'];
           $sql = "select * from branches b";
           if(isset($cityId))
           {
@@ -849,7 +849,7 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($branches), 200);
         }
         public function getForexBranches(){
-          //$cityId =  $this->_request['cityId'];
+          $cityId =  $this->_request['cityId'];
           $sql = "select * from forex_branch f";
           if(isset($cityId))
           {
