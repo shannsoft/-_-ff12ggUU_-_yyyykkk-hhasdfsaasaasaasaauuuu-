@@ -12,7 +12,6 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
       $scope.healthcareList = [
       {detailLink:"",contentUrl:"modules/emergency contact/views/partials/localAuthority.html",icon:"fa fa-users",info:"Hospital At Puri"},
       {detailLink:"",contentUrl:"modules/emergency contact/views/partials/temple-administration.html",icon:"fa fa-university",info:"Trauma Care"},
-      {detailLink:"",contentUrl:"modules/emergency contact/views/partials/health-care.html",icon:"fa fa-medkit",info:"Temporary Toilet"},
       {detailLink:"",contentUrl:"modules/emergency contact/views/partials/health-care.html",icon:"fa fa-medkit",info:"First AID Center"}
       ];
     }

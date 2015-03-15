@@ -4,10 +4,10 @@ angular.module("parking").controller("parkingController",['$scope','$rootScope',
       $scope.heading = 'Parking';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.parkingPlaces = [
-        {detailLink:"",icon:"fa fa-motorcycle",contentUrl:"modules/money/views/partials/two-wheeler-parking.html", info:"Two Wheeler Parking"},
-        {detailLink:"",icon:"fa fa-taxi",contentUrl:"modules/money/views/partials/four-wheeler-parking.html", info:"Four Wheeler Parking"},
-        {detailLink:"",icon:"fa fa-bus",contentUrl:"modules/money/views/partials/bus-parking.html",info:"Bus Parking"},
-        {detailLink:"",icon:"fa fa-bus",contentUrl:"modules/money/views/partials/tourist-bus-parking.html",info:"Tourist Bus Parking"},
+        {detailLink:"",icon:"fa fa-motorcycle",contentUrl:"modules/parking/views/partials/two-wheeler-parking.html", info:"Two Wheeler Parking"},
+        {detailLink:"",icon:"fa fa-taxi",contentUrl:"modules/parking/views/partials/four-wheeler-parking.html", info:"Four Wheeler Parking"},
+        {detailLink:"",icon:"fa fa-bus",contentUrl:"modules/parking/views/partials/bus-parking.html",info:"Bus Parking"},
+        {detailLink:"",icon:"fa fa-bus",contentUrl:"modules/parking/views/partials/tourist-bus-parking.html",info:"Tourist Bus Parking"},
       ];
     }
     $scope.routeSubView = function(pUrl){

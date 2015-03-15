@@ -7,7 +7,6 @@ AppRoot.factory('moneyService',['$http','AppConfig','$rootScope', function($http
       getBranchList : function(pData){
         
         if(pData != ''){
-         alert(pData); 
          var response = $http.get(AppConfig.apiPath+'reqmethod=getBranches&cityId='+pData);
         }
         else

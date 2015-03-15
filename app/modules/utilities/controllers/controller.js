@@ -7,7 +7,7 @@ angular.module("events").controller("utilitiesController",['$scope','$rootScope'
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.utilityOptionList = [
         {detailLink:"#toilet-details",icon:"img/event.jpg",utilityName:"Toilet",address:"Puri mangalapur"},
-    		{detailLink:"#/",icon:"img/event.jpg",utilityName:"Wash Room",address:"Puri bus stand"}
+    		{detailLink:"#/",icon:"img/event.jpg",utilityName:"Drinking Water",address:"Puri bus stand"}
   		
   	  ];
     }
