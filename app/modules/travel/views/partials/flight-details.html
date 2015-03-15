@@ -42,7 +42,7 @@
 			   <ul>
 			      <li><i class="fa fa-clock-o"></i>{{flight.StartsAt}}</li>
 			      <li><i class="fa fa-plane"></i>{{flight.FromAirport}}</li>
-			      <li><i class="fa fa-list-alt"></i><span class="day disabled-day"> S </span><span class="day"> M </span><span class="day disabled-day"> T </span><span class="day"> W </span><span class="day disabled-day"> T </span><span class="day"> F </span><span class="day disabled-day"> S </span></li>
+			      <li><i class="fa fa-list-alt"></i><span class="day" ng-class="{'disabled-day':flight.Sunday == 0}"> S </span><span class="day" ng-class="{'disabled-day':flight.Monday == 0}"> M </span><span class="day" ng-class="{'disabled-day':flight.Tuesday == 0}"> T </span><span class="day" ng-class="{'disabled-day':flight.Wednesday == 0}"> W </span><span class="day" ng-class="{'disabled-day':flight.Thursday == 0}"> T </span><span class="day" ng-class="{'disabled-day':flight.Friday == 0}"> F </span><span class="day" ng-class="{'disabled-day':flight.Saturday == 0}"> S </span></li>
 			   </ul>
 			</div>
 			<div class="col col-50">
