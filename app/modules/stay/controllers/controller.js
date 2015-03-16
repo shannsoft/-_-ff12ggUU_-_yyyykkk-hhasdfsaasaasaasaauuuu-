@@ -12,6 +12,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         {label:"Coffee Shop",detailPage:"#coffee-shop-details",contentUrl:"modules/stay/views/partials/coffee-shop-details.html" , iconImgPath: "img/coffee.jpg"},
         {label:"Temporary Accomodation",detailPage:"#temp-accomdation-details",contentUrl:"modules/stay/views/partials/temp-accomdation-details.html" , iconImgPath: "img/coffee.jpg"}
       ];
+      $scope.priceRange = ["200-1000","1000-2000","2000-3000","3000-4000","4000-above"];
     }
 
 
@@ -19,10 +20,19 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     /*codes for hotel partial details starts*/
     $scope.selectedHotel = {};
     $scope.hotels = [];
-    $scope.fetchHotelDetails = function(pName , pPrice){
-      if(!pName) pName = '';
+    $scope.fetchHotelDetails = function(pPrice){
+      //console.log(pPrice);
+      //if(!pName) pName = '';
+      var startPrice,endPrice;
       if(!pPrice) pPrice = '';
-      StayService.fetchHotels(pName , pPrice).then(function(pRes){
+      else
+      {
+        pPrice = pPrice.split("-");
+        startPrice = pPrice[0];
+        startPrice=="4000" ? endPrice = undefined : endPrice=pPrice[1];
+      }
+      //console.log($scope.priceRange);
+      StayService.fetchHotels(startPrice,endPrice).then(function(pRes){
           $scope.hotels = [];
           $scope.hotels = pRes.data;
           

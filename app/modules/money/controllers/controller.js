@@ -1,4 +1,4 @@
-angular.module("money").controller("moneyController",['$scope','$rootScope','AppModelService','moneyService', function ($scope,$rootScope,AppModelService,moneyService){
+angular.module("money").controller("moneyController",['$scope','$rootScope','AppModelService','moneyService','MainEvent', function ($scope,$rootScope,AppModelService,moneyService,MainEvent){
     $scope.cityDetails = [];
   	$scope.branchList = [];
     $scope.initMoney = function(){
@@ -39,6 +39,11 @@ angular.module("money").controller("moneyController",['$scope','$rootScope','App
     }
     //branches controller end
     $scope.routeSubView = function(pUrl){
+      if(pUrl == "modules/money/views/partials/icici-atm.html")
+      {
+        $scope.$emit(MainEvent.INIT_MAP,{data:"atm"});
+      }
+      else
         $scope.contentUrl = pUrl;
     }
 

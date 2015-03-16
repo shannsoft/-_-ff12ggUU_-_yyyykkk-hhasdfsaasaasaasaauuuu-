@@ -12,16 +12,15 @@
               <div class="input-label">
                Search 
               </div>
-				<select>
-				 <option> By Price</option>
-				  <option>Search By Price</option>
+				<select ng-model="price" ng-options="price for price in priceRange" ng-change="fetchHotelDetails(price)">
 				</select>
              </label>
 			</form>
 		   </div><!--col-30 end-->
 		   
 		  </div><!--title-nabakalebara end-->
-		  <div class="row money-dashboard contacts-dashboard hotel-details hand-icon" ng-repeat="hotel in hotels">
+		  <div class="row money-dashboard contacts-dashboard hotel-details hand-icon" 
+		  				ng-repeat="hotel in hotels">
 		     <a  class="col col-25 " ng-click="hotelFacility(hotel)">
 			   <div>
 			      <img src="{{hotel.iconImg}}" />

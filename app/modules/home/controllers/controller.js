@@ -14,5 +14,9 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
   $rootScope.showNoty = function(){
     alert(0);
   }
+  $rootScope.$on(MainEvent.INIT_MAP,function(event,pRes){
+
+       console.log("init map for "+pRes.data);
+  });
 
 }]);	

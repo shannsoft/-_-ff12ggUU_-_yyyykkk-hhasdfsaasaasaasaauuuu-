@@ -221,12 +221,24 @@ header('Access-Control-Allow-Origin: *');
         public function getHotelDetails()
         {
 
-          $sql="select h.id hotelId , h.Name hotelName , h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
+         $startPrice = intval ($this->_request['startPrice']);
+         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+         
+          $sql="select distinct h.id hotelId , h.Name hotelName , h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
                 "h.Mobile mobile , h.Fax fax , h.Email email , h.Website webSite , h.reservation_authority reservationAuthority ,".
                 "h.Category category , h.Facilities facilitites , h.CityId cityId , h.icon_image iconImg, h.home_image homeImg , c.CityName".
                  " from hotels h" .
-                 " join city c on c.CityID = h.CityId  ";
+                 " join city c on c.CityID = h.CityId  ".
+                 "  join hotel_rooms hr on hr.hotel_id= h.id";
                //echo $sql;
+         if($startPrice!="undefined")
+         {
+
+           $sql .= "  where hr.PriceStarts>=$startPrice ";
+           if($endPrice > 0) // in case of out bound condition
+              $sql .=" and hr.PriceEnds<= $endPrice";
+         }
+          //echo $sql;
           $rows = $this->executeGenericDQLQuery($sql);
           for($i=0;$i<sizeof($rows);$i++)
           {
@@ -250,6 +262,7 @@ header('Access-Control-Allow-Origin: *');
 
             
           }
+          //echo $sql;
           $this->response($this->json($hotelDetails), 200); 
 
     			
@@ -584,7 +597,17 @@ header('Access-Control-Allow-Origin: *');
            }
         }
         public function getGuestHouseDetails(){
+          $startPrice = intval ($this->_request['startPrice']);
+          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+
           $sql = "select * from guest_house g join city c on g.CityId = c.CityID";
+          if($startPrice!="undefined")
+          {
+            $sql.="  where g.start_price>=$startPrice ";
+            if($endPrice != -1 )
+              $sql.=" and g.end_price<=$endPrice";
+          }
+
           $rows = $this->executeGenericDQLQuery($sql);
           $guestHouseDetails = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -609,7 +632,17 @@ header('Access-Control-Allow-Origin: *');
 
         }
         public function getResturantDetails(){
+
+          $startPrice = intval ($this->_request['startPrice']);
+          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+         
           $sql = "select * from resturants r join city c on r.CityId = c.CityID";
+         if($startPrice!="undefined")
+          {
+            $sql.="  where r.start_price>=$startPrice ";
+            if($endPrice != -1 )
+              $sql.=" and r.end_price<=$endPrice";
+          }
           $rows = $this->executeGenericDQLQuery($sql);
           $resturantDetails = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -636,7 +669,18 @@ header('Access-Control-Allow-Origin: *');
 
 
         public function fetchCoffeeShops(){
-          $sql = "select * from coffee_shops cf join city c on cf.CityId = c.CityID";
+
+          $startPrice = intval ($this->_request['startPrice']);
+         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+         
+
+          $sql = "select distinct * from coffee_shops cf join city c on cf.CityId = c.CityID ";
+          if($startPrice!="undefined")
+          {
+            $sql.="  where cf.start_price>=$startPrice ";
+            if($endPrice != -1 )
+              $sql.=" and cf.end_price<=$endPrice";
+          }
           $rows = $this->executeGenericDQLQuery($sql);
           $coffeeShops = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -664,6 +708,18 @@ header('Access-Control-Allow-Origin: *');
           $sql = "select * from temp_accomodation ta";
           if(isset($cityId))
             $sql=" join city c on ta.CityId = c.CityID";
+
+          $startPrice = intval ($this->_request['startPrice']);
+          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+         
+
+          if($startPrice!="undefined")
+          {
+            $sql.="  where ta.start_price>=$startPrice ";
+            if($endPrice != -1 )
+              $sql.=" and ta.end_price<=$endPrice";
+          }
+
           $rows = $this->executeGenericDQLQuery($sql);
           $tempAccm = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -882,8 +938,8 @@ header('Access-Control-Allow-Origin: *');
           /*$dateTime = explode(" ", $dateTime);
           $date = $dateTime[0];
           $time = strtotime($dateTime[1]);*/
-          $sql = "Insert into notification(title,detail,date_value) values ".
-          " ('".$title."' , '".$detail."' ,$date)";
+          $sql = "Insert into notification(title,detail) values ".
+          " ('".$title."' , '".$detail."')";
           $this->executeGenericInsertQuery($sql);
           //echo $date."  ...............  ".$time;
           

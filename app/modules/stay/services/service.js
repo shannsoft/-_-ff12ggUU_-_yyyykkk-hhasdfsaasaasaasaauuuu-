@@ -12,9 +12,9 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
     getCurrrentHotelFacility = function(){
       return CurrrentHotelFacility;
     },
-    fetchHotels = function(pName , pPrice)
+    fetchHotels = function(pstartPrice,pEndPrice)
     {
-      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getHotelDetails");
+      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getHotelDetails&startPrice="+pstartPrice+"&endPrice="+pEndPrice);
       return response;
     },
     setSelectedHotel = function(hotelObj){
