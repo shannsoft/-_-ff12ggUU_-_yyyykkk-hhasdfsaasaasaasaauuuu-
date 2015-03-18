@@ -128,7 +128,7 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
 
     $scope.routeSubView = function(pUrl){
         if(pUrl == 'modules/travel/views/partials/fuel-pump.html'){
-            $scope.$emit(MainEvent.INIT_MAP,{data:"atm"});
+            $scope.$emit(MainEvent.INIT_MAP,{data:"gas_station"});
         }
         else
             $scope.contentUrl = pUrl;

@@ -7,9 +7,10 @@ angular.module('events',[]);
 angular.module('emerContact',[]);
 angular.module('parking',[]);
 angular.module('aboutUs',[]);
+angular.module('routeMap',[]);
 
 // Lastly, define your "main" module and inject all other modules as dependencies
-var AppRoot = angular.module('appMain',['ngRoute','ionic','home','travel','stay','money','events','emerContact','parking','aboutUs']);
+var AppRoot = angular.module('appMain',['ngRoute','ionic','home','travel','stay','money','events','emerContact','parking','aboutUs','routeMap']);
 AppRoot.config(function($routeProvider) {
 		$routeProvider
 			//about nabakalebara
@@ -118,6 +119,11 @@ AppRoot.config(function($routeProvider) {
 			.when('/toilet-details', {
 				templateUrl : 'modules/utilities/views/partials/toilet-details.html',
 				controller  : 'utilitiesController'
+
+			})
+			.when('/route-map', {
+				templateUrl : 'modules/routeMap/views/view.html',
+				controller  : 'routeMapController'
 
 			})
 			.when('/', {

@@ -12,7 +12,7 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
         {detailLink:"#utilities",icon:"fa fa-users",info:"Utilities"},        
         {detailLink:"#parking",icon:"fa fa-taxi",info:"Parking"},         
         {detailLink:"#contacts",icon:"fa fa-book",info:"Emergency Contact"},        
-        {detailLink:"route-map.html",icon:"fa fa-map-marker",info:"Route Map"},         
+        {detailLink:"#route-map",icon:"fa fa-map-marker",info:"Route Map"},         
         {detailLink:"template-schedule.html",icon:"fa fa-file-text",info:"About Nabkalebara"},        
         {detailLink:"template-schedule.html",icon:"fa fa-calendar",info:"Temple Schedule"},         
     ]

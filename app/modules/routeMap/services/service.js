@@ -1,4 +1,4 @@
-AppRoot.factory('MoneyService',['$http','AppConfig','$rootScope', function($http,AppConfig,$rootScope) {
+AppRoot.factory('moneyService',['$http','AppConfig','$rootScope', function($http,AppConfig,$rootScope) {
 	return{
    		getCity : function(){
         var response = $http.get(AppConfig.apiPath+'reqmethod=getCity');
