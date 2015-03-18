@@ -4,25 +4,26 @@
 		
 		 <div class="row  top-margin">
      	   <div class="col col-50">
-		    <!-- <p class="map-start"> Start </p>-->
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Starting" />
+			  <input type="text" placeholder="My Location" ng-model="route.source"/>
 			</form>
-		   </div><!--col-50 end-->
+		   </div>
 		   
 		   <div class="col col-50">
-		    <!-- <p class="map-start"> Stop </p>-->
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Destination" />
+			  <input type="text" placeholder="Grand Road Puri" ng-model="route.destination"/>
 			</form>
-		   </div><!--col-50 end-->
-		  </div><!--row end-->
-		 
-		  <div class="row money-dashboard contacts-dashboard">
+		   </div>
+		   <div class="col col-50">
+		    
+		   </div>
+		  </div>
+		 <button class="button" ng-click="searchRoute()">Search</button>
+		  <div class="row">
 		     <div class="col col-100">
-			    <div id="map-canvas" style="width: 100%; float:left">
+			    <div id="route-map" style="width: 100%; float:left;position:absolute!important;">
 			    	
 		  		</div>
 			 </div>
