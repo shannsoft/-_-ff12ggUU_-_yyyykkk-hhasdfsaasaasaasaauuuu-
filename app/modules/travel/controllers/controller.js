@@ -1,4 +1,4 @@
-angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService', function ($scope,$rootScope,AppModelService,travelService){
+angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService','MainEvent', function ($scope,$rootScope,AppModelService,travelService,MainEvent){
     $scope.initTravel = function(){
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
       $scope.heading = 'Travel';
@@ -127,7 +127,11 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     */
 
     $scope.routeSubView = function(pUrl){
-        $scope.contentUrl = pUrl;
+        if(pUrl == 'modules/travel/views/partials/fuel-pump.html'){
+            $scope.$emit(MainEvent.INIT_MAP,{data:"atm"});
+        }
+        else
+            $scope.contentUrl = pUrl;
     }
     
 }]);

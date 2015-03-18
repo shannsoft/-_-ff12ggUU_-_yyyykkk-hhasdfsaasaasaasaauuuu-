@@ -1,6 +1,7 @@
 angular.module("home").controller("homeController",['$scope','$rootScope','MainService','AppModelService','MainEvent','HomeService', function($scope,$rootScope,MainService,AppModelService,MainEvent,HomeService){
   var map;
   var infowindow;
+  var mapSearch = '';
   $scope.homeInit = function(){
     $scope.contentUrl = HomeService.getContentUrl();
     //HomeService.setContentUrl('modules/home/views/partials/mainMenu.html');
@@ -16,9 +17,11 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
 
   }
   $rootScope.$on(MainEvent.INIT_MAP,function(event,pRes){
-       window.location = '#/';
-       $scope.heading = 'Home';
+      window.location = '#/';
+      $scope.heading = 'ATM';
       HomeService.setContentUrl('modules/home/views/partials/map-view.html');
+      mapSearch  = pRes.data;
+      $scope.geoFindMe();
   });
 
   $scope.geoFindMe = function(){
@@ -45,8 +48,8 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
 
     var request = {
       location: pyrmont,
-      radius: 2000,
-      types: ['atm']
+      radius: 5000,
+      types: [mapSearch]
     };
 
     infowindow = new google.maps.InfoWindow();
@@ -72,5 +75,4 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
       infowindow.open(map, this);
     });
   }
-
 }]);	
