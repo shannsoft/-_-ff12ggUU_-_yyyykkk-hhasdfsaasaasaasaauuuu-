@@ -41,8 +41,8 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
     getSelectedCoffeeShop = function(){
        return selectedCoffeeShop;
     },
-    fetchGuestHouse = function(pName , pPrice){
-      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getGuestHouseDetails");
+    fetchGuestHouse = function(pstartPrice,pEndPrice){
+      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getGuestHouseDetails&startPrice="+pstartPrice+"&endPrice="+pEndPrice);
       return response;
     },
     fetchResturant = function(pName , pPrice){

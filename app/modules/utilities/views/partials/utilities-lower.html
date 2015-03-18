@@ -3,13 +3,13 @@
         <ion-content class="has-header">
 		  
 		  <div class="row money-dashboard event-price" ng-repeat="option in utilityOptionList">
-		     <a href="{{option.detailLink}}" class="col col-25">
+		     <a ng-click="routeSubView(option.contentUrl)" class="col col-25">
 			   <div>
 			       <img src="{{option.icon}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
-			 <a href="{{option.detailLink}}" class="col col-60"> 
+			 <a ng-click="routeSubView(option.contentUrl)" class="col col-60"> 
 			   <div>
 			      <h2>{{option.utilityName}}</h2>
 				   <h2>{{option.address}}</h2>

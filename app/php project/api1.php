@@ -621,6 +621,7 @@ header('Access-Control-Allow-Origin: *');
             $guestHouseDetails[$i]['Mobile'] =$rows[$i]['Mobile'] ;
             $guestHouseDetails[$i]['Website'] =$rows[$i]['Website'] ;
             $guestHouseDetails[$i]['Category'] =$rows[$i]['Category'] ;
+
             $guestHouseDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $guestHouseDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
             $guestHouseDetails[$i]['icon_image'] =$rows[$i]['icon_image'] ;
@@ -736,10 +737,30 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($tempAccm), 200);
 
         }
-        public function fetchTiolets(){
-          $sql = "select * from tiolet t";
+        public function fetchToilets(){
+          $sql = "select * from toilet t";
           if(isset($cityId))
             $sql=" join city c on t.CityId = c.CityID";
+          $rows = $this->executeGenericDQLQuery($sql);
+          $tiolets = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+      
+            $tiolets[$i]['id'] =$rows[$i]['id'] ;
+            $tiolets[$i]['name'] =$rows[$i]['name'] ;
+            $tiolets[$i]['address'] =$rows[$i]['address'] ;
+            $tiolets[$i]['contact'] =$rows[$i]['contact'] ;
+            $tiolets[$i]['authority'] =$rows[$i]['authority'] ;
+            $tiolets[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $tiolets[$i]['cityId'] =$rows[$i]['cityId'] ;
+           }
+          $this->response($this->json($tiolets), 200);
+
+        }
+        public function fetchDrinkingWater(){
+          $sql = "select * from drinking_water d";
+          if(isset($cityId))
+            $sql=" join city c on d.CityId = c.CityID";
           $rows = $this->executeGenericDQLQuery($sql);
           $tiolets = array();
           for($i=0;$i<sizeof($rows);$i++)

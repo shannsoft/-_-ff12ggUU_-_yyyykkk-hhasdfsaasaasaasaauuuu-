@@ -1,4 +1,4 @@
-<div ng-init="fetchToilets()">
+<div ng-init="fetchDrinkingWater()">
 	
 	<!-- <ng-include src="'modules/home/views/partials/sideMenu.html'" class="wrapper block"></ng-include -->
 
@@ -6,18 +6,18 @@
 	<ion-view class="pane">
         <ion-content class="has-header">
 		  <div class="row money-dashboard contacts-dashboard hotel-details"
-		  		ng-repeat="tiolet in tiolets">
+		  		ng-repeat="water in drinkingWater">
 		     <a  class="col col-25">
 			   <div>
-			      <img src="{{tiolet.icon_image}}" />
+			      <img src="{{water.icon_image}}" />
 			    </div><!--col-33 ned-->
 			 </a>
 			  
 			 <a  class="col col-70"> 
 			   <div>
 			      <ul>
-			       <li> <i class="fa fa-building"></i> {{tiolet.name}} </li>
-				   <li> <i class="fa fa-map-marker"></i>  {{tiolet.address}} </li>
+			       <li> <i class="fa fa-building"></i> {{water.name}} </li>
+				   <li> <i class="fa fa-map-marker"></i>  {{water.address}} </li>
 			   </ul>
 			   </div><!--col-50 end-->
 			 </a>

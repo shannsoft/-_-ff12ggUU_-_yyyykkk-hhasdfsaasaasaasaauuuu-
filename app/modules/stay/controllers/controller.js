@@ -79,10 +79,19 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     /* guest house details starts*/
     $scope.guestHouseList = [];
     $scope.selectedGuestHouse = {};
-    $scope.fetchGuestHouseDetails = function(pName , pPrice){
-      if(!pName) pName = '';
+    $scope.fetchGuestHouseDetails = function(pPrice){
+      //if(!pName) pName = '';
       if(!pPrice) pPrice = '';
-      StayService.fetchGuestHouse(pName , pPrice).then(function(pRes){
+
+      var startPrice,endPrice;
+      if(!pPrice) pPrice = '';
+      else
+      {
+        pPrice = pPrice.split("-");
+        startPrice = pPrice[0];
+        startPrice=="4000" ? endPrice = undefined : endPrice=pPrice[1];
+      }
+      StayService.fetchGuestHouse(startPrice,endPrice).then(function(pRes){
           $scope.guestHouseList = [];
           $scope.guestHouseList = pRes.data;
           console.log(pRes.data);
