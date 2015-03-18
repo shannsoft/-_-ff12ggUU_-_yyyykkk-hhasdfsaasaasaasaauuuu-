@@ -1,5 +1,6 @@
-angular.module("parking").controller("parkingController",['$scope','$rootScope','AppModelService', function ($scope,$rootScope,AppModelService){
+angular.module("parking").controller("parkingController",['$scope','$rootScope','AppModelService', 'ParkingService',function ($scope,$rootScope,AppModelService,ParkingService){
   	$scope.initParking = function(){
+      $scope.content='';
       $scope.contentUrl='modules/parking/views/partials/parking-lower.html';
       $scope.heading = 'Parking';
       $scope.menuOptionList = AppModelService.getMenuOptions();
@@ -12,5 +13,16 @@ angular.module("parking").controller("parkingController",['$scope','$rootScope',
     }
     $scope.routeSubView = function(pUrl){
         $scope.contentUrl = pUrl;
+    }
+    $scope.showGlobalParking = function(pParkingtype){
+
+        ParkingService.getParkingDetails(pParkingtype).then(function(pRes){
+            ParkingService.setGlobalContent(pRes.data[0]);  // as response returns as array
+            $scope.contentUrl = 'modules/parking/views/partials/parking-global.html';
+        });
+    }
+    $scope.initGlobalParking = function(){
+      $scope.content = ParkingService.getGlobalContent();
+      //console.log($scope.content);
     }
 }]);

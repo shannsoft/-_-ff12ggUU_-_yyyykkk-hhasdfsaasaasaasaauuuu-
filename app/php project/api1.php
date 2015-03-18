@@ -239,6 +239,7 @@ header('Access-Control-Allow-Origin: *');
               $sql .=" and hr.PriceEnds<= $endPrice";
          }
           //echo $sql;
+         $hotelDetails = array();
           $rows = $this->executeGenericDQLQuery($sql);
           for($i=0;$i<sizeof($rows);$i++)
           {
@@ -980,6 +981,29 @@ header('Access-Control-Allow-Origin: *');
 
         }
         /*money service Ends */
+
+
+        /*parking service starts */
+
+        public function getParkingDetails(){
+          $parkingType =  $this->_request['parkingType'];
+          $sql = "select * from parking p ";
+          if(isset($parkingType) && $parkingType!="undefined")
+            $sql .= "  where p.vehicle_name = '".$parkingType."'";
+        $rows = $this->executeGenericDQLQuery($sql);
+        $parkingDetails = array();
+          for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $parkingDetails[$i]['id'] = $rows[$i]['id'];
+              $parkingDetails[$i]['vehicle_name'] = $rows[$i]['vehicle_name'];
+              $parkingDetails[$i]['content'] = $rows[$i]['content'];
+              $parkingDetails[$i]['address'] = $rows[$i]['address'];
+
+           }
+           //echo $sql;
+          $this->response($this->json($parkingDetails), 200);
+        }
+        /*parking service ends*/
 	}
 	
 	$api = new API;

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 16, 2015 at 03:30 AM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Mar 18, 2015 at 08:39 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,6 +19,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `nabakalebara`
 --
+CREATE DATABASE IF NOT EXISTS `nabakalebara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `nabakalebara`;
 
 -- --------------------------------------------------------
 
@@ -168,6 +171,30 @@ CREATE TABLE IF NOT EXISTS `country` (
 
 INSERT INTO `country` (`ContryID`, `CountryName`, `ISDCode`, `Currency`) VALUES
 (1, 'india', 91, 'INR');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drinking_water`
+--
+
+CREATE TABLE IF NOT EXISTS `drinking_water` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
+  `authority` varchar(100) DEFAULT NULL,
+  `cityId` int(11) NOT NULL DEFAULT '0',
+  `icon_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `drinking_water`
+--
+
+INSERT INTO `drinking_water` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
+(1, 'drink water 1', 'address', '123456', 'auth 1', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -376,6 +403,29 @@ INSERT INTO `notification` (`id`, `title`, `detail`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `parking`
+--
+
+CREATE TABLE IF NOT EXISTS `parking` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `vehicle_name` varchar(50) DEFAULT NULL,
+  `content` varchar(200) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT=' ' AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `parking`
+--
+
+INSERT INTO `parking` (`id`, `vehicle_name`, `content`, `address`) VALUES
+(1, 'Two Wheeler Parking', 'content for two wheerler parking', 'address  for two wheeler parking'),
+(2, 'Four Wheeler Parking', 'content for Four Wheeler Parking', 'address  for Four Wheeler Parking'),
+(3, 'Bus Parking', 'content for Bus Parking', 'address  for Bus Parking');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `resturants`
 --
 
@@ -483,10 +533,10 @@ INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `start_price`, `end_pr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tiolet`
+-- Table structure for table `toilet`
 --
 
-CREATE TABLE IF NOT EXISTS `tiolet` (
+CREATE TABLE IF NOT EXISTS `toilet` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
@@ -498,10 +548,10 @@ CREATE TABLE IF NOT EXISTS `tiolet` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `tiolet`
+-- Dumping data for table `toilet`
 --
 
-INSERT INTO `tiolet` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
+INSERT INTO `toilet` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
 (1, 'toilet 1', 'address 1 ', '9658632154', 'XYZ', 1, 'img/hotels.jpg'),
 (2, 'toilet 2', 'address 2 ', '9658632154', 'avgb', 1, 'img/hotels.jpg'),
 (3, 'toilet 2', 'address 2 ', '9658632154', 'avgb', 1, 'img/hotels.jpg');
