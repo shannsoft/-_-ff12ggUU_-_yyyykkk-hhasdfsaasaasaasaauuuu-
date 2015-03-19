@@ -20,7 +20,7 @@
 		   </div>
 		  </div>
 		 <div class="row money-dashboard">
-		   <div class="icici-branchlist" style="width:50% !important">
+		   <div class="icici-branchlist">
 		     <label class="item item-input item-select">
               <div class="input-label">
               Day
@@ -31,9 +31,17 @@
              </select>
 
            </label>
-           <button class="default" ng-click="serchTrain()">Search</button>
-            <button class="default" ng-click="bookIRCTC()">Book Ticket</button>
+          
 		  </div>
+		  </div>
+		  <div class="row">
+		  	   <div class="col col-50">
+		  	   	   <button class="button" ng-click="serchTrain()">Search</button>
+		  	   </div><!--col-50 end-->
+		  	<div class="col col-50">
+              <button class="button" ng-click="bookIRCTC()">Book Ticket</button>
+          </div>
+
 		  </div>
 		   
 		    <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="train in trainDetails">

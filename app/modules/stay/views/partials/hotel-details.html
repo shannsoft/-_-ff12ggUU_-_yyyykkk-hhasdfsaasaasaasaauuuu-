@@ -13,6 +13,7 @@
                Search 
               </div>
 				<select ng-model="price" ng-options="price for price in priceRange" ng-change="fetchHotelDetails(price)">
+					<option ng-selected="true" value="">By Price</option>
 				</select>
              </label>
 			</form>

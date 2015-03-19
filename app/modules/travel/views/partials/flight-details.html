@@ -21,7 +21,7 @@
 		   </div>
 		  </div>
 		  <div class="row money-dashboard">
-		   <div class="icici-branchlist" style="width:50% !important">
+		   <div class="icici-branchlist">
 		     <label class="item item-input item-select">
               <div class="input-label">
               Day
@@ -32,8 +32,13 @@
              </select>
 
            </label>
-           <button class="default" ng-click="serchFlight()">Search</button>
+          
 		  </div>
+		  </div>
+		  <div class="row">
+		  	<div class="col col-50">
+		  	   <button class="button" ng-click="serchFlight()">Search</button>
+		  	</div>
 		  </div>
 		   
 		  <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="flight in flightDetails">
