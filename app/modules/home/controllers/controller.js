@@ -10,9 +10,11 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
   $scope.homeInit = function(){
     $scope.contentUrl = HomeService.getContentUrl();
     //HomeService.setContentUrl('modules/home/views/partials/mainMenu.html');
-    $scope.heading = 'Home';
+    $scope.heading = HomeService.getHeading();
     $scope.menuOptionList = AppModelService.getMenuOptions();
+    console.log("homeInit  ");
   }
+
   $rootScope.showNoty = function(){
     alert(0);
   }
@@ -22,11 +24,11 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
 
   }
   $rootScope.$on(MainEvent.INIT_MAP,function(event,pRes){
-      window.location = '#/';
-      $scope.heading = 'ATM';
+      HomeService.setHeading('ATM');
       HomeService.setContentUrl('modules/home/views/partials/map-view.html');
       mapSearch  = pRes.data;
       $scope.geoFindMe();
+      window.location = '#/';
   });
 
   $scope.geoFindMe = function(){
