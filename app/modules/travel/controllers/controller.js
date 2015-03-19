@@ -62,10 +62,11 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     /*
     This is start control for Bus Information partial
     */
-
+    $scope.searchBusDet = {source:'',destination:''};
     $scope.fetchBusDetails = function(){
-       $scope.busDetails = [];
-        travelService.getBusDetails().then(function(pRes){
+        console.log($scope.searchBusDet);
+        $scope.busDetails = [];
+        travelService.getBusDetails($scope.searchBusDet).then(function(pRes){
             var busDetails = pRes.data;
             $(busDetails).each(function(i){
                 $scope.busDetails.push(busDetails[i]);

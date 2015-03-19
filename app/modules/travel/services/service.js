@@ -6,8 +6,9 @@ AppRoot.factory('travelService',['$http','AppConfig','$rootScope', function($htt
                             '&destinationCity='+pData.destinationCity);
     		return response;
     	},
-    	getBusDetails : function(){
-    		var response = $http.get(AppConfig.apiPath+'reqmethod=getBusDetails');
+    	getBusDetails : function(pData){
+    		var response = $http.get(AppConfig.apiPath+'reqmethod=getBusDetails&source='+pData.source+
+                            '&destination='+pData.destination);
     		return response;
     	},
       getFlightDetails : function(pData){

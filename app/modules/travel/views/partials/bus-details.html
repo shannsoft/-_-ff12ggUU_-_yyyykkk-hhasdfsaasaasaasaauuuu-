@@ -9,7 +9,7 @@
 		     <p class="map-start"> From </p>
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Source" />
+			  <input type="text" placeholder="Source" ng-model="searchBusDet.source"/>
 			</form>
 		   </div>
 		   
@@ -17,9 +17,14 @@
 		     <p class="map-start"> To </p>
 		    <form class="item item-input list list-inset">
 			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Destination" />
+			  <input type="text" placeholder="Destination" ng-model="searchBusDet.destination"/>
 			</form>
 		   </div>
+		  </div>
+		  <div class="row">
+		  	   <div class="col col-50">
+		  	   	   <button class="button" ng-click="fetchBusDetails()">Search</button>
+		  	   </div>
 		  </div>
 		
 		  <div class="row money-dashboard contacts-dashboard train-details" ng-repeat="bus in busDetails">

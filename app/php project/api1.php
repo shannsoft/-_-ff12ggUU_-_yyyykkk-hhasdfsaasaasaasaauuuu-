@@ -868,9 +868,18 @@ header('Access-Control-Allow-Origin: *');
             $this->response($this->json($flightDetails), 200);
         }
 
-        public function getBusDetails(){
+         public function getBusDetails(){
 
-            $sql="select * from bus b";
+            $source = $this->_request['source'];
+            $destination = $this->_request['destination'];
+            if($source == '' && $destination == '')
+              $sql="select * from bus b ";
+            else if($source != '' && $destination == '') 
+              $sql="select * from bus b where b.FromStation='".$source."'";
+            else if($source == '' && $destination != '') 
+              $sql="select * from bus b where b.ToStation='".$destination."'";
+            else if($source != '' && $destination != '') 
+              $sql="select * from bus b where b.FromStation='".$source."' AND b.ToStation='".$destination."'";
             $rows = $this->executeGenericDQLQuery($sql);
             $busDetails= array();
             for($i=0 ; $i<sizeof($rows);$i++)
