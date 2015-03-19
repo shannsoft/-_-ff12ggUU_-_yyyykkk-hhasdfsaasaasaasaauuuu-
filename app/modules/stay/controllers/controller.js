@@ -1,4 +1,4 @@
-angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService){
+angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent){
     
     $scope.initStay = function(){
       console.log("initStay");
@@ -68,6 +68,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     $scope.getSelectedHotel = function()
     {
       $scope.selectedHotel = StayService.getSelectedHotel();
+
     }
 
     /*codes for hotel partial details ends*/
@@ -189,9 +190,10 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       console.log($scope.selectedCoffeeShop);
     }*/
 
-
     /*temporary accomodation ends*/
-
+    $scope.viewOnMap = function(address){ 
+      $scope.$emit(MainEvent.INIT_MAP,{data : address});
+    }
   	
 
 }]);

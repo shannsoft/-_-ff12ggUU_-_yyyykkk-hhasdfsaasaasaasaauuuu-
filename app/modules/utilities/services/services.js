@@ -1,11 +1,11 @@
 
 AppRoot.factory('UtilityService',['$http','AppConfig','$rootScope', function($http,AppConfig,$rootScope) {
 	 var fetchToilets = function(){
-	 	var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=fetchToilets");
+	 	var response = $http.get(AppConfig.apiPath+"reqmethod=fetchToilets");
       return response;
 	 },
 	 fetchDrinkingWater = function(){
-	 	var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=fetchDrinkingWater");
+	 	var response = $http.get(AppConfig.apiPath+"reqmethod=fetchDrinkingWater");
       return response;
 	 };
       return{

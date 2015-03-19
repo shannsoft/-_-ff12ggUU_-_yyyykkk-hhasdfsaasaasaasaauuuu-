@@ -4,7 +4,7 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
   var datType = '',
       travelType = '';
    var menuOptionList = [
-        {detailLink:"index.html",icon:"fa fa-qrcode",info:"Dashboard"},
+        {detailLink:"#/",icon:"fa fa-qrcode",info:"Dashboard"},
         {detailLink:"#travel",icon:"fa fa-plane",info:"Travel"},
         {detailLink:"#stay",icon:"fa fa-home",info:"Stay"},
         {detailLink:"#money",icon:"fa fa-inr",info:"Money"},        

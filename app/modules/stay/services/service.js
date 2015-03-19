@@ -14,7 +14,7 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
     },
     fetchHotels = function(pstartPrice,pEndPrice)
     {
-      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getHotelDetails&startPrice="+pstartPrice+"&endPrice="+pEndPrice);
+      var response = $http.get(AppConfig.apiPath+"reqmethod=getHotelDetails&startPrice="+pstartPrice+"&endPrice="+pEndPrice);
       return response;
     },
     setSelectedHotel = function(hotelObj){
@@ -42,19 +42,19 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
        return selectedCoffeeShop;
     },
     fetchGuestHouse = function(pstartPrice,pEndPrice){
-      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getGuestHouseDetails&startPrice="+pstartPrice+"&endPrice="+pEndPrice);
+      var response = $http.get(AppConfig.apiPath+"reqmethod=getGuestHouseDetails&startPrice="+pstartPrice+"&endPrice="+pEndPrice);
       return response;
     },
     fetchResturant = function(pName , pPrice){
-      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=getResturantDetails");
+      var response = $http.get(AppConfig.apiPath+"reqmethod=getResturantDetails");
       return response;
     },
     fetchCoffeeShops = function(pName , pPrice){
-      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=fetchCoffeeShops");
+      var response = $http.get(AppConfig.apiPath+"reqmethod=fetchCoffeeShops");
       return response;
     },
     fetchAccomodations = function(pName , pPrice){
-      var response = $http.get("http://localhost/Nabakalebara/app/php project/api1.php?reqmethod=fetchAccomodations");
+      var response = $http.get(AppConfig.apiPath+"reqmethod=fetchAccomodations");
       return response;
     };
   return{
