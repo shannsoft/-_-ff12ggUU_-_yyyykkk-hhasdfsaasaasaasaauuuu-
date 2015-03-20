@@ -24,8 +24,8 @@
 				  </div><!--call-about end-->
 			   </div><!--col-40 end-->
 			    <div class="col col-25">
-				<div class="email-about">
-				  <h2> <a href="#"> <i class="fa fa-paper-plane"></i> Email </a> </h2>
+				<div class="email-about" ng-click="showEmail()">
+				  <h2> <a href=""> <i class="fa fa-paper-plane"></i> Email </a> </h2>
 				  </div><!--call-about end-->
 			   </div><!--col-40 end-->
 			    <div class="col col-25">
@@ -35,7 +35,7 @@
 			   </div><!--col-40 end-->
 			</div><!--row end-->
 
-			<ng-include src="'modules/stay/views/partials/hotel-email-query.html'">
+			<ng-include src="'modules/stay/views/partials/hotel-email-query.html'" ng-show="emailVisible">
 		    </ng-include>
 		     <div class="row facilities-hotel">
 			   <div class="col col-70">

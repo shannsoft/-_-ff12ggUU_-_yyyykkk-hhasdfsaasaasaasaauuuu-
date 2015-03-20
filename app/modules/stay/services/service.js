@@ -56,6 +56,20 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
     fetchAccomodations = function(pName , pPrice){
       var response = $http.get(AppConfig.apiPath+"reqmethod=fetchAccomodations");
       return response;
+    },
+    emailSubmit = function(emailData){
+        // var response = $http.get(AppConfig.apiPath+"reqmethod=emailSubmit");
+        // return response;
+        var _serializedData = $.param({reqmethod: 'emailSubmit', emailData:emailData});
+            var _responsePromise = $http({
+                    method: 'POST',
+                    url: AppConfig.apiPath,
+                    data: _serializedData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+            });
+            return _responsePromise;
     };
   return{
    		
@@ -71,6 +85,7 @@ AppRoot.factory('StayService',['$http','AppConfig','$rootScope', function($http,
       getSelectedResturant:getSelectedResturant,
       setSelectedCoffeeShop:setSelectedCoffeeShop,
       getSelectedCoffeeShop:getSelectedCoffeeShop,
-      fetchAccomodations:fetchAccomodations
+      fetchAccomodations:fetchAccomodations,
+      emailSubmit:emailSubmit
    	}
 }]);

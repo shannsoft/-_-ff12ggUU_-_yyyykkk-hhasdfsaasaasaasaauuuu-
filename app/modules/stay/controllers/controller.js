@@ -2,6 +2,13 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     
     $scope.initStay = function(){
       console.log("initStay");
+
+      $scope.emailVisible = false;
+      $scope.emailSubject = "Hotel Enquiry"  // constant
+      $scope.emaildata={emailSubject : "Hotel Enquiry"};
+      $scope.$watch('enquiryName',function(val){
+        console.log(val);
+      });
       $scope.contentUrl='modules/stay/views/partials/stay-lower.html';
       $scope.heading = 'Stay';
       $scope.menuOptionList = AppModelService.getMenuOptions();
@@ -70,7 +77,22 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       $scope.selectedHotel = StayService.getSelectedHotel();
 
     }
+    $scope.showEmail = function(){
+      $scope.emailVisible = !$scope.emailVisible;
+    }
 
+    $scope.emailSubmit = function(emailSubmit,toEmail){
+      
+      
+      
+      // console.log(emailSubmit);
+      emailSubmit.toEmail = toEmail;
+      StayService.emailSubmit(emailSubmit).then(function(pRes){
+          console.log(pRes.data);
+          $scope.emailVisible = false;
+          // show successful message
+      });
+    }
     /*codes for hotel partial details ends*/
      $scope.routeSubView = function(pUrl){
         $scope.contentUrl = pUrl;

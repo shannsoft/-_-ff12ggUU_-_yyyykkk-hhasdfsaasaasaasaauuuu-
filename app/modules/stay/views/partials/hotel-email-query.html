@@ -4,14 +4,14 @@
 			<div class="col col-100">
 			 <label class="item item-input">
              <span class="input-label">Subject:</span>
-             <input type="text" ng-disabled="isDisabled">
+             <input type="text" ng-model="emaildata.emailSubject"  ng-disabled="true">
              </label>
          </div><!--col-100 end-->
 
          <div class="col col-100">
              <label class="item item-input">
              <span class="input-label">Name:</span>
-             <input type="text">
+             <input type="text" ng-model="emaildata.enquiryName">
              </label>
          
          </div><!--col-100 end-->
@@ -19,19 +19,19 @@
           <div class="col col-100">
              <label class="item item-input">
              <span class="input-label">Conatct No:</span>
-             <input type="tel">
+             <input type="tel" ng-model="emaildata.enquiryContact">
              </label>
            </div><!--col-100 end-->
 
           <div class="col col-100">
              <label class="item item-input">
              <span class="input-label">Query:</span>
-             <textarea class="hotel_query"></textarea>
+             <textarea class="hotel_query" ng-model="emaildata.enquiryQuery"></textarea>
              </label>
           </div><!--col-100 end-->
 
           <div class="col col-100 email-button">
-             <button class="button" ng-click="hotel-email-query()">Submit</button>
+             <button class="button" ng-click="emailSubmit(emaildata,selectedHotel.email)">Submit</button>
           </div><!--col-100 end-->
 
 		</form>

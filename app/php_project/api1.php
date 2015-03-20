@@ -319,6 +319,53 @@ header('Access-Control-Allow-Origin: *');
         	}
         	$this->response($this->json($hotelDetails), 200);
         }
+
+        public function emailSubmit(){
+          $emailData = $this->_request['emailData'];
+         // echo json_encode($emailData);
+          $subject=$emailData['emailSubject'];
+          $enquiryName=$emailData['enquiryName'];
+          $enquiryContact=$emailData['enquiryContact'];
+          $enquiryQuery=$emailData['enquiryQuery'];
+          $toEmail=$emailData['toEmail'];
+          
+          //echo "Name: $name \n\nContact no: $mobile \n\nAddress: $address\n\nEmail: $email ";
+
+            // $sender = "nabakalebara@goappsolutions.com";
+            // $receiver = $toEmail;
+           $sender = "cet.rajendra2010@gmail.com";
+            $receiver = "rajendrasahoo@riaxe.com";
+             
+
+          //  $client_ip = $_SERVER['REMOTE_ADDR'];
+            
+            $email_body = "Name: $enquiryName \n\nContact no: $enquiryContact \n\Query : $enquiryQuery ";
+            
+            $email_body_auto_reply = "Hello $enquiryName, \nThank you for sending us message. Your message is highly valuble and essential for us.We will contact you soon . \n\n\nThanks & Regards, \n $sender ";
+            
+            // $extra = "From: $sender\r\n" . "Reply-To: $sender \r\n" . "X-Mailer: PHP/" . phpversion();
+            // $extra_auto_reply = "From: $receiver\r\n" . "Reply-To: $receiver \r\n" . "X-Mailer: PHP/" . phpversion();
+
+            if(mail($receiver,$subject,$email_body))
+            {
+                  $response = array();
+                  $response['status'] = "success";
+                  $response['message'] = " message successfully received";
+                  $this->response($this->json($response), 200);
+                // echo "mail sent !!!";
+                 // exit;
+            }
+            else
+            {
+              //header("location:index.html");
+                // echo "mail falied !!!";
+              $response = array();
+                  $response['status'] = "error";
+                  $response['message'] = " error occured in sending mail";
+                  $this->response($this->json($response), 200);
+              exit;
+            }
+        }
         public function getTempleSchedule(){
           $day =  $this->_request['day'];
             $sql="select * from schedule";
