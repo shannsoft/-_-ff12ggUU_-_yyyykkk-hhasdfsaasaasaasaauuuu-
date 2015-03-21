@@ -44,7 +44,7 @@
 			$scope.arrValue = '';
 			$scope.getCities =function()
 			{	$scope.cities=[];
-				var response =  $http.get("http://localhost/Nabakalebara/app/php%20project/api1.php?reqmethod=getCity").then(function(pRes){
+				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
 		                $scope.cities.push(city.CityName);
@@ -62,7 +62,7 @@
 				console.log($scope.toCity);
 				console.log($scope.depValue);
 				console.log($scope.duration);
-	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php'+ '?reqmethod=postBusDetails&busNumber='+$scope.busNumber+'&busName='+$scope.busName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&duration='+$scope.duration);
+	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postBusDetails&busNumber='+$scope.busNumber+'&busName='+$scope.busName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&duration='+$scope.duration);
 			}
 		}]);
 	</script>

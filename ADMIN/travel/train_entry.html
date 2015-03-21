@@ -62,7 +62,7 @@
 			
 			$scope.getCities =function()
 			{	$scope.cities=[];
-				var response =  $http.get("http://localhost/Nabakalebara/app/php%20project/api1.php?reqmethod=getCity").then(function(pRes){
+				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
 		                $scope.cities.push(city.CityName);
@@ -88,7 +88,7 @@
 				console.log($scope.depValue);
 				console.log($scope.arrValue);
 				console.log(days);
-	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php'+ '?reqmethod=postTrainDetails&trainNumber='+$scope.trainNumber+'&trainName='+$scope.trainName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days+'&trainUrl='+$scope.trainUrl);
+	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postTrainDetails&trainNumber='+$scope.trainNumber+'&trainName='+$scope.trainName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days+'&trainUrl='+$scope.trainUrl);
 			}
 		}]);
 	</script>

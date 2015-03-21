@@ -956,6 +956,31 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($trafficInfo), 200);
         }
 
+        public function postTrafficDetails(){
+           $dayType =  $this->_request['dayType'];
+           $travelMode =  $this->_request['travelMode'];
+           $city =  $this->_request['city'];
+           $info =  $this->_request['info'];
+           $sql="select * from  traffic_mobility where Travel_Mode='".$travelMode."' AND Day_Type='".$dayType."'";
+           //$rows = $this->executeGenericDQLQuery($sql);
+           $response = array();
+          if(sizeof($rows)>0)
+           {
+                $response['status'] = "already exist";
+
+           }
+           else
+           {
+             $sql="insert into traffic_mobility(Day_Type,Travel_Mode,Details_Info,City_id)".
+             "values('".$dayType."','".$travelMode."','".$info."',$city)"; 
+             //$this->executeGenericDMLQuery($sql);
+             $response['status'] = "success";
+           }
+           //echo $sql;
+           $this->response($this->json($response), 200);
+            
+        }
+
 
 
         /*money service starts  */
@@ -1060,6 +1085,7 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($parkingDetails), 200);
         }
         /*parking service ends*/
+
 	}
 	
 	$api = new API;

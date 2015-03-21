@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+</head>
+<body ng-controller="trafficController" ng-init="init()">
+	<table>
+		<tr>
+			<td>Select City :</td>
+			<td>
+				<select ng-model="city">
+				<option value="">Select City</option>
+					<option  ng-repeat="item in cities" value="{{item.CityID}}">{{item.CityName}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Select Day Type:</td>
+			
+			<td><select ng-model="day_type">
+			<option value="">Day Type</option><option ng-repeat="item in dayType" value="{{item.name}}">{{item.name}}</option></select></td>
+		</tr>
+		<tr>
+			<td>Travel Mode:</td>
+			<td><select ng-model="travel_mode">
+			<option value="">Travel Mode</option>
+			<option ng-repeat="item in TravelMode" value="{{item.name}}">{{item.name}}</option></select></td>
+		</tr>
+		<tr>
+			<td>Information:</td>
+			<td><textarea ng-model="info"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="submit" ng-click="onSubmit()" /></td>
+		</tr>
+		
+	</table>
+	<script type="text/javascript">
+		var app = angular.module("app",[]);
+		app.controller("trafficController",["$scope","$http",function($scope,$http) {
+			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			$scope.city = '';
+			$scope.travel_mode = '';
+			$scope.day_type = '';
+			$scope.info = '';
+	
+			$scope.dayType = [ 
+					{name:"On Holidays"},
+					{name:"Normal Days"},
+			];
+			$scope.TravelMode = [ 
+					{name:"Buses"},
+					{name:"Tourist Buses"},
+					{name:"Heavy/Medium Vehicle"},
+					{name:"Town Bus /Small City Bus"},
+					{name:"Light Vehicles (Car/Sumo/Bolero/Scorpio)"},
+					{name:"Auto Rickshaw (Three Wheelers)"},
+					{name:"Two Wheelers"},
+			];
+			
+			$scope.getCities =function()
+			{	$scope.cities=[];
+				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
+					var citiDetails = pRes.data;
+			        angular.forEach(citiDetails,function(city,index){
+		                $scope.cities.push(city);
+		            });
+				});
+			}
+			$scope.init = function(){
+				$scope.getCities();
+			}
+			$scope.onSubmit = function(){
+				if($scope.travel_mode != '' && $scope.city != '' && $scope.day_type!='' && $scope.info!= ''){
+	            	var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postTrafficDetails&travelMode='+$scope.travel_mode+'&city='+$scope.city+'&dayType='+$scope.day_type+'&info='+$scope.info);
+				}
+			}
+		}]);
+	</script>
+
+
+
+</body>
+</html>
