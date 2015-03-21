@@ -1,13 +1,13 @@
-<div>
+<div ng-init="initHealthCareSanitation()">
       <ion-view class="pane">
         <ion-content class="has-header">		 
 		  <div class="row money-dashboard contacts-dashboard travel" ng-repeat="option in healthcareList">
-		     <a   class="col col-20">
+		     <a ng-click="onSelectHealthCare(option)"  class="col col-20">
 			   <div>
-			      <i class="{{option.icon}}"></i>
+			      <i class="{{option.iconClass}}"></i>
 			    </div>
 			 </a>
-			 <a  class="col col-80"> 
+			 <a ng-click="onSelectHealthCare(option)"  class="col col-80"> 
 			   <div>
 			      <h2>{{option.info}}</h2>
 			   </div>

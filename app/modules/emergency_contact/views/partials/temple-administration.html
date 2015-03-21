@@ -1,0 +1,51 @@
+<div class="parking_lower" ng-init="initTempleAdmin()">
+	<ion-view class="pane">
+        <ion-content class="has-header">
+		  <div class="row" ng-repeat= "admin in templeAdmins">
+		     <div class="col col-100 box_menu">
+			   <div class="parking">
+			     <div class="col col-100 parking-place">
+				 
+					   <div>
+						  <p> <i class="fa fa-building-o"></i>
+						       {{admin.name}}</p>
+					   </div><!--span end-->
+					   
+					   <div>
+						  <p> <i class="fa fa-location-arrow"></i>
+						       {{admin.designation}}</p>
+					   </div><!--span end-->
+
+					   <div>
+						  <p> <i class="fa fa-location-arrow"></i>
+						       {{admin.contact}}</p>
+					   </div><!--span end-->
+					    
+					    <div class="right_map" ng-click="viewOnMap(content.address)">
+				      		<p> <a href=""> 
+					      	<i class="fa fa-map-marker"></i>
+						    View Map</a> </p>
+					    </div>
+					</div>
+				 
+			   
+			   </div><!--parking end-->
+			   
+			 </div><!--col-50 end-->
+		  </div><!--row end-->
+
+		 <div class="row">
+		     <div class="col col-50">
+			  
+			 </div><!--col-50 end-->
+			 
+			  <div class="col col-50">
+			      <p class="powered-by">Powered by</p>
+				  <div class="footer-logo"> <img src="img/icici-bank.png" /> </div>
+
+			 </div><!--col-50 end-->
+		  </div><!--row end-->
+		  
+        </ion-content>
+      </ion-view> 
+</div>

@@ -1086,6 +1086,66 @@ header('Access-Control-Allow-Origin: *');
         }
         /*parking service ends*/
 
+
+        /*codes for emergency contact starts*/
+
+        // used to get selected emergency contact deatils that would be selected from 
+        // health care and sanitation options
+        // possible values - hospitals, trauma care , toilets etc.
+        // the type of table to be accessed would be come from the request itself
+        public function fetchSelectedEmergencyContact(){
+            $tableType =  $this->_request['tableType'];
+            $sql = "select * from $tableType join city c on $tableType.cityId = c.CityID";
+            $rows  = $this->executeGenericDQLQuery($sql);
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $parkingDetails[$i]['id'] = $rows[$i]['id'];
+              $parkingDetails[$i]['name'] = $rows[$i]['name'];
+              $parkingDetails[$i]['address'] = $rows[$i]['address'];
+              $parkingDetails[$i]['contact'] = $rows[$i]['contact'];
+              $parkingDetails[$i]['authority'] = $rows[$i]['authority'];
+              $parkingDetails[$i]['CityName'] = $rows[$i]['CityName'];
+              $parkingDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
+
+           }
+            $this->response($this->json($parkingDetails), 200);
+
+        }
+        public function fetchLocalAuthorities(){
+          // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
+          $sql = "select * from local_authorities";
+            $rows  = $this->executeGenericDQLQuery($sql);
+            $localAuthorities = array();
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $localAuthorities[$i]['id'] = $rows[$i]['id'];
+              $localAuthorities[$i]['designation'] = $rows[$i]['designation'];
+              $localAuthorities[$i]['name'] = $rows[$i]['name'];
+              $localAuthorities[$i]['contact'] = $rows[$i]['contact_no'];
+              // $localAuthorities[$i]['CityName'] = $rows[$i]['CityName'];
+              
+           }
+            $this->response($this->json($localAuthorities), 200);
+        }
+        public function fetchTempleAdmin(){
+          // here city id set to 1 for to fetch data from city 1 i.e puri
+          // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
+          $sql = "select * from temple_admin ";
+            $rows  = $this->executeGenericDQLQuery($sql);
+            $localAuthorities = array();
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $localAuthorities[$i]['id'] = $rows[$i]['id'];
+              $localAuthorities[$i]['designation'] = $rows[$i]['designation'];
+              $localAuthorities[$i]['name'] = $rows[$i]['name'];
+              $localAuthorities[$i]['contact'] = $rows[$i]['contact_no'];
+              // $localAuthorities[$i]['CityName'] = $rows[$i]['CityName'];
+              
+           }
+            $this->response($this->json($localAuthorities), 200);
+        }
+        /*codes for emergency contact ends*/
+
 	}
 	
 	$api = new API;

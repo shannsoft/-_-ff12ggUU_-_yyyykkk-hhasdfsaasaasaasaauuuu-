@@ -45,7 +45,7 @@ AppRoot.config(function($routeProvider) {
 				controller  : 'eventsController'
 			})
 			.when('/contacts', {
-				templateUrl : 'modules/emergency contact/views/view.html',
+				templateUrl : 'modules/emergency_contact/views/view.html',
 				controller  : 'emerContactController'
 			})
 			.when('/parking', {

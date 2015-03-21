@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2015 at 08:39 AM
+-- Generation Time: Mar 22, 2015 at 12:05 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -223,6 +223,32 @@ INSERT INTO `facilities` (`id`, `facility`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fast_aid`
+--
+
+CREATE TABLE IF NOT EXISTS `fast_aid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
+  `authority` varchar(100) DEFAULT NULL,
+  `cityId` int(11) NOT NULL DEFAULT '0',
+  `icon_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `fast_aid`
+--
+
+INSERT INTO `fast_aid` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
+(1, 'fast aid 1', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
+(2, 'fast aid 2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
+(3, 'fast aid 3', 'address 1 ', '9632565236', 'auth 2', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `flight`
 --
 
@@ -310,6 +336,32 @@ INSERT INTO `guest_house` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hospital`
+--
+
+CREATE TABLE IF NOT EXISTS `hospital` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
+  `authority` varchar(100) DEFAULT NULL,
+  `cityId` int(11) NOT NULL DEFAULT '0',
+  `icon_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `hospital`
+--
+
+INSERT INTO `hospital` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
+(1, 'demo hospitals', 'address 1 ', '9632565236', 'auth 1', 1, 'img/hotels.jpg'),
+(2, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
+(3, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hotels`
 --
 
@@ -374,6 +426,31 @@ INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `Price
 (11, 'Exclusive Deluxe', 100, 2000, 3000, 23),
 (12, 'Deluxe room', 100, 3000, 3500, 23),
 (13, 'Exclusive Deluxe', 100, 3500, 4000, 23);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `local_authorities`
+--
+
+CREATE TABLE IF NOT EXISTS `local_authorities` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `designation` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `contact_no` varchar(20) DEFAULT NULL,
+  `cityId` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `local_authorities`
+--
+
+INSERT INTO `local_authorities` (`id`, `designation`, `name`, `contact_no`, `cityId`) VALUES
+(1, 'ACP', 'Mr . dilip patra', '933265854', NULL),
+(2, 'ACP', 'Mr . dilip patra', '933265854', NULL),
+(3, 'ACP', 'Mr . dilip patra', '933265854', NULL),
+(4, 'ACP', 'Mr . dilip patra', '933265854', NULL);
 
 -- --------------------------------------------------------
 
@@ -505,6 +582,31 @@ INSERT INTO `states` (`StateID`, `StateName`, `CountryID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `temple_admin`
+--
+
+CREATE TABLE IF NOT EXISTS `temple_admin` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `designation` varchar(50) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `contact_no` varchar(20) DEFAULT NULL,
+  `cityId` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `temple_admin`
+--
+
+INSERT INTO `temple_admin` (`id`, `designation`, `name`, `contact_no`, `cityId`) VALUES
+(1, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL),
+(2, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL),
+(3, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL),
+(4, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `temp_accomodation`
 --
 
@@ -614,6 +716,32 @@ INSERT INTO `train` (`TrainID`, `TrainNumber`, `TrainName`, `FromStation`, `ToSt
 (6, 1111, 'aaaa', 'Kolkata', 'hydrabad', '12', '16', '', 1, 1, 1, 0, 0, 0, 0),
 (8, 1234, 'abcd', 'Kolkata', 'balasore', '12', '13', 'www.xyz.com', 1, 1, 1, 1, 0, 0, 0),
 (7, 4444, '11111', 'Kolkata', 'hydrabad', '11', '22', '', 1, 1, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trauma_care`
+--
+
+CREATE TABLE IF NOT EXISTS `trauma_care` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
+  `authority` varchar(100) DEFAULT NULL,
+  `cityId` int(11) NOT NULL DEFAULT '0',
+  `icon_image` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `trauma_care`
+--
+
+INSERT INTO `trauma_care` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
+(1, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
+(2, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
+(3, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
