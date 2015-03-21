@@ -1,6 +1,6 @@
 <div >
 <ion-view class="pane">
-        <ion-content>
+        <ion-content class="has-header">
 		
 		 <div class="row  top-margin">
      	   <div class="col col-50">
@@ -16,20 +16,17 @@
 			  <input type="text" placeholder="Grand Road Puri" ng-model="route.destination"/>
 			</form>
 		   </div>
-		   <div class="col col-50">
-		    
-		   </div>
 		  </div>
 		 <button class="button" ng-click="searchRoute()">Search</button>
 		  <div class="row">
 		     <div class="col col-100">
-			    <div id="route-map" style="width: 100%; float:left;position:absolute!important;">
+			    <div id="route-map" style="width: 100%; float:left;position:absolute!important;min-height:20em">
 			    	
 		  		</div>
 			 </div>
 		  </div><!--row end-->
 		  
-		  <div class="row">
+		  <div class="row" style="position:absolute !important;top:30em;">
 		     <div class="col col-50">
 			 </div><!--col-50 end-->
 			  <div class="col col-50">
