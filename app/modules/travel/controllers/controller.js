@@ -17,7 +17,7 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-truck",info:"Heavy/Medium Vehicle"},
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-bus",info:"Town Bus /Small City Bus"},
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-car",info:"Light Vehicles (Car/Sumo/Bolero/Scorpio)"},
-        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-taxi",info:"Auto Rickshaw (Three Wheelers)"},
+        {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-train",info:"Auto Rickshaw (Three Wheelers)"},
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-motorcycle",info:"Two Wheelers"}
       ];
     }

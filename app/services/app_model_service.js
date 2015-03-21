@@ -30,25 +30,15 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
     },
     getTravelType = function(){
       return travelType;
-    },
+    };
 
 
 
    /* global data for all modules ends*/
-
-
-
-   
-   		
-    getTempleSchedule = function(pDay){
-      var response = $http.get('http://localhost/Nabakalebara/app/php%20project/api1.php?'+'reqmethod=getTempleSchedule'+"&day="+pDay);
-      return response;
-    };
    	
 	return{
 		
 		getMenuOptions:getMenuOptions,
-    getTempleSchedule:getTempleSchedule,
     setDayType:setDayType,
     getDayType:getDayType,
     setTravelType:setTravelType,

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+</head>
+<body ng-controller="trafficController" ng-init="init()">
+	<table>
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" ng-model="branchName" /></td>
+		</tr>
+		<tr>
+			<td>Address:</td>
+			<td><textarea ng-model="address"></textarea></td>
+		</tr>
+		<tr>
+			<td>Contact:</td>
+			<td><input type="text" ng-model="contact" /></td>
+		</tr>
+		<tr>
+			<td>Branch Manager:</td>
+			<td><input type="text" ng-model="branchMng" /></td>
+		</tr>
+		<tr>
+			<td>Forex Manager:</td>
+			<td><input type="text" ng-model="forexMng" /></td>
+		</tr>
+		<tr>
+			<td>Select City :</td>
+			<td>
+				<select ng-model="city">
+				<option value="">Select City</option>
+					<option  ng-repeat="item in cities" value="{{item.CityID}}">{{item.CityName}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="submit" ng-click="onSubmit()" /></td>
+		</tr>
+		
+	</table>
+	<script type="text/javascript">
+		var app = angular.module("app",[]);
+		app.controller("trafficController",["$scope","$http",function($scope,$http) {
+			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			$scope.city = '';
+			$scope.branchName = '';
+			$scope.branchMng = '';
+			$scope.address = '';
+			$scope.contact = '';
+			$scope.forexMng = '';
+			
+			$scope.getCities =function()
+			{	$scope.cities=[];
+				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
+					var citiDetails = pRes.data;
+			        angular.forEach(citiDetails,function(city,index){
+		                $scope.cities.push(city);
+		            });
+				});
+			}
+			$scope.init = function(){
+				$scope.getCities();
+			}
+			$scope.onSubmit = function(){
+				// console.log('branchName = '+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city)
+	            var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postForexDetails&branchName='+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city);
+			}
+		}]);
+	</script>
+
+
+
+</body>
+</html>

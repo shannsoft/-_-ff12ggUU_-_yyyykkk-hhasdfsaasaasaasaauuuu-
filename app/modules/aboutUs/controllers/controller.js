@@ -1,4 +1,4 @@
-angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope','MainService','AppModelService', function ($scope,$rootScope,MainService,AppModelService){
+angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope','MainService','AppModelService','AboutUsService', function ($scope,$rootScope,MainService,AppModelService,AboutUsService){
   	$scope.initAboutUs = function(){
         console.log("initAboutUs");
       $scope.contentUrl='modules/aboutUs/views/partials/aboutUs-lower.html';
@@ -16,13 +16,13 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
   	*/
     $scope.fetchSchedule=function(pval){
       var value=$scope.convert(pval);
-      MainService.getTempleSchedule(value);
+      AboutUsService.getTempleSchedule(value);
     };
     $scope.getTempleSchedule = function (pval) {
         if(!pval)
             pval='';
         $scope.templeScheduleList = [];
-        AppModelService.getTempleSchedule(pval).then(function(pRes){
+        AboutUsService.getTempleSchedule(pval).then(function(pRes){
         var scheduleDetails = pRes.data.schedule;
          $(scheduleDetails).each(function(i){
                 $scope.templeScheduleList.push(scheduleDetails[i]);
@@ -37,7 +37,7 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
     };
 
   	$scope.scheduleDetails = [];
-    $scope.days = ['monday','tuesday','wednessday','throusday','friday','satterday','sunday'];
+    $scope.days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
   	/*$scope.templeScheduleList = '{'+
     '"schedules": ['+
         '{'+

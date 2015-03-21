@@ -985,6 +985,33 @@ header('Access-Control-Allow-Origin: *');
 
         /*money service starts  */
 
+        public function postBranchDetails(){
+           $branchName =  $this->_request['branchName'];
+           $address =  $this->_request['address'];
+           $city =  $this->_request['city'];
+           $branchMng =  $this->_request['branchMng'];
+           $contact =  $this->_request['contact'];
+           $forexMng =  $this->_request['forexMng'];
+           $sql="insert into branches(Name,address,contact_number,branch_manager,forex_manager,city_id)".
+             "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
+             $this->executeGenericDMLQuery($sql);
+            $response['status'] = "success";
+           $this->response($this->json($response), 200);  
+        }
+        public function postForexDetails(){
+           $branchName =  $this->_request['branchName'];
+           $address =  $this->_request['address'];
+           $city =  $this->_request['city'];
+           $branchMng =  $this->_request['branchMng'];
+           $contact =  $this->_request['contact'];
+           $forexMng =  $this->_request['forexMng'];
+           $sql="insert into forex_branch(Name,address,contact_number,branch_manager,forex_manager,city_id)".
+             "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
+             $this->executeGenericDMLQuery($sql);
+            $response['status'] = "success";
+           $this->response($this->json($response), 200);  
+        }
+
         public function getBranches(){
           $cityId =  $this->_request['cityId'];
           $sql = "select * from branches b";
