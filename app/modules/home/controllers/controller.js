@@ -1,4 +1,4 @@
-angular.module("home").controller("homeController",['$scope','$rootScope','MainService','AppModelService','MainEvent','HomeService', function($scope,$rootScope,MainService,AppModelService,MainEvent,HomeService){
+angular.module("home").controller("homeController",['$scope','$rootScope','MainService','AppModelService','MainEvent','HomeService','$interval',function($scope,$rootScope,MainService,AppModelService,MainEvent,HomeService,$interval){
   var map;
   var infowindow;
   var mapSearch = '';
@@ -6,6 +6,7 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
   var directionsService;
   var stepDisplay;
   var markerArray = [];
+  $scope.notifications = [];
 
   $scope.homeInit = function(){
     $scope.contentUrl = HomeService.getContentUrl();
@@ -13,11 +14,15 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     $scope.heading = HomeService.getHeading();
     $scope.menuOptionList = AppModelService.getMenuOptions();
     console.log("homeInit  ");
+    $interval(function(){
+      // calling service to get latest 10 notifications
+      $scope.notifications = HomeService.getNotification();
+    },1000*10);  // calling interval for each 10 minutes after init of application
   }
 
-  $rootScope.showNoty = function(){
-    alert(0);
-  }
+  $scope.$watch('notifications',function(){
+    console.log($scope.notifications);
+  });
   $scope.changeContentUrl = function(pUrl){
     $scope.contentUrl = pUrl;
      HomeService.setContentUrl(pUrl);

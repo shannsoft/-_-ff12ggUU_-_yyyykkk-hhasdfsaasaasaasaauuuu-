@@ -1078,7 +1078,7 @@ header('Access-Control-Allow-Origin: *');
           $sql = "select * from notification order by id desc";
           $rows = $this->executeGenericDQLQuery($sql);
           $notifications = array();
-          for($i=0 ; $i<sizeof($rows);$i++)
+          for($i=0 ; $i < 10 && $i<sizeof($rows);$i++) // to get upto 10 latest notifications
            {
               $notifications[$i]['id'] = $rows[$i]['id'];
               $notifications[$i]['title'] = $rows[$i]['title'];

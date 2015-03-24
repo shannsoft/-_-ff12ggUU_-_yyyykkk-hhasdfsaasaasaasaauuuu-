@@ -17,6 +17,10 @@ AppRoot.factory('HomeService',['$http','AppConfig','$rootScope', function($http,
         },
         getHeading : function(){
             return heading;
+        },
+        getNotification : function(){
+            var response = $http.get(AppConfig.apiPath+"reqmethod=getNotification");
+            return response;
         }
     }
 }]);
