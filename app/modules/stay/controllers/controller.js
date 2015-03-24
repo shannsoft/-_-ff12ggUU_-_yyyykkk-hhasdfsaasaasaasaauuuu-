@@ -1,4 +1,4 @@
-angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent){
+angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent','$ionicPopup',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent,$ionicPopup){
     
     $scope.initStay = function(){
       console.log("initStay");
@@ -88,8 +88,25 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       // console.log(emailSubmit);
       emailSubmit.toEmail = toEmail;
       StayService.emailSubmit(emailSubmit).then(function(pRes){
-          console.log(pRes.data);
-          $scope.emailVisible = false;
+          if(pRes.status)
+          {
+            var alertPopup = $ionicPopup.alert({
+             title: 'Thank you !',
+             template: 'Your enquiry has been submited'
+           });
+           
+            $scope.emailVisible = false;
+            
+          }
+          else
+          {
+            var alertPopup = $ionicPopup.alert({
+             title: 'Error !',
+             template: 'Enquiry has not been sent try later .'
+           });
+           
+            $scope.emailVisible = false;
+          }
           // show successful message
       });
     }
