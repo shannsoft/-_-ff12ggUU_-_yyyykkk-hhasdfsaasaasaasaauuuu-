@@ -1,4 +1,4 @@
-angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent','$ionicPopup',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent,$ionicPopup){
+angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent','$ionicPopup','$ionicLoading',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent,$ionicPopup,$ionicLoading){
     
     $scope.initStay = function(){
       console.log("initStay");
@@ -39,9 +39,11 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         startPrice=="4000" ? endPrice = undefined : endPrice=pPrice[1];
       }
       //console.log($scope.priceRange);
+      $scope.showLoaders()
       StayService.fetchHotels(startPrice,endPrice).then(function(pRes){
           $scope.hotels = [];
           $scope.hotels = pRes.data;
+          $scope.hideLoaders();
           
       });
     }
@@ -64,8 +66,10 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     {
       //console.log(hotelObj) ;
       // fetching details of hotel and storing in model
+      $scope.showLoaders();
       StayService.setSelectedHotel(hotelObj);
       $scope.contentUrl = 'modules/stay/views/partials/global-hotel-facilities.html';
+      $scope.hideLoaders();
         //window.location = hotelObj.urlPath;
     }
 
@@ -84,10 +88,11 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     $scope.emailSubmit = function(emailSubmit,toEmail){
       
       
-      
+      $scope.showLoaders();
       // console.log(emailSubmit);
       emailSubmit.toEmail = toEmail;
       StayService.emailSubmit(emailSubmit).then(function(pRes){
+          $scope.hideLoaders();
           if(pRes.status)
           {
             var alertPopup = $ionicPopup.alert({
@@ -131,6 +136,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         startPrice = pPrice[0];
         startPrice=="4000" ? endPrice = undefined : endPrice=pPrice[1];
       }
+      $scope
       StayService.fetchGuestHouse(startPrice,endPrice).then(function(pRes){
           $scope.guestHouseList = [];
           $scope.guestHouseList = pRes.data;
@@ -234,5 +240,14 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       $scope.$emit(MainEvent.INIT_MAP,{data : address});
     }
   	
-
+    /* ionic preloaders starts*/
+    $scope.showLoaders = function() {
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
+    };
+    $scope.hideLoaders = function(){
+      $ionicLoading.hide();
+    };
+    /* ionic preloaders ends*/
 }]);
