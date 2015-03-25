@@ -1,4 +1,4 @@
-angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent','$ionicPopup','$ionicLoading',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent,$ionicPopup,$ionicLoading){
+angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent){
     
     $scope.initStay = function(){
       console.log("initStay");
@@ -39,11 +39,11 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         startPrice=="4000" ? endPrice = undefined : endPrice=pPrice[1];
       }
       //console.log($scope.priceRange);
-      $scope.showLoaders()
+      MainService.showLoaders()
       StayService.fetchHotels(startPrice,endPrice).then(function(pRes){
           $scope.hotels = [];
           $scope.hotels = pRes.data;
-          $scope.hideLoaders();
+          MainService.hideLoaders();
           
       });
     }
@@ -66,10 +66,10 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     {
       //console.log(hotelObj) ;
       // fetching details of hotel and storing in model
-      $scope.showLoaders();
+      MainService.showLoaders();
       StayService.setSelectedHotel(hotelObj);
       $scope.contentUrl = 'modules/stay/views/partials/global-hotel-facilities.html';
-      $scope.hideLoaders();
+      MainService.hideLoaders();
         //window.location = hotelObj.urlPath;
     }
 
@@ -88,27 +88,26 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     $scope.emailSubmit = function(emailSubmit,toEmail){
       
       
-      $scope.showLoaders();
+      MainService.showLoaders();
       // console.log(emailSubmit);
       emailSubmit.toEmail = toEmail;
       StayService.emailSubmit(emailSubmit).then(function(pRes){
-          $scope.hideLoaders();
+          MainService.hideLoaders();
           if(pRes.status)
           {
-            var alertPopup = $ionicPopup.alert({
+            /*var alertPopup = $ionicPopup.alert({
              title: 'Thank you !',
              template: 'Your enquiry has been submited'
-           });
+           });*/
+            MainService.showAlertPopUp('Thank you' ,'Your enquiry has been submited');
            
             $scope.emailVisible = false;
             
           }
           else
           {
-            var alertPopup = $ionicPopup.alert({
-             title: 'Error !',
-             template: 'Enquiry has not been sent try later .'
-           });
+            
+            MainService.showAlertPopUp('Error' ,'Enquiry has not been sent try later .');
            
             $scope.emailVisible = false;
           }
@@ -241,13 +240,13 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     }
   	
     /* ionic preloaders starts*/
-    $scope.showLoaders = function() {
+    /*MainService.showLoaders = function() {
       $ionicLoading.show({
         template: 'Loading...'
       });
     };
-    $scope.hideLoaders = function(){
+    MainService.hideLoaders = function(){
       $ionicLoading.hide();
-    };
+    };*/
     /* ionic preloaders ends*/
 }]);

@@ -682,16 +682,16 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getResturantDetails(){
 
-          $startPrice = intval ($this->_request['startPrice']);
-          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+          // $startPrice = intval ($this->_request['startPrice']);
+          // $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
           $sql = "select * from resturants r join city c on r.CityId = c.CityID";
-         if($startPrice!="undefined")
-          {
-            $sql.="  where r.start_price>=$startPrice ";
-            if($endPrice != -1 )
-              $sql.=" and r.end_price<=$endPrice";
-          }
+         // if($startPrice!="undefined")
+         //  {
+         //    $sql.="  where r.start_price>=$startPrice ";
+         //    if($endPrice != -1 )
+         //      $sql.=" and r.end_price<=$endPrice";
+         //  }
           $rows = $this->executeGenericDQLQuery($sql);
           $resturantDetails = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -719,17 +719,17 @@ header('Access-Control-Allow-Origin: *');
 
         public function fetchCoffeeShops(){
 
-          $startPrice = intval ($this->_request['startPrice']);
-         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+         //  $startPrice = intval ($this->_request['startPrice']);
+         // $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
 
           $sql = "select distinct * from coffee_shops cf join city c on cf.CityId = c.CityID ";
-          if($startPrice!="undefined")
-          {
-            $sql.="  where cf.start_price>=$startPrice ";
-            if($endPrice != -1 )
-              $sql.=" and cf.end_price<=$endPrice";
-          }
+          // if($startPrice!="undefined")
+          // {
+          //   $sql.="  where cf.start_price>=$startPrice ";
+          //   if($endPrice != -1 )
+          //     $sql.=" and cf.end_price<=$endPrice";
+          // }
           $rows = $this->executeGenericDQLQuery($sql);
           $coffeeShops = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -758,16 +758,16 @@ header('Access-Control-Allow-Origin: *');
           if(isset($cityId))
             $sql=" join city c on ta.CityId = c.CityID";
 
-          $startPrice = intval ($this->_request['startPrice']);
-          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+          // $startPrice = intval ($this->_request['startPrice']);
+          // $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
 
-          if($startPrice!="undefined")
-          {
-            $sql.="  where ta.start_price>=$startPrice ";
-            if($endPrice != -1 )
-              $sql.=" and ta.end_price<=$endPrice";
-          }
+          // if($startPrice!="undefined")
+          // {
+          //   $sql.="  where ta.start_price>=$startPrice ";
+          //   if($endPrice != -1 )
+          //     $sql.=" and ta.end_price<=$endPrice";
+          // }
 
           $rows = $this->executeGenericDQLQuery($sql);
           $tempAccm = array();
@@ -1075,10 +1075,10 @@ header('Access-Control-Allow-Origin: *');
           
         }
         public function getNotification(){
-          $sql = "select * from notification order by id desc";
+          $sql = "select * from notification order by id desc limit 10";
           $rows = $this->executeGenericDQLQuery($sql);
           $notifications = array();
-          for($i=0 ; $i < 10 && $i<sizeof($rows);$i++) // to get upto 10 latest notifications
+          for($i=0 ; $i<sizeof($rows);$i++) // to get upto 10 latest notifications
            {
               $notifications[$i]['id'] = $rows[$i]['id'];
               $notifications[$i]['title'] = $rows[$i]['title'];
