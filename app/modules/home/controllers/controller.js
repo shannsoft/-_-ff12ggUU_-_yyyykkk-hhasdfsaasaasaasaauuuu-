@@ -17,7 +17,7 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     $interval(function(){
       // calling service to get latest 10 notifications
       $scope.notifications = HomeService.getNotification();
-    },1000*10);  // calling interval for each 10 minutes after init of application
+    },1000*60*10);  // calling interval for each 10 minutes after init of application
   }
 
   $scope.$watch('notifications',function(){

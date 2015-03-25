@@ -190,12 +190,12 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getCity()
         {	
-            $stateName = $this->_request['state'];
+              isset($this->_request['state']) ? $stateName = $this->_request['state'] :  $stateName = "odisha";
             	$sql="SELECT * FROM city c ";
-                if($stateName!='' && $stateName!='undefined')
-                {
+                // if($stateName!='' && $stateName!='undefined')
+                // {
                     $sql.=" join states s on c.StateID = s.StateID where s.StateName='".$stateName."'";
-                }
+                //}
                 //echo $sql;
                 $rows = $this->executeGenericDQLQuery($sql);
     			$cityDetails = array();
@@ -866,7 +866,7 @@ header('Access-Control-Allow-Origin: *');
               $trainDetails[$i]['Friday'] = $rows[$i]['Friday'];
               $trainDetails[$i]['Saturday'] = $rows[$i]['Saturday'];
               $trainDetails[$i]['Sunday'] = $rows[$i]['Sunday'];
-              $trainDetails[$i]['CityID'] = $rows[$i]['CityID'];
+              // $trainDetails[$i]['CityID'] = $rows[$i]['CityID'];
               $trainDetails[$i]['WebLink'] = $rows[$i]['WebLink'];
            }
             $this->response($this->json($trainDetails), 200);
@@ -1013,11 +1013,11 @@ header('Access-Control-Allow-Origin: *');
         }
 
         public function getBranches(){
-          $cityId =  $this->_request['cityId'];
+          if(isset($this->_request['cityId'])) $cityId = $this->_request['cityId'];
           $sql = "select * from branches b";
           if(isset($cityId))
           {
-            $sql=" join city c on c.CityID = b.city_id where c.CityID = $cityId";
+            $sql .=" join city c on c.CityID = b.city_id where c.CityID = $cityId";
           }
           $rows = $this->executeGenericDQLQuery($sql);
           $branches = array();

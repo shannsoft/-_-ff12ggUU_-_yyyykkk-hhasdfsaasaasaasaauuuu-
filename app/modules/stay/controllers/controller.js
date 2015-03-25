@@ -239,14 +239,4 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       $scope.$emit(MainEvent.INIT_MAP,{data : address});
     }
   	
-    /* ionic preloaders starts*/
-    /*MainService.showLoaders = function() {
-      $ionicLoading.show({
-        template: 'Loading...'
-      });
-    };
-    MainService.hideLoaders = function(){
-      $ionicLoading.hide();
-    };*/
-    /* ionic preloaders ends*/
 }]);

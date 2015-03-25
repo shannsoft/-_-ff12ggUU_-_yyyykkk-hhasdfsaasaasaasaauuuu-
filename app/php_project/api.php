@@ -865,7 +865,7 @@ header('Access-Control-Allow-Origin: *');
               $trainDetails[$i]['Friday'] = $rows[$i]['Friday'];
               $trainDetails[$i]['Saturday'] = $rows[$i]['Saturday'];
               $trainDetails[$i]['Sunday'] = $rows[$i]['Sunday'];
-              $trainDetails[$i]['CityID'] = $rows[$i]['CityID'];
+              // $trainDetails[$i]['CityID'] = $rows[$i]['CityID'];
               $trainDetails[$i]['WebLink'] = $rows[$i]['WebLink'];
            }
             $this->response($this->json($trainDetails), 200);
