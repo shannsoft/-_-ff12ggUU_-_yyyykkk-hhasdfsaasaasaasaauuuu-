@@ -394,22 +394,23 @@ padding-left:0.5em;
 /*---Notification css--- Start-*/
 .notification{position: relative !important;
   z-index: 99999999 !important;
-  margin-top: 2em;}
+  margin-top: 3.5em;}
   .noti_info{position: relative !important;
   z-index: 99999999 !important;
   float: right;
-  right: 3em;
-  top: 1em;
+  right: 2em;
+  font-size: 1.8em !important;
+  top: 0.8em;
   cursor: pointer;
   color: rgb(245, 122, 106);}
-  .notification_info .list{width:12em;}
+  .notification_info .list{width:11em;}
 .item-select select{padding: 9px 48px 9px 16px !important;}
  .item{  padding: 1px 15px !important;}
 .button{line-height: 35px !important; min-height:35px !important;}
 .list li a.item{line-height:2.8em !important;}
 .currency_converter{height: 2.5em !important;}
-.notification_info .list h2{font-size:11px;}
-.notification_info .list li{font-size:12px;}
+.notification_info .list h2{font-size:14px;letter-spacing:0.7px;padding:3px 0px;}
+.notification_info .list li{font-size:13.5px;letter-spacing:0.7px;line-height:30px;}
 
 /*---Notification css--- end-*/
 
