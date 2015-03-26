@@ -1,18 +1,18 @@
 <ion-view class="pane">
         <ion-content class="has-header">
-		  <div class="row enter-amount">
+		  <!-- <div class="row enter-amount">
 		         <form class="col col-100">
                     <input type="text" placeholder="Enter Amount here..." />
 				 </form>
-		  </div><!--row end-->
+		  </div> --><!--row end-->
 		   <div class="row">
 		     <div class="col col-50">
-			   <label class="item item-input item-select">
+			   <label class="item item-input item-select currency_converter" >
 					<div class="input-label">
 					  <!-- USD - US Dollar -->
 					  {{sourceCurrency.code}}
 					</div>
-					<select ng-options="curr.code for curr in currencies" ng-model="sourceCurr" ng-change="onSelectCurr(sourceCurr,0)">
+					<select class="currency_converter" ng-options="curr.code for curr in currencies" ng-model="sourceCurr" ng-change="onSelectCurr(sourceCurr,0)">
 					  <!-- <option> USD - US Dollar</option>
 					  <option selected>Euro </option>
 					  <option>eur</option>
@@ -24,12 +24,12 @@
 				  </label>
 			 </div><!--col-50 end-->
 			 <div class="col col-50"> 
-			    <label class="item item-input item-select">
+			    <label class="item item-input item-select currency_converter">
 					<div class="input-label">
 					 <!-- INR - Indian rupee -->
 					 {{convertCurrency.code}}
 					</div>
-					<select ng-options="dest.code for dest in currencies" ng-model="destCurr" ng-change="onSelectCurr(destCurr,1)">
+					<select class="currency_converter" ng-options="dest.code for dest in currencies" ng-model="destCurr" ng-change="onSelectCurr(destCurr,1)">
 					  <!-- <option> USD - US Dollar</option>
 					  <option>Euro </option>
 					  <option>eur</option>

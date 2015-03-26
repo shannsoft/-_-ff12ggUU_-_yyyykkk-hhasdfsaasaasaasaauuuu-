@@ -2,7 +2,7 @@
 AppRoot.directive('logo', ["MainEvent",'HomeService','$timeout',function(MainEvent,HomeService,$timeout) {
 
 	var logoController = function($scope){
-		$scope.showNotification = true;
+		$scope.showNotification = false;
 		$scope.notiClicked = function(){
 			// alert("showNotification cliked");
 			$scope.showNotification = !$scope.showNotification;

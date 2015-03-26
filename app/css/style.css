@@ -384,9 +384,30 @@ padding-left:0.5em;
 .day{font-weight: bold;}
 .hotel_query{min-height:6em;background:transparent;}
 .email-button button{float:right;}
-.notification_info{margin-right: 1em;}
+/*.notification_info{margin-right: 1em;}
 .item{font-size:0.9em;letter-spacing:0.6px;}
 .bar{position:absolute      
  width:90% !important}       
-.notification{position: relative !important;  z-index: 99999999 !important;} 
+.notification{position: relative !important;  z-index: 99999999 !important;} */
+
+
+/*---Notification css--- Start-*/
+.notification{position: relative !important;
+  z-index: 99999999 !important;
+  margin-top: 2em;}
+  .noti_info{position: relative !important;
+  z-index: 99999999 !important;
+  float: right;
+  right: 3em;
+  top: 1em;
+  cursor: pointer;
+  color: rgb(245, 122, 106);}
+  .notification_info .list{width:17em;}
+.item-select select{padding: 9px 48px 9px 16px !important;}
+ .item{  padding: 1px 15px !important;}
+.button{line-height: 35px !important; min-height:35px !important;}
+.list li a.item{line-height:2.8em !important;}
+.currency_converter{height: 2.5em !important;}
+
+/*---Notification css--- end-*/
 

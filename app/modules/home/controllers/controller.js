@@ -10,17 +10,23 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
 
   $scope.homeInit = function(){
     $scope.contentUrl = HomeService.getContentUrl();
+    MainService.showLoaders();
+    HomeService.getNotification().then(function(pRes){
+          MainService.hideLoaders();
+          $scope.notifications = pRes.data;
+      });
     //HomeService.setContentUrl('modules/home/views/partials/mainMenu.html');
     $scope.heading = HomeService.getHeading();
     $scope.menuOptionList = AppModelService.getMenuOptions();
     console.log("homeInit  ");
     $interval(function(){
       // calling service to get latest 10 notifications
+
       HomeService.getNotification().then(function(pRes){
           $scope.notifications = pRes.data;
       });
     // $scope.notifications = [{header:"header",detail:"deatil"},{header:"header",detail:"deatil"},{header:"header",detail:"deatil"}];
-    },1000*60*10);  // calling interval for each 10 minutes after init of application
+    },1000*60*5);  // calling interval for each 10 minutes after init of application
   }
 
   $scope.changeContentUrl = function(pUrl){
