@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2015 at 12:05 AM
+-- Generation Time: Mar 26, 2015 at 08:59 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -63,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `branches` (
 --
 
 INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manager`, `forex_manager`, `city_id`) VALUES
-(1, 'branch 1', 'branch address 1', '1111111111', 'manager xyz', 'xyz', '1'),
-(2, 'branch 2', 'branch address2', '2222222222', 'manager 2 ', 'mno', '1');
+(1, 'icici bank srigundicha', 'Srigundicha chhowk', '9652365214', 'Mr Rajesh', 'Mr Dinesh', '1'),
+(2, 'icici bank Dutta tota', 'Dutta tota', '9652369854', 'Mr Dipak', 'Mr Raj', '1');
 
 -- --------------------------------------------------------
 
@@ -112,8 +112,8 @@ CREATE TABLE IF NOT EXISTS `city` (
 --
 
 INSERT INTO `city` (`CityID`, `CityName`, `StateID`, `CountryID`, `STDCode`) VALUES
-(1, 'puri', 1, 1, 6752),
-(2, 'Kolkata', 2, 1, 674),
+(1, 'puri', 1, 1, 965),
+(2, 'Kolkata', 2, 1, 563),
 (3, 'hydrabad', 3, 1, 234),
 (4, 'balasore', 1, 1, 674),
 (5, 'Bhadrak', 1, 1, 674);
@@ -142,14 +142,15 @@ CREATE TABLE IF NOT EXISTS `coffee_shops` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `coffee_shops`
 --
 
 INSERT INTO `coffee_shops` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Name', 'Address', '10', '20', '30', '40', 'webSite', '4', NULL, NULL, '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg');
+(1, 'mishra`s cofee', 'badadanda ,puri', '9652365478', '9856325698', '9856325417', '9986521452', 'www.mishracofee.com', '3', NULL, NULL, '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(2, 'sahoo`s cofee', 'mangala sahi ,puri', '9856365214', '9866523652', '9874521546', '9856965236', 'www.sahoocofee.com', '2', NULL, NULL, '1,3,5', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -187,14 +188,15 @@ CREATE TABLE IF NOT EXISTS `drinking_water` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `drinking_water`
 --
 
 INSERT INTO `drinking_water` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'drink water 1', 'address', '123456', 'auth 1', 1, NULL);
+(1, 'Drinking water', 'mangala sahi , puri', '9856521452', 'Mr. ramesh', 1, 'img/hotels.jpg'),
+(2, 'drinking Water', 'badadanda , puri', '9856326523', 'Mr. Dinesh', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -242,9 +244,9 @@ CREATE TABLE IF NOT EXISTS `fast_aid` (
 --
 
 INSERT INTO `fast_aid` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'fast aid 1', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
-(2, 'fast aid 2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
-(3, 'fast aid 3', 'address 1 ', '9632565236', 'auth 2', 1, NULL);
+(1, 'Fast Aid 1', 'mangala sahi  , puri', '9632565236', 'Mr. ramesh', 1, 'img/hotels.jpg'),
+(2, 'Fast Aid2', 'badadanda , puri', '9632565236', 'Mr.Dinesh', 1, 'img/hotels.jpg'),
+(3, 'Fast Aid 3', 'belabhumi ', '9632565236', 'Mr. Rajesh', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -293,14 +295,15 @@ CREATE TABLE IF NOT EXISTS `forex_branch` (
   `forex_manager` varchar(20) DEFAULT NULL,
   `city_id` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `forex_branch`
 --
 
 INSERT INTO `forex_branch` (`id`, `Name`, `address`, `contact_number`, `branch_manager`, `forex_manager`, `city_id`) VALUES
-(1, 'forex 1', 'address 1 ', '55555555', 'manager 1', 'f manager 1', '1');
+(1, 'Main chhowk branch', 'badadanda', '9856325415', 'Mr. Ashutosh', 'Mr. Ashis', '1'),
+(2, 'Swarga dwara', 'swargadwara', '9652632541', 'Mr. Ashis', 'Mr. Dinesh', '1');
 
 -- --------------------------------------------------------
 
@@ -324,14 +327,15 @@ CREATE TABLE IF NOT EXISTS `guest_house` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `guest_house`
 --
 
 INSERT INTO `guest_house` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Name', 'Address', '10', '20', '30', '40', 'webSite', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg');
+(1, 'Sahoo guest house', 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(2, 'Mishra Guest house', 'Dutta tota , puri', '9856325632', '9856325632', '9854125632', '9856325415', 'www.mishrahouse.com', '4', '2,3,4', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -355,9 +359,9 @@ CREATE TABLE IF NOT EXISTS `hospital` (
 --
 
 INSERT INTO `hospital` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'demo hospitals', 'address 1 ', '9632565236', 'auth 1', 1, 'img/hotels.jpg'),
-(2, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
-(3, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL);
+(1, 'Suraksya hospital', 'Dutta tota', '9632565236', 'Mr. rajesh', 1, 'img/hotels.jpg'),
+(2, 'Ayush hospital', 'Dutta tota', '9632565236', 'Mr. Rajesh', 1, 'img/hotels.jpg'),
+(3, 'Aryan hospitals', 'Dutta tota', '9632565236', 'Mr. Rajesh', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -384,14 +388,15 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `hotels`
 --
 
 INSERT INTO `hotels` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(23, 'Demo hotel 3', 'Demo hotel 3  address', '10', '20', '30', '40', '50', '', 'Hotel webSite', 'Reservation Authority', '4', '4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg');
+(23, 'Empires hotel', 'Demo hotel 3  address', '10', '20', '30', '40', '50', '', 'Hotel webSite', 'Reservation Authority', '4', '4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(24, 'Grand hotel', 'Dutta tota', '9856325632', '9856325632', '9854125632', '9856412541', '6325412563', 'grandhotel@gmail.com', 'www.grandhotel.com', 'Mr. Rajesh', '4', '1,2,3', 1, 'img/hotels.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -414,10 +419,10 @@ CREATE TABLE IF NOT EXISTS `hotel_rooms` (
 --
 
 INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `PriceEnds`, `hotel_id`) VALUES
-(1, 'Deluxe room', 100, 1000, 10000, 1),
-(2, 'Exclusive Deluxe', 100, 1000, 10000, 1),
-(4, 'Deluxe room', 100, 1000, 10000, 21),
-(5, 'Exclusive Deluxe', 100, 1000, 10000, 21),
+(1, 'Deluxe room', 100, 1000, 10000, 24),
+(2, 'Exclusive Deluxe', 100, 1000, 10000, 24),
+(4, 'Deluxe room', 100, 1000, 10000, 24),
+(5, 'Exclusive Deluxe', 100, 1000, 10000, 24),
 (6, 'Deluxe room', 100, 1000, 10000, 22),
 (7, 'Exclusive Deluxe', 100, 1000, 10000, 22),
 (8, 'Deluxe room', 100, 200, 500, 23),
@@ -447,10 +452,8 @@ CREATE TABLE IF NOT EXISTS `local_authorities` (
 --
 
 INSERT INTO `local_authorities` (`id`, `designation`, `name`, `contact_no`, `cityId`) VALUES
-(1, 'ACP', 'Mr . dilip patra', '933265854', NULL),
-(2, 'ACP', 'Mr . dilip patra', '933265854', NULL),
-(3, 'ACP', 'Mr . dilip patra', '933265854', NULL),
-(4, 'ACP', 'Mr . dilip patra', '933265854', NULL);
+(1, 'ACP', 'Mr . dilip patra', '933265854', 1),
+(2, 'ACP', 'Mr . Arjuna', '933265854', 1);
 
 -- --------------------------------------------------------
 
@@ -470,12 +473,8 @@ CREATE TABLE IF NOT EXISTS `notification` (
 --
 
 INSERT INTO `notification` (`id`, `title`, `detail`) VALUES
-(11, 'Demo title ', 'Demo detail'),
-(12, 'Demo title ', 'Demo detail'),
-(13, 'Demo title ', 'Demo detail'),
-(14, 'Demo title ', 'Demo detail'),
-(15, 'Demo title ', 'Demo detail'),
-(16, 'Demo title ', 'Demo detail');
+(11, 'Traffic notice', 'Notice for puri traffic updates'),
+(12, 'Police updates', 'Notice for puri police control room');
 
 -- --------------------------------------------------------
 
@@ -496,9 +495,9 @@ CREATE TABLE IF NOT EXISTS `parking` (
 --
 
 INSERT INTO `parking` (`id`, `vehicle_name`, `content`, `address`) VALUES
-(1, 'Two Wheeler Parking', 'content for two wheerler parking', 'address  for two wheeler parking'),
-(2, 'Four Wheeler Parking', 'content for Four Wheeler Parking', 'address  for Four Wheeler Parking'),
-(3, 'Bus Parking', 'content for Bus Parking', 'address  for Bus Parking');
+(1, 'Two Wheeler Parking', 'parking updates for two wheelers', 'Dutta tota'),
+(2, 'Four Wheeler Parking', 'Parking updates for Four Wheelers', 'Dutta tota'),
+(3, 'Bus Parking', 'parking updates for Bus', 'Dutta tota');
 
 -- --------------------------------------------------------
 
@@ -524,14 +523,15 @@ CREATE TABLE IF NOT EXISTS `resturants` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `resturants`
 --
 
 INSERT INTO `resturants` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Name', 'Address', '10', '20', '30', '40', 'webSite', '4', NULL, NULL, '2,4,6', 1, 'icon image path :', 'icon image path :');
+(1, 'Muskaan resturants', 'Dutta tota', '9856326523', '9856325632', '9854125632', '9856325415', 'www.muskan.com', '4', NULL, NULL, '2,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(2, 'Trupti restutants', 'Dutta tota', '9658541256', '9856323652', '9858965236', '9652147852', 'www.trupti.com', '3', NULL, NULL, '1,2,3', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -554,10 +554,8 @@ CREATE TABLE IF NOT EXISTS `schedule` (
 --
 
 INSERT INTO `schedule` (`id`, `schedule_name`, `schedule_content`, `start_time`, `end_time`, `day`) VALUES
-(1, 'a', 'a', '6am', '7am', 'monday'),
-(2, 'ab', 'ab', '6am', '7am', 'monday'),
-(3, 'abc', 'abc', '6am', '7am', 'tuesday'),
-(4, 'subha sakala', 'In morning a surya namaskar is done by loard jaganath', '5am', '6am', 'tuesday');
+(1, 'Snana', 'sri Jagannath Snana puja', '6am', '7am', 'monday'),
+(2, 'Arati puja', 'Sri Jagannath Arati puja', '7am', '7a8', 'tuesday');
 
 -- --------------------------------------------------------
 
@@ -599,10 +597,8 @@ CREATE TABLE IF NOT EXISTS `temple_admin` (
 --
 
 INSERT INTO `temple_admin` (`id`, `designation`, `name`, `contact_no`, `cityId`) VALUES
-(1, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL),
-(2, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL),
-(3, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL),
-(4, 'Head priest', 'Arjuna charan sahoo', '9853020019', NULL);
+(1, 'Head priest', 'Arjuna charan panda', '9853020019', 1),
+(2, 'Pujari', 'Dilip mishra', '9853020019', 1);
 
 -- --------------------------------------------------------
 
@@ -628,9 +624,8 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
 --
 
 INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `start_price`, `end_price`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'name 1', 'address1', NULL, NULL, '1234567890', 'authority 1', 1, 'img/hotels.jpg'),
-(2, 'name 2', 'address2', NULL, NULL, '1234567890', 'authority 2', 1, 'img/hotels.jpg'),
-(3, 'name 3', 'address3', NULL, NULL, '1234567890', 'authority 3', 1, 'img/hotels.jpg');
+(1, 'seva dharmasala', 'Dutta tota', NULL, NULL, '9652365214', 'Mr. Arjuna', 1, 'img/hotels.jpg'),
+(2, 'asha dharmasala', 'Vip road', NULL, NULL, '9856326523', 'Mr. Dilip', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -654,9 +649,8 @@ CREATE TABLE IF NOT EXISTS `toilet` (
 --
 
 INSERT INTO `toilet` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'toilet 1', 'address 1 ', '9658632154', 'XYZ', 1, 'img/hotels.jpg'),
-(2, 'toilet 2', 'address 2 ', '9658632154', 'avgb', 1, 'img/hotels.jpg'),
-(3, 'toilet 2', 'address 2 ', '9658632154', 'avgb', 1, 'img/hotels.jpg');
+(1, 'Sahoo`s toilet', 'vip road , puri', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg'),
+(2, 'Panda`s toilet', 'Dutta tota', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -712,10 +706,7 @@ CREATE TABLE IF NOT EXISTS `train` (
 
 INSERT INTO `train` (`TrainID`, `TrainNumber`, `TrainName`, `FromStation`, `ToStation`, `StartAt`, `ReachesAt`, `WebLink`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) VALUES
 (1, 47544, 'Puri - Rourkela Passenger', 'Puri', 'Rourkela', '03:30:00', '20:25:00', ' http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html', 1, 0, 1, 0, 1, 0, 0),
-(2, 12743, 'Puri - Surat Weekly Express', 'Hyderabad', 'Puri', '19:45:00', '03:20:00', 'http://www.prokerala.com/travel/indian-railway/trains/puri-surat-wkly-express-1275.html', 1, 0, 1, 0, 1, 0, 0),
-(6, 1111, 'aaaa', 'Kolkata', 'hydrabad', '12', '16', '', 1, 1, 1, 0, 0, 0, 0),
-(8, 1234, 'abcd', 'Kolkata', 'balasore', '12', '13', 'www.xyz.com', 1, 1, 1, 1, 0, 0, 0),
-(7, 4444, '11111', 'Kolkata', 'hydrabad', '11', '22', '', 1, 1, 0, 0, 0, 0, 0);
+(2, 12743, 'Puri - Surat Weekly Express', 'Hyderabad', 'Puri', '19:45:00', '03:20:00', 'http://www.prokerala.com/travel/indian-railway/trains/puri-surat-wkly-express-1275.html', 1, 0, 1, 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -739,9 +730,8 @@ CREATE TABLE IF NOT EXISTS `trauma_care` (
 --
 
 INSERT INTO `trauma_care` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
-(2, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL),
-(3, 'demo hospitals2', 'address 1 ', '9632565236', 'auth 2', 1, NULL);
+(1, 'Dipti truma care', 'vip road', '9632565236', 'Mr . Asis', 1, 'img/hotels.jpg'),
+(2, 'asha trauma care', 'temple road', '9632565236', 'Mr. Santosh', 1, 'img/hotels.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
