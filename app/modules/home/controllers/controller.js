@@ -16,13 +16,13 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     console.log("homeInit  ");
     $interval(function(){
       // calling service to get latest 10 notifications
-      $scope.notifications = HomeService.getNotification();
+      HomeService.getNotification().then(function(pRes){
+          $scope.notifications = pRes.data;
+      });
+    // $scope.notifications = [{header:"header",detail:"deatil"},{header:"header",detail:"deatil"},{header:"header",detail:"deatil"}];
     },1000*60*10);  // calling interval for each 10 minutes after init of application
   }
 
-  $scope.$watch('notifications',function(){
-    console.log($scope.notifications);
-  });
   $scope.changeContentUrl = function(pUrl){
     $scope.contentUrl = pUrl;
      HomeService.setContentUrl(pUrl);

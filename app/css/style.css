@@ -384,5 +384,9 @@ padding-left:0.5em;
 .day{font-weight: bold;}
 .hotel_query{min-height:6em;background:transparent;}
 .email-button button{float:right;}
-
+.notification_info{margin-right: 1em;}
+.item{font-size:0.9em;letter-spacing:0.6px;}
+.bar{position:absolute      
+ width:90% !important}       
+.notification{position: relative !important;  z-index: 99999999 !important;} 
 

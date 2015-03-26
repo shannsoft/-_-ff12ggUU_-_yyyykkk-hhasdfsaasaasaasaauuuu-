@@ -3,8 +3,15 @@
 		 <span class="breadcrumb"> {{heading}}
         <div class="right-menubar">
 		      <div class="signup"></div>
-		      <div class="notification"><i class="fa fa-ellipsis-v sign-in"></i>
-		       <span class="badge badge-assertive">3</span> </div>
+		  <div class="notification">
+		      	<i class="fa fa-info-circle" ng-click="notiClicked()"></i>
+		     <div class="notification_info" ng-show="showNotification" >
+
+              <ul class="list">
+               <li class="item" ng-repeat="notification in notifications"><h2> {{notification.title}}</h2>{{notification.detail}}</li>
+               </ul>
+          </div> 
+		 </div>
 		 </div>
 		 </span> 
 </div>
