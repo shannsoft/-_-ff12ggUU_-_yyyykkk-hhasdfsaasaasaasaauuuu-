@@ -1,4 +1,4 @@
-angular.module("money").controller("moneyController",['$scope','$rootScope','AppModelService','MoneyService','MainEvent', function ($scope,$rootScope,AppModelService,MoneyService,MainEvent){
+angular.module("money").controller("moneyController",['$scope','$rootScope','AppModelService','MoneyService','MainEvent','MainService', function ($scope,$rootScope,AppModelService,MoneyService,MainEvent,MainService){
     $scope.cityDetails = [];
   	$scope.branchList = [];
     $scope.currenciesObject = {}; // object containing key value for currencies
@@ -49,14 +49,17 @@ angular.module("money").controller("moneyController",['$scope','$rootScope','App
         {detailLink:"foreign-exchange.html",icon:"img/fund-transfer.png",contentUrl:"modules/money/views/partials/foreign-exchange.html",info:"Foreign Exchange"},
         {detailLink:"icici-exchange-rate.html",icon:"img/exchange-rate.png",contentUrl:"modules/money/views/partials/icici-exchange-rate.html",info:"Currency Converter"},
       ];
+      MainService.showLoaders();
+      MoneyService.getCity().then(function(pRes){
+          var cityDetails = pRes.data;
+          $(cityDetails).each(function(i){
+              $scope.cityDetails.push(cityDetails[i]);
+               MainService.hideLoaders();
+          });
+      });
     }
     //branches controller start
-    MoneyService.getCity().then(function(pRes){
-        var cityDetails = pRes.data;
-        $(cityDetails).each(function(i){
-            $scope.cityDetails.push(cityDetails[i]);
-        });
-    });
+
     $scope.fetchBranchList = function(cityid){
       $scope.branchList = [];
       MoneyService.getBranchList(cityid).then(function(pRes){

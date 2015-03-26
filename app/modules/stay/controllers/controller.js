@@ -39,7 +39,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         startPrice=="4000" ? endPrice = undefined : endPrice=pPrice[1];
       }
       //console.log($scope.priceRange);
-      MainService.showLoaders()
+      MainService.showLoaders();
       StayService.fetchHotels(startPrice,endPrice).then(function(pRes){
           $scope.hotels = [];
           $scope.hotels = pRes.data;

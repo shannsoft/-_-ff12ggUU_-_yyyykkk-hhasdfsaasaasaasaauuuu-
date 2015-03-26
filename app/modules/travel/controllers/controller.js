@@ -1,4 +1,4 @@
-angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService','MainEvent', function ($scope,$rootScope,AppModelService,travelService,MainEvent){
+angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService','MainEvent','MainService', function ($scope,$rootScope,AppModelService,travelService,MainEvent,MainService){
     $scope.initTravel = function(){
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
       $scope.heading = 'Travel';
@@ -30,7 +30,9 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     $scope.searchVal = {sourceCity:'',destinationCity:'',byDay:''};   
     $scope.fetchTrainDetails = function(){
         $scope.trainDetails = [];
+        MainService.showLoaders();
         travelService.getTrainDetails($scope.searchVal).then(function(pRes){
+             MainService.hideLoaders();
             var trainDetails = pRes.data;
             $(trainDetails).each(function(i){
                 $scope.trainDetails.push(trainDetails[i]);
@@ -44,7 +46,9 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     $scope.serchTrain = function(){
         console.log()
       $scope.trainDetails = [];
+      MainService.showLoaders();
         travelService.getTrainDetails($scope.searchVal).then(function(pRes){
+             MainService.hideLoaders();
             var trainDetails = pRes.data;
             $(trainDetails).each(function(i){
                 $scope.trainDetails.push(trainDetails[i]);
@@ -66,7 +70,9 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     $scope.fetchBusDetails = function(){
         console.log($scope.searchBusDet);
         $scope.busDetails = [];
+        MainService.showLoaders();
         travelService.getBusDetails($scope.searchBusDet).then(function(pRes){
+             MainService.hideLoaders();
             var busDetails = pRes.data;
             $(busDetails).each(function(i){
                 $scope.busDetails.push(busDetails[i]);
@@ -84,7 +90,9 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     $scope.searchFlight = {source:'',destination:'',byDay:''};
     $scope.getFlightDetails = function(){
        $scope.flightDetails = [];
+       MainService.showLoaders();
         travelService.getFlightDetails($scope.searchFlight).then(function(pRes){
+             MainService.hideLoaders();
             var flightDetails = pRes.data;
             $(flightDetails).each(function(i){
                 $scope.flightDetails.push(flightDetails[i]);
@@ -94,7 +102,9 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
 
     $scope.serchFlight = function(){
         $scope.flightDetails = [];
+        MainService.showLoaders();
         travelService.getFlightDetails($scope.searchFlight).then(function(pRes){
+             MainService.hideLoaders();
             var flightDetails = pRes.data;
             $(flightDetails).each(function(i){
                 $scope.flightDetails.push(flightDetails[i]);
@@ -119,7 +129,9 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     $scope.fetchInformation = function(){
         var dayType = AppModelService.getDayType(); 
         var travelType = AppModelService.getTravelType();
+        MainService.showLoaders();
         travelService.getTrafficInfo(dayType, travelType).then(function(pRes){
+             MainService.hideLoaders();
            $scope.information = pRes.data.Info;
         });
     }

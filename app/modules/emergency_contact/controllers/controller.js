@@ -1,4 +1,4 @@
-angular.module("emerContact").controller("emerContactController",['$scope','$rootScope','AppModelService','EmergencyContactService', function ($scope,$rootScope,AppModelService,EmergencyContactService){
+angular.module("emerContact").controller("emerContactController",['$scope','$rootScope','AppModelService','EmergencyContactService','MainService', function ($scope,$rootScope,AppModelService,EmergencyContactService,MainService){
 	$scope.initEmergency = function(){
        console.log("initEmergency");
       $scope.contentUrl='modules/emergency_contact/views/partials/econtact-lower.html';
@@ -17,7 +17,9 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
     /*codes for local authority starts */
     $scope.localAuthorities = [];
     $scope.initLocalAuthority = function(){
+        MainService.showLoaders();
         EmergencyContactService.fetchLocalAuthorities().then(function(pRes){
+           MainService.hideLoaders();
             $scope.localAuthorities = pRes.data;
             
         });
@@ -28,7 +30,9 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
 
     $scope.initTempleAdmin = function(){
       $scope.templeAdmins = [];
+      MainService.showLoaders();
       EmergencyContactService.fetchTempleAdmin().then(function(pRes){
+             MainService.hideLoaders();
             $scope.templeAdmins = pRes.data;
             
         });

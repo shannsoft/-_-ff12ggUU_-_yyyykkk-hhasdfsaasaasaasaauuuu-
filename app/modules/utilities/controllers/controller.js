@@ -1,4 +1,4 @@
-angular.module("events").controller("utilitiesController",['$scope','$rootScope','AppModelService','UtilityService', function ($scope,$rootScope,AppModelService,UtilityService){
+angular.module("events").controller("utilitiesController",['$scope','$rootScope','AppModelService','UtilityService','MainService', function ($scope,$rootScope,AppModelService,UtilityService,MainService){
   	$scope.tiolets = [];
     $scope.contentUrl='modules/utilities/views/partials/utilities-lower.html';
     $scope.initUtilities = function(){
@@ -15,7 +15,9 @@ angular.module("events").controller("utilitiesController",['$scope','$rootScope'
     $scope.fetchToilets = function(pName,pCity){
       if(!pName) pName='';
       if(!pCity) pCity='';
+      MainService.showLoaders();
       UtilityService.fetchToilets(pName,pCity).then(function(pRes){
+         MainService.hideLoaders();
          $scope.tiolets = pRes.data;
          //$scope.contentUrl='modules/utilities/views/partials/toilet-details.html';
          // console.log(pRes.data);
@@ -24,7 +26,9 @@ angular.module("events").controller("utilitiesController",['$scope','$rootScope'
     $scope.fetchDrinkingWater = function(pName,pCity){
       if(!pName) pName='';
       if(!pCity) pCity='';
+      MainService.showLoaders();
       UtilityService.fetchDrinkingWater(pName,pCity).then(function(pRes){
+         MainService.hideLoaders();
          $scope.drinkingWater = pRes.data;
          //$scope.contentUrl='modules/utilities/views/partials/toilet-details.html';
          // console.log(pRes.data);

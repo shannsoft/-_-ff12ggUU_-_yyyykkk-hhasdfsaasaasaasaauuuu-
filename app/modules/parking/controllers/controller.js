@@ -1,4 +1,4 @@
-angular.module("parking").controller("parkingController",['$scope','$rootScope','AppModelService', 'ParkingService','MainEvent',function ($scope,$rootScope,AppModelService,ParkingService,MainEvent){
+angular.module("parking").controller("parkingController",['$scope','$rootScope','AppModelService', 'ParkingService','MainEvent','MainService',function ($scope,$rootScope,AppModelService,ParkingService,MainEvent,MainService){
   	$scope.initParking = function(){
       $scope.content='';
       $scope.contentUrl='modules/parking/views/partials/parking-lower.html';
@@ -15,8 +15,9 @@ angular.module("parking").controller("parkingController",['$scope','$rootScope',
         $scope.contentUrl = pUrl;
     }
     $scope.showGlobalParking = function(pParkingtype){
-
+        MainService.showLoaders();
         ParkingService.getParkingDetails(pParkingtype).then(function(pRes){
+           MainService.hideLoaders();
             ParkingService.setGlobalContent(pRes.data[0]);  // as response returns as array
             $scope.contentUrl = 'modules/parking/views/partials/parking-global.html';
         });

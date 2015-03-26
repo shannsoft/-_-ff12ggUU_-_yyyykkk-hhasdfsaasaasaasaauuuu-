@@ -22,11 +22,13 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
         if(!pval)
             pval='';
         $scope.templeScheduleList = [];
+         MainService.showLoaders();
         AboutUsService.getTempleSchedule(pval).then(function(pRes){
-        var scheduleDetails = pRes.data.schedule;
-         $(scheduleDetails).each(function(i){
-                $scope.templeScheduleList.push(scheduleDetails[i]);
-            });
+            MainService.hideLoaders();
+            var scheduleDetails = pRes.data.schedule;
+             $(scheduleDetails).each(function(i){
+                    $scope.templeScheduleList.push(scheduleDetails[i]);
+                });
         });
     };
     $scope.convert=function(str) {
