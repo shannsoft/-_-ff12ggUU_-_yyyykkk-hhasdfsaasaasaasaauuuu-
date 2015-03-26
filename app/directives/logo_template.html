@@ -1,14 +1,14 @@
 <div class="logo" >
 		 <a ng-click="showHome()"><img src="img/logo.png" /></a>
 		 <span class="breadcrumb"> {{heading}}
+		  <i class="fa fa-info-circle noti_info" ng-click="notiClicked()"></i>
         <div class="right-menubar">
-		      <div class="signup"></div>
-		  <div class="notification">
-		      	<i class="fa fa-info-circle" ng-click="notiClicked()"></i>
+          <div class="signup"></div>
+      <div class="notification">
 		     <div class="notification_info" ng-show="showNotification" >
 
               <ul class="list">
-               <li class="item" ng-repeat="notification in notifications"><h2> {{notification.title}}</h2>{{notification.detail}}</li>
+               <li class="item" ng-repeat="notification in notifications" ng-click="notificationAlert(notification)"><h2> {{notification.title}}</h2>{{notification.detail}}</li>
                </ul>
           </div> 
 		 </div>

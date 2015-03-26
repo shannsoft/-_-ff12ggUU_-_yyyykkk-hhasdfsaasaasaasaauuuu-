@@ -1,11 +1,14 @@
 
-AppRoot.directive('logo', ["MainEvent",'HomeService','$timeout',function(MainEvent,HomeService,$timeout) {
+AppRoot.directive('logo', ["MainEvent",'HomeService','$timeout','MainService',function(MainEvent,HomeService,$timeout,MainService) {
 
 	var logoController = function($scope){
 		$scope.showNotification = false;
 		$scope.notiClicked = function(){
 			// alert("showNotification cliked");
 			$scope.showNotification = !$scope.showNotification;
+		}
+		$scope.notificationAlert = function(notification){
+			MainService.showAlertPopUp(notification.title,notification.detail);
 		}
 		$scope.showHome = function(){
 			console.log("logo controller init");
