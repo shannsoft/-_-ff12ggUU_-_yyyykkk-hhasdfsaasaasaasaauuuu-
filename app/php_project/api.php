@@ -13,10 +13,10 @@ header('Access-Control-Allow-Origin: *');
 		public $data = "";
 		
 		const DB_SERVER = "localhost";
-		const DB_USER = "root";
-		const DB_PASSWORD = "";
+		const DB_USER = "goappsso_nabakal";
+		const DB_PASSWORD = "nabakalebara@123";
 		//const DB = "magentod_html5tshirtapp_5sept";
-		const DB = "nabakalebara";
+		const DB = "goappsso_nabakalebara";
 	
 	
   
@@ -190,12 +190,12 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getCity()
         {	
-            $stateName = $this->_request['state'];
+              isset($this->_request['state']) ? $stateName = $this->_request['state'] :  $stateName = "odisha";
             	$sql="SELECT * FROM city c ";
-                if($stateName!='' && $stateName!='undefined')
-                {
+                // if($stateName!='' && $stateName!='undefined')
+                // {
                     $sql.=" join states s on c.StateID = s.StateID where s.StateName='".$stateName."'";
-                }
+                //}
                 //echo $sql;
                 $rows = $this->executeGenericDQLQuery($sql);
     			$cityDetails = array();
@@ -319,6 +319,7 @@ header('Access-Control-Allow-Origin: *');
         	}
         	$this->response($this->json($hotelDetails), 200);
         }
+
         public function emailSubmit(){
           $emailData = $this->_request['emailData'];
          // echo json_encode($emailData);
@@ -681,16 +682,16 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getResturantDetails(){
 
-          $startPrice = intval ($this->_request['startPrice']);
-          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+          // $startPrice = intval ($this->_request['startPrice']);
+          // $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
           $sql = "select * from resturants r join city c on r.CityId = c.CityID";
-         if($startPrice!="undefined")
-          {
-            $sql.="  where r.start_price>=$startPrice ";
-            if($endPrice != -1 )
-              $sql.=" and r.end_price<=$endPrice";
-          }
+         // if($startPrice!="undefined")
+         //  {
+         //    $sql.="  where r.start_price>=$startPrice ";
+         //    if($endPrice != -1 )
+         //      $sql.=" and r.end_price<=$endPrice";
+         //  }
           $rows = $this->executeGenericDQLQuery($sql);
           $resturantDetails = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -718,17 +719,17 @@ header('Access-Control-Allow-Origin: *');
 
         public function fetchCoffeeShops(){
 
-          $startPrice = intval ($this->_request['startPrice']);
-         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+         //  $startPrice = intval ($this->_request['startPrice']);
+         // $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
 
           $sql = "select distinct * from coffee_shops cf join city c on cf.CityId = c.CityID ";
-          if($startPrice!="undefined")
-          {
-            $sql.="  where cf.start_price>=$startPrice ";
-            if($endPrice != -1 )
-              $sql.=" and cf.end_price<=$endPrice";
-          }
+          // if($startPrice!="undefined")
+          // {
+          //   $sql.="  where cf.start_price>=$startPrice ";
+          //   if($endPrice != -1 )
+          //     $sql.=" and cf.end_price<=$endPrice";
+          // }
           $rows = $this->executeGenericDQLQuery($sql);
           $coffeeShops = array();
           for($i=0;$i<sizeof($rows);$i++)
@@ -757,16 +758,16 @@ header('Access-Control-Allow-Origin: *');
           if(isset($cityId))
             $sql=" join city c on ta.CityId = c.CityID";
 
-          $startPrice = intval ($this->_request['startPrice']);
-          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+          // $startPrice = intval ($this->_request['startPrice']);
+          // $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
 
-          if($startPrice!="undefined")
-          {
-            $sql.="  where ta.start_price>=$startPrice ";
-            if($endPrice != -1 )
-              $sql.=" and ta.end_price<=$endPrice";
-          }
+          // if($startPrice!="undefined")
+          // {
+          //   $sql.="  where ta.start_price>=$startPrice ";
+          //   if($endPrice != -1 )
+          //     $sql.=" and ta.end_price<=$endPrice";
+          // }
 
           $rows = $this->executeGenericDQLQuery($sql);
           $tempAccm = array();
@@ -955,16 +956,68 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($trafficInfo), 200);
         }
 
+        public function postTrafficDetails(){
+           $dayType =  $this->_request['dayType'];
+           $travelMode =  $this->_request['travelMode'];
+           $city =  $this->_request['city'];
+           $info =  $this->_request['info'];
+           $sql="select * from  traffic_mobility where Travel_Mode='".$travelMode."' AND Day_Type='".$dayType."'";
+           //$rows = $this->executeGenericDQLQuery($sql);
+           $response = array();
+          if(sizeof($rows)>0)
+           {
+                $response['status'] = "already exist";
+
+           }
+           else
+           {
+             $sql="insert into traffic_mobility(Day_Type,Travel_Mode,Details_Info,City_id)".
+             "values('".$dayType."','".$travelMode."','".$info."',$city)"; 
+             //$this->executeGenericDMLQuery($sql);
+             $response['status'] = "success";
+           }
+           //echo $sql;
+           $this->response($this->json($response), 200);
+            
+        }
+
 
 
         /*money service starts  */
 
+        public function postBranchDetails(){
+           $branchName =  $this->_request['branchName'];
+           $address =  $this->_request['address'];
+           $city =  $this->_request['city'];
+           $branchMng =  $this->_request['branchMng'];
+           $contact =  $this->_request['contact'];
+           $forexMng =  $this->_request['forexMng'];
+           $sql="insert into branches(Name,address,contact_number,branch_manager,forex_manager,city_id)".
+             "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
+             $this->executeGenericDMLQuery($sql);
+            $response['status'] = "success";
+           $this->response($this->json($response), 200);  
+        }
+        public function postForexDetails(){
+           $branchName =  $this->_request['branchName'];
+           $address =  $this->_request['address'];
+           $city =  $this->_request['city'];
+           $branchMng =  $this->_request['branchMng'];
+           $contact =  $this->_request['contact'];
+           $forexMng =  $this->_request['forexMng'];
+           $sql="insert into forex_branch(Name,address,contact_number,branch_manager,forex_manager,city_id)".
+             "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
+             $this->executeGenericDMLQuery($sql);
+            $response['status'] = "success";
+           $this->response($this->json($response), 200);  
+        }
+
         public function getBranches(){
-          $cityId =  $this->_request['cityId'];
+          if(isset($this->_request['cityId'])) $cityId = $this->_request['cityId'];
           $sql = "select * from branches b";
           if(isset($cityId))
           {
-            $sql=" join city c on c.CityID = b.city_id where c.CityID = $cityId";
+            $sql .=" join city c on c.CityID = b.city_id where c.CityID = $cityId";
           }
           $rows = $this->executeGenericDQLQuery($sql);
           $branches = array();
@@ -1022,10 +1075,10 @@ header('Access-Control-Allow-Origin: *');
           
         }
         public function getNotification(){
-          $sql = "select * from notification order by id desc";
+          $sql = "select * from notification order by id desc limit 10";
           $rows = $this->executeGenericDQLQuery($sql);
           $notifications = array();
-          for($i=0 ; $i<sizeof($rows);$i++)
+          for($i=0 ; $i<sizeof($rows);$i++) // to get upto 10 latest notifications
            {
               $notifications[$i]['id'] = $rows[$i]['id'];
               $notifications[$i]['title'] = $rows[$i]['title'];
@@ -1059,6 +1112,67 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($parkingDetails), 200);
         }
         /*parking service ends*/
+
+
+        /*codes for emergency contact starts*/
+
+        // used to get selected emergency contact deatils that would be selected from 
+        // health care and sanitation options
+        // possible values - hospitals, trauma care , toilets etc.
+        // the type of table to be accessed would be come from the request itself
+        public function fetchSelectedEmergencyContact(){
+            $tableType =  $this->_request['tableType'];
+            $sql = "select * from $tableType join city c on $tableType.cityId = c.CityID";
+            $rows  = $this->executeGenericDQLQuery($sql);
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $parkingDetails[$i]['id'] = $rows[$i]['id'];
+              $parkingDetails[$i]['name'] = $rows[$i]['name'];
+              $parkingDetails[$i]['address'] = $rows[$i]['address'];
+              $parkingDetails[$i]['contact'] = $rows[$i]['contact'];
+              $parkingDetails[$i]['authority'] = $rows[$i]['authority'];
+              $parkingDetails[$i]['CityName'] = $rows[$i]['CityName'];
+              $parkingDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
+
+           }
+            $this->response($this->json($parkingDetails), 200);
+
+        }
+        public function fetchLocalAuthorities(){
+          // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
+          $sql = "select * from local_authorities";
+            $rows  = $this->executeGenericDQLQuery($sql);
+            $localAuthorities = array();
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $localAuthorities[$i]['id'] = $rows[$i]['id'];
+              $localAuthorities[$i]['designation'] = $rows[$i]['designation'];
+              $localAuthorities[$i]['name'] = $rows[$i]['name'];
+              $localAuthorities[$i]['contact'] = $rows[$i]['contact_no'];
+              // $localAuthorities[$i]['CityName'] = $rows[$i]['CityName'];
+              
+           }
+            $this->response($this->json($localAuthorities), 200);
+        }
+        public function fetchTempleAdmin(){
+          // here city id set to 1 for to fetch data from city 1 i.e puri
+          // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
+          $sql = "select * from temple_admin ";
+            $rows  = $this->executeGenericDQLQuery($sql);
+            $localAuthorities = array();
+            for($i=0 ; $i<sizeof($rows);$i++)
+           {
+              $localAuthorities[$i]['id'] = $rows[$i]['id'];
+              $localAuthorities[$i]['designation'] = $rows[$i]['designation'];
+              $localAuthorities[$i]['name'] = $rows[$i]['name'];
+              $localAuthorities[$i]['contact'] = $rows[$i]['contact_no'];
+              // $localAuthorities[$i]['CityName'] = $rows[$i]['CityName'];
+              
+           }
+            $this->response($this->json($localAuthorities), 200);
+        }
+        /*codes for emergency contact ends*/
+
 	}
 	
 	$api = new API;

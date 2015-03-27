@@ -6,6 +6,7 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
   var directionsService;
   var stepDisplay;
   var markerArray = [];
+  var pyrmont;
   $scope.notifications = [];
 
   $scope.homeInit = function(){
@@ -35,7 +36,15 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
 
   }
   $rootScope.$on(MainEvent.INIT_MAP,function(event,pRes){
-      HomeService.setHeading('ATM');
+    map = '';
+    infowindow = '';
+    mapSearch = '';
+    directionsDisplay = '';
+    directionsService = '';
+    stepDisplay = '';
+    markerArray = [];
+    pyrmont = '';
+      HomeService.setHeading('Map View');
       HomeService.setContentUrl('modules/home/views/partials/map-view.html');
       mapSearch  = pRes.data;
       $scope.geoFindMe();
@@ -50,7 +59,6 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     function success(position) {
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
-      console.log('latitude',latitude,'longitude',longitude);
       $scope.foundOnMap(latitude,longitude);
     };
     function error() {
@@ -59,12 +67,11 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     navigator.geolocation.getCurrentPosition(success, error);
   }
   $scope.foundOnMap = function(lat,lan) {
-    var pyrmont = new google.maps.LatLng(lat, lan);
+    pyrmont = new google.maps.LatLng(lat, lan);
     map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: pyrmont,
         zoom: 15
     });
-    if(mapSearch != 'atm' && mapSearch != 'gas_station'){
        var rendererOptions = {
         map: map
       }
@@ -73,7 +80,7 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
       stepDisplay = new google.maps.InfoWindow();
       var geocoder = new google.maps.Geocoder();
 
-
+    if(mapSearch != 'atm' && mapSearch != 'gas_station'){
       geocoder.geocode({'latLng': pyrmont }, function(results, status) {
         if(status == google.maps.GeocoderStatus.OK) {
             showRout(results[0]['formatted_address']);
@@ -81,13 +88,17 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
       });
     }
     else{
-      
-
       var request = {
         location: pyrmont,
         radius: 5000,
         types: [mapSearch]
       };
+      var image = "img/myLocation.png";
+      var beachMarker = new google.maps.Marker({
+        position: pyrmont,
+        map: map,
+        icon: image
+      });
 
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
@@ -111,6 +122,8 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(place.name);
       infowindow.open(map, this);
+      mapSearch = place.geometry.location;
+      showRout(pyrmont);
     });
   }
   function showRout(pstart){
