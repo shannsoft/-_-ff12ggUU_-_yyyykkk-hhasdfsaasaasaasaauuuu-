@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2015 at 10:52 PM
+-- Generation Time: Mar 26, 2015 at 08:59 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -127,7 +127,6 @@ INSERT INTO `city` (`CityID`, `CityName`, `StateID`, `CountryID`, `STDCode`) VAL
 CREATE TABLE IF NOT EXISTS `coffee_shops` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) NOT NULL,
-  `content` varchar(200) DEFAULT NULL,
   `Address` varchar(500) DEFAULT NULL,
   `Phone1` varchar(20) DEFAULT NULL,
   `Phone2` varchar(20) DEFAULT NULL,
@@ -143,16 +142,15 @@ CREATE TABLE IF NOT EXISTS `coffee_shops` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `coffee_shops`
 --
 
-INSERT INTO `coffee_shops` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'mishra`s cofee', NULL, 'badadanda ,puri', '9652365478', '9856325698', '9856325417', '9986521452', 'www.mishracofee.com', '3', NULL, NULL, '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(2, 'sahoo`s cofee', NULL, 'mangala sahi ,puri', '9856365214', '9866523652', '9874521546', '9856965236', 'www.sahoocofee.com', '2', NULL, NULL, '1,3,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'name1', 'content', 'address', '9898989898', '8989898989', '8989898989', '8989898989', 'www.mm.com', '3', NULL, NULL, '1,2', 1, 'img/hotels.jpg', 'img/hotels.jpg');
+INSERT INTO `coffee_shops` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
+(1, 'mishra`s cofee', 'badadanda ,puri', '9652365478', '9856325698', '9856325417', '9986521452', 'www.mishracofee.com', '3', NULL, NULL, '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(2, 'sahoo`s cofee', 'mangala sahi ,puri', '9856365214', '9866523652', '9874521546', '9856965236', 'www.sahoocofee.com', '2', NULL, NULL, '1,3,5', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -316,7 +314,6 @@ INSERT INTO `forex_branch` (`id`, `Name`, `address`, `contact_number`, `branch_m
 CREATE TABLE IF NOT EXISTS `guest_house` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) NOT NULL,
-  `content` varchar(200) DEFAULT NULL,
   `Address` varchar(500) DEFAULT NULL,
   `Phone1` varchar(20) DEFAULT NULL,
   `Phone2` varchar(20) DEFAULT NULL,
@@ -330,16 +327,15 @@ CREATE TABLE IF NOT EXISTS `guest_house` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `guest_house`
 --
 
-INSERT INTO `guest_house` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Sahoo guest house', NULL, 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(2, 'Mishra Guest house', NULL, 'Dutta tota , puri', '9856325632', '9856325632', '9854125632', '9856325415', 'www.mishrahouse.com', '4', '2,3,4', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'rrr', 'content', 'address', '9898989898', '89898989898', '9898989898', '89898989898', 'www.gu.com', '3', '1,3', 4, 'img/hotels.jpg', 'img/hotels.jpg');
+INSERT INTO `guest_house` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
+(1, 'Sahoo guest house', 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(2, 'Mishra Guest house', 'Dutta tota , puri', '9856325632', '9856325632', '9854125632', '9856325415', 'www.mishrahouse.com', '4', '2,3,4', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -376,7 +372,6 @@ INSERT INTO `hospital` (`id`, `name`, `address`, `contact`, `authority`, `cityId
 CREATE TABLE IF NOT EXISTS `hotels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) NOT NULL,
-  `content` varchar(200) DEFAULT NULL,
   `Address` varchar(500) DEFAULT NULL,
   `Phone1` varchar(20) DEFAULT NULL,
   `Phone2` varchar(20) DEFAULT NULL,
@@ -393,16 +388,15 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `hotels`
 --
 
-INSERT INTO `hotels` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(23, 'Empires hotel', NULL, 'Demo hotel 3  address', '10', '20', '30', '40', '50', '', 'Hotel webSite', 'Reservation Authority', '4', '4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(24, 'Grand hotel', NULL, 'Dutta tota', '9856325632', '9856325632', '9854125632', '9856412541', '6325412563', 'grandhotel@gmail.com', 'www.grandhotel.com', 'Mr. Rajesh', '4', '1,2,3', 1, 'img/hotels.jpg', NULL),
-(26, 'rrr', 'content', 'address', '9856326523', '658998563', '9856332541', '6565656565', '565656565655', 'testmail@gmail.com', 'www.name.com', 'auth', '4', '2,4', 4, 'img/hotels.jpg', 'img/hotels.jpg');
+INSERT INTO `hotels` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
+(23, 'Empires hotel', 'Demo hotel 3  address', '10', '20', '30', '40', '50', '', 'Hotel webSite', 'Reservation Authority', '4', '4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(24, 'Grand hotel', 'Dutta tota', '9856325632', '9856325632', '9854125632', '9856412541', '6325412563', 'grandhotel@gmail.com', 'www.grandhotel.com', 'Mr. Rajesh', '4', '1,2,3', 1, 'img/hotels.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -418,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `hotel_rooms` (
   `PriceEnds` int(11) NOT NULL,
   `hotel_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `hotel_rooms`
@@ -436,19 +430,7 @@ INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `Price
 (10, 'Deluxe room', 100, 1000, 2000, 23),
 (11, 'Exclusive Deluxe', 100, 2000, 3000, 23),
 (12, 'Deluxe room', 100, 3000, 3500, 23),
-(13, 'Exclusive Deluxe', 100, 3500, 4000, 23),
-(14, 'Deluxe room', 100, 1000, 10000, 26),
-(15, 'Exclusive Deluxe', 100, 1000, 10000, 26),
-(16, 'Deluxe room', 100, 1000, 10000, 26),
-(17, 'Exclusive Deluxe', 100, 1000, 10000, 26),
-(18, 'Deluxe room', 100, 1000, 10000, 26),
-(19, 'Exclusive Deluxe', 100, 1000, 10000, 26),
-(20, 'Deluxe room', 100, 200, 500, 26),
-(21, 'Exclusive Deluxe', 100, 500, 1000, 26),
-(22, 'Deluxe room', 100, 1000, 2000, 26),
-(23, 'Exclusive Deluxe', 100, 2000, 3000, 26),
-(24, 'Deluxe room', 100, 3000, 3500, 26),
-(25, 'Exclusive Deluxe', 100, 3500, 4000, 26);
+(13, 'Exclusive Deluxe', 100, 3500, 4000, 23);
 
 -- --------------------------------------------------------
 
@@ -463,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `local_authorities` (
   `contact_no` varchar(20) DEFAULT NULL,
   `cityId` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `local_authorities`
@@ -484,7 +466,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `title` varchar(50) DEFAULT NULL,
   `detail` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `notification`
@@ -526,7 +508,6 @@ INSERT INTO `parking` (`id`, `vehicle_name`, `content`, `address`) VALUES
 CREATE TABLE IF NOT EXISTS `resturants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) NOT NULL,
-  `content` varchar(200) DEFAULT NULL,
   `Address` varchar(500) DEFAULT NULL,
   `Phone1` varchar(20) DEFAULT NULL,
   `Phone2` varchar(20) DEFAULT NULL,
@@ -542,16 +523,15 @@ CREATE TABLE IF NOT EXISTS `resturants` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `resturants`
 --
 
-INSERT INTO `resturants` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Muskaan resturants', NULL, 'Dutta tota', '9856326523', '9856325632', '9854125632', '9856325415', 'www.muskan.com', '4', NULL, NULL, '2,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(2, 'Trupti restutants', NULL, 'Dutta tota', '9658541256', '9856323652', '9858965236', '9652147852', 'www.trupti.com', '3', NULL, NULL, '1,2,3', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'rrr', 'content', 'address', '98989898', '98989898', '98989898', '989898988', 'www.mm.com', '2', NULL, NULL, '2,3', 4, 'img/hotels.jpg', 'img/hotels.jpg');
+INSERT INTO `resturants` (`id`, `Name`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
+(1, 'Muskaan resturants', 'Dutta tota', '9856326523', '9856325632', '9854125632', '9856325415', 'www.muskan.com', '4', NULL, NULL, '2,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(2, 'Trupti restutants', 'Dutta tota', '9658541256', '9856323652', '9858965236', '9652147852', 'www.trupti.com', '3', NULL, NULL, '1,2,3', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -610,7 +590,7 @@ CREATE TABLE IF NOT EXISTS `temple_admin` (
   `contact_no` varchar(20) DEFAULT NULL,
   `cityId` int(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `temple_admin`
@@ -632,7 +612,7 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
   `address` varchar(200) DEFAULT NULL,
   `start_price` int(5) DEFAULT NULL,
   `end_price` int(5) DEFAULT NULL,
-  `contact_no` varchar(100) DEFAULT NULL,
+  `contact` varchar(100) DEFAULT NULL,
   `authority` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
@@ -643,10 +623,9 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
 -- Dumping data for table `temp_accomodation`
 --
 
-INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `start_price`, `end_price`, `contact_no`, `authority`, `cityId`, `icon_image`) VALUES
+INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `start_price`, `end_price`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
 (1, 'seva dharmasala', 'Dutta tota', NULL, NULL, '9652365214', 'Mr. Arjuna', 1, 'img/hotels.jpg'),
-(2, 'asha dharmasala', 'Vip road', NULL, NULL, '9856326523', 'Mr. Dilip', 1, 'img/hotels.jpg'),
-(3, 'sdasdasdasd', 'asdasd', 100, 1000, '98989898', 'sdfsdf', 4, 'img/hotels.jpg');
+(2, 'asha dharmasala', 'Vip road', NULL, NULL, '9856326523', 'Mr. Dilip', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -663,7 +642,7 @@ CREATE TABLE IF NOT EXISTS `toilet` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `toilet`
@@ -744,7 +723,7 @@ CREATE TABLE IF NOT EXISTS `trauma_care` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `trauma_care`

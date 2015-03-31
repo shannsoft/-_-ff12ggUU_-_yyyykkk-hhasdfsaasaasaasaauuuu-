@@ -7,6 +7,7 @@
 </head>
 <body ng-controller="cofeeShopsController" ng-init="init()">
 	 Name : <input type="text" ng-model="guesthouse_name"><br/>
+	Content : <textarea ng-model="content"></textarea> <br/>
 	Address : <textarea ng-model="address"></textarea> <br/>
 	Phone1 : <input type="number" ng-model="phone1" ng-valid><br/>
 	Phone2 : <input type="number" ng-model="phone2" ng-valid><br/>
@@ -67,10 +68,10 @@
 		$scope.countries = [];
 		$scope.states = [];
 		$scope.cities = [];
-
+		$scope.apiPath = "http://localhost/Nabakalebara/app/php_project/api1.php?";
 		$scope.getFacilities =function()
 		{
-			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getFacilities").then(function(pRes){
+			var response =  $http.get($scope.apiPath+"reqmethod=getFacilities").then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -97,7 +98,7 @@
 		// 	});
 		// }
 		$scope.getCountry = function(){
-			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getCountries").then(function(pRes){
+			var response =  $http.get($scope.apiPath+"reqmethod=getCountries").then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -112,7 +113,7 @@
 			$scope.getStates(pCountry)
 		}
 		$scope.getStates = function(pCountry){
-			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getStates&country="+pCountry).then(function(pRes){
+			var response =  $http.get($scope.apiPath+"reqmethod=getStates&country="+pCountry).then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -128,7 +129,7 @@
 			// console.log(pState);
 		}
 		$scope.getCities = function(pState){
-			var response =  $http.get("http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php?reqmethod=getCity&state="+pState).then(function(pRes){
+			var response =  $http.get($scope.apiPath+"reqmethod=getCity&state="+pState).then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -150,6 +151,7 @@
 			// console.log($scope.facilities);
 			var cofeeShopData = {};
 			cofeeShopData.name = $scope.guesthouse_name;
+			cofeeShopData.content = $scope.content;
 			cofeeShopData.address = $scope.address;
 			cofeeShopData.phone1 = $scope.phone1;
 			cofeeShopData.phone2 = $scope.phone2;
@@ -172,7 +174,7 @@
 			var _serializedData = $.param({reqmethod: 'postCofeeShopDetails', cofeeShopData:cofeeShopData});
             var _responsePromise = $http({
                     method: 'POST',
-                    url: 'http://localhost/-_-ff12ggUU_-_yyyykkk-hhasdfsaasaasaasaauuuu-/app/php project/api1.php',
+                    url: $scope.apiPath,
                     data: _serializedData,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
