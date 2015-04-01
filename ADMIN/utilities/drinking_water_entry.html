@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
+	<h3> Hotel entry form</h3>
+</head>
+<body ng-controller="dWaterController" ng-init="init()">
+	 Name : <input type="text" ng-model="name"><br/>
+	<!-- Content : <textarea ng-model="content"></textarea> <br/> -->
+	Address : <textarea ng-model="address"></textarea> <br/>
+	Contact No : <input type="number" ng-model="phone" ng-valid><br/>
+	Authority :	<input type="text" ng-model="auth" ng-valid><br/>
+	
+	icon image path : <input type="text" ng-model="iconImage"><br/>
+	Countries : 
+	<select ng-model="country" ng-change="onSelectCountry(country)">
+		<option ng-repeat="country in countries">{{country.CountryName}}</option>
+	</select>
+	States : 
+	<select ng-model="state" ng-change="onStateSelect(state)">
+		<option ng-repeat="state in states">{{state.StateName}}</option>
+	</select>
+	City : 
+	<select ng-model="city">
+		<option ng-repeat="city in cities">{{city.CityName}}</option>
+	</select><br/>
+	
+	
+
+	<input type="button" value="submit" ng-click="onSubmit()" />
+	<script type="text/javascript">
+	var app = angular.module("app",[]);
+	app.controller("dWaterController",["$scope","$http",function($scope,$http) {
+		
+		$scope.countries = [];
+		$scope.states = [];
+		$scope.cities = [];
+		$scope.apiPath = "http://localhost/Nabakalebara/app/php_project/api1.php?";
+		
+		
+		$scope.getCountry = function(){
+			var response =  $http.get($scope.apiPath+"reqmethod=getCountries").then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.id = pRes.data[i].id;
+					obj.CountryName = pRes.data[i].CountryName;
+					$scope.countries.push(obj);
+				}
+			});
+		}
+		$scope.onSelectCountry = function(pCountry){
+			
+			$scope.getStates(pCountry)
+		}
+		$scope.getStates = function(pCountry){
+			var response =  $http.get($scope.apiPath+"reqmethod=getStates&country="+pCountry).then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.StateID = pRes.data[i].StateID;
+					obj.StateName = pRes.data[i].StateName;
+					obj.CountryID = pRes.data[i].CountryID;
+					$scope.states.push(obj);
+				}
+			});
+		}
+		$scope.onStateSelect = function(pState){
+			$scope.getCities(pState);
+			// console.log(pState);
+		}
+		$scope.getCities = function(pState){
+			var response =  $http.get($scope.apiPath+"reqmethod=getCity&state="+pState).then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.CityID = pRes.data[i].CityID;
+					obj.CityName = pRes.data[i].CityName;
+					$scope.cities.push(obj);
+				}
+			});
+		}
+
+		$scope.init = function(){
+			$scope.getCountry();
+			$scope.getStates('');
+			$scope.getCities('');
+			
+		}
+		$scope.onSubmit = function(){
+			// console.log($scope.facilities);
+			var dWaterData = {};
+			dWaterData.name = $scope.name;
+			// tempAccData.content = $scope.content;
+			dWaterData.address = $scope.address;
+			dWaterData.phone = $scope.phone;
+			dWaterData.auth = $scope.auth;
+
+			dWaterData.country = $scope.country;
+			dWaterData.state = $scope.state;
+			dWaterData.city = $scope.city;
+			
+			dWaterData.iconImgPath = $scope.iconImage;
+			
+
+			var _serializedData = $.param({reqmethod: 'postDrinkingWaterDetails',dWaterData:dWaterData});
+            var _responsePromise = $http({
+                    method: 'POST',
+                    url: $scope.apiPath,
+                    data: _serializedData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+            }).then(function(pRes){
+            	console.log(pRes.data);
+            });
+
+
+		}
+					
+
+	}]);
+
+
+
+	</script>
+
+
+
+</body>
+</html>

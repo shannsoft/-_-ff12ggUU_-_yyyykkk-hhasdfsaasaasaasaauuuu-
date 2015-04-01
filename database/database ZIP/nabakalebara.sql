@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2015 at 10:52 PM
+-- Generation Time: Apr 01, 2015 at 09:52 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `drinking_water` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `drinking_water`
@@ -198,7 +198,8 @@ CREATE TABLE IF NOT EXISTS `drinking_water` (
 
 INSERT INTO `drinking_water` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
 (1, 'Drinking water', 'mangala sahi , puri', '9856521452', 'Mr. ramesh', 1, 'img/hotels.jpg'),
-(2, 'drinking Water', 'badadanda , puri', '9856326523', 'Mr. Dinesh', 1, 'img/hotels.jpg');
+(2, 'drinking Water', 'badadanda , puri', '9856326523', 'Mr. Dinesh', 1, 'img/hotels.jpg'),
+(3, 'drinking warer1', 'dutta tota', '958652362', 'Mr. Dillip', 4, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -505,17 +506,19 @@ CREATE TABLE IF NOT EXISTS `parking` (
   `vehicle_name` varchar(50) DEFAULT NULL,
   `content` varchar(200) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
+  `cityId` int(3) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT=' ' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT=' ' AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `parking`
 --
 
-INSERT INTO `parking` (`id`, `vehicle_name`, `content`, `address`) VALUES
-(1, 'Two Wheeler Parking', 'parking updates for two wheelers', 'Dutta tota'),
-(2, 'Four Wheeler Parking', 'Parking updates for Four Wheelers', 'Dutta tota'),
-(3, 'Bus Parking', 'parking updates for Bus', 'Dutta tota');
+INSERT INTO `parking` (`id`, `vehicle_name`, `content`, `address`, `cityId`) VALUES
+(1, 'Two Wheeler Parking', 'two whrrler', 'dutta tota', 1),
+(2, 'Four Wheeler Parking', 'four', 'old town', 1),
+(3, 'Bus Parking', 'bus', 'bbsr', 1),
+(4, 'Tourists Bus Parking', 'tourist', 'ctc', 1);
 
 -- --------------------------------------------------------
 
@@ -663,7 +666,7 @@ CREATE TABLE IF NOT EXISTS `toilet` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `toilet`
@@ -671,7 +674,8 @@ CREATE TABLE IF NOT EXISTS `toilet` (
 
 INSERT INTO `toilet` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
 (1, 'Sahoo`s toilet', 'vip road , puri', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg'),
-(2, 'Panda`s toilet', 'Dutta tota', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg');
+(2, 'Panda`s toilet', 'Dutta tota', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg'),
+(3, 'toilet 1', 'dutta tota', '985632145', 'authority', 4, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 

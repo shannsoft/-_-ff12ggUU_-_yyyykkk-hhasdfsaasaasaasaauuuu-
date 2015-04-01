@@ -672,6 +672,72 @@ header('Access-Control-Allow-Origin: *');
               
            }
         }
+        // posting toilets details
+        public function postToiletsDetails(){
+           $toiletData =  $this->_request['toiletData'];
+           
+
+           $sql="select * from toilet where name="."'".$toiletData['name']."'";//.$toiletData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            echo "temp  acc  house exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($toiletData['city']);
+              //$cityId = 1;
+              // insert coffee_shops details
+              $sql = "insert into toilet(name,address,contact,authority,cityId,icon_image) values('".$toiletData['name']."','".$toiletData['address']."','".$toiletData['phone']."','".$toiletData['auth']."',".$cityId.",'".$toiletData['iconImgPath']."')";
+             // echo $sql;
+              $toiletId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
+        }
+        // posting drinking water details
+        public function postDrinkingWaterDetails(){
+           $dWaterData =  $this->_request['dWaterData'];
+           
+
+           $sql="select * from drinking_water where name="."'".$dWaterData['name']."'";//.$dWaterData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            echo "drinking_water   exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($dWaterData['city']);
+              //$cityId = 1;
+              // insert coffee_shops details
+              $sql = "insert into drinking_water(name,address,contact,authority,cityId,icon_image) values('".$dWaterData['name']."','".$dWaterData['address']."','".$dWaterData['phone']."','".$dWaterData['auth']."',".$cityId.",'".$dWaterData['iconImgPath']."')";
+             // echo $sql;
+              $drinkingWaterId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
+        }
+        //post parking details
+
+        public function postParkingDetails(){
+           $parkingData =  $this->_request['parkingArr'];
+           for($i=0;$i<sizeof($parkingData);$i++)
+           {
+              $sql= " update parking set content='".$parkingData[$i]['content']."'  , address='".$parkingData[$i]['address']."' where vehicle_name = '".$parkingData[$i]['vehicle_name']."'";
+              $this->executeGenericDMLQuery($sql);
+           }
+
+          
+        }
         public function getGuestHouseDetails(){
           $startPrice = intval ($this->_request['startPrice']);
           $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
