@@ -58,10 +58,11 @@
 					{name:"Auto Rickshaw (Three Wheelers)"},
 					{name:"Two Wheelers"},
 			];
-			
+			$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.getCities =function()
 			{	$scope.cities=[];
-				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
+				var response =  $http.get($scope.apiPath+"reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
 		                $scope.cities.push(city);
@@ -73,7 +74,7 @@
 			}
 			$scope.onSubmit = function(){
 				if($scope.travel_mode != '' && $scope.city != '' && $scope.day_type!='' && $scope.info!= ''){
-	            	var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postTrafficDetails&travelMode='+$scope.travel_mode+'&city='+$scope.city+'&dayType='+$scope.day_type+'&info='+$scope.info);
+	            	var _responsePromise = $http.get($scope.apiPath+'reqmethod=postTrafficDetails&travelMode='+$scope.travel_mode+'&city='+$scope.city+'&dayType='+$scope.day_type+'&info='+$scope.info);
 				}
 			}
 		}]);

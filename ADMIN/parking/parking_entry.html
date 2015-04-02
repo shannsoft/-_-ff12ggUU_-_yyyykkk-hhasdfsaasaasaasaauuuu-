@@ -93,11 +93,12 @@
 		$scope.countries = [];
 		$scope.states = [];
 		$scope.cities = [];
-		$scope.apiPath = "http://localhost/Nabakalebara/app/php_project/api1.php?";
+		$scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		//$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		
 		
 		$scope.getCountry = function(){
-			var response =  $http.get($scope.apiPath+"reqmethod=getCountries").then(function(pRes){
+			var response =  $http.get($scope.serviceApiPath+"reqmethod=getCountries").then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -112,7 +113,7 @@
 			$scope.getStates(pCountry)
 		}
 		$scope.getStates = function(pCountry){
-			var response =  $http.get($scope.apiPath+"reqmethod=getStates&country="+pCountry).then(function(pRes){
+			var response =  $http.get($scope.serviceApiPath+"reqmethod=getStates&country="+pCountry).then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -128,7 +129,7 @@
 			// console.log(pState);
 		}
 		$scope.getCities = function(pState){
-			var response =  $http.get($scope.apiPath+"reqmethod=getCity&state="+pState).then(function(pRes){
+			var response =  $http.get($scope.serviceApiPath+"reqmethod=getCity&state="+pState).then(function(pRes){
 				for(i in pRes.data)
 				{
 					var obj = {};
@@ -157,7 +158,7 @@
 			var _serializedData = $.param({reqmethod: 'postParkingDetails',parkingArr:parkingArr});
             var _responsePromise = $http({
                     method: 'POST',
-                    url: $scope.apiPath,
+                    url: $scope.serviceApiPath,
                     data: _serializedData,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'

@@ -40,10 +40,12 @@
 			$scope.autorityName = '';
 			$scope.contact = '';
 			$scope.desig = '';
+			$scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			//$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			
 			$scope.getCities =function()
 			{	$scope.cities=[];
-				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
+				var response =  $http.get($scope.serviceApiPath+"reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
 		                $scope.cities.push(city);
@@ -54,7 +56,7 @@
 				$scope.getCities();
 			}
 			$scope.onSubmit = function(){
-	            var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postTempleAdmin&authorityName='+$scope.autorityName+'&designation='+$scope.desig+'&contact='+$scope.contact+'&city='+$scope.city);
+	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postTempleAdmin&authorityName='+$scope.autorityName+'&designation='+$scope.desig+'&contact='+$scope.contact+'&city='+$scope.city);
 			}
 		}]);
 	</script>

@@ -45,9 +45,11 @@
 			$scope.startTime='';
 			$scope.endTime='';
 			$scope.day='';
+			$scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			//$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.onSubmit = function(){
 				console.log($scope.scheduleName,$scope.scheduleContent,$scope.startTime,$scope.endTime,$scope.day);
-             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postScheduleDetails&scheduleName='+$scope.scheduleName+'&scheduleContent='+$scope.scheduleContent+'&startTime='+$scope.startTime+'&endTime='+$scope.endTime+'&day='+$scope.day);
+             var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postScheduleDetails&scheduleName='+$scope.scheduleName+'&scheduleContent='+$scope.scheduleContent+'&startTime='+$scope.startTime+'&endTime='+$scope.endTime+'&day='+$scope.day);
          	}
 
 		}]);

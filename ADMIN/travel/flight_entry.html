@@ -55,10 +55,11 @@
 					{id:6,name:"Saturday",status:false},
 					{id:7,name:"Sunday",status:false}
 			];
-			
+			$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.getCities =function()
 			{	$scope.cities=[];
-				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
+				var response =  $http.get($scope.apiPath+"reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
 		                $scope.cities.push(city.CityName);
@@ -84,7 +85,7 @@
 				console.log($scope.depValue);
 				console.log($scope.arrValue);
 				console.log(days);
-	             var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postFlightDetails&flightNumber='+$scope.flightNumber+'&flightName='+$scope.flightName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days);
+	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postFlightDetails&flightNumber='+$scope.flightNumber+'&flightName='+$scope.flightName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days);
 			}
 		}]);
 	</script>

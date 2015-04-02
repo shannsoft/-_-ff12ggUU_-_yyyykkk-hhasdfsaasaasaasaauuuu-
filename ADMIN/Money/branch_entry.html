@@ -50,10 +50,12 @@
 			$scope.address = '';
 			$scope.contact = '';
 			$scope.forexMng = '';
+			$scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			//$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			
 			$scope.getCities =function()
 			{	$scope.cities=[];
-				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
+				var response =  $http.get($scope.serviceApiPath+"reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
 		                $scope.cities.push(city);
@@ -65,7 +67,7 @@
 			}
 			$scope.onSubmit = function(){
 				// console.log('branchName = '+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city)
-	            var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postBranchDetails&branchName='+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city);
+	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postBranchDetails&branchName='+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city);
 			}
 		}]);
 	</script>

@@ -68,7 +68,8 @@
 		$scope.countries = [];
 		$scope.states = [];
 		$scope.cities = [];
-		$scope.apiPath = "http://localhost/Nabakalebara/app/php_project/api1.php?";
+		$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		$scope.getFacilities =function()
 		{
 			var response =  $http.get($scope.apiPath+"reqmethod=getFacilities").then(function(pRes){

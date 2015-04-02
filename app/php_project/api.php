@@ -518,8 +518,8 @@ header('Access-Control-Allow-Origin: *');
               // $rows = $this->executeGenericDQLQuery($sql);
               $cityId = $this->getCityIdByName($hotelData['city']);
               // insert hotel details
-              $sql = "insert into hotels(Name,Address,Phone1,Phone2,Phone3,Mobile,Fax,Email,Website,reservation_authority,Category,Facilities,CityId,icon_image,home_image) values('".$hotelData['hotelName']."','".$hotelData['hotelAddress']."' , ".$hotelData['phone1'].",".$hotelData['phone2'].",".$hotelData['phone3'].",".$hotelData['mobile'].",".$hotelData['fax'].",'".$hotelData['mail']."','".$hotelData['webSite']."','".$hotelData['reserv_auth']."',".$hotelData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$hotelData['iconImgPath']."','".$hotelData['homeImgPath']."')";
-
+              $sql = "insert into hotels(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Fax,Email,Website,reservation_authority,Category,Facilities,CityId,icon_image,home_image) values('".$hotelData['hotelName']."','".$hotelData['content']."','".$hotelData['hotelAddress']."' , ".$hotelData['phone1'].",".$hotelData['phone2'].",".$hotelData['phone3'].",".$hotelData['mobile'].",".$hotelData['fax'].",'".$hotelData['mail']."','".$hotelData['webSite']."','".$hotelData['reserv_auth']."',".$hotelData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$hotelData['iconImgPath']."','".$hotelData['homeImgPath']."')";
+              //echo $sql;
               $hotelId= $this->executeGenericInsertQuery($sql);
              
               // insert into hotel rooms with hotel id as foreign key
@@ -562,7 +562,7 @@ header('Access-Control-Allow-Origin: *');
               $cityId = $this->getCityIdByName($guestHouseData['city']);
               //$cityId = 1;
               // insert guest_house details
-              $sql = "insert into guest_house(Name,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$guestHouseData['name']."','".$guestHouseData['address']."' , ".$guestHouseData['phone1'].",".$guestHouseData['phone2'].",".$guestHouseData['phone3'].",".$guestHouseData['mobile'].",'".$guestHouseData['webSite']."',".$guestHouseData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$guestHouseData['iconImgPath']."','".$guestHouseData['iconImgPath']."')";
+              $sql = "insert into guest_house(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$guestHouseData['name']."','".$guestHouseData['content']."','".$guestHouseData['address']."' , ".$guestHouseData['phone1'].",".$guestHouseData['phone2'].",".$guestHouseData['phone3'].",".$guestHouseData['mobile'].",'".$guestHouseData['webSite']."',".$guestHouseData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$guestHouseData['iconImgPath']."','".$guestHouseData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
              //echo $sql;
@@ -600,7 +600,7 @@ header('Access-Control-Allow-Origin: *');
               $cityId = $this->getCityIdByName($resturantData['city']);
               //$cityId = 1;
               // insert resturants details
-              $sql = "insert into resturants(Name,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$resturantData['name']."','".$resturantData['address']."' , ".$resturantData['phone1'].",".$resturantData['phone2'].",".$resturantData['phone3'].",".$resturantData['mobile'].",'".$resturantData['webSite']."',".$resturantData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$resturantData['iconImgPath']."','".$resturantData['iconImgPath']."')";
+              $sql = "insert into resturants(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$resturantData['name']."','".$resturantData['content']."','".$resturantData['address']."' , ".$resturantData['phone1'].",".$resturantData['phone2'].",".$resturantData['phone3'].",".$resturantData['mobile'].",'".$resturantData['webSite']."',".$resturantData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$resturantData['iconImgPath']."','".$resturantData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
              //echo $sql;
@@ -637,12 +637,106 @@ header('Access-Control-Allow-Origin: *');
               $cityId = $this->getCityIdByName($cofeeShopData['city']);
               //$cityId = 1;
               // insert coffee_shops details
-              $sql = "insert into coffee_shops(Name,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$cofeeShopData['name']."','".$cofeeShopData['address']."' , ".$cofeeShopData['phone1'].",".$cofeeShopData['phone2'].",".$cofeeShopData['phone3'].",".$cofeeShopData['mobile'].",'".$cofeeShopData['webSite']."',".$cofeeShopData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$cofeeShopData['iconImgPath']."','".$cofeeShopData['iconImgPath']."')";
+              $sql = "insert into coffee_shops(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$cofeeShopData['name']."','".$cofeeShopData['content']."','".$cofeeShopData['address']."' , ".$cofeeShopData['phone1'].",".$cofeeShopData['phone2'].",".$cofeeShopData['phone3'].",".$cofeeShopData['mobile'].",'".$cofeeShopData['webSite']."',".$cofeeShopData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$cofeeShopData['iconImgPath']."','".$cofeeShopData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
              //echo $sql;
               
            }
+        }
+
+        // posting temp accomodations details
+        public function postTempAccDetails(){
+           $tempAccData =  $this->_request['tempAccData'];
+           
+
+           $sql="select * from temp_accomodation where name="."'".$tempAccData['name']."'";//.$tempAccData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            echo "temp  acc  house exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($tempAccData['city']);
+              //$cityId = 1;
+              // insert coffee_shops details
+              $sql = "insert into temp_accomodation(name,address,start_price,end_price,contact_no,authority,cityId,icon_image) values('".$tempAccData['name']."','".$tempAccData['address']."' ,".$tempAccData['priceStart'].",".$tempAccData['priceEnd'].",'".$tempAccData['phone']."','".$tempAccData['auth']."',".$cityId.",'".$tempAccData['iconImgPath']."')";
+             // echo $sql;
+              $tempAccId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
+        }
+        // posting toilets details
+        public function postToiletsDetails(){
+           $toiletData =  $this->_request['toiletData'];
+           
+
+           $sql="select * from toilet where name="."'".$toiletData['name']."'";//.$toiletData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            echo "temp  acc  house exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($toiletData['city']);
+              //$cityId = 1;
+              // insert coffee_shops details
+              $sql = "insert into toilet(name,address,contact,authority,cityId,icon_image) values('".$toiletData['name']."','".$toiletData['address']."','".$toiletData['phone']."','".$toiletData['auth']."',".$cityId.",'".$toiletData['iconImgPath']."')";
+             // echo $sql;
+              $toiletId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
+        }
+        // posting drinking water details
+        public function postDrinkingWaterDetails(){
+           $dWaterData =  $this->_request['dWaterData'];
+           
+
+           $sql="select * from drinking_water where name="."'".$dWaterData['name']."'";//.$dWaterData['hotelName'];
+           //echo $sql;
+           $rows = $this->executeGenericDQLQuery($sql);
+
+           if(sizeof($rows) > 0)
+           {
+            echo "drinking_water   exists activate update";
+           
+           }
+           else
+           {
+              
+              $cityId = $this->getCityIdByName($dWaterData['city']);
+              //$cityId = 1;
+              // insert coffee_shops details
+              $sql = "insert into drinking_water(name,address,contact,authority,cityId,icon_image) values('".$dWaterData['name']."','".$dWaterData['address']."','".$dWaterData['phone']."','".$dWaterData['auth']."',".$cityId.",'".$dWaterData['iconImgPath']."')";
+             // echo $sql;
+              $drinkingWaterId = $this->executeGenericInsertQuery($sql);
+             //echo $sql;
+              
+           }
+        }
+        //post parking details
+
+        public function postParkingDetails(){
+           $parkingData =  $this->_request['parkingArr'];
+           for($i=0;$i<sizeof($parkingData);$i++)
+           {
+              $sql= " update parking set content='".$parkingData[$i]['content']."'  , address='".$parkingData[$i]['address']."' where vehicle_name = '".$parkingData[$i]['vehicle_name']."'";
+              $this->executeGenericDMLQuery($sql);
+           }
+
+          
         }
         public function getGuestHouseDetails(){
           $startPrice = intval ($this->_request['startPrice']);
@@ -1157,7 +1251,7 @@ header('Access-Control-Allow-Origin: *');
         public function fetchTempleAdmin(){
           // here city id set to 1 for to fetch data from city 1 i.e puri
           // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
-          $sql = "select * from temple_admin ";
+            $sql = "select * from temple_admin ";
             $rows  = $this->executeGenericDQLQuery($sql);
             $localAuthorities = array();
             for($i=0 ; $i<sizeof($rows);$i++)
@@ -1171,6 +1265,29 @@ header('Access-Control-Allow-Origin: *');
            }
             $this->response($this->json($localAuthorities), 200);
         }
+        public function postLocalAuthority(){
+          $authorityName =  $this->_request['authorityName'];
+          $designation =  $this->_request['designation'];
+          $city =  $this->_request['city'];
+          $contact =  $this->_request['contact'];
+          $sql="insert into local_authorities(designation,name,contact_no,cityId)".
+             "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
+          $this->executeGenericDMLQuery($sql);
+          $response['status'] = "success";
+          $this->response($this->json($response), 200);  
+        } 
+        public function postTempleAdmin(){
+          $authorityName =  $this->_request['authorityName'];
+          $designation =  $this->_request['designation'];
+          $city =  $this->_request['city'];
+          $contact =  $this->_request['contact'];
+          $sql="insert into temple_admin(designation,name,contact_no,cityId)".
+             "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
+          $this->executeGenericDMLQuery($sql);
+          $response['status'] = "success";
+          $this->response($this->json($response), 200);  
+        }
+
         /*codes for emergency contact ends*/
 
 	}
