@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+</head>
+<body ng-controller="trafficController" ng-init="init()">
+	<table>
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" ng-model="autorityName" /></td>
+		</tr>
+		<tr>
+			<td>Designation</td>
+			<td><input type="text" ng-model="desig" /></td>
+		</tr>
+		<tr>
+			<td>Contact:</td>
+			<td><input type="text" ng-model="contact" /></td>
+		</tr>
+		<tr>
+			<td>Select City :</td>
+			<td>
+				<select ng-model="city">
+				<option value="">Select City</option>
+					<option  ng-repeat="item in cities" value="{{item.CityID}}">{{item.CityName}}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" value="submit" ng-click="onSubmit()" /></td>
+		</tr>
+		
+	</table>
+	<script type="text/javascript">
+		var app = angular.module("app",[]);
+		app.controller("trafficController",["$scope","$http",function($scope,$http) {
+			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			$scope.city = '';
+			$scope.autorityName = '';
+			$scope.contact = '';
+			$scope.desig = '';
+			
+			$scope.getCities =function()
+			{	$scope.cities=[];
+				var response =  $http.get("http://localhost/Nabakalebara/app/php_project/api1.php?reqmethod=getCity").then(function(pRes){
+					var citiDetails = pRes.data;
+			        angular.forEach(citiDetails,function(city,index){
+		                $scope.cities.push(city);
+		            });
+				});
+			}
+			$scope.init = function(){
+				$scope.getCities();
+			}
+			$scope.onSubmit = function(){
+	            var _responsePromise = $http.get('http://localhost/Nabakalebara/app/php_project/api1.php'+ '?reqmethod=postTempleAdmin&authorityName='+$scope.autorityName+'&designation='+$scope.desig+'&contact='+$scope.contact+'&city='+$scope.city);
+			}
+		}]);
+	</script>
+
+
+
+</body>
+</html>

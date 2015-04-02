@@ -1251,7 +1251,7 @@ header('Access-Control-Allow-Origin: *');
         public function fetchTempleAdmin(){
           // here city id set to 1 for to fetch data from city 1 i.e puri
           // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
-          $sql = "select * from temple_admin ";
+            $sql = "select * from temple_admin ";
             $rows  = $this->executeGenericDQLQuery($sql);
             $localAuthorities = array();
             for($i=0 ; $i<sizeof($rows);$i++)
@@ -1265,6 +1265,29 @@ header('Access-Control-Allow-Origin: *');
            }
             $this->response($this->json($localAuthorities), 200);
         }
+        public function postLocalAuthority(){
+          $authorityName =  $this->_request['authorityName'];
+          $designation =  $this->_request['designation'];
+          $city =  $this->_request['city'];
+          $contact =  $this->_request['contact'];
+          $sql="insert into local_authorities(designation,name,contact_no,cityId)".
+             "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
+          $this->executeGenericDMLQuery($sql);
+          $response['status'] = "success";
+          $this->response($this->json($response), 200);  
+        } 
+        public function postTempleAdmin(){
+          $authorityName =  $this->_request['authorityName'];
+          $designation =  $this->_request['designation'];
+          $city =  $this->_request['city'];
+          $contact =  $this->_request['contact'];
+          $sql="insert into temple_admin(designation,name,contact_no,cityId)".
+             "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
+          $this->executeGenericDMLQuery($sql);
+          $response['status'] = "success";
+          $this->response($this->json($response), 200);  
+        }
+
         /*codes for emergency contact ends*/
 
 	}
