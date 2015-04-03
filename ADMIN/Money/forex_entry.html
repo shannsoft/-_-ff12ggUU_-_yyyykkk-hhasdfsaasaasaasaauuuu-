@@ -2,8 +2,10 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body ng-controller="trafficController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
 	<table>
 		<tr>
 			<td>Name:</td>
@@ -44,6 +46,7 @@
 		var app = angular.module("app",[]);
 		app.controller("trafficController",["$scope","$http",function($scope,$http) {
 			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			$scope.showPreLoader = false;
 			$scope.city = '';
 			$scope.branchName = '';
 			$scope.branchMng = '';
@@ -67,7 +70,11 @@
 			}
 			$scope.onSubmit = function(){
 				// console.log('branchName = '+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city)
-	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postForexDetails&branchName='+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city);
+				$scope.showPreLoader = true;
+	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postForexDetails&branchName='+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city).then(function(){
+
+	            	$scope.showPreLoader = false;
+	            });
 			}
 		}]);
 	</script>

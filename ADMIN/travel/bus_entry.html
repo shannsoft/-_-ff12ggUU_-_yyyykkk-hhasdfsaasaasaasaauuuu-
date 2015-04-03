@@ -2,8 +2,10 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body ng-controller="busController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
 	<table>
 		<tr>
 			<td>Bus Number :</td>
@@ -64,7 +66,10 @@
 				console.log($scope.toCity);
 				console.log($scope.depValue);
 				console.log($scope.duration);
-	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postBusDetails&busNumber='+$scope.busNumber+'&busName='+$scope.busName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&duration='+$scope.duration);
+				$scope.showPreLoader = true;
+	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postBusDetails&busNumber='+$scope.busNumber+'&busName='+$scope.busName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&duration='+$scope.duration).then(function(pRes){
+	             	$scope.showPreLoader = false;
+	             });
 			}
 		}]);
 	</script>

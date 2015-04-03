@@ -2,8 +2,10 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body ng-controller="flightController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
 	<table>
 		<tr>
 			<td>Flight Number :</td>
@@ -42,6 +44,7 @@
 		var app = angular.module("app",[]);
 		app.controller("flightController",["$scope","$http",function($scope,$http) {
 			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			$scope.showPreLoader = false;
 			$scope.fromCity = 'Select City';
 			$scope.depValue = '';
 			$scope.arrValue = '';
@@ -71,6 +74,7 @@
 				$scope.getCities();
 			}
 			$scope.onSubmit = function(){
+				$scope.showPreLoader = true;
 				var days = [];
 				angular.forEach($scope.days,function(day,index){   
 				if(day.status == true)
@@ -85,7 +89,9 @@
 				console.log($scope.depValue);
 				console.log($scope.arrValue);
 				console.log(days);
-	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postFlightDetails&flightNumber='+$scope.flightNumber+'&flightName='+$scope.flightName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days);
+	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postFlightDetails&flightNumber='+$scope.flightNumber+'&flightName='+$scope.flightName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days).then(function(pRes){
+	             		$scope.showPreLoader = false;
+	             });
 			}
 		}]);
 	</script>
