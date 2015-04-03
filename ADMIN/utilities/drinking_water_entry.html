@@ -3,9 +3,11 @@
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<h3> Hotel entry form</h3>
 </head>
 <body ng-controller="dWaterController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
 	 Name : <input type="text" ng-model="name"><br/>
 	<!-- Content : <textarea ng-model="content"></textarea> <br/> -->
 	Address : <textarea ng-model="address"></textarea> <br/>
@@ -32,7 +34,7 @@
 	<script type="text/javascript">
 	var app = angular.module("app",[]);
 	app.controller("dWaterController",["$scope","$http",function($scope,$http) {
-		
+		$scope.showPreLoader = false;
 		$scope.countries = [];
 		$scope.states = [];
 		$scope.cities = [];
@@ -91,6 +93,7 @@
 		}
 		$scope.onSubmit = function(){
 			// console.log($scope.facilities);
+			$scope.showPreLoader = true;
 			var dWaterData = {};
 			dWaterData.name = $scope.name;
 			// tempAccData.content = $scope.content;
@@ -115,6 +118,7 @@
                     }
             }).then(function(pRes){
             	console.log(pRes.data);
+            	$scope.showPreLoader = false;
             });
 
 

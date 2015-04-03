@@ -3,9 +3,11 @@
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<h3> Hotel entry form</h3>
 </head>
 <body ng-controller="hotelController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
 	Hotel Name : <input type="text" ng-model="hotelName"><br/>
 	Content : <textarea ng-model="content"></textarea> <br/>
 	Hotel Address : <textarea ng-model="h_add"></textarea> <br/>
@@ -63,6 +65,7 @@
 	<script type="text/javascript">
 	var app = angular.module("app",[]);
 	app.controller("hotelController",["$scope","$http",function($scope,$http) {
+		$scope.showPreLoader = false;
 		$scope.facilities = [];
 		$scope.roomFacilities = [];
 		$scope.countries = [];
@@ -182,6 +185,7 @@
                     }
             }).then(function(pRes){
             	console.log(pRes.data);
+            	$scope.showPreLoader = true;
             });
 
 

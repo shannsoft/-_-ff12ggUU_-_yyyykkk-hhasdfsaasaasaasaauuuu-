@@ -2,8 +2,10 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body ng-controller="trafficController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
 	<table>
 		<tr>
 			<td>Name:</td>
@@ -56,6 +58,7 @@
 				$scope.getCities();
 			}
 			$scope.onSubmit = function(){
+				
 	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postLocalAuthority&authorityName='+$scope.autorityName+'&designation='+$scope.desig+'&contact='+$scope.contact+'&city='+$scope.city);
 			}
 		}]);
