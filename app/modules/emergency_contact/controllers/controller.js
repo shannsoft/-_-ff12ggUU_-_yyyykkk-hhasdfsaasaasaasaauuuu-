@@ -1,6 +1,7 @@
 angular.module("emerContact").controller("emerContactController",['$scope','$rootScope','AppModelService','EmergencyContactService','MainService', function ($scope,$rootScope,AppModelService,EmergencyContactService,MainService){
 	$scope.initEmergency = function(){
        console.log("initEmergency");
+       $scope.notifications = AppModelService.getNotification();
       $scope.contentUrl='modules/emergency_contact/views/partials/econtact-lower.html';
       $scope.heading = 'Emergency Contact';
       $scope.menuOptionList = AppModelService.getMenuOptions();

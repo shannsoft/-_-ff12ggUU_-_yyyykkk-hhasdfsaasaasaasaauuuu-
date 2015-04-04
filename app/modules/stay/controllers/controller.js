@@ -2,7 +2,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     
     $scope.initStay = function(){
       console.log("initStay");
-
+      $scope.notifications = AppModelService.getNotification();
       $scope.emailVisible = false;
       $scope.emailSubject = "Hotel Enquiry"  // constant
       $scope.emaildata={emailSubject : "Hotel Enquiry"};

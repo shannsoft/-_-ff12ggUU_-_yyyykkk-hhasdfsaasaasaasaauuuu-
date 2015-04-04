@@ -15,19 +15,21 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
     HomeService.getNotification().then(function(pRes){
           MainService.hideLoaders();
           $scope.notifications = pRes.data;
+          // storing notification in model , to access in every controller
+          AppModelService.setNotification($scope.notifications);
       });
     //HomeService.setContentUrl('modules/home/views/partials/mainMenu.html');
     $scope.heading = HomeService.getHeading();
     $scope.menuOptionList = AppModelService.getMenuOptions();
     console.log("homeInit  ");
-    $interval(function(){
+    /*$interval(function(){
       // calling service to get latest 10 notifications
 
       HomeService.getNotification().then(function(pRes){
           $scope.notifications = pRes.data;
       });
     // $scope.notifications = [{header:"header",detail:"deatil"},{header:"header",detail:"deatil"},{header:"header",detail:"deatil"}];
-    },1000*60*5);  // calling interval for each 10 minutes after init of application
+    },1000*60*5);*/  // calling interval for each 10 minutes after init of application
   }
 
   $scope.changeContentUrl = function(pUrl){

@@ -9,6 +9,7 @@ angular.module("money").controller("moneyController",['$scope','$rootScope','App
     $scope.reverseConvertCurrencyValue;
     $scope.showResult= false;
     $scope.initMoney = function(){
+      $scope.notifications = AppModelService.getNotification();
       $scope.contentUrl='modules/money/views/partials/money-lower.html';
       $scope.heading = 'Money';
       $scope.menuOptionList = AppModelService.getMenuOptions();

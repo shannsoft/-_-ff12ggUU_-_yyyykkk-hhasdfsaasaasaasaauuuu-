@@ -3,6 +3,7 @@ angular.module("events").controller("utilitiesController",['$scope','$rootScope'
     $scope.contentUrl='modules/utilities/views/partials/utilities-lower.html';
     $scope.initUtilities = function(){
       console.log("initUtilities");
+      $scope.notifications = AppModelService.getNotification();
       $scope.contentUrl='modules/utilities/views/partials/utilities-lower.html';
       $scope.heading = 'Utilities';
       $scope.menuOptionList = AppModelService.getMenuOptions();

@@ -1,6 +1,7 @@
 angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope','MainService','AppModelService','AboutUsService', function ($scope,$rootScope,MainService,AppModelService,AboutUsService){
   	$scope.initAboutUs = function(){
         console.log("initAboutUs");
+      $scope.notifications = AppModelService.getNotification();
       $scope.contentUrl='modules/aboutUs/views/partials/aboutUs-lower.html';
       $scope.heading = 'About Us';
       $scope.menuOptionList = AppModelService.getMenuOptions();

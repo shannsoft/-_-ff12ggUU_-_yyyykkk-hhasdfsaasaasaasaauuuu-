@@ -1,5 +1,6 @@
 angular.module("travel").controller("travelController",['$scope','$rootScope','AppModelService','travelService','MainEvent','MainService', function ($scope,$rootScope,AppModelService,travelService,MainEvent,MainService){
     $scope.initTravel = function(){
+        $scope.notifications = AppModelService.getNotification();
       $scope.contentUrl='modules/travel/views/partials/travel-lower.html';
       $scope.heading = 'Travel';
       $scope.information = '';

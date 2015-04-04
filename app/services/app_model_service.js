@@ -2,7 +2,8 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
 	
    /* global data for all modules starts*/
   var datType = '',
-      travelType = '';
+      travelType = '',
+      notification=[];
    var menuOptionList = [
         {detailLink:"#/",icon:"fa fa-qrcode",info:"Dashboard"},
         {detailLink:"#travel",icon:"fa fa-plane",info:"Travel"},
@@ -15,7 +16,7 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
         {detailLink:"#route-map",icon:"fa fa-map-marker",info:"Route Map"},         
         {detailLink:"#aboutUs",icon:"fa fa-file-text",info:"About Nabkalebara"},        
         {detailLink:"#template-schedule",icon:"fa fa-calendar",info:"Temple Schedule"},         
-    ]
+    ],
     getMenuOptions = function(){
          return menuOptionList;
     },
@@ -30,6 +31,12 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
     },
     getTravelType = function(){
       return travelType;
+    }
+    setNotification = function(pData){
+      notification = pData;
+    },
+    getNotification = function(){
+      return notification;
     };
 
 
@@ -42,7 +49,9 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
     setDayType:setDayType,
     getDayType:getDayType,
     setTravelType:setTravelType,
-    getTravelType:getTravelType
+    getTravelType:getTravelType,
+    setNotification:setNotification,
+    getNotification:getNotification
 
 	}
 }]);

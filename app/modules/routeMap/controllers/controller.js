@@ -10,6 +10,7 @@ angular.module("routeMap").controller("routeMapController",['$scope','$rootScope
     var destinationPlace = 'grand road puri';
     $scope.route = {source:'',destination:''};
     $scope.initRouteMAp = function(){
+      $scope.notifications = AppModelService.getNotification();
       $scope.contentUrl='modules/routeMap/views/partials/route-map-lower.html';
       $scope.heading = 'Route Map';
       $scope.menuOptionList = AppModelService.getMenuOptions();
