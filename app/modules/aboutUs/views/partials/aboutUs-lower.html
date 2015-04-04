@@ -1,24 +1,15 @@
-<div>
-      <ion-view class="pane">
+ <ion-view class="pane">
         <ion-content class="has-header">
-		  <a href="#template-schedule" class="row money-dashboard about-nabakalebara about-nabakalebara-submenu">
+        <div ng-repeat='option in aboutUsOptionList'>
+			<a ng-click="routeSubView(option.contentUrl)" class="row money-dashboard about-nabakalebara about-nabakalebara-submenu">
 			  <div class="col col-25">
-			   <i class="fa fa-calendar"></i>
+			   <i class="{{option.iconImgPath}}"></i>
 			  </div><!--col-25 end-->
 			   <div class="col col-70">
-			    <h2> Temple Schedule</h2>
+			    <h2>{{option.label}}</h2>
 			  </div><!--col-70 end-->
-		</a><!--row end-->
-		
-		  <a href="#about-nabakalebara" class="row money-dashboard about-nabakalebara about-nabakalebara-submenu">
-			  <div class="col col-25">
-			   <i class="fa fa-file-text"></i>
-			  </div><!--col-25 end-->
-			   <div class="col col-70">
-			    <h2>  About Nabakalebara</h2>
-			  </div><!--col-70 end-->
-		</a><!--row end-->
-		
+			</a>
+		</div>	
 		  <div class="row">
 		     <div class="col col-50">
 			  </div><!--col-50 end-->
@@ -30,4 +21,3 @@
 		  </div><!--row end-->
         </ion-content>
       </ion-view>
-   </div>

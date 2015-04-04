@@ -46,8 +46,7 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
       $scope.healthcareList = [
           {table_name:"hospital",contentUrl:"",iconClass:"fa fa-users",info:"Hospital At Puri"},
           {table_name:"trauma_care",contentUrl:"",iconClass:"fa fa-university",info:"Trauma Care"},
-          {table_name:"fast_aid",contentUrl:"",iconClass:"fa fa-medkit",info:"Fast AID Center"},
-          {table_name:"toilet",contentUrl:"",iconClass:"fa fa-medkit",info:"Temporary Toilets"}
+          {table_name:"fast_aid",contentUrl:"",iconClass:"fa fa-medkit",info:"Fast AID Center"}
       ];
 
     }
