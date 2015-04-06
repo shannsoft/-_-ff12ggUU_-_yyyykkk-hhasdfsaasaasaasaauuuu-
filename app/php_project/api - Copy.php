@@ -13,10 +13,10 @@ header('Access-Control-Allow-Origin: *');
 		public $data = "";
 		
 		const DB_SERVER = "localhost";
-		const DB_USER = "root";
-		const DB_PASSWORD = "";
+		const DB_USER = "goappsso_nabakal";
+		const DB_PASSWORD = "nabakalebara@123";
 		//const DB = "magentod_html5tshirtapp_5sept";
-		const DB = "nabakalebara";
+		const DB = "goappsso_nabakalebara";
 	
 	
   
@@ -164,31 +164,8 @@ header('Access-Control-Allow-Origin: *');
 				$countryDetails[$i]['ISDCode'] = $rows[$i]['ISDCode'];
 				$countryDetails[$i]['Currency'] = $rows[$i]['Currency'];
 
-    			}
-    			$this->response($this->json($countryDetails), 200);
-        }
-        public function postCountry()
-        {
-          $countryData = $this->_request['countryData'];
-          // echo $countryData;
-          $sql = "select * from country where CountryName = '".$countryData['countryName']."'";
-          $rows = $this->executeGenericDQLQuery($sql);
-          // print_r($rows);
-          $response = array();
-          if(sizeof($rows) > 0)
-          {
-            $response['status'] = "success" ;
-            $response['data'] = "country already exists";
-          }
-          else
-          {
-               $sql = "insert into country(CountryName,ISDCode,Currency) values('".$countryData['countryName']."' , '".$countryData['isdCode']."' , '".$countryData['currency']."')";
-              
-               $rows = $this->executeGenericDMLQuery($sql);
-               $response['status'] = "success" ;
-               $response['data'] = "country enter successful";
-          }
-            $this->response($this->json($response), 200);
+			}
+			$this->response($this->json($countryDetails), 200);
         }
         public function getStates()
         {	
@@ -211,32 +188,6 @@ header('Access-Control-Allow-Origin: *');
     			}
     			$this->response($this->json($statesDetails), 200);
         }
-        public function postState()
-        {
-          $stateData = $this->_request['stateData'];
-          // echo $countryData;
-          $sql = "select ContryID from country where CountryName = '".$stateData['CountryName']."'";
-          $row = $this->executeGenericDQLQuery($sql);
-          $countryId = $row[0]['ContryID'];
-          $sql = "select * from states where StateName = '".$stateData['state']."' and CountryID = $countryId";
-          $rows = $this->executeGenericDQLQuery($sql);
-
-          $response = array();
-          if(sizeof($rows) > 0)
-          {
-            $response['status'] = "success" ;
-            $response['data'] = "state already exists";
-          }
-          else
-          {
-               $sql = "insert into states(StateName,CountryID) values('".$stateData['state']."' ,$countryId )";
-              
-               $rows = $this->executeGenericDMLQuery($sql);
-               $response['status'] = "success" ;
-               $response['data'] = "state enter successful";
-          }
-            $this->response($this->json($response), 200);
-        }
         public function getCity()
         {	
               isset($this->_request['state']) ? $stateName = $this->_request['state'] :  $stateName = "odisha";
@@ -258,39 +209,7 @@ header('Access-Control-Allow-Origin: *');
     			}
     			$this->response($this->json($cityDetails), 200);
         }
-        
-        public function postCity()
-        {
-          $cityData = $this->_request['cityData'];
-          // echo $countryData;
-          $sql = "select ContryID from country where CountryName = '".$cityData['CountryName']."'";
-          $row = $this->executeGenericDQLQuery($sql);
-          $countryId = $row[0]['ContryID'];
-
-          $sql = "select StateID from states where StateName = '".$cityData['StateName']."'";
-          $row = $this->executeGenericDQLQuery($sql);
-          $stateId = $row[0]['StateID'];
-          $stdCode = $cityData['stdCode'];
-
-          $sql = "select * from city where CityName = '".$cityData['city']."' and StateID = $stateId and CountryID = $countryId";
-          $rows = $this->executeGenericDQLQuery($sql);
-
-          $response = array();
-          if(sizeof($rows) > 0)
-          {
-            $response['status'] = "success" ;
-            $response['data'] = "city already exists";
-          }
-          else
-          {
-               $sql = "insert into city(CityName,StateID,CountryID,STDCode) values('".$cityData['city']."' ,$stateId , $countryId,$stdCode )";
-              
-               $rows = $this->executeGenericDMLQuery($sql);
-               $response['status'] = "success" ;
-               $response['data'] = "state enter successful";
-          }
-            $this->response($this->json($response), 200);
-        }  
+          
         public function getCityIdByName($cityName)
         {
              $sql = "select * from city where CityName ='".$cityName."'";

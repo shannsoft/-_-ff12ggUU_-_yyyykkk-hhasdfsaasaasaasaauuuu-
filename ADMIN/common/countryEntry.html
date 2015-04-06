@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3> Hotel entry form</h3>
+</head>
+<body ng-controller="countryController">
+	<div id="preloader" ng-show="showPreLoader"></div>
+	 Country Name : <input type="text" ng-model="country"><br/>
+	 ISD code : <input type="text" ng-model="isdCode"><br/>
+	 Currency : <input type="text" ng-model="currency"><br/>
+	<input type="button" value="submit" ng-click="onSubmit()" />
+	<script type="text/javascript">
+	var app = angular.module("app",[]);
+	app.controller("countryController",["$scope","$http",function($scope,$http) {
+		$scope.showPreLoader = false;
+		$scope.countries = [];
+		$scope.country = '';
+		// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		$scope.onSubmit = function(){
+			// console.log($scope.facilities);
+			$scope.showPreLoader = true;
+			$scope.country = $scope.country.trim();
+			var countryData = {};
+			countryData.countryName = $scope.country;
+			countryData.isdCode = $scope.isdCode;
+			countryData.currency = $scope.currency;
+			var _serializedData = $.param({reqmethod: 'postCountry',countryData:countryData});
+            var _responsePromise = $http({
+                    method: 'POST',
+                    url: $scope.apiPath,
+                    data: _serializedData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+            }).then(function(pRes){
+            	console.log(pRes.data);
+            	$scope.showPreLoader = false;
+            });
+
+
+		}
+					
+
+	}]);
+
+
+
+	</script>
+
+
+
+</body>
+</html>

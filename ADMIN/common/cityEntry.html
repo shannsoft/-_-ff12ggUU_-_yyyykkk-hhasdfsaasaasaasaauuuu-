@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3> Hotel entry form</h3>
+</head>
+<body ng-controller="cityController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
+	 
+	Countries : 
+	<select ng-model="country" ng-change="onSelectCountry(country)">
+		<option ng-repeat="country in countries">{{country.CountryName}}</option>
+	</select>
+	States : 
+	<select ng-model="state" ng-change="onStateSelect(state)">
+		<option ng-repeat="state in states">{{state.StateName}}</option>
+	</select>
+	City : 
+	<input type="text" ng-model="city" />
+	Std code : <input type="text" ng-model="stdCode" />
+	<input type="button" value="submit" ng-click="onSubmit()" />
+	<script type="text/javascript">
+	var app = angular.module("app",[]);
+	app.controller("cityController",["$scope","$http",function($scope,$http) {
+		$scope.showPreLoader = false;
+		$scope.countries = [];
+		$scope.states = [];
+		$scope.selectedCountry = '';
+		$scope.selectedState = '';
+		// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		$scope.getCountry = function(){
+			var response =  $http.get($scope.apiPath+"reqmethod=getCountries").then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.id = pRes.data[i].id;
+					obj.CountryName = pRes.data[i].CountryName;
+					$scope.countries.push(obj);
+				}
+			});
+		}
+		$scope.onSelectCountry = function(pCountry){
+			
+			$scope.getStates(pCountry);
+			$scope.selectedCountry = pCountry;
+		}
+		$scope.getStates = function(pCountry){
+			$scope.states = [];
+			var response =  $http.get($scope.apiPath+"reqmethod=getStates&country="+pCountry).then(function(pRes){
+				for(i in pRes.data)
+				{
+					var obj = {};
+					obj.StateID = pRes.data[i].StateID;
+					obj.StateName = pRes.data[i].StateName;
+					obj.CountryID = pRes.data[i].CountryID;
+					$scope.states.push(obj);
+				}
+			});
+		}
+		$scope.onStateSelect = function(pState){
+			$scope.selectedState = pState;
+		}
+		
+		$scope.init = function(){
+			$scope.getCountry();
+			$scope.getStates('');
+			
+			
+		}
+		$scope.onSubmit = function(){
+			// console.log($scope.facilities);
+			var cityData = {};
+			cityData.CountryName = $scope.selectedCountry;
+			cityData.StateName = $scope.selectedState;
+			cityData.city = $scope.city;
+			cityData.stdCode = parseInt($scope.stdCode);
+			console.log(cityData);
+			var _serializedData = $.param({reqmethod: 'postCity',cityData:cityData});
+            var _responsePromise = $http({
+                    method: 'POST',
+                    url: $scope.apiPath,
+                    data: _serializedData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+            }).then(function(pRes){
+            	console.log(pRes.data);
+            	$scope.showPreLoader = false;
+            });
+
+
+		}
+					
+
+	}]);
+
+
+
+	</script>
+
+
+
+</body>
+</html>
