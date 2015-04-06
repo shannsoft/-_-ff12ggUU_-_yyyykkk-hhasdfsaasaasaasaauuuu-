@@ -1263,6 +1263,22 @@ header('Access-Control-Allow-Origin: *');
           $this->response($this->json($notifications), 200);
 
         }
+
+        public function postNotifications()
+        {
+           $notificationData =  $this->_request['notificationData'];
+           // print_r($notificationData);
+           for($i=0 ; $i<sizeof($notificationData) ; $i++)
+           {
+              $sql = "insert into notification(title,detail) values('".$notificationData[$i]['heading']."' , '".$notificationData[$i]['content']."')";
+              $this->executeGenericDMLQuery($sql);
+           }
+           $response = array();
+           $response['status'] = "success";
+           $response['data'] = "notifications added successfully !";
+           $this->response($this->json($response), 200);
+
+        }
         /*money service Ends */
 
 

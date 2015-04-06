@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3> Hotel entry form</h3>
+</head>
+<body ng-controller="notificationController">
+	<div id="preloader" ng-show="showPreLoader"></div>
+	 
+	<div ng-repeat="noti in notifications">
+		Heading :<input type="text" ng-model="noti.heading" />
+		Content:<input type="text" ng-model="noti.content" />
+		<button ng-click="removeNoti($index)" value="remove">Remove</button>
+	</div>
+	<button ng-click="addNoti()" value="add">Add</button>
+
+	<input type="button" value="submit" ng-click="onSubmit()" />
+	<script type="text/javascript">
+	var app = angular.module("app",[]);
+	app.controller("notificationController",["$scope","$http",function($scope,$http) {
+		$scope.showPreLoader = false;
+		$scope.addNoti = function() {
+			$scope.notifications.push({heading:"" , content:""});
+			
+		}
+		$scope.notifications = [
+			{heading:"" , content:""}
+			
+		];
+
+		$scope.removeNoti = function(pIndex) {
+			$scope.notifications.splice(pIndex,1);
+			
+		}
+
+		// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		$scope.onSubmit = function(){
+			$scope.showPreLoader = true;
+			// trmmming data and removing undefined daa of notification
+			var finalNotification = [];
+			for(var i in $scope.notifications)
+			{
+				if($scope.notifications[i].heading && $scope.notifications[i].content && $scope.notifications[i].heading!='' && $scope.notifications[i].content!='')
+				{
+					finalNotification.push($scope.notifications[i]);
+				}
+			}
+			if(finalNotification.length == 0)
+			{
+            	$scope.showPreLoader = false;
+				
+			}
+			else
+			{
+				
+				var _serializedData = $.param({reqmethod: 'postNotifications',notificationData:finalNotification});
+	            var _responsePromise = $http({
+	                    method: 'POST',
+	                    url: $scope.apiPath,
+	                    data: _serializedData,
+	                    headers: {
+	                        'Content-Type': 'application/x-www-form-urlencoded'
+	                    }
+	            }).then(function(pRes){
+	            	console.log(pRes.data);
+
+	            	$scope.showPreLoader = false;
+	            });
+			}
+
+
+		}
+					
+
+	}]);
+
+
+
+	</script>
+
+
+
+</body>
+</html>
