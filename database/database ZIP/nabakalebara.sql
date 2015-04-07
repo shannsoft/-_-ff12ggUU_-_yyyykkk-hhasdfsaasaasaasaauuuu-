@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2015 at 09:52 PM
+-- Generation Time: Apr 07, 2015 at 04:37 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `branches` (
   `forex_manager` varchar(20) DEFAULT NULL,
   `city_id` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `branches`
@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `branches` (
 
 INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manager`, `forex_manager`, `city_id`) VALUES
 (1, 'icici bank srigundicha', 'Srigundicha chhowk', '9652365214', 'Mr Rajesh', 'Mr Dinesh', '1'),
-(2, 'icici bank Dutta tota', 'Dutta tota', '9652369854', 'Mr Dipak', 'Mr Raj', '1');
+(2, 'icici bank Dutta tota', 'Dutta tota', '9652369854', 'Mr Dipak', 'Mr Raj', '1'),
+(3, 'test name', 'test address', '9652563252', 'Mr test', 'Mr test', '4');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   `CountryID` int(11) NOT NULL,
   `STDCode` int(11) NOT NULL,
   PRIMARY KEY (`CityID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `city`
@@ -116,7 +117,8 @@ INSERT INTO `city` (`CityID`, `CityName`, `StateID`, `CountryID`, `STDCode`) VAL
 (2, 'Kolkata', 2, 1, 563),
 (3, 'hydrabad', 3, 1, 234),
 (4, 'balasore', 1, 1, 674),
-(5, 'Bhadrak', 1, 1, 674);
+(5, 'Bhadrak', 1, 1, 674),
+(6, 'lll', 4, 4, 632);
 
 -- --------------------------------------------------------
 
@@ -162,18 +164,19 @@ INSERT INTO `coffee_shops` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone
 
 CREATE TABLE IF NOT EXISTS `country` (
   `ContryID` int(11) NOT NULL AUTO_INCREMENT,
-  `CountryName` varchar(50) NOT NULL,
-  `ISDCode` int(11) NOT NULL,
-  `Currency` varchar(50) NOT NULL,
+  `CountryName` varchar(50) DEFAULT 'india',
+  `ISDCode` varchar(5) DEFAULT '91',
+  `Currency` varchar(50) DEFAULT 'INR',
   PRIMARY KEY (`ContryID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `country`
 --
 
 INSERT INTO `country` (`ContryID`, `CountryName`, `ISDCode`, `Currency`) VALUES
-(1, 'india', 91, 'INR');
+(1, 'india', '91', 'INR'),
+(4, 'pakistan', '92', 'PAK');
 
 -- --------------------------------------------------------
 
@@ -485,7 +488,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `title` varchar(50) DEFAULT NULL,
   `detail` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `notification`
@@ -493,7 +496,13 @@ CREATE TABLE IF NOT EXISTS `notification` (
 
 INSERT INTO `notification` (`id`, `title`, `detail`) VALUES
 (11, 'Traffic notice', 'Notice for puri traffic updates'),
-(12, 'Police updates', 'Notice for puri police control room');
+(12, 'Police updates', 'Notice for puri police control room'),
+(13, 'heaing1', 'content1'),
+(14, 'heading2', 'content2'),
+(15, 'heading3', 'content3'),
+(16, 'heading4', 'content4'),
+(17, 'hhh', 'hhh'),
+(18, 'mmm', 'mmm');
 
 -- --------------------------------------------------------
 
@@ -591,14 +600,17 @@ CREATE TABLE IF NOT EXISTS `states` (
   `StateName` varchar(50) NOT NULL,
   `CountryID` int(11) NOT NULL,
   PRIMARY KEY (`StateID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `states`
 --
 
 INSERT INTO `states` (`StateID`, `StateName`, `CountryID`) VALUES
-(1, 'odisha', 1);
+(1, 'odisha', 1),
+(2, 'mp', 1),
+(3, 'up', 1),
+(4, 'lahore', 4);
 
 -- --------------------------------------------------------
 
