@@ -29,8 +29,8 @@
 		$scope.states = [];
 		$scope.selectedCountry = '';
 		$scope.selectedState = '';
-		// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-		$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		// $scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		$scope.getCountry = function(){
 			var response =  $http.get($scope.apiPath+"reqmethod=getCountries").then(function(pRes){
 				for(i in pRes.data)
