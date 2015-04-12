@@ -13,10 +13,10 @@ header('Access-Control-Allow-Origin: *');
 		public $data = "";
 		
 		const DB_SERVER = "localhost";
-		const DB_USER = "root";
-		const DB_PASSWORD = "";
+		const DB_USER = "goappsso_nabakal";
+		const DB_PASSWORD = "nabakalebara@123";
 		//const DB = "magentod_html5tshirtapp_5sept";
-		const DB = "nabakalebara";
+		const DB = "goappsso_nabakalebara";
 	
 	
   
@@ -154,15 +154,15 @@ header('Access-Control-Allow-Origin: *');
             }
         public function getCountries()
         {	
-        	$sql="SELECT * FROM country";
-   			$rows = $this->executeGenericDQLQuery($sql);
-			$countryDetails = array();
-			for($i=0;$i<sizeof($rows);$i++)
-			{
-				$countryDetails[$i]['id'] = $rows[$i]['ContryID'];
-				$countryDetails[$i]['CountryName'] = $rows[$i]['CountryName'];
-				$countryDetails[$i]['ISDCode'] = $rows[$i]['ISDCode'];
-				$countryDetails[$i]['Currency'] = $rows[$i]['Currency'];
+        	   $sql="SELECT * FROM country";
+       			$rows = $this->executeGenericDQLQuery($sql);
+    			$countryDetails = array();
+    			for($i=0;$i<sizeof($rows);$i++)
+    			{
+    				$countryDetails[$i]['id'] = $rows[$i]['ContryID'];
+    				$countryDetails[$i]['CountryName'] = $rows[$i]['CountryName'];
+    				$countryDetails[$i]['ISDCode'] = $rows[$i]['ISDCode'];
+    				$countryDetails[$i]['Currency'] = $rows[$i]['Currency'];
 
     			}
     			$this->response($this->json($countryDetails), 200);

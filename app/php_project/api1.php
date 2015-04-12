@@ -16,7 +16,7 @@ header('Access-Control-Allow-Origin: *');
 		const DB_USER = "root";
 		const DB_PASSWORD = "";
 		//const DB = "magentod_html5tshirtapp_5sept";
-		const DB = "nabakalebara";
+		const DB = "goappsso_nabakalebara";
 	
 	
   
