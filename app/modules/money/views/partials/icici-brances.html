@@ -27,10 +27,13 @@
 						       {{branch.address}}</p>
 					   </div>
 				 </div>
-			     <div class="col col-100 right_map" ng-click="viewOnMap(branch.address)">
-				      <p> <a href=""> 
+			     <div class="col col-100 right_map">
+				      <p> <a ng-click="viewOnMap(branch.address)"> 
 					      <i class="fa fa-map-marker"></i>
-						    View Map</a> </p>
+						    View Map</a> 
+						    <a href="tel:{{branch.contact_number}}"> 
+					      <i class="fa fa-phone"></i>
+						    {{branch.contact_number}}</a></p>
 			     </div>
 			   </div>
 			 </div>

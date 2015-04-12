@@ -1,4 +1,4 @@
-angular.module("emerContact").controller("emerContactController",['$scope','$rootScope','AppModelService','EmergencyContactService','MainService', function ($scope,$rootScope,AppModelService,EmergencyContactService,MainService){
+angular.module("emerContact").controller("emerContactController",['$scope','$rootScope','AppModelService','EmergencyContactService','MainService','MainEvent', function ($scope,$rootScope,AppModelService,EmergencyContactService,MainService,MainEvent){
 	$scope.initEmergency = function(){
        console.log("initEmergency");
        $scope.notifications = AppModelService.getNotification();
@@ -58,5 +58,8 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
         });
     }
     /*codes for health care sanitation ends*/
+     $scope.viewOnMap = function(address){ 
+      $scope.$emit(MainEvent.INIT_MAP,{data : address});
+    }
   	
 }]);

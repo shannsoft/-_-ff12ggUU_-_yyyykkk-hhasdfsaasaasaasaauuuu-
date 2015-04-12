@@ -16,15 +16,12 @@
 						       {{authority.designation}}</p>
 					   </div><!--span end-->
 
-					   <div>
-						  <p> <i class="fa fa-location-arrow"></i>
-						       {{authority.contact}}</p>
-					   </div><!--span end-->
+					<!--span end-->
 					    
-					    <div class="right_map" ng-click="viewOnMap(content.address)">
-				      		<p> <a href=""> 
-					      	<i class="fa fa-map-marker"></i>
-						    View Map</a> </p>
+					    <div class="right_map">
+				      		<p><a href="tel:{{authority.contact}}"> 
+					      <i class="fa fa-phone"></i>
+						    {{authority.contact}}</a></p>
 					    </div>
 					</div>
 				 

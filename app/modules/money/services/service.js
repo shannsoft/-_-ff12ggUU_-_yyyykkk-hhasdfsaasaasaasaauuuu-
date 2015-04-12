@@ -15,10 +15,10 @@ AppRoot.factory('MoneyService',['$http','AppConfig','$rootScope', function($http
       },
       getExchangeList : function(pData){
         if(pData != ''){ 
-    	 	 var response = $http.get(AppConfig.apiPath+'reqmethod=getForexBranches&cityId='+pData);
+    	 	 var response = $http.get(AppConfig.apiPath+'reqmethod=getBranches&cityId='+pData);
         }
         else
-          var response = $http.get(AppConfig.apiPath+'reqmethod=getForexBranches');
+          var response = $http.get(AppConfig.apiPath+'reqmethod=getBranches');
     		return response;
     	}
    	}
