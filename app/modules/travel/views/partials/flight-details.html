@@ -8,15 +8,23 @@
      	   <div class="col col-50">
 		     <p class="map-start"> From </p>
 		    <form class="item item-input list list-inset">
-			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Source" ng-model="searchFlight.source"/>
+			 <!-- <i class="icon ion-search placeholder-icon"></i>
+			  <input type="text" placeholder="Source" ng-model="searchFlight.source"/> -->
+			  <select ng-model="searchFlight.source">
+             	<option ng-selected="true" value="">Select City</option>
+                <option ng-repeat="city in cities" value="{{city.cityName}}" >{{city.cityName}}</option>
+             </select>
 			</form>
 		   </div>		   
 		   <div class="col col-50">
 		     <p class="map-start"> To </p>
 		    <form class="item item-input list list-inset">
-			 <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Destination" ng-model="searchFlight.destination"/>
+			<!--  <i class="icon ion-search placeholder-icon"></i>
+			  <input type="text" placeholder="Destination" ng-model="searchFlight.destination"/> -->
+			   <select ng-model="searchFlight.destination">
+             	<option ng-selected="true" value="">Select City</option>
+                <option ng-repeat="city in cities" value="{{city.cityName}}" >{{city.cityName}}</option>
+             </select>
 			</form>
 		   </div>
 		  </div>

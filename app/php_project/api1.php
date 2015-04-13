@@ -258,7 +258,23 @@ header('Access-Control-Allow-Origin: *');
     			}
     			$this->response($this->json($cityDetails), 200);
         }
-        
+        public function getAllCity()
+        { 
+              
+          $sql="SELECT * FROM city c ";
+            
+          $rows = $this->executeGenericDQLQuery($sql);
+          $cityDetails = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+            $cityDetails[$i]['cityID'] = $rows[$i]['CityID'];
+            $cityDetails[$i]['cityName'] = $rows[$i]['CityName'];
+            $cityDetails[$i]['stateID'] = $rows[$i]['StateID'];
+            $cityDetails[$i]['countryID'] = $rows[$i]['CountryID'];
+            
+          }
+          $this->response($this->json($cityDetails), 200);
+        }
         public function postCity()
         {
           $cityData = $this->_request['cityData'];

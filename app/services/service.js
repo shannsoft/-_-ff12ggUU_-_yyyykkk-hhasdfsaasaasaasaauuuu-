@@ -15,11 +15,16 @@ AppRoot.factory('MainService',['$http','AppConfig','$rootScope','$ionicPopup','$
              title: pTitle+' !',
              template: pContent
         });
+    },
+    getAllCity = function() {
+      var response = $http.get(AppConfig.apiPath+'reqmethod=getAllCity');
+      return response;
     }
     /* ionic preloaders ends*/
 	return {
 		showLoaders:showLoaders,
 		hideLoaders:hideLoaders,
-		showAlertPopUp:showAlertPopUp
+		showAlertPopUp:showAlertPopUp,
+    getAllCity:getAllCity
 	}
 }]);

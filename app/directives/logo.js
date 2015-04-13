@@ -15,7 +15,7 @@ AppRoot.directive('logo', ["MainEvent",'HomeService','$timeout','MainService',fu
 			$timeout(function(){
 				HomeService.setContentUrl('modules/home/views/partials/mainMenu.html');
 				window.location = "#/";
-				if($scope.heading == "ATM") location.reload();
+				if($scope.heading == "Map View") location.reload();
 				
 			});
 		}

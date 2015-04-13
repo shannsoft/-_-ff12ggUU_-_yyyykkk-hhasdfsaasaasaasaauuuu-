@@ -21,6 +21,13 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-train",info:"Auto Rickshaw (Three Wheelers)"},
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-motorcycle",info:"Two Wheelers"}
       ];
+      $scope.cities = [];
+      MainService.getAllCity().then(function(pRes) {
+
+      angular.forEach(pRes.data,function(value,key) {
+            $scope.cities.push(value);
+        });
+      });
     }
 
 

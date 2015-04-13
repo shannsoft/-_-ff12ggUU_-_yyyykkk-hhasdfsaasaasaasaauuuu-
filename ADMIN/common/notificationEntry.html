@@ -10,7 +10,11 @@
 	<div id="preloader" ng-show="showPreLoader"></div>
 	 
 	<div ng-repeat="noti in notifications">
-		Heading :<input type="text" ng-model="noti.heading" />
+		<!-- Heading :<input type="text" ng-model="noti.heading" /> -->
+		<select ng-model="noti.heading">
+             	<option ng-selected="true" value="">Select City</option>
+                <option ng-repeat="heading in headings" value="{{heading}}" >{{heading}}</option>
+        </select>
 		Content:<input type="text" ng-model="noti.content" />
 		<button ng-click="removeNoti($index)" value="remove">Remove</button>
 	</div>
@@ -21,8 +25,9 @@
 	var app = angular.module("app",[]);
 	app.controller("notificationController",["$scope","$http",function($scope,$http) {
 		$scope.showPreLoader = false;
+		$scope.headings = ["Traffic update","Temporary Accomodation" , "Emergency Notification"];
 		$scope.addNoti = function() {
-			$scope.notifications.push({heading:"" , content:""});
+			$scope.notifications.push({heading:$scope.headings , content:""});
 			
 		}
 		$scope.notifications = [
@@ -55,7 +60,7 @@
 			}
 			else
 			{
-				
+				//console.log(finalNotification);
 				var _serializedData = $.param({reqmethod: 'postNotifications',notificationData:finalNotification});
 	            var _responsePromise = $http({
 	                    method: 'POST',
