@@ -2,8 +2,11 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3>Schdule entry form</h3>
 </head>
 <body ng-controller="scheduleController">
+	<div id="preloader" ng-show="showPreLoader"></div>
 	<table>
 		<tr>
 			<td>schedule Name :</td>
@@ -45,11 +48,18 @@
 			$scope.startTime='';
 			$scope.endTime='';
 			$scope.day='';
+			$scope.showPreLoader = false;
 			$scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-			//$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+			// $scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.onSubmit = function(){
-				console.log($scope.scheduleName,$scope.scheduleContent,$scope.startTime,$scope.endTime,$scope.day);
-             var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postScheduleDetails&scheduleName='+$scope.scheduleName+'&scheduleContent='+$scope.scheduleContent+'&startTime='+$scope.startTime+'&endTime='+$scope.endTime+'&day='+$scope.day);
+				//console.log($scope.scheduleName,$scope.scheduleContent,$scope.startTime,$scope.endTime,$scope.day);
+				$scope.showPreLoader = true;
+             var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postScheduleDetails&scheduleName='+$scope.scheduleName+'&scheduleContent='+$scope.scheduleContent+'&startTime='+$scope.startTime+'&endTime='+$scope.endTime+'&day='+$scope.day).then(function(pRes){
+             		$scope.showPreLoader = false;
+             		alert(pRes.data.data);
+             		
+
+             });
          	}
 
 		}]);

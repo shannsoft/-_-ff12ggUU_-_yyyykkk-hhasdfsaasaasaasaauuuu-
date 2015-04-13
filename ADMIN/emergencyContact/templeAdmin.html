@@ -2,6 +2,8 @@
 <html ng-app="app">
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3>Temple Admin entry form</h3>
 </head>
 <body ng-controller="trafficController" ng-init="init()">
 	<table>
@@ -40,6 +42,7 @@
 			$scope.autorityName = '';
 			$scope.contact = '';
 			$scope.desig = '';
+			$scope.showPreLoader = false;
 			$scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
 			//$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			
@@ -56,7 +59,10 @@
 				$scope.getCities();
 			}
 			$scope.onSubmit = function(){
-	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postTempleAdmin&authorityName='+$scope.autorityName+'&designation='+$scope.desig+'&contact='+$scope.contact+'&city='+$scope.city);
+				$scope.showPreLoader = true;
+	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postTempleAdmin&authorityName='+$scope.autorityName+'&designation='+$scope.desig+'&contact='+$scope.contact+'&city='+$scope.city).then(function(pRes){
+	            		alert(pRes.data.data);
+	            });
 			}
 		}]);
 	</script>

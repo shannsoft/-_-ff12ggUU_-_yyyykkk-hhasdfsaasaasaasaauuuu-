@@ -4,7 +4,7 @@
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<h3> Hotel entry form</h3>
+	<h3> Resturant entry form</h3>
 </head>
 <body ng-controller="resturantController" ng-init="init()">
 	<div id="preloader" ng-show="showPreLoader"></div>
@@ -185,7 +185,7 @@
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
             }).then(function(pRes){
-            	console.log(pRes.data);
+            	alert(pRes.data.data);
             	$scope.showPreLoader = true;
             });
 

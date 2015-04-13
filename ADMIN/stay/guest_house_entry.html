@@ -4,7 +4,7 @@
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<script type="text/javascript" src="../libs/jquery-1.11.2.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<h3> Hotel entry form</h3>
+	<h3> Guest house entry form</h3>
 </head>
 <body ng-controller="guestHouseController" ng-init="init()">
 	<div id="preloader" ng-show="showPreLoader"></div>
@@ -73,7 +73,7 @@
 		$scope.states = [];
 		$scope.cities = [];
 		$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-		//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		// $scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		$scope.getFacilities =function()
 		{
 			var response =  $http.get($scope.apiPath+"reqmethod=getFacilities").then(function(pRes){
@@ -186,7 +186,7 @@
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
             }).then(function(pRes){
-            	console.log(pRes.data);
+            	alert(pRes.data.data);
             	$scope.showPreLoader = false;
             });
 

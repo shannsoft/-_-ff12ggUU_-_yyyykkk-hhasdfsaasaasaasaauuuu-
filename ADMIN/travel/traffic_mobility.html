@@ -3,6 +3,7 @@
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3>Traffic entry form</h3>
 </head>
 <body ng-controller="trafficController" ng-init="init()">
 	<div id="preloader" ng-show="showPreLoader"></div>
@@ -79,6 +80,7 @@
 				$scope.showPreLoader = true;
 				if($scope.travel_mode != '' && $scope.city != '' && $scope.day_type!='' && $scope.info!= ''){
 	            	var _responsePromise = $http.get($scope.apiPath+'reqmethod=postTrafficDetails&travelMode='+$scope.travel_mode+'&city='+$scope.city+'&dayType='+$scope.day_type+'&info='+$scope.info).then(function(pRes){
+	            		alert(pRes.data.data);
 	            		$scope.showPreLoader = false;
 	            	});
 				}

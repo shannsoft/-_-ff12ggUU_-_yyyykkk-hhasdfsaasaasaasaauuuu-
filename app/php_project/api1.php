@@ -16,7 +16,7 @@ header('Access-Control-Allow-Origin: *');
 		const DB_USER = "root";
 		const DB_PASSWORD = "";
 		//const DB = "magentod_html5tshirtapp_5sept";
-		const DB = "goappsso_nabakalebara";
+		const DB = "nabakalebara";
 	
 	
   
@@ -480,7 +480,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -488,6 +489,7 @@ header('Access-Control-Allow-Origin: *');
              $sql="insert into train(TrainNumber,TrainName,FromStation,ToStation,StartAt,ReachesAt,WebLink,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)".
              "values('$trainNumber','$trainName','$fromCity','$toCity','$depValue','$arrValue','$trainUrl',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+             $response['data'] = "train details added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -506,7 +508,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "flight already exists ";
 
            }
            else
@@ -514,6 +517,7 @@ header('Access-Control-Allow-Origin: *');
              $sql="insert into flight(FlightNumber,FlightName,FromAirport,ToAirport,StartsAt,ReachesAt,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)".
              "values('$flightNumber','$flightName','$fromCity','$toCity','$depValue','$arrValue',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+             $response['data'] = "flight details added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -530,7 +534,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -539,6 +544,7 @@ header('Access-Control-Allow-Origin: *');
              "values('$busNumber','$busName','$fromCity','$toCity','$depValue','$duration')";             
              $this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+             $response['data'] = "Bus details added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -554,7 +560,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -562,7 +569,8 @@ header('Access-Control-Allow-Origin: *');
              $sql="insert into schedule(schedule_name,schedule_content,start_time,end_time,day)".
              "values('$scheduleName','$scheduleContent','$startTime','$endTime','$day')";
              $this->executeGenericDMLQuery($sql);
-             $response['status'] = "success";
+              $response['status'] = "success";
+              $response['data'] = "schedule added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -586,10 +594,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from hotels where Name="."'".$hotelData['hotelName']."'";//.$hotelData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // hotel exists activate update
+            $response['status'] = "success";
+            $response['data'] = "Hotel already exists !";
            
            }
            else
@@ -610,7 +620,10 @@ header('Access-Control-Allow-Origin: *');
                 $this->executeGenericInsertQuery($sql);
 
               }
+               $response['status'] = "success";
+               $response['data'] = "Hotel added successfully !";
            }
+           $this->response($this->json($response), 200);
         }
 
         public function postGuestHouseDetails(){
@@ -631,11 +644,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from guest_house where Name="."'".$guestHouseData['name']."'";//.$guestHouseData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // echo "guest house exists activate update";
-           
+            $response['status'] = "success";
+            $response['data'] = "Guest house already exists !";
            }
            else
            {
@@ -646,9 +660,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into guest_house(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$guestHouseData['name']."','".$guestHouseData['content']."','".$guestHouseData['address']."' , ".$guestHouseData['phone1'].",".$guestHouseData['phone2'].",".$guestHouseData['phone3'].",".$guestHouseData['mobile'].",'".$guestHouseData['webSite']."',".$guestHouseData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$guestHouseData['iconImgPath']."','".$guestHouseData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+              $response['data'] = "Guest house added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
 
         public function postResturantDetails(){
@@ -669,11 +686,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from resturants where Name="."'".$resturantData['name']."'";//.$resturantData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // echo "guest house exists activate update";
-           
+            $response['status'] = "success";
+            $response['data'] = "Resturant already exists !";
            }
            else
            {
@@ -684,9 +702,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into resturants(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$resturantData['name']."','".$resturantData['content']."','".$resturantData['address']."' , ".$resturantData['phone1'].",".$resturantData['phone2'].",".$resturantData['phone3'].",".$resturantData['mobile'].",'".$resturantData['webSite']."',".$resturantData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$resturantData['iconImgPath']."','".$resturantData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+              $response['data'] = "Resturant added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
         public function postCofeeShopDetails(){
            $cofeeShopData =  $this->_request['cofeeShopData'];
@@ -706,10 +727,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from coffee_shops where Name="."'".$cofeeShopData['name']."'";//.$cofeeShopData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // echo "guest house exists activate update";
+            $response['status'] = 'success';
+            $response['data'] = 'coffee shop already exists !';
            
            }
            else
@@ -721,9 +744,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into coffee_shops(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$cofeeShopData['name']."','".$cofeeShopData['content']."','".$cofeeShopData['address']."' , ".$cofeeShopData['phone1'].",".$cofeeShopData['phone2'].",".$cofeeShopData['phone3'].",".$cofeeShopData['mobile'].",'".$cofeeShopData['webSite']."',".$cofeeShopData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$cofeeShopData['iconImgPath']."','".$cofeeShopData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = 'success';
+              $response['data'] = 'coffee shop added successfully !';
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
 
         // posting temp accomodations details
@@ -734,10 +760,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from temp_accomodation where name="."'".$tempAccData['name']."'";//.$tempAccData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
-            echo "temp  acc  house exists activate update";
+            $response['status'] = "success";
+            $response['data'] = "Temp. accomodations already exists !";
+            
            
            }
            else
@@ -750,8 +778,11 @@ header('Access-Control-Allow-Origin: *');
              // echo $sql;
               $tempAccId = $this->executeGenericInsertQuery($sql);
              //echo $sql;
+              $response['status'] = "success";
+              $response['data'] = "Temp. accomodations added successfully !";
               
            }
+           $this->response($this->json($response), 200);
         }
         // posting toilets details
         public function postToiletsDetails(){
@@ -761,10 +792,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from toilet where name="."'".$toiletData['name']."'";//.$toiletData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
-            echo "temp  acc  house exists activate update";
+            
+            $response['status'] = "success";
+            $response['data'] = "tiolet entry already exists !";
            
            }
            else
@@ -776,9 +809,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into toilet(name,address,contact,authority,cityId,icon_image) values('".$toiletData['name']."','".$toiletData['address']."','".$toiletData['phone']."','".$toiletData['auth']."',".$cityId.",'".$toiletData['iconImgPath']."')";
              // echo $sql;
               $toiletId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+              $response['data'] = "tiolet entry added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
         // posting drinking water details
         public function postDrinkingWaterDetails(){
@@ -788,10 +824,11 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from drinking_water where name="."'".$dWaterData['name']."'";//.$dWaterData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
-            echo "drinking_water   exists activate update";
+             $response['status'] = "success";
+             $response['data'] = "drinking water entry already exists !";
            
            }
            else
@@ -803,9 +840,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into drinking_water(name,address,contact,authority,cityId,icon_image) values('".$dWaterData['name']."','".$dWaterData['address']."','".$dWaterData['phone']."','".$dWaterData['auth']."',".$cityId.",'".$dWaterData['iconImgPath']."')";
              // echo $sql;
               $drinkingWaterId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+             $response['data'] = "drinking water added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
         //post parking details
 
@@ -816,7 +856,10 @@ header('Access-Control-Allow-Origin: *');
               $sql= " update parking set content='".$parkingData[$i]['content']."'  , address='".$parkingData[$i]['address']."' where vehicle_name = '".$parkingData[$i]['vehicle_name']."'";
               $this->executeGenericDMLQuery($sql);
            }
-
+           $response = array();
+           $response['status'] = "success";
+           $response['data'] = "parking update successfully !";
+            $this->response($this->json($response), 200);
           
         }
         public function getGuestHouseDetails(){
@@ -1141,7 +1184,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -1150,6 +1194,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$dayType."','".$travelMode."','".$info."',$city)"; 
              //$this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+              $response['data'] = "traffic mobility added successfully !";
            }
            //echo $sql;
            $this->response($this->json($response), 200);
@@ -1171,6 +1216,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
              $this->executeGenericDMLQuery($sql);
             $response['status'] = "success";
+            $response['data'] = "branch details entered successfully !";
            $this->response($this->json($response), 200);  
         }
         public function postForexDetails(){
@@ -1184,6 +1230,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
              $this->executeGenericDMLQuery($sql);
             $response['status'] = "success";
+            $response['data'] = "forex branch details entered successfully !";
            $this->response($this->json($response), 200);  
         }
 
@@ -1371,6 +1418,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
           $this->executeGenericDMLQuery($sql);
           $response['status'] = "success";
+          $response['data'] = "Local authority added successfully !";
           $this->response($this->json($response), 200);  
         } 
         public function postTempleAdmin(){
@@ -1382,6 +1430,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
           $this->executeGenericDMLQuery($sql);
           $response['status'] = "success";
+          $response['data'] = "Temple admin added successfully !";
           $this->response($this->json($response), 200);  
         }
 

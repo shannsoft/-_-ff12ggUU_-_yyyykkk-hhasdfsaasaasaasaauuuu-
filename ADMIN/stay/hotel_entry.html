@@ -72,7 +72,7 @@
 		$scope.states = [];
 		$scope.cities = [];
 		$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-		//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		// $scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		$scope.getFacilities =function()
 		{
 			var response =  $http.get($scope.apiPath+"reqmethod=getFacilities").then(function(pRes){
@@ -153,6 +153,7 @@
 		}
 		$scope.onSubmit = function(){
 			// console.log($scope.facilities);
+			$scope.showPreLoader = true;
 			var hotelData = {};
 			hotelData.hotelName = $scope.hotelName;
 			hotelData.hotelAddress = $scope.h_add;
@@ -184,8 +185,8 @@
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
             }).then(function(pRes){
-            	console.log(pRes.data);
-            	$scope.showPreLoader = true;
+            	alert(pRes.data.data);
+            	$scope.showPreLoader = false;
             });
 
 

@@ -3,6 +3,7 @@
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3>Train entry form</h3>
 </head>
 <body ng-controller="trainController" ng-init="init()">
 	<div id="preloader" ng-show="showPreLoader"></div>
@@ -94,6 +95,7 @@
 				console.log($scope.arrValue);
 				console.log(days);
 	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postTrainDetails&trainNumber='+$scope.trainNumber+'&trainName='+$scope.trainName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days+'&trainUrl='+$scope.trainUrl).then(function(pRes){
+	             	 alert(pRes.data.data);
 	             	$scope.showPreLoader = false;
 	             });
 			}

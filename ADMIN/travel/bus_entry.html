@@ -3,6 +3,7 @@
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3>Bus entry form</h3>
 </head>
 <body ng-controller="busController" ng-init="init()">
 	<div id="preloader" ng-show="showPreLoader"></div>
@@ -68,6 +69,7 @@
 				console.log($scope.duration);
 				$scope.showPreLoader = true;
 	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postBusDetails&busNumber='+$scope.busNumber+'&busName='+$scope.busName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&duration='+$scope.duration).then(function(pRes){
+	             	 alert(pRes.data.data);
 	             	$scope.showPreLoader = false;
 	             });
 			}

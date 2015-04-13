@@ -3,6 +3,7 @@
 <head>
 	<script type="text/javascript" src="../libs/angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3>Branch  entry form</h3>
 </head>
 <body ng-controller="trafficController" ng-init="init()">
 	<div id="preloader" ng-show="showPreLoader"></div>
@@ -73,6 +74,7 @@
 				// console.log('branchName = '+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city)
 				$scope.showPreLoader = true;
 	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postBranchDetails&branchName='+$scope.branchName+'&address='+$scope.address+'&branchMng='+$scope.branchMng+'&contact='+$scope.contact+'&forexMng='+$scope.forexMng+'&city='+$scope.city).then(function(pRes){
+	            	 alert(pRes.data.data);
 	            	 $scope.showPreLoader = false;
 	            });
 			}
