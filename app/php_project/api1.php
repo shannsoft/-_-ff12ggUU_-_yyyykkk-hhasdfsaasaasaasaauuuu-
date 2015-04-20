@@ -16,7 +16,8 @@ header('Access-Control-Allow-Origin: *');
 		const DB_USER = "root";
 		const DB_PASSWORD = "";
 		//const DB = "magentod_html5tshirtapp_5sept";
-		const DB = "nabakalebara";
+    // const DB = "nabakalebara";
+		const DB = "goappsso_nabakalebara";
 	
 	
   
@@ -321,7 +322,7 @@ header('Access-Control-Allow-Origin: *');
          $startPrice = intval ($this->_request['startPrice']);
          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
-          $sql="select distinct h.id hotelId , h.Name hotelName , h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
+          $sql="select distinct h.id hotelId , h.Name hotelName , h.content content ,h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
                 "h.Mobile mobile , h.Fax fax , h.Email email , h.Website webSite , h.reservation_authority reservationAuthority ,".
                 "h.Category category , h.Facilities facilitites , h.CityId cityId , h.icon_image iconImg, h.home_image homeImg , c.CityName".
                  " from hotels h" .
@@ -338,23 +339,25 @@ header('Access-Control-Allow-Origin: *');
           //echo $sql;
          $hotelDetails = array();
           $rows = $this->executeGenericDQLQuery($sql);
+         // print_r($rows);
           for($i=0;$i<sizeof($rows);$i++)
           {
             $hotelDetails[$i]['hotelId'] = $rows[$i]['hotelId'];
-            $hotelDetails[$i]['hotelName'] = $rows[$i]['hotelName'];
-            $hotelDetails[$i]['address'] = $rows[$i]['address'];
-            $hotelDetails[$i]['phone1'] = $rows[$i]['phone1'];
-            $hotelDetails[$i]['phone2'] = $rows[$i]['phone2'];
-            $hotelDetails[$i]['phone3'] = $rows[$i]['phone3'];
-            $hotelDetails[$i]['mobile'] = $rows[$i]['mobile'];
-            $hotelDetails[$i]['fax'] = $rows[$i]['fax'];
-            $hotelDetails[$i]['email'] = $rows[$i]['email'];
-            $hotelDetails[$i]['webSite'] = $rows[$i]['webSite'];
-            $hotelDetails[$i]['reservationAuthority'] = $rows[$i]['reservationAuthority'];
-            $hotelDetails[$i]['category'] = $rows[$i]['category'];
-            $hotelDetails[$i]['cityId'] = $rows[$i]['cityId'];
-            $hotelDetails[$i]['iconImg'] = $rows[$i]['iconImg'];
-            $hotelDetails[$i]['homeImg'] = $rows[$i]['homeImg'];
+            $hotelDetails[$i]['hotelName'] =($rows[$i]['hotelName'] == null || $rows[$i]['hotelName'] == "null") ? " No Data Available" : $rows[$i]['hotelName'];
+            $hotelDetails[$i]['content'] = ($rows[$i]['content'] == null || $rows[$i]['content'] == "null") ? "No Data Available" : $rows[$i]['content'] ;
+            $hotelDetails[$i]['address'] = ($rows[$i]['address'] == null || $rows[$i]['address'] == "null") ? "No Data Available" : $rows[$i]['address'] ;
+            $hotelDetails[$i]['phone1'] = ($rows[$i]['phone1'] == null || $rows[$i]['phone1'] == "null") ? "No Data Available" : $rows[$i]['phone1'] ;
+            $hotelDetails[$i]['phone2'] = ($rows[$i]['phone2'] == null || $rows[$i]['phone2'] == "null") ? "No Data Available" : $rows[$i]['phone2'];
+            $hotelDetails[$i]['phone3'] = ($rows[$i]['phone3'] == null || $rows[$i]['phone3'] == "null") ? "No Data Available" : $rows[$i]['phone3'];
+            $hotelDetails[$i]['mobile'] = ($rows[$i]['mobile'] == null || $rows[$i]['mobile'] == "null") ? "No Data Available" : $rows[$i]['mobile'] ;
+            $hotelDetails[$i]['fax'] = ($rows[$i]['fax'] == null || $rows[$i]['fax'] == "null") ? "No Data Available" : $rows[$i]['fax'];
+            $hotelDetails[$i]['email'] = ($rows[$i]['email'] == null || $rows[$i]['email'] == "null") ? "No Data Available" :$rows[$i]['email'] ;
+            $hotelDetails[$i]['webSite'] = ($rows[$i]['webSite'] == null || $rows[$i]['webSite'] == "null") ? "No Data Available" : $rows[$i]['webSite'] ;
+            $hotelDetails[$i]['reservationAuthority'] = ($rows[$i]['reservationAuthority'] == null || $rows[$i]['reservationAuthority'] == "null") ? "No Data Available" : $rows[$i]['reservationAuthority'];
+            $hotelDetails[$i]['category'] = ($rows[$i]['category'] == null) ? 0 : $rows[$i]['category'] ;
+            $hotelDetails[$i]['iconImg'] = ($rows[$i]['iconImg'] == null || $rows[$i]['iconImg'] == "null") ? "img/not_found.jpg" : $rows[$i]['iconImg'];
+            $hotelDetails[$i]['homeImg'] = ($rows[$i]['homeImg'] == null || $rows[$i]['homeImg'] == "null") ? "img/not_found.jpg" :$rows[$i]['homeImg'];
+            
             $hotelDetails[$i]['facilitites'] = $this->getFacilitiesByIds($rows[$i]['facilitites']);
             $hotelDetails[$i]['roomDetails'] = $this->getRoomDetailsById($rows[$i]['hotelId']);
 

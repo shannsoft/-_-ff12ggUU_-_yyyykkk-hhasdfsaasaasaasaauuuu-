@@ -22,7 +22,7 @@ AppRoot.directive('logo', ["MainEvent",'HomeService','$timeout','MainService',fu
 		$scope.$watch('notifications',function(value){
 			
 			$scope.notifications = value;
-			console.log(value);
+			//console.log(value);
 		});
 	}
 	var linker  = function(scope, element, attrs){

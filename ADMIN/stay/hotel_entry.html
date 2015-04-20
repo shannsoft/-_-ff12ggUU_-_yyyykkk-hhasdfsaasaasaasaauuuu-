@@ -11,11 +11,11 @@
 	Hotel Name : <input type="text" ng-model="hotelName"><br/>
 	Content : <textarea ng-model="content"></textarea> <br/>
 	Hotel Address : <textarea ng-model="h_add"></textarea> <br/>
-	Hotel Phone1 : <input type="number" ng-model="phone1" ng-valid><br/>
-	Hotel Phone2 : <input type="number" ng-model="phone2" ng-valid><br/>
-	Hotel Phone3 : <input type="number" ng-model="phone3" ng-valid><br/>
-	Hotel mobile : <input type="number" ng-model="mobile" ng-valid><br/>
-	Hotel Fax : <input type="number" ng-model="fax"><br/>
+	Hotel Phone1 : <input type="text" ng-model="phone1" ng-valid><br/>
+	Hotel Phone2 : <input type="text" ng-model="phone2" ng-valid><br/>
+	Hotel Phone3 : <input type="text" ng-model="phone3" ng-valid><br/>
+	Hotel mobile : <input type="text" ng-model="mobile" ng-valid><br/>
+	Hotel Fax : <input type="text" ng-model="fax"><br/>
 	Hotel mail : <input type="text" ng-model="mail"><br/>
 	Reservation Authority : <input type="text" ng-model="reserv_auth"><br/>
 	Hotel webSite : <input type="text" ng-model="webSite"><br/>
@@ -47,8 +47,8 @@
 			<tr>
 				<td>Room type :</td>
 				<td>No of rooms :</td>
-				<td>Ep :</td>
-				<td>AP :</td>
+				<td>Start price :</td>
+				<td>End price :</td>
 			</tr>
 			<tr ng-repeat="room in roomFacilities">
 				<td>{{room.room_type}}</td>
@@ -65,14 +65,23 @@
 	<script type="text/javascript">
 	var app = angular.module("app",[]);
 	app.controller("hotelController",["$scope","$http",function($scope,$http) {
+		
 		$scope.showPreLoader = false;
 		$scope.facilities = [];
 		$scope.roomFacilities = [];
 		$scope.countries = [];
 		$scope.states = [];
 		$scope.cities = [];
-		$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-		// $scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		$scope.roomFacilities = [
+			{room_type:"Deluxe Room",NoOfRooms:0,PriceStarts:0,PriceEnds:0},
+			{room_type:"Cottage",NoOfRooms:0,PriceStarts:0,PriceEnds:0},
+			{room_type:"Exclusive Deluxe",NoOfRooms:0,PriceStarts:0,PriceEnds:0},
+			{room_type:"Villa",NoOfRooms:0,PriceStarts:0,PriceEnds:0},
+			{room_type:"Exclusive Villa",NoOfRooms:0,PriceStarts:0,PriceEnds:0},
+			{room_type:"Extra Bed",NoOfRooms:0,PriceStarts:0,PriceEnds:0}
+		];
+		// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		$scope.getFacilities =function()
 		{
 			var response =  $http.get($scope.apiPath+"reqmethod=getFacilities").then(function(pRes){
@@ -86,7 +95,7 @@
 				}
 			});
 		}
-		$scope.getHotelRoomDetails =function()
+		/*$scope.getHotelRoomDetails =function()
 		{
 			var response =  $http.get($scope.apiPath+"reqmethod=getHotelRoomDetails").then(function(pRes){
 				for(i in pRes.data)
@@ -100,7 +109,7 @@
 					$scope.roomFacilities.push(obj);
 				}
 			});
-		}
+		}*/
 		$scope.getCountry = function(){
 			var response =  $http.get($scope.apiPath+"reqmethod=getCountries").then(function(pRes){
 				for(i in pRes.data)
@@ -149,10 +158,33 @@
 			$scope.getStates('');
 			$scope.getCities('');
 			$scope.getFacilities();
-			$scope.getHotelRoomDetails();
+			//$scope.getHotelRoomDetails();
 		}
 		$scope.onSubmit = function(){
 			// console.log($scope.facilities);
+			// default values
+			if(!$scope.hotelName || $scope.hotelName=="") $scope.hotelName = "null";
+			if(!$scope.content || $scope.content=="") $scope.content = "null";
+			if(!$scope.h_add || $scope.h_add=="") $scope.h_add = "null";
+			if(!$scope.phone1 || $scope.phone1=="") $scope.phone1 = "null";
+			if(!$scope.phone2 || $scope.phone2=="") $scope.phone2 = "null";
+			if(!$scope.phone3 || $scope.phone3=="") $scope.phone3 = "null";
+			if(!$scope.mobile || $scope.mobile=="") $scope.mobile = "null";
+			if(!$scope.fax || $scope.fax =="") $scope.fax = "null";
+			if(!$scope.mail || $scope.mail =="") $scope.mail = "null";
+			if(!$scope.reserv_auth || $scope.reserv_auth=="") $scope.reserv_auth = "null";
+			if(!$scope.webSite || $scope.webSite=="") $scope.webSite = "null";
+			if(!$scope.starCount || $scope.starCount =="") $scope.starCount = 0;
+			if(!$scope.roomCount || $scope.roomCount =="") $scope.roomCount = 0;
+			if(!$scope.iconImage ||$scope.iconImage =="") $scope.iconImage = "null";
+			if(!$scope.homeImage ||$scope.homeImage =="") $scope.homeImage = "null";
+			if(!$scope.country || $scope.country =="") $scope.country = 1;
+			if(!$scope.state || $scope.state =="") $scope.state = 1;
+			if(!$scope.city || $scope.city=="") $scope.city = 1;
+			
+
+
+
 			$scope.showPreLoader = true;
 			var hotelData = {};
 			hotelData.hotelName = $scope.hotelName;
@@ -176,6 +208,7 @@
 			hotelData.iconImgPath = $scope.iconImage;
 			hotelData.homeImgPath = $scope.homeImage;
 
+			console.log(hotelData);
 			var _serializedData = $.param({reqmethod: 'postHotelDetails', hotelData:hotelData});
             var _responsePromise = $http({
                     method: 'POST',

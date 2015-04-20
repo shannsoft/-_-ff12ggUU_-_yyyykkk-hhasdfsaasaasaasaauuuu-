@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.8
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 20, 2015 at 10:54 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Host: localhost
+-- Generation Time: Apr 12, 2015 at 12:58 PM
+-- Server version: 5.5.37-cll
+-- PHP Version: 5.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `goappsso_nabakalebara`
 --
-CREATE DATABASE IF NOT EXISTS `goappsso_nabakalebara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `goappsso_nabakalebara`;
 
 -- --------------------------------------------------------
 
@@ -217,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   `CountryID` int(11) NOT NULL,
   `STDCode` int(11) NOT NULL,
   PRIMARY KEY (`CityID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=93 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=90 ;
 
 --
 -- Dumping data for table `city`
@@ -229,7 +227,7 @@ INSERT INTO `city` (`CityID`, `CityName`, `StateID`, `CountryID`, `STDCode`) VAL
 (3, 'hydrabad', 3, 1, 234),
 (4, 'balasore', 1, 1, 674),
 (5, 'Bhadrak', 1, 1, 674),
-(90, 'test1', 1, 1, 6352),
+(6, 'lll', 4, 4, 632),
 (7, 'Khurda', 1, 1, 751001),
 (8, 'Rourkela', 1, 1, 661),
 (9, 'Mumbai', 5, 1, 22),
@@ -591,16 +589,16 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `hotels`
 --
 
 INSERT INTO `hotels` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(27, 'NAME', 'content', 'address', '111', '222', '333', NULL, NULL, 'null', 'null', 'null', '0', '2,5', 1, 'null', 'null'),
-(28, 'name2', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '0', '2,5', 1, 'null', 'null'),
-(29, 'name4', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '0', '5,6', 1, 'null', 'null');
+(23, 'Empires hotel', NULL, 'Demo hotel 3  address', '10', '20', '30', '40', '50', '', 'Hotel webSite', 'Reservation Authority', '4', '4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(24, 'Grand hotel', NULL, 'Dutta tota', '9856325632', '9856325632', '9854125632', '9856412541', '6325412563', 'grandhotel@gmail.com', 'www.grandhotel.com', 'Mr. Rajesh', '4', '1,2,3', 1, 'img/hotels.jpg', NULL),
+(26, 'rrr', 'content', 'address', '9856326523', '658998563', '9856332541', '6565656565', '565656565655', 'testmail@gmail.com', 'www.name.com', 'auth', '4', '2,4', 4, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -616,26 +614,37 @@ CREATE TABLE IF NOT EXISTS `hotel_rooms` (
   `PriceEnds` int(11) NOT NULL,
   `hotel_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `hotel_rooms`
 --
 
 INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `PriceEnds`, `hotel_id`) VALUES
-(39, 'Extra Bed', 0, 0, 0, 29),
-(38, 'Exclusive Villa', 0, 0, 0, 29),
-(37, 'Villa', 0, 0, 0, 29),
-(36, 'Exclusive Deluxe', 0, 0, 0, 29),
-(35, 'Cottage', 100, 1000, 2000, 29),
-(34, 'Deluxe Room', 0, 0, 0, 29),
-(33, 'Extra Bed', 0, 0, 0, 28),
-(32, 'Exclusive Villa', 0, 0, 0, 28),
-(31, 'Villa', 0, 0, 0, 28),
-(30, 'Exclusive Deluxe', 0, 0, 0, 28),
-(29, 'Cottage', 0, 0, 0, 28),
-(28, 'Deluxe Room', 11, 100, 100, 28),
-(27, 'Deluxe Room', 100, 1000, 10000, 27);
+(1, 'Deluxe room', 100, 1000, 10000, 24),
+(2, 'Exclusive Deluxe', 100, 1000, 10000, 24),
+(4, 'Deluxe room', 100, 1000, 10000, 24),
+(5, 'Exclusive Deluxe', 100, 1000, 10000, 24),
+(6, 'Deluxe room', 100, 1000, 10000, 22),
+(7, 'Exclusive Deluxe', 100, 1000, 10000, 22),
+(8, 'Deluxe room', 100, 200, 500, 23),
+(9, 'Exclusive Deluxe', 100, 500, 1000, 23),
+(10, 'Deluxe room', 100, 1000, 2000, 23),
+(11, 'Exclusive Deluxe', 100, 2000, 3000, 23),
+(12, 'Deluxe room', 100, 3000, 3500, 23),
+(13, 'Exclusive Deluxe', 100, 3500, 4000, 23),
+(14, 'Deluxe room', 100, 1000, 10000, 26),
+(15, 'Exclusive Deluxe', 100, 1000, 10000, 26),
+(16, 'Deluxe room', 100, 1000, 10000, 26),
+(17, 'Exclusive Deluxe', 100, 1000, 10000, 26),
+(18, 'Deluxe room', 100, 1000, 10000, 26),
+(19, 'Exclusive Deluxe', 100, 1000, 10000, 26),
+(20, 'Deluxe room', 100, 200, 500, 26),
+(21, 'Exclusive Deluxe', 100, 500, 1000, 26),
+(22, 'Deluxe room', 100, 1000, 2000, 26),
+(23, 'Exclusive Deluxe', 100, 2000, 3000, 26),
+(24, 'Deluxe room', 100, 3000, 3500, 26),
+(25, 'Exclusive Deluxe', 100, 3500, 4000, 26);
 
 -- --------------------------------------------------------
 
