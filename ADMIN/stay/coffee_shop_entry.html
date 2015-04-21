@@ -72,7 +72,7 @@
 		$scope.states = [];
 		$scope.cities = [];
 		$scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-		//$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		// $scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		$scope.getFacilities =function()
 		{
 			var response =  $http.get($scope.serviceApiPath+"reqmethod=getFacilities").then(function(pRes){
@@ -153,6 +153,26 @@
 		}
 		$scope.onSubmit = function(){
 			$scope.showPreLoader = true;
+
+			// setting up default values
+
+			if(!$scope.guesthouse_name || $scope.guesthouse_name=="") $scope.guesthouse_name = "null";
+			if(!$scope.content || $scope.content=="") $scope.content = "null";
+			if(!$scope.address || $scope.address=="") $scope.address = "null";
+			if(!$scope.phone1 || $scope.phone1=="") $scope.phone1 = "null";
+			if(!$scope.phone2 || $scope.phone2=="") $scope.phone2 = "null";
+			if(!$scope.phone3 || $scope.phone3=="") $scope.phone3 = "null";
+			if(!$scope.mobile || $scope.mobile=="") $scope.mobile = "null";
+			if(!$scope.webSite || $scope.webSite =="") $scope.webSite = "null";
+			if(!$scope.starCount || $scope.starCount =="") $scope.starCount = 0;
+			if(!$scope.iconImage || $scope.iconImage=="") $scope.iconImage = "null";
+			if(!$scope.homeImage || $scope.homeImage=="") $scope.homeImage = "null";
+			if(!$scope.country || $scope.country =="") $scope.country = 1;
+			if(!$scope.state || $scope.state =="") $scope.state = 1;
+			if(!$scope.city || $scope.city=="") $scope.city = 1;
+
+
+
 			// console.log($scope.facilities);
 			var cofeeShopData = {};
 			cofeeShopData.name = $scope.guesthouse_name;

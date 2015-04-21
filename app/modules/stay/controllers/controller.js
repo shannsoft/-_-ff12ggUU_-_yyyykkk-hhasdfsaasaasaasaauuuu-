@@ -13,11 +13,11 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       $scope.heading = 'Stay';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.stayOptionList = [
-        {label:"Hotels",detailPage:"#hotel-details" ,contentUrl:"modules/stay/views/partials/hotel-details.html", iconImgPath: "img/hotels.jpg"},
-        {label:"Guest House",detailPage:"#guesthouse-details" ,contentUrl:"modules/stay/views/partials/guesthouse-details.html", iconImgPath: "img/guest-house.jpg"},
-        {label:"Restaurants",detailPage:"#restaurants-details",contentUrl:"modules/stay/views/partials/restaurants-details.html" , iconImgPath: "img/restaurants.jpg"},
-        {label:"Coffee Shop",detailPage:"#coffee-shop-details",contentUrl:"modules/stay/views/partials/coffee-shop-details.html" , iconImgPath: "img/coffee.jpg"},
-        {label:"Temporary Accomodation",detailPage:"#temp-accomdation-details",contentUrl:"modules/stay/views/partials/temp-accomdation-details.html" , iconImgPath: "img/coffee.jpg"}
+        {label:"Hotels",detailPage:"#hotel-details" ,contentUrl:"modules/stay/views/partials/hotel-details.html", iconImgPath: "img/hotels.png"},
+        {label:"Guest House",detailPage:"#guesthouse-details" ,contentUrl:"modules/stay/views/partials/guesthouse-details.html", iconImgPath: "img/guestHouse.jpg"},
+        {label:"Restaurants",detailPage:"#restaurants-details",contentUrl:"modules/stay/views/partials/restaurants-details.html" , iconImgPath: "img/resturant.jpg"},
+        {label:"Coffee Shop",detailPage:"#coffee-shop-details",contentUrl:"modules/stay/views/partials/coffee-shop-details.html" , iconImgPath: "img/cofee-shop.jpg"},
+        {label:"Temporary Accomodation",detailPage:"#temp-accomdation-details",contentUrl:"modules/stay/views/partials/temp-accomdation-details.html" , iconImgPath: "img/accomodation.jpg"}
       ];
       $scope.priceRange = ["200-1000","1000-2000","2000-3000","3000-4000","4000-above"];
     }

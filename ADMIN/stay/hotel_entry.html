@@ -80,8 +80,8 @@
 			{room_type:"Exclusive Villa",NoOfRooms:0,PriceStarts:0,PriceEnds:0},
 			{room_type:"Extra Bed",NoOfRooms:0,PriceStarts:0,PriceEnds:0}
 		];
-		// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-		$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		// $scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		$scope.getFacilities =function()
 		{
 			var response =  $http.get($scope.apiPath+"reqmethod=getFacilities").then(function(pRes){

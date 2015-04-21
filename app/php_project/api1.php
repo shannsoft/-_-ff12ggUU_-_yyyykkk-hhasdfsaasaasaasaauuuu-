@@ -898,19 +898,19 @@ header('Access-Control-Allow-Origin: *');
           for($i=0;$i<sizeof($rows);$i++)
           {
       
-            $guestHouseDetails[$i]['Name'] =$rows[$i]['Name'] ;
-            $guestHouseDetails[$i]['Address'] =$rows[$i]['Address'] ;
-            $guestHouseDetails[$i]['Phone1'] =$rows[$i]['Phone1'] ;
-            $guestHouseDetails[$i]['Phone2'] =$rows[$i]['Phone2'] ;
-            $guestHouseDetails[$i]['Phone3'] =$rows[$i]['Phone3'] ;
-            $guestHouseDetails[$i]['Mobile'] =$rows[$i]['Mobile'] ;
-            $guestHouseDetails[$i]['Website'] =$rows[$i]['Website'] ;
-            $guestHouseDetails[$i]['Category'] =$rows[$i]['Category'] ;
-
+            $guestHouseDetails[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
+            $guestHouseDetails[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $guestHouseDetails[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
+            $guestHouseDetails[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
+            $guestHouseDetails[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
+            $guestHouseDetails[$i]['Mobile'] =($rows[$i]['Mobile'] == null || $rows[$i]['Mobile'] =="null") ? "No Data Available" : $rows[$i]['Mobile'] ;
+            $guestHouseDetails[$i]['Website'] =($rows[$i]['Website'] == null || $rows[$i]['Website'] =="null") ? "No Data Available" : $rows[$i]['Website'] ;
+            $guestHouseDetails[$i]['Category'] =($rows[$i]['Category'] == null) ? 0 : $rows[$i]['Category'] ;
             $guestHouseDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $guestHouseDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
-            $guestHouseDetails[$i]['icon_image'] =$rows[$i]['icon_image'] ;
-            $guestHouseDetails[$i]['home_image'] =$rows[$i]['home_image'] ;
+            $guestHouseDetails[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
+            $guestHouseDetails[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
+            
 
           
           }
@@ -933,19 +933,20 @@ header('Access-Control-Allow-Origin: *');
           $resturantDetails = array();
           for($i=0;$i<sizeof($rows);$i++)
           {
-      
-            $resturantDetails[$i]['Name'] =$rows[$i]['Name'] ;
-            $resturantDetails[$i]['Address'] =$rows[$i]['Address'] ;
-            $resturantDetails[$i]['Phone1'] =$rows[$i]['Phone1'] ;
-            $resturantDetails[$i]['Phone2'] =$rows[$i]['Phone2'] ;
-            $resturantDetails[$i]['Phone3'] =$rows[$i]['Phone3'] ;
-            $resturantDetails[$i]['Mobile'] =$rows[$i]['Mobile'] ;
-            $resturantDetails[$i]['Website'] =$rows[$i]['Website'] ;
-            $resturantDetails[$i]['Category'] =$rows[$i]['Category'] ;
+
+
+            $resturantDetails[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
+            $resturantDetails[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $resturantDetails[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
+            $resturantDetails[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
+            $resturantDetails[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
+            $resturantDetails[$i]['Mobile'] =($rows[$i]['Mobile'] == null || $rows[$i]['Mobile'] =="null") ? "No Data Available" : $rows[$i]['Mobile'] ;
+            $resturantDetails[$i]['Website'] =($rows[$i]['Website'] == null || $rows[$i]['Website'] =="null") ? "No Data Available" : $rows[$i]['Website'] ;
+            $resturantDetails[$i]['Category'] =($rows[$i]['Category'] == null) ? 0 : $rows[$i]['Category'] ;
             $resturantDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $resturantDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
-            $resturantDetails[$i]['icon_image'] =$rows[$i]['icon_image'] ;
-            $resturantDetails[$i]['home_image'] =$rows[$i]['home_image'] ;
+            $resturantDetails[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
+            $resturantDetails[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
             
           
           }
@@ -971,19 +972,22 @@ header('Access-Control-Allow-Origin: *');
           $coffeeShops = array();
           for($i=0;$i<sizeof($rows);$i++)
           {
-      
-            $coffeeShops[$i]['Name'] =$rows[$i]['Name'] ;
-            $coffeeShops[$i]['Address'] =$rows[$i]['Address'] ;
-            $coffeeShops[$i]['Phone1'] =$rows[$i]['Phone1'] ;
-            $coffeeShops[$i]['Phone2'] =$rows[$i]['Phone2'] ;
-            $coffeeShops[$i]['Phone3'] =$rows[$i]['Phone3'] ;
-            $coffeeShops[$i]['Mobile'] =$rows[$i]['Mobile'] ;
-            $coffeeShops[$i]['Website'] =$rows[$i]['Website'] ;
-            $coffeeShops[$i]['Category'] =$rows[$i]['Category'] ;
+
+
+            $coffeeShops[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
+            $coffeeShops[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $coffeeShops[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
+            $coffeeShops[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
+            $coffeeShops[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
+            $coffeeShops[$i]['Mobile'] =($rows[$i]['Mobile'] == null || $rows[$i]['Mobile'] =="null") ? "No Data Available" : $rows[$i]['Mobile'] ;
+            $coffeeShops[$i]['Website'] =($rows[$i]['Website'] == null || $rows[$i]['Website'] =="null") ? "No Data Available" : $rows[$i]['Website'] ;
+            $coffeeShops[$i]['Category'] =($rows[$i]['Category'] == null) ? 0 : $rows[$i]['Category'] ;
             $coffeeShops[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $coffeeShops[$i]['CityId'] =$rows[$i]['CityId'] ;
-            $coffeeShops[$i]['icon_image'] =$rows[$i]['icon_image'] ;
-            $coffeeShops[$i]['home_image'] =$rows[$i]['home_image'] ;
+            $coffeeShops[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
+            $coffeeShops[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
+      
+           
             
           
           }
