@@ -12,7 +12,8 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
   	  ];
       
     }
-    $scope.routeSubView = function(pUrl){
+    $scope.routeSubView = function(pUrl,heading){
+        $scope.heading = heading;
         $scope.contentUrl = pUrl;
     }
     /*codes for local authority starts */
@@ -54,6 +55,7 @@ angular.module("emerContact").controller("emerContactController",['$scope','$roo
     {
         EmergencyContactService.fetchSelectedEmergencyContact(option.table_name).then(function(pRes){
             $scope.contents = pRes.data;
+            $scope.heading = option.info;
             $scope.contentUrl = "modules/emergency_contact/views/partials/health_care_sanitation_global.html";
         });
     }

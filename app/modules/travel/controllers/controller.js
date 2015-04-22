@@ -147,12 +147,14 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     This is END control for traffic Mobily plan
     */
 
-    $scope.routeSubView = function(pUrl){
+    $scope.routeSubView = function(pUrl,heading){
         if(pUrl == 'modules/travel/views/partials/fuel-pump.html'){
             $scope.$emit(MainEvent.INIT_MAP,{data:"gas_station"});
         }
-        else
+        else{
             $scope.contentUrl = pUrl;
+            $scope.heading = heading;
+        }
     }
     
 }]);

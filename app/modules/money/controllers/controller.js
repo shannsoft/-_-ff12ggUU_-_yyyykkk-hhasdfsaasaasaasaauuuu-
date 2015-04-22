@@ -80,13 +80,15 @@ angular.module("money").controller("moneyController",['$scope','$rootScope','App
       });
     }
     //branches controller end
-    $scope.routeSubView = function(pUrl){
+    $scope.routeSubView = function(pUrl,heading){
       if(pUrl == "modules/money/views/partials/icici-atm.html")
       {
         $scope.$emit(MainEvent.INIT_MAP,{data:"atm"});
       }
-      else
+      else{
         $scope.contentUrl = pUrl;
+        $scope.heading = heading;
+      }
     }
 
 

@@ -40,7 +40,8 @@ angular.module("aboutUs").controller("aboutUsController",['$scope','$rootScope',
 
   	$scope.scheduleDetails = [];
     $scope.days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-  	$scope.routeSubView = function(pval){  
-        $scope.contentUrl = pval;
+  	$scope.routeSubView = function(pval,heading){
+      $scope.heading = heading;
+      $scope.contentUrl = pval;
     }
 }]);

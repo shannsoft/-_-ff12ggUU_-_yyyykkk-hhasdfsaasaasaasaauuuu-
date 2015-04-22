@@ -1,7 +1,6 @@
 angular.module("stay").controller("stayController",['$scope','$rootScope','$timeout','MainService','AppModelService', 'StayService','MainEvent',function ($scope,$rootScope,$timeout,MainService,AppModelService,StayService,MainEvent){
     
     $scope.initStay = function(){
-      console.log("initStay");
       $scope.notifications = AppModelService.getNotification();
       $scope.emailVisible = false;
       $scope.emailSubject = "Hotel Enquiry"  // constant
@@ -115,7 +114,8 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       });
     }
     /*codes for hotel partial details ends*/
-     $scope.routeSubView = function(pUrl){
+     $scope.routeSubView = function(pUrl,heading){
+        $scope.heading = heading;
         $scope.contentUrl = pUrl;
     }
 

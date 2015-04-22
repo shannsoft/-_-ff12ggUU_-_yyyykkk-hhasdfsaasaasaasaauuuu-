@@ -37,9 +37,9 @@ angular.module("events").controller("utilitiesController",['$scope','$rootScope'
     }
 
     /*codes for hotel partial details ends*/
-     $scope.routeSubView = function(pUrl){
+     $scope.routeSubView = function(pUrl,heading){
         $scope.contentUrl = pUrl;
-        console.log("content url changed to "+pUrl);
+        $scope.heading = heading;
     }
 
   	
