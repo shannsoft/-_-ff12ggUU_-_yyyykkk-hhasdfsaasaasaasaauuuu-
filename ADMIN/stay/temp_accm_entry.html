@@ -41,8 +41,8 @@
 		$scope.countries = [];
 		$scope.states = [];
 		$scope.cities = [];
-		// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-		$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+		$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+		// $scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 		
 		
 		$scope.getCountry = function(){
@@ -97,6 +97,19 @@
 		$scope.onSubmit = function(){
 			// console.log($scope.facilities);
 			$scope.showPreLoader = true;
+
+			if(!$scope.tempAccName || $scope.tempAccName=="") $scope.tempAccName = "null";
+			if(!$scope.address || $scope.address=="") $scope.address = "null";
+			if(!$scope.phone || $scope.phone=="") $scope.phone = "null";
+			if(!$scope.auth || $scope.auth=="") $scope.auth = "null";
+			if(!$scope.priceStart || $scope.priceStart=="") $scope.priceStart = 0;
+			if(!$scope.priceEnd || $scope.priceEnd=="") $scope.priceEnd = 0;
+			if(!$scope.iconImage || $scope.iconImage=="") $scope.iconImage = "null";
+			if(!$scope.country || $scope.country =="") $scope.country = 1;
+			if(!$scope.state || $scope.state =="") $scope.state = 1;
+			if(!$scope.city || $scope.city=="") $scope.city = 1;
+
+
 			var tempAccData = {};
 			tempAccData.name = $scope.tempAccName;
 			// tempAccData.content = $scope.content;
