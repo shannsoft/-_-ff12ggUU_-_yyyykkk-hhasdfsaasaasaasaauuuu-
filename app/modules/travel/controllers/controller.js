@@ -21,13 +21,13 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-train",info:"Auto Rickshaw (Three Wheelers)"},
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-motorcycle",info:"Two Wheelers"}
       ];
-      $scope.cities = [];
-      MainService.getAllCity().then(function(pRes) {
+      $scope.cities = [{cityName:"Bhubaneswar"},{cityName:"Kolkata"},{cityName:"Kolkata"}];
+     /* MainService.getAllCity().then(function(pRes) {
 
       angular.forEach(pRes.data,function(value,key) {
-            $scope.cities.push(value);
+            //$scope.cities.push(value);
         });
-      });
+      });*/
     }
 
 
@@ -112,7 +112,7 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         $scope.flightDetails = [];
         MainService.showLoaders();
         travelService.getFlightDetails($scope.searchFlight).then(function(pRes){
-             MainService.hideLoaders();
+            MainService.hideLoaders();
             var flightDetails = pRes.data;
             $(flightDetails).each(function(i){
                 $scope.flightDetails.push(flightDetails[i]);

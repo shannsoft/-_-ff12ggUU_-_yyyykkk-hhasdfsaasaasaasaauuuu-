@@ -1118,22 +1118,14 @@ header('Access-Control-Allow-Origin: *');
             $day =  $this->_request['day'];
             $sourceCity =  $this->_request['sourceCity'];
             $destinationCity =  $this->_request['destinationCity'];
-            if ($day=='' && $sourceCity=='' && $destinationCity=='')
+            if ($day=='' && $sourceCity=='')
               $sql="select * from flight";
-            else if($day=='' && $sourceCity!='' && $destinationCity=='')
-              $sql="select * from flight where FromAirport = '$sourceCity'";
-            else if($day=='' && $sourceCity!='' && $destinationCity!='')
-              $sql="select * from flight where FromAirport = '$sourceCity' AND ToAirport = '$destinationCity'";
-            else if($day=='' && $sourceCity=='' && $destinationCity!='')
-              $sql="select * from flight where ToAirport = '$destinationCity' ";
-            else if($day!='' && $sourceCity!='' && $destinationCity!='')
-              $sql="select * from flight where $day = 1 AND FromAirport = '$sourceCity' AND ToAirport = '$destinationCity' ";
-            else if($day!='' && $sourceCity=='' && $destinationCity!='')
-              $sql="select * from flight where $day = 1 AND ToAirport = '$destinationCity' ";
-            else if($day!='' && $sourceCity!='' && $destinationCity=='')
-              $sql="select * from flight where FromAirport = '$sourceCity' AND $day = 1";
-            else if($day!='' && $sourceCity=='' && $destinationCity=='')
+            else if($day=='' && $sourceCity!='')
+              $sql="select * from flight where FromAirport = '$sourceCity' OR ToAirport = '$sourceCity'";
+            else if($day!='' && $sourceCity=='')
               $sql="select * from flight where $day = 1";
+            else if($day!='' && $sourceCity!='')
+              $sql="select * from flight where $day = 1 AND FromAirport = '$sourceCity' OR ToAirport = '$sourceCity'";
             $rows = $this->executeGenericDQLQuery($sql);
             $flightDetails= array();
             for($i=0 ; $i<sizeof($rows);$i++)

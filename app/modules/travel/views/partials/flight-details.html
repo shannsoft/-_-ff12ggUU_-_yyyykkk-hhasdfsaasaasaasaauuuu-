@@ -3,30 +3,20 @@
 
 	<ion-view class="pane">
         <ion-content class="has-header">
-		
-		 <div class="row  top-margin">
-     	   <div class="col col-50">
-		     <p class="map-start"> From </p>
-		    <form class="item item-input list list-inset">
-			 <!-- <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Source" ng-model="searchFlight.source"/> -->
-			  <select ng-model="searchFlight.source">
+		  <div class="row money-dashboard">
+		   <div class="icici-branchlist">
+		     <label class="item item-input item-select">
+              <div class="input-label">
+              Select City
+              </div>
+             <select ng-model="searchFlight.source">
              	<option ng-selected="true" value="">Select City</option>
-                <option ng-repeat="city in cities" value="{{city.cityName}}" >{{city.cityName}}</option>
+                <option ng-repeat="city in cities" value="{{city.cityName}}">{{city.cityName}}</option>
              </select>
-			</form>
-		   </div>		   
-		   <div class="col col-50">
-		     <p class="map-start"> To </p>
-		    <form class="item item-input list list-inset">
-			<!--  <i class="icon ion-search placeholder-icon"></i>
-			  <input type="text" placeholder="Destination" ng-model="searchFlight.destination"/> -->
-			   <select ng-model="searchFlight.destination">
-             	<option ng-selected="true" value="">Select City</option>
-                <option ng-repeat="city in cities" value="{{city.cityName}}" >{{city.cityName}}</option>
-             </select>
-			</form>
-		   </div>
+
+           </label>
+          
+		  </div>
 		  </div>
 		  <div class="row money-dashboard">
 		   <div class="icici-branchlist">
