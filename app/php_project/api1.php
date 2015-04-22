@@ -1016,12 +1016,12 @@ header('Access-Control-Allow-Origin: *');
           {
       
             $tempAccm[$i]['id'] =$rows[$i]['id'] ;
-            $tempAccm[$i]['name'] =$rows[$i]['name'] ;
-            $tempAccm[$i]['address'] =$rows[$i]['address'] ;
-            $tempAccm[$i]['contact'] =$rows[$i]['contact'] ;
-            $tempAccm[$i]['authority'] =$rows[$i]['authority'] ;
-            $tempAccm[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $tempAccm[$i]['name'] =($rows[$i]['name'] == null || $rows[$i]['name'] =="null") ? "No Data Available" : $rows[$i]['name'] ;
+            $tempAccm[$i]['address'] =($rows[$i]['address'] == null || $rows[$i]['address'] =="null") ? "No Data Available" : $rows[$i]['address'] ;
+            $tempAccm[$i]['contact'] =($rows[$i]['contact_no'] == null || $rows[$i]['contact_no'] =="null") ? "No Data Available" : $rows[$i]['contact_no'] ;
+            $tempAccm[$i]['authority'] =($rows[$i]['authority'] == null || $rows[$i]['authority'] =="null") ? "No Data Available" : $rows[$i]['authority'] ;
             $tempAccm[$i]['cityId'] =$rows[$i]['cityId'] ;
+            $tempAccm[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
            }
           $this->response($this->json($tempAccm), 200);
 
