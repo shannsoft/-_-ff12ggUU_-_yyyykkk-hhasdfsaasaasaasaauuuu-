@@ -62,14 +62,14 @@
 			$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
 			//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.getCities =function()
-			{	$scope.cities=[];
-				var response =  $http.get($scope.apiPath+"reqmethod=getCity").then(function(pRes){
+			{	$scope.cities=["Bhubaneswar","Kolkata","Vizag"];
+				/*var response =  $http.get($scope.apiPath+"reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
 		                $scope.cities.push(city.CityName);
 		            });
 				});
-				console.log($scope.cities);
+				console.log($scope.cities);*/
 			}
 			$scope.init = function(){
 				$scope.getCities();
