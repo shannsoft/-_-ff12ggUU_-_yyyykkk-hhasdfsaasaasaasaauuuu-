@@ -16,6 +16,7 @@ header('Access-Control-Allow-Origin: *');
 		const DB_USER = "goappsso_nabakal";
 		const DB_PASSWORD = "nabakalebara@123";
 		//const DB = "magentod_html5tshirtapp_5sept";
+    // const DB = "nabakalebara";
 		const DB = "goappsso_nabakalebara";
 	
 	
@@ -258,7 +259,23 @@ header('Access-Control-Allow-Origin: *');
     			}
     			$this->response($this->json($cityDetails), 200);
         }
-        
+        public function getAllCity()
+        { 
+              
+          $sql="SELECT * FROM city c ";
+            
+          $rows = $this->executeGenericDQLQuery($sql);
+          $cityDetails = array();
+          for($i=0;$i<sizeof($rows);$i++)
+          {
+            $cityDetails[$i]['cityID'] = $rows[$i]['CityID'];
+            $cityDetails[$i]['cityName'] = $rows[$i]['CityName'];
+            $cityDetails[$i]['stateID'] = $rows[$i]['StateID'];
+            $cityDetails[$i]['countryID'] = $rows[$i]['CountryID'];
+            
+          }
+          $this->response($this->json($cityDetails), 200);
+        }
         public function postCity()
         {
           $cityData = $this->_request['cityData'];
@@ -305,7 +322,7 @@ header('Access-Control-Allow-Origin: *');
          $startPrice = intval ($this->_request['startPrice']);
          $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
          
-          $sql="select distinct h.id hotelId , h.Name hotelName , h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
+          $sql="select distinct h.id hotelId , h.Name hotelName , h.content content ,h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
                 "h.Mobile mobile , h.Fax fax , h.Email email , h.Website webSite , h.reservation_authority reservationAuthority ,".
                 "h.Category category , h.Facilities facilitites , h.CityId cityId , h.icon_image iconImg, h.home_image homeImg , c.CityName".
                  " from hotels h" .
@@ -322,23 +339,25 @@ header('Access-Control-Allow-Origin: *');
           //echo $sql;
          $hotelDetails = array();
           $rows = $this->executeGenericDQLQuery($sql);
+         // print_r($rows);
           for($i=0;$i<sizeof($rows);$i++)
           {
             $hotelDetails[$i]['hotelId'] = $rows[$i]['hotelId'];
-            $hotelDetails[$i]['hotelName'] = $rows[$i]['hotelName'];
-            $hotelDetails[$i]['address'] = $rows[$i]['address'];
-            $hotelDetails[$i]['phone1'] = $rows[$i]['phone1'];
-            $hotelDetails[$i]['phone2'] = $rows[$i]['phone2'];
-            $hotelDetails[$i]['phone3'] = $rows[$i]['phone3'];
-            $hotelDetails[$i]['mobile'] = $rows[$i]['mobile'];
-            $hotelDetails[$i]['fax'] = $rows[$i]['fax'];
-            $hotelDetails[$i]['email'] = $rows[$i]['email'];
-            $hotelDetails[$i]['webSite'] = $rows[$i]['webSite'];
-            $hotelDetails[$i]['reservationAuthority'] = $rows[$i]['reservationAuthority'];
-            $hotelDetails[$i]['category'] = $rows[$i]['category'];
-            $hotelDetails[$i]['cityId'] = $rows[$i]['cityId'];
-            $hotelDetails[$i]['iconImg'] = $rows[$i]['iconImg'];
-            $hotelDetails[$i]['homeImg'] = $rows[$i]['homeImg'];
+            $hotelDetails[$i]['hotelName'] =($rows[$i]['hotelName'] == null || $rows[$i]['hotelName'] == "null") ? " No Data Available" : $rows[$i]['hotelName'];
+            $hotelDetails[$i]['content'] = ($rows[$i]['content'] == null || $rows[$i]['content'] == "null") ? "No Data Available" : $rows[$i]['content'] ;
+            $hotelDetails[$i]['address'] = ($rows[$i]['address'] == null || $rows[$i]['address'] == "null") ? "No Data Available" : $rows[$i]['address'] ;
+            $hotelDetails[$i]['phone1'] = ($rows[$i]['phone1'] == null || $rows[$i]['phone1'] == "null") ? "No Data Available" : $rows[$i]['phone1'] ;
+            $hotelDetails[$i]['phone2'] = ($rows[$i]['phone2'] == null || $rows[$i]['phone2'] == "null") ? "No Data Available" : $rows[$i]['phone2'];
+            $hotelDetails[$i]['phone3'] = ($rows[$i]['phone3'] == null || $rows[$i]['phone3'] == "null") ? "No Data Available" : $rows[$i]['phone3'];
+            $hotelDetails[$i]['mobile'] = ($rows[$i]['mobile'] == null || $rows[$i]['mobile'] == "null") ? "No Data Available" : $rows[$i]['mobile'] ;
+            $hotelDetails[$i]['fax'] = ($rows[$i]['fax'] == null || $rows[$i]['fax'] == "null") ? "No Data Available" : $rows[$i]['fax'];
+            $hotelDetails[$i]['email'] = ($rows[$i]['email'] == null || $rows[$i]['email'] == "null") ? "No Data Available" :$rows[$i]['email'] ;
+            $hotelDetails[$i]['webSite'] = ($rows[$i]['webSite'] == null || $rows[$i]['webSite'] == "null") ? "No Data Available" : $rows[$i]['webSite'] ;
+            $hotelDetails[$i]['reservationAuthority'] = ($rows[$i]['reservationAuthority'] == null || $rows[$i]['reservationAuthority'] == "null") ? "No Data Available" : $rows[$i]['reservationAuthority'];
+            $hotelDetails[$i]['category'] = ($rows[$i]['category'] == null) ? 0 : $rows[$i]['category'] ;
+            $hotelDetails[$i]['iconImg'] = ($rows[$i]['iconImg'] == null || $rows[$i]['iconImg'] == "null") ? "img/not_found.jpg" : $rows[$i]['iconImg'];
+            $hotelDetails[$i]['homeImg'] = ($rows[$i]['homeImg'] == null || $rows[$i]['homeImg'] == "null") ? "img/not_found.jpg" :$rows[$i]['homeImg'];
+            
             $hotelDetails[$i]['facilitites'] = $this->getFacilitiesByIds($rows[$i]['facilitites']);
             $hotelDetails[$i]['roomDetails'] = $this->getRoomDetailsById($rows[$i]['hotelId']);
 
@@ -480,7 +499,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -488,6 +508,7 @@ header('Access-Control-Allow-Origin: *');
              $sql="insert into train(TrainNumber,TrainName,FromStation,ToStation,StartAt,ReachesAt,WebLink,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)".
              "values('$trainNumber','$trainName','$fromCity','$toCity','$depValue','$arrValue','$trainUrl',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+             $response['data'] = "train details added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -506,7 +527,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "flight already exists ";
 
            }
            else
@@ -514,6 +536,7 @@ header('Access-Control-Allow-Origin: *');
              $sql="insert into flight(FlightNumber,FlightName,FromAirport,ToAirport,StartsAt,ReachesAt,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)".
              "values('$flightNumber','$flightName','$fromCity','$toCity','$depValue','$arrValue',$days[0],$days[1],$days[2],$days[3],$days[4],$days[5],$days[6])";             $this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+             $response['data'] = "flight details added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -530,7 +553,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -539,6 +563,7 @@ header('Access-Control-Allow-Origin: *');
              "values('$busNumber','$busName','$fromCity','$toCity','$depValue','$duration')";             
              $this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+             $response['data'] = "Bus details added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -554,7 +579,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -562,7 +588,8 @@ header('Access-Control-Allow-Origin: *');
              $sql="insert into schedule(schedule_name,schedule_content,start_time,end_time,day)".
              "values('$scheduleName','$scheduleContent','$startTime','$endTime','$day')";
              $this->executeGenericDMLQuery($sql);
-             $response['status'] = "success";
+              $response['status'] = "success";
+              $response['data'] = "schedule added successfully !";
            }
            $this->response($this->json($response), 200);
             
@@ -586,10 +613,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from hotels where Name="."'".$hotelData['hotelName']."'";//.$hotelData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // hotel exists activate update
+            $response['status'] = "success";
+            $response['data'] = "Hotel already exists !";
            
            }
            else
@@ -610,7 +639,10 @@ header('Access-Control-Allow-Origin: *');
                 $this->executeGenericInsertQuery($sql);
 
               }
+               $response['status'] = "success";
+               $response['data'] = "Hotel added successfully !";
            }
+           $this->response($this->json($response), 200);
         }
 
         public function postGuestHouseDetails(){
@@ -631,11 +663,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from guest_house where Name="."'".$guestHouseData['name']."'";//.$guestHouseData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // echo "guest house exists activate update";
-           
+            $response['status'] = "success";
+            $response['data'] = "Guest house already exists !";
            }
            else
            {
@@ -646,9 +679,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into guest_house(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$guestHouseData['name']."','".$guestHouseData['content']."','".$guestHouseData['address']."' , ".$guestHouseData['phone1'].",".$guestHouseData['phone2'].",".$guestHouseData['phone3'].",".$guestHouseData['mobile'].",'".$guestHouseData['webSite']."',".$guestHouseData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$guestHouseData['iconImgPath']."','".$guestHouseData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+              $response['data'] = "Guest house added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
 
         public function postResturantDetails(){
@@ -669,11 +705,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from resturants where Name="."'".$resturantData['name']."'";//.$resturantData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // echo "guest house exists activate update";
-           
+            $response['status'] = "success";
+            $response['data'] = "Resturant already exists !";
            }
            else
            {
@@ -684,9 +721,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into resturants(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$resturantData['name']."','".$resturantData['content']."','".$resturantData['address']."' , ".$resturantData['phone1'].",".$resturantData['phone2'].",".$resturantData['phone3'].",".$resturantData['mobile'].",'".$resturantData['webSite']."',".$resturantData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$resturantData['iconImgPath']."','".$resturantData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+              $response['data'] = "Resturant added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
         public function postCofeeShopDetails(){
            $cofeeShopData =  $this->_request['cofeeShopData'];
@@ -706,10 +746,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from coffee_shops where Name="."'".$cofeeShopData['name']."'";//.$cofeeShopData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
             // echo "guest house exists activate update";
+            $response['status'] = 'success';
+            $response['data'] = 'coffee shop already exists !';
            
            }
            else
@@ -721,9 +763,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into coffee_shops(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$cofeeShopData['name']."','".$cofeeShopData['content']."','".$cofeeShopData['address']."' , ".$cofeeShopData['phone1'].",".$cofeeShopData['phone2'].",".$cofeeShopData['phone3'].",".$cofeeShopData['mobile'].",'".$cofeeShopData['webSite']."',".$cofeeShopData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$cofeeShopData['iconImgPath']."','".$cofeeShopData['iconImgPath']."')";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = 'success';
+              $response['data'] = 'coffee shop added successfully !';
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
 
         // posting temp accomodations details
@@ -734,10 +779,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from temp_accomodation where name="."'".$tempAccData['name']."'";//.$tempAccData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
-            echo "temp  acc  house exists activate update";
+            $response['status'] = "success";
+            $response['data'] = "Temp. accomodations already exists !";
+            
            
            }
            else
@@ -750,8 +797,11 @@ header('Access-Control-Allow-Origin: *');
              // echo $sql;
               $tempAccId = $this->executeGenericInsertQuery($sql);
              //echo $sql;
+              $response['status'] = "success";
+              $response['data'] = "Temp. accomodations added successfully !";
               
            }
+           $this->response($this->json($response), 200);
         }
         // posting toilets details
         public function postToiletsDetails(){
@@ -761,10 +811,12 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from toilet where name="."'".$toiletData['name']."'";//.$toiletData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
-            echo "temp  acc  house exists activate update";
+            
+            $response['status'] = "success";
+            $response['data'] = "tiolet entry already exists !";
            
            }
            else
@@ -776,9 +828,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into toilet(name,address,contact,authority,cityId,icon_image) values('".$toiletData['name']."','".$toiletData['address']."','".$toiletData['phone']."','".$toiletData['auth']."',".$cityId.",'".$toiletData['iconImgPath']."')";
              // echo $sql;
               $toiletId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+              $response['data'] = "tiolet entry added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
         // posting drinking water details
         public function postDrinkingWaterDetails(){
@@ -788,10 +843,11 @@ header('Access-Control-Allow-Origin: *');
            $sql="select * from drinking_water where name="."'".$dWaterData['name']."'";//.$dWaterData['hotelName'];
            //echo $sql;
            $rows = $this->executeGenericDQLQuery($sql);
-
+           $response = array();
            if(sizeof($rows) > 0)
            {
-            echo "drinking_water   exists activate update";
+             $response['status'] = "success";
+             $response['data'] = "drinking water entry already exists !";
            
            }
            else
@@ -803,9 +859,12 @@ header('Access-Control-Allow-Origin: *');
               $sql = "insert into drinking_water(name,address,contact,authority,cityId,icon_image) values('".$dWaterData['name']."','".$dWaterData['address']."','".$dWaterData['phone']."','".$dWaterData['auth']."',".$cityId.",'".$dWaterData['iconImgPath']."')";
              // echo $sql;
               $drinkingWaterId = $this->executeGenericInsertQuery($sql);
+              $response['status'] = "success";
+             $response['data'] = "drinking water added successfully !";
              //echo $sql;
               
            }
+           $this->response($this->json($response), 200);
         }
         //post parking details
 
@@ -816,7 +875,10 @@ header('Access-Control-Allow-Origin: *');
               $sql= " update parking set content='".$parkingData[$i]['content']."'  , address='".$parkingData[$i]['address']."' where vehicle_name = '".$parkingData[$i]['vehicle_name']."'";
               $this->executeGenericDMLQuery($sql);
            }
-
+           $response = array();
+           $response['status'] = "success";
+           $response['data'] = "parking update successfully !";
+            $this->response($this->json($response), 200);
           
         }
         public function getGuestHouseDetails(){
@@ -836,19 +898,19 @@ header('Access-Control-Allow-Origin: *');
           for($i=0;$i<sizeof($rows);$i++)
           {
       
-            $guestHouseDetails[$i]['Name'] =$rows[$i]['Name'] ;
-            $guestHouseDetails[$i]['Address'] =$rows[$i]['Address'] ;
-            $guestHouseDetails[$i]['Phone1'] =$rows[$i]['Phone1'] ;
-            $guestHouseDetails[$i]['Phone2'] =$rows[$i]['Phone2'] ;
-            $guestHouseDetails[$i]['Phone3'] =$rows[$i]['Phone3'] ;
-            $guestHouseDetails[$i]['Mobile'] =$rows[$i]['Mobile'] ;
-            $guestHouseDetails[$i]['Website'] =$rows[$i]['Website'] ;
-            $guestHouseDetails[$i]['Category'] =$rows[$i]['Category'] ;
-
+            $guestHouseDetails[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
+            $guestHouseDetails[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $guestHouseDetails[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
+            $guestHouseDetails[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
+            $guestHouseDetails[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
+            $guestHouseDetails[$i]['Mobile'] =($rows[$i]['Mobile'] == null || $rows[$i]['Mobile'] =="null") ? "No Data Available" : $rows[$i]['Mobile'] ;
+            $guestHouseDetails[$i]['Website'] =($rows[$i]['Website'] == null || $rows[$i]['Website'] =="null") ? "No Data Available" : $rows[$i]['Website'] ;
+            $guestHouseDetails[$i]['Category'] =($rows[$i]['Category'] == null) ? 0 : $rows[$i]['Category'] ;
             $guestHouseDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $guestHouseDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
-            $guestHouseDetails[$i]['icon_image'] =$rows[$i]['icon_image'] ;
-            $guestHouseDetails[$i]['home_image'] =$rows[$i]['home_image'] ;
+            $guestHouseDetails[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
+            $guestHouseDetails[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
+            
 
           
           }
@@ -871,19 +933,20 @@ header('Access-Control-Allow-Origin: *');
           $resturantDetails = array();
           for($i=0;$i<sizeof($rows);$i++)
           {
-      
-            $resturantDetails[$i]['Name'] =$rows[$i]['Name'] ;
-            $resturantDetails[$i]['Address'] =$rows[$i]['Address'] ;
-            $resturantDetails[$i]['Phone1'] =$rows[$i]['Phone1'] ;
-            $resturantDetails[$i]['Phone2'] =$rows[$i]['Phone2'] ;
-            $resturantDetails[$i]['Phone3'] =$rows[$i]['Phone3'] ;
-            $resturantDetails[$i]['Mobile'] =$rows[$i]['Mobile'] ;
-            $resturantDetails[$i]['Website'] =$rows[$i]['Website'] ;
-            $resturantDetails[$i]['Category'] =$rows[$i]['Category'] ;
+
+
+            $resturantDetails[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
+            $resturantDetails[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $resturantDetails[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
+            $resturantDetails[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
+            $resturantDetails[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
+            $resturantDetails[$i]['Mobile'] =($rows[$i]['Mobile'] == null || $rows[$i]['Mobile'] =="null") ? "No Data Available" : $rows[$i]['Mobile'] ;
+            $resturantDetails[$i]['Website'] =($rows[$i]['Website'] == null || $rows[$i]['Website'] =="null") ? "No Data Available" : $rows[$i]['Website'] ;
+            $resturantDetails[$i]['Category'] =($rows[$i]['Category'] == null) ? 0 : $rows[$i]['Category'] ;
             $resturantDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $resturantDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
-            $resturantDetails[$i]['icon_image'] =$rows[$i]['icon_image'] ;
-            $resturantDetails[$i]['home_image'] =$rows[$i]['home_image'] ;
+            $resturantDetails[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
+            $resturantDetails[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
             
           
           }
@@ -909,19 +972,22 @@ header('Access-Control-Allow-Origin: *');
           $coffeeShops = array();
           for($i=0;$i<sizeof($rows);$i++)
           {
-      
-            $coffeeShops[$i]['Name'] =$rows[$i]['Name'] ;
-            $coffeeShops[$i]['Address'] =$rows[$i]['Address'] ;
-            $coffeeShops[$i]['Phone1'] =$rows[$i]['Phone1'] ;
-            $coffeeShops[$i]['Phone2'] =$rows[$i]['Phone2'] ;
-            $coffeeShops[$i]['Phone3'] =$rows[$i]['Phone3'] ;
-            $coffeeShops[$i]['Mobile'] =$rows[$i]['Mobile'] ;
-            $coffeeShops[$i]['Website'] =$rows[$i]['Website'] ;
-            $coffeeShops[$i]['Category'] =$rows[$i]['Category'] ;
+
+
+            $coffeeShops[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
+            $coffeeShops[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $coffeeShops[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
+            $coffeeShops[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
+            $coffeeShops[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
+            $coffeeShops[$i]['Mobile'] =($rows[$i]['Mobile'] == null || $rows[$i]['Mobile'] =="null") ? "No Data Available" : $rows[$i]['Mobile'] ;
+            $coffeeShops[$i]['Website'] =($rows[$i]['Website'] == null || $rows[$i]['Website'] =="null") ? "No Data Available" : $rows[$i]['Website'] ;
+            $coffeeShops[$i]['Category'] =($rows[$i]['Category'] == null) ? 0 : $rows[$i]['Category'] ;
             $coffeeShops[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $coffeeShops[$i]['CityId'] =$rows[$i]['CityId'] ;
-            $coffeeShops[$i]['icon_image'] =$rows[$i]['icon_image'] ;
-            $coffeeShops[$i]['home_image'] =$rows[$i]['home_image'] ;
+            $coffeeShops[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
+            $coffeeShops[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
+      
+           
             
           
           }
@@ -950,12 +1016,12 @@ header('Access-Control-Allow-Origin: *');
           {
       
             $tempAccm[$i]['id'] =$rows[$i]['id'] ;
-            $tempAccm[$i]['name'] =$rows[$i]['name'] ;
-            $tempAccm[$i]['address'] =$rows[$i]['address'] ;
-            $tempAccm[$i]['contact'] =$rows[$i]['contact'] ;
-            $tempAccm[$i]['authority'] =$rows[$i]['authority'] ;
-            $tempAccm[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $tempAccm[$i]['name'] =($rows[$i]['name'] == null || $rows[$i]['name'] =="null") ? "No Data Available" : $rows[$i]['name'] ;
+            $tempAccm[$i]['address'] =($rows[$i]['address'] == null || $rows[$i]['address'] =="null") ? "No Data Available" : $rows[$i]['address'] ;
+            $tempAccm[$i]['contact'] =($rows[$i]['contact_no'] == null || $rows[$i]['contact_no'] =="null") ? "No Data Available" : $rows[$i]['contact_no'] ;
+            $tempAccm[$i]['authority'] =($rows[$i]['authority'] == null || $rows[$i]['authority'] =="null") ? "No Data Available" : $rows[$i]['authority'] ;
             $tempAccm[$i]['cityId'] =$rows[$i]['cityId'] ;
+            $tempAccm[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
            }
           $this->response($this->json($tempAccm), 200);
 
@@ -1052,22 +1118,14 @@ header('Access-Control-Allow-Origin: *');
             $day =  $this->_request['day'];
             $sourceCity =  $this->_request['sourceCity'];
             $destinationCity =  $this->_request['destinationCity'];
-            if ($day=='' && $sourceCity=='' && $destinationCity=='')
+            if ($day=='' && $sourceCity=='')
               $sql="select * from flight";
-            else if($day=='' && $sourceCity!='' && $destinationCity=='')
-              $sql="select * from flight where FromAirport = '$sourceCity'";
-            else if($day=='' && $sourceCity!='' && $destinationCity!='')
-              $sql="select * from flight where FromAirport = '$sourceCity' AND ToAirport = '$destinationCity'";
-            else if($day=='' && $sourceCity=='' && $destinationCity!='')
-              $sql="select * from flight where ToAirport = '$destinationCity' ";
-            else if($day!='' && $sourceCity!='' && $destinationCity!='')
-              $sql="select * from flight where $day = 1 AND FromAirport = '$sourceCity' AND ToAirport = '$destinationCity' ";
-            else if($day!='' && $sourceCity=='' && $destinationCity!='')
-              $sql="select * from flight where $day = 1 AND ToAirport = '$destinationCity' ";
-            else if($day!='' && $sourceCity!='' && $destinationCity=='')
-              $sql="select * from flight where FromAirport = '$sourceCity' AND $day = 1";
-            else if($day!='' && $sourceCity=='' && $destinationCity=='')
+            else if($day=='' && $sourceCity!='')
+              $sql="select * from flight where FromAirport = '$sourceCity' OR ToAirport = '$sourceCity'";
+            else if($day!='' && $sourceCity=='')
               $sql="select * from flight where $day = 1";
+            else if($day!='' && $sourceCity!='')
+              $sql="select * from flight where $day = 1 AND FromAirport = '$sourceCity' OR ToAirport = '$sourceCity'";
             $rows = $this->executeGenericDQLQuery($sql);
             $flightDetails= array();
             for($i=0 ; $i<sizeof($rows);$i++)
@@ -1141,7 +1199,8 @@ header('Access-Control-Allow-Origin: *');
            $response = array();
           if(sizeof($rows)>0)
            {
-                $response['status'] = "already exist";
+                $response['status'] = "success";
+                $response['data'] = "already exist";
 
            }
            else
@@ -1150,6 +1209,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$dayType."','".$travelMode."','".$info."',$city)"; 
              //$this->executeGenericDMLQuery($sql);
              $response['status'] = "success";
+              $response['data'] = "traffic mobility added successfully !";
            }
            //echo $sql;
            $this->response($this->json($response), 200);
@@ -1171,6 +1231,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
              $this->executeGenericDMLQuery($sql);
             $response['status'] = "success";
+            $response['data'] = "branch details entered successfully !";
            $this->response($this->json($response), 200);  
         }
         public function postForexDetails(){
@@ -1184,6 +1245,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$branchName."','".$address."','".$contact."','".$branchMng."','".$forexMng."',$city)"; 
              $this->executeGenericDMLQuery($sql);
             $response['status'] = "success";
+            $response['data'] = "forex branch details entered successfully !";
            $this->response($this->json($response), 200);  
         }
 
@@ -1371,6 +1433,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
           $this->executeGenericDMLQuery($sql);
           $response['status'] = "success";
+          $response['data'] = "Local authority added successfully !";
           $this->response($this->json($response), 200);  
         } 
         public function postTempleAdmin(){
@@ -1382,6 +1445,7 @@ header('Access-Control-Allow-Origin: *');
              "values('".$designation."','".$authorityName."','".$contact."',$city)"; 
           $this->executeGenericDMLQuery($sql);
           $response['status'] = "success";
+          $response['data'] = "Temple admin added successfully !";
           $this->response($this->json($response), 200);  
         }
 
