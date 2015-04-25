@@ -66,9 +66,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
 		          <div class="col col-90">
 			        <h2>Contact</h2>
 					<ul>
-					    <li>{{selectedResturant.Name}}</li>
-						<li>{{selectedResturant.Address}}</li>
-						<li>Phone:(06752){{selectedResturant.Phone1}},{{selectedResturant.Phone2}},{{selectedResturant.Phone3}}</li>
+					    <li>Phone:<span ng-if="selectedResturant.Phone1!='No Data Available'"> {{selectedResturant.Phone1}} </span> <span ng-if="selectedResturant.Phone2!='No Data Available'">,{{selectedResturant.Phone2}} </span> <span ng-if="selectedResturant.Phone3!='No Data Available'"> ,{{selectedResturant.Phone3}}</span></li>
 						<!-- <li>Fax:(06752)222744</li> -->
 					</ul>
 			      </div><!--col-50 end-->

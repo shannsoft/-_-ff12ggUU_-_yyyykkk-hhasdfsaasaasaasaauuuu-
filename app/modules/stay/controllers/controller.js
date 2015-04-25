@@ -43,6 +43,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
           $scope.hotels = [];
           $scope.hotels = pRes.data;
           MainService.hideLoaders();
+         // console.log($scope.hotels);
           
       });
     }

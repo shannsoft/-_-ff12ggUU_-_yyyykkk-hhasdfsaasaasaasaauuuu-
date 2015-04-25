@@ -52,21 +52,21 @@
 					   <div class="col col-60">
 							<ul> 
 								 <li class="hf-heading">Number of Rooms/ Beds.</li>
-								  <li ng-repeat="rooms in selectedHotel.roomDetails">{{rooms.room_type}}<span>:{{rooms.NoOfRooms}}</span></li>
+								  <li ng-repeat="rooms in selectedHotel.roomDetails" ng-if="rooms.NoOfRooms > 0 ">{{rooms.room_type}}<span>:{{rooms.NoOfRooms}}</span></li>
 							</ul>
 					   </div><!--col-50 end-->
 					   	 
 					   <div class="col col-20">
 					       <ul>
 							 <li class="hf-heading">Price start</li>
-							 <li ng-repeat="rooms in selectedHotel.roomDetails">{{rooms.PriceStarts}}</li>
+							 <li ng-repeat="rooms in selectedHotel.roomDetails" ng-if="rooms.PriceStarts > 0 ">{{rooms.PriceStarts}}</li>
 							 
 				          </ul>
 					   </div><!--col-50 end-->
 					    <div class="col col-20">
 					       <ul>
 							 <li class="hf-heading">Price End</li>
-							 <li ng-repeat="rooms in selectedHotel.roomDetails">{{rooms.PriceEnds}}</li>
+							 <li ng-repeat="rooms in selectedHotel.roomDetails" ng-if="rooms.PriceEnds > 0 ">{{rooms.PriceEnds}}</li>
 				          </ul>
 					   </div><!--col-50 end-->
 				 </div><!--facilities-hotel end-->
@@ -115,7 +115,7 @@
 			        <h2 class="hf-heading">Contacts</h2>
 					  <ul>
 					    <li>{{selectedHotel.hotelName}}</li>
-						<li>Ph:({{selectedHotel.phone1}}) {{selectedHotel.contacts.phone2}}</li>
+						<li >Ph:<span ng-if="selectedHotel.phone1!= 'No Data Available'"> ({{selectedHotel.phone1}}) </span> <span ng-if="selectedHotel.contacts.phone2!= 'No Data Available'"> {{selectedHotel.contacts.phone2}} </span></li>
 						<li>Fax:{{selectedHotel.fax}}</li>
 					 </ul>
 			      </div><!--col-50 end-->

@@ -67,7 +67,7 @@
 					<ul>
 					    <li>{{selectedGuestHouse.Name}}</li>
 						<li>{{selectedGuestHouse.Address}}</li>
-						<li>Phone:{{selectedGuestHouse.Phone1}},{{selectedGuestHouse.Phone2}},{{selectedGuestHouse.Phone3}}</li>
+						<li>Phone: <span ng-if="selectedGuestHouse.Phone1!='No Data Available'"> {{selectedGuestHouse.Phone1}} </span> <span ng-if="selectedGuestHouse.Phone2!='No Data Available'"> ,{{selectedGuestHouse.Phone2}} </span> <span ng-if="selectedGuestHouse.Phone3!='No Data Available'"> ,{{selectedGuestHouse.Phone3}} </span></li>
 						<!-- <li>Fax:</li> -->
 					</ul>
 			      </div><!--col-50 end-->

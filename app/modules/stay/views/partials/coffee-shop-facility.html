@@ -68,7 +68,8 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
 					<ul>
 					    <li>{{selectedCoffeeShop.Name}}</li>
 						<li>{{selectedCoffeeShop.Address}}</li>
-						<li>Phone:(06752){{selectedCoffeeShop.Phone1}},{{selectedCoffeeShop.Phone2}},{{selectedCoffeeShop.Phone3}}</li>
+						<!-- <li>Phone:(06752){{selectedCoffeeShop.Phone1}},{{selectedCoffeeShop.Phone2}},{{selectedCoffeeShop.Phone3}}</li> -->
+						<li>Phone:<span ng-if="selectedCoffeeShop.Phone1!='No Data Available'"> {{selectedCoffeeShop.Phone1}} </span> <span ng-if="selectedCoffeeShop.Phone2!='No Data Available'">,{{selectedCoffeeShop.Phone2}} </span> <span ng-if="selectedCoffeeShop.Phone3!='No Data Available'"> ,{{selectedCoffeeShop.Phone3}}</span></li>
 						<!-- <li>Fax:(06752)222744</li> -->
 					</ul>
 			      </div><!--col-50 end-->
