@@ -6,11 +6,11 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
       $scope.information = '';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.travelOptionList = [
-        {detailLink:"#train-details",contentUrl:"modules/travel/views/partials/train-details.html",iconClass:"fa fa-train",info:"Train"},
-        {detailLink:"#bus-details",contentUrl:"modules/travel/views/partials/bus-details.html",iconClass:"fa fa-bus",info:"Bus"},
-        {detailLink:"#flight-details",contentUrl:"modules/travel/views/partials/flight-details.html",iconClass:"fa fa-plane",info:"Flights"},
-        {detailLink:"#traffic-information",contentUrl:"modules/travel/views/partials/traffic-information.html",iconClass:"fa fa-car",info:"Traffic Mobility Plan"},
-        {detailLink:"#fuel-pump",contentUrl:"modules/travel/views/partials/fuel-pump.html",iconClass:"fa fa-tachometer",info:"Fuel Pump"},
+        {detailLink:"#train-details",contentUrl:"modules/travel/views/partials/train-details.html",iconClass:"fa fa-train",info:"Train",header:"Train From Puri"},
+        /*{detailLink:"#bus-details",contentUrl:"modules/travel/views/partials/bus-details.html",iconClass:"fa fa-bus",info:"Bus",header:"Bus"},*/
+        {detailLink:"#flight-details",contentUrl:"modules/travel/views/partials/flight-details.html",iconClass:"fa fa-plane",info:"Flights",header:"Flight from Bhubaneswar"},
+        {detailLink:"#traffic-information",contentUrl:"modules/travel/views/partials/traffic-information.html",iconClass:"fa fa-car",info:"Traffic Mobility Plan",header:"Traffic details"},
+        {detailLink:"#fuel-pump",contentUrl:"modules/travel/views/partials/fuel-pump.html",iconClass:"fa fa-tachometer",info:"Fuel Pump",header:"Fuel Pump"},
       ];
       $scope.trafficElement = [
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-bus",info:"Buses"},
@@ -21,7 +21,15 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-train",info:"Auto Rickshaw (Three Wheelers)"},
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-motorcycle",info:"Two Wheelers"}
       ];
-      $scope.flightcities = [{cityName:"Bhubaneswar"},{cityName:"Kolkata"},{cityName:"Vizag"}];
+      $scope.flightcities = [{cityName:"Delhi"},
+                            {cityName:"Kolkata"},
+                            {cityName:"Mumbai"},
+                            {cityName:"Bangalore"},
+                            {cityName:"Hydrabad"},
+                            {cityName:"Port blair"},
+                            {cityName:"Chennai"},
+                            {cityName:"Visakhapatnam"}
+                            ];
       $scope.cities = [];
       MainService.getAllCity().then(function(pRes) {
 
@@ -53,7 +61,6 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         window.open(pLink);
     }
     $scope.serchTrain = function(){
-        console.log()
       $scope.trainDetails = [];
       MainService.showLoaders();
         travelService.getTrainDetails($scope.searchVal).then(function(pRes){
@@ -96,7 +103,7 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
     /*
     This is starting control for Flight information partial
     */
-    $scope.searchFlight = {source:'',destination:'',byDay:''};
+    $scope.searchFlight = {source:'Bhubaneswar',destination:'',byDay:''};
     $scope.getFlightDetails = function(){
        $scope.flightDetails = [];
        MainService.showLoaders();

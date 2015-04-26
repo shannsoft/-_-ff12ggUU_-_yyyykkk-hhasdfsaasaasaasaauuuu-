@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<td>From Airport :</td>
-			<td><select ng-model="fromCity"><option ng-selected="$index == 0" ng-repeat="item in cities" value="{{item}}">{{item}}</option></select></td>
+			<td>Bhubaneswar</td>
 		</tr>
 		<tr>
 			<td>To Airport :</td>
@@ -46,7 +46,7 @@
 		app.controller("flightController",["$scope","$http",function($scope,$http) {
 			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
 			$scope.showPreLoader = false;
-			$scope.fromCity = 'Select City';
+			$scope.fromCity = 'Bhubaneswar';
 			$scope.depValue = '';
 			$scope.arrValue = '';
 			$scope.trainUrl = '';
@@ -62,7 +62,7 @@
 			$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
 			//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.getCities =function()
-			{	$scope.cities=["Bhubaneswar","Kolkata","Vizag"];
+			{	$scope.cities=["Delhi","Kolkata","Mumbai","Bangalore","Hydrabad","Port blair","Chennai","Visakhapatnam"];
 				/*var response =  $http.get($scope.apiPath+"reqmethod=getCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){

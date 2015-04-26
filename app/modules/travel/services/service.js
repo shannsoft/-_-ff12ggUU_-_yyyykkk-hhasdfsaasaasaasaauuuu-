@@ -13,7 +13,7 @@ AppRoot.factory('travelService',['$http','AppConfig','$rootScope', function($htt
     	},
       getFlightDetails : function(pData){
         var response = $http.get(AppConfig.apiPath+'reqmethod=getFlightDetails&day='+pData.byDay+
-                            '&sourceCity='+pData.source);
+                            '&sourceCity='+pData.source+"&destinationCity="+pData.destination);
         return response;
       },
       getTrafficInfo : function(daytype, travelType){
