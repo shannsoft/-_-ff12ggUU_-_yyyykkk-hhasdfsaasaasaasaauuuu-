@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2015 at 10:54 PM
+-- Generation Time: Apr 26, 2015 at 05:17 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -63,33 +63,26 @@ CREATE TABLE IF NOT EXISTS `branches` (
 --
 
 INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manager`, `forex_manager`, `city_id`) VALUES
-(1, 'icici bank srigundicha', 'Srigundicha chhowk', '9652365214', 'Mr Rajesh', 'Mr Dinesh', '1'),
-(2, 'icici bank Dutta tota', 'Dutta tota', '9652369854', 'Mr Dipak', 'Mr Raj', '1'),
-(3, 'test name', 'test address', '9652563252', 'Mr test', 'Mr test', '4'),
-(4, 'Sambalpur', 'ICICI Bank Ltd., Paradise Chamber, Infront of Jagannath Temple, Budharaja, Sambalpur - 768004.', '9937043342', '9937043342', '9937043342', '14'),
 (5, 'Berhampur Branch', 'ICICI Bank Ltd., Ground Floor, Uma Mahal, Dhamanagar, Main Road, Berhampur - 760002, Ganjam Dist (Orissa)', '9937016606', '9937016606', '9937016606', '18'),
 (6, 'Berhampur Medical College Road', 'ICICI Bank Ltd., Rajarani Complex, Infront of BDA Court Peta Square, Berhampur - 760004, Ganjam Dist., Orissa', '7752006098', '7752006098', '7752006098', '18'),
 (7, 'Berhampur - Bada bazar', 'ICICI Bank Ltd., Badabazar, Raja Street, Berhampur - 760006, Dist. Ganjam, Orissa', '7752006143', '7752006143', '7752006143', '18'),
 (8, 'Cuttack', 'ICICI Bank Ltd., Plot No. 1320, Bajrakabati Road, Cuttack - 753001 (Orissa)', '9937575111', '9937575111', '9937575111', '88'),
 (9, 'Bhubaneshwar Main Branch', 'Bhanjaprava Building, Opp. Sriya Talkies, Unit 3, Janpath, Bhubaneshwar - 751 001.', '9937011345', '9937011345', '9937011345', '17'),
-(10, 'Rourkela', 'ICICI Bank Ltd., Plot No. 879', '7752006076', '7752006076', '7752006076', '8'),
+(10, 'Rourkela', 'ICICI Bank Ltd., Plot No. 879 & 880, Unit - 35, Opposite to Indira Garments, Bisra Road, Rourkela - 769 011, Orissa', '7752006076', '7752006076', '7752006076', '8'),
 (11, 'Nayapalli, Bhubaneshwar', 'ICICI Bank Ltd, Plot no N5/535, Indra Dhanu Market, IRC Village, Nayapalli, Bhubaneswar- 751015. Odisha.', '9937332333', '9937332333', '9937332333', '17'),
 (12, 'Angul', 'ICICI Bank Ltd., Modi Complex, Shankar Cinema Road, Angul - 759122, Orissa', '9937021424', '9937021424', '9937021424', '19'),
-(13, 'Jharsuguda', '"ICICI Bank Ltd. Jharsuguda Main Branch, Plot No.-956, Kali Mandir Road, Jharsuguda-752055, Orissa"', '9937013281', '9937013281', '9937013281', '20'),
-(14, 'Jharsuguda', '"ICICI Bank Ltd. Jharsuguda Main Branch, Plot No.-956, Kali Mandir Road, Jharsuguda-752055, Orissa"', '9937013281', '9937013281', '9937013281', '20'),
+(14, 'Jharsuguda', 'ICICI Bank Ltd. Jharsuguda Main Branch, Plot No.-956, Kali Mandir Road, Jharsuguda-752055, Orissa', '9937013281', '9937013281', '9937013281', '20'),
 (15, 'Khurda', 'ICICI Bank Ltd. Khurda Main Branch, Near old LIC office, Khurda - 752 055. Orissa.', '9937579999', '9937579999', '9937579999', '7'),
-(16, 'Keonjhar', '"ICICI Bank Ltd., Mining Road, Keunjhar-758001 Orissa"', '7752006114', '7752006114', '7752006114', '21'),
-(17, 'Balangir', '"ICICI Bank Ltd., (RMAG), Railway Station Road,Tikrapara, Bolangir- 767001, Orissa"', '9178466603', '9178466603', '9178466603', '22'),
+(16, 'Keonjhar', 'ICICI Bank Ltd., Mining Road, Keunjhar-758001 Orissa', '7752006114', '7752006114', '7752006114', '21'),
+(17, 'Balangir', 'ICICI Bank Ltd., (RMAG), Railway Station Road,Tikrapara, Bolangir- 767001, Orissa', '9178466603', '9178466603', '9178466603', '22'),
 (18, 'Jagatsinghpur', 'ICICI Bank Ltd., College Square Road, Jagatsinghpur - 754103, Orissa', '7894461992', '7894461992', '7894461992', '23'),
-(19, 'Remuna', '"ICICI Bank Ltd (RMAG), Plot No-2366, Near Remuna Golie, Ganeshwarpur, Remuna - 756019, Dist.- Balasore, Orissa"', '7894461951', '7894461951', '7894461951', '24'),
-(20, 'Balasore', 'ICICI Bank Ltd., Plot No. 520/980, FM Circle, OT Road, Bhaskarganj, Balasore - 756001, Orissa', '9178462038', '9178462038', '9178462038', '4'),
+(19, 'Remuna', 'ICICI Bank Ltd (RMAG), Plot No-2366, Near Remuna Golie, Ganeshwarpur, Remuna - 756019, Dist.- Balasore, Orissa', '7894461951', '7894461951', '7894461951', '24'),
 (21, 'Balasore', 'ICICI Bank Ltd., Plot No. 520/980, FM Circle, OT Road, Bhaskarganj, Balasore - 756001, Orissa', '9178462038', '9178462038', '9178462038', '4'),
 (22, 'Infosys, Bhubaneshwar', 'ICICI Bank Ltd, Infosys Technologies Ltd, E-4, Infocity, Chandaka Industrial Estate, P.O. Patia, Chandaka, Bhubaneshwar - 751024.', '9178467439', '9178467439', '9178467439', '17'),
 (23, 'Jajpur Road', 'ICICI Bank Ltd,Ground Floor, Bank Street,Main Road,Jajpur Road, Jajpur Dist. Pin - 755019, Orissa', '7894470960', '7894470960', '7894470960', '25'),
 (24, 'Bhadrak', 'ICICI Bank Ltd., Dahanagadia, Near Charampa Road, Opp Hotel Tarini Continental, Bhadrak, Orissa 756100', '9178464310', '9178464310', '9178464310', '5'),
 (25, 'Jeypur', 'ICICI Bank Ltd., Modern Agencies, M.G Road, Jeypur, Orissa - 764001', '7894412525', '7894412525', '7894412525', '26'),
 (26, 'Barbil', 'ICICI Bank Ltd., Main Road,Near Kirti Samrani Complex,Barbil Joda Highway, Barbil , Dist. Keonjhar, Orissa-758035', '7894412521', '7894412521', '7894412521', '10'),
-(27, 'Barbil', 'ICICI Bank Ltd., Main Road,Near Kirti Samrani Complex,Barbil Joda Highway, Barbil , Dist. Keonjhar, Orissa-758035', '7894412521', '7894412521', '7894412521', '10'),
 (28, 'Kendrapara', 'ICICI Bank Ltd., Tinimuhani Chowk,Bhamaradiapatna,Kendrapara-754211,Orissa', '9178466718', '9178466718', '9178466718', '27'),
 (29, 'Puri', 'ICICI Bank Ltd., Balagundi, Grand Road, Puri - 752001, Orissa', '9178466733', '9178466733', '9178466733', '1'),
 (30, 'Sundergarh', 'ICICI Bank Ltd., Main Market,Hospital Rd.,Opp SBI,Sundergarh - 770001,Orissa', '9937020390', '9937020390', '9937020390', '28'),
@@ -101,7 +94,6 @@ INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manag
 (36, 'Parlakhemundi', 'ICICI Bank Ltd., Jay Maa Hall, Johnson, Parlakhemundi - 761200, Orissa', '9937034054', '9937034054', '9937034054', '33'),
 (37, 'Dhenkanal', 'ICICI Bank Ltd., PWD Road, Mahavir Bazar, Dhenkanal,Orissa - 759001', '9937007632', '9937007632', '9937007632', '34'),
 (38, 'Talcher', 'ICICI Bank Ltd., Sharma Chowk, Talcher- 759122, Dist. Angul, Orrisa', '9178464297', '9178464297', '9178464297', '15'),
-(39, 'Phulbani', 'ICICI Bank Ltd., Ganesh Bazar, Main Road ,Phulbani, Dist.- Kandhamal ,Orissa- 762001', '7752006108', '7752006108', '7752006108', '35'),
 (40, 'Phulbani', 'ICICI Bank Ltd., Ganesh Bazar, Main Road ,Phulbani, Dist.- Kandhamal ,Orissa- 762001', '7752006108', '7752006108', '7752006108', '35'),
 (41, 'Rairangpur', 'ICICI Bank Ltd., Ward.No.6,Kesharlal Manganlala, Main Rd., Rairangpur - 757043, Dist : Mayurbhanj, Orissa.', '9178466635', '9178466635', '9178466635', '36'),
 (42, 'Bhawanipatna', 'ICICI Bank Ltd., College Road, Opp Information Office, Bhawanipatna-766001, Dist Kalahandi, Orissa.', '9937003099', '9937003099', '9937003099', '37'),
@@ -111,12 +103,10 @@ INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manag
 (46, 'Cuttack Road Branch', 'ICICI Bank Ltd., Pattnaik Garage, Cuttack Road, Bhubaneswar-751006, District-Khurda, Orissa.', '9937090885', '9937090885', '9937090885', '17'),
 (47, 'Asika', 'ICICI Bank Ltd., Satyanarayan Temple Complex, Laxmi Bazaar, Asika -761110, District-Ganjam, Orissa.', '7752006032', '7752006032', '7752006032', '41'),
 (48, 'Simliguda', 'ICICI Bank Ltd., Main Road, Opp Bright Star Hotel, Simliguda - 764036, Koraput Dist., Orissa.', '7894470872', '7894470872', '7894470872', '42'),
-(49, 'Simliguda', 'ICICI Bank Ltd., Main Road, Opp Bright Star Hotel, Simliguda - 764036, Koraput Dist., Orissa.', '7894470872', '7894470872', '7894470872', '42'),
 (50, 'Baripada', 'ICICI Bank Ltd., Popular Clinic, Badabazar, Baripada-757001, Mayurbhanj Dist., Orissa.', '9937014159', '9937014159', '9937014159', '43'),
 (51, 'Raurkela', 'ICICI Bank Ltd., Brindaban Complex, Panposh Road, Civil Township, Rourkela - 769004, Sundagarh Dist., Orissa.', '9937036930', '9937036930', '9937036930', '8'),
 (52, 'Chowdhury Bazaar, Cuttack', 'ICICI Bank Ltd, Main Road, Opp. Union Bank Of India, Chowdhury Bazaar, Cuttack - 753001, Orissa.', '9937090850', '9937090850', '9937090850', '88'),
 (53, 'Rajagangapur', 'ICICI Bank Ltd., Weekly Market, Main Road, Rajgangapur  - 770017, Sundargarh Dist., Orissa', '7894461995', '7894461995', '7894461995', '36'),
-(54, 'Rajagangapur', 'ICICI Bank Ltd., Weekly Market, Main Road, Rajgangapur  - 770017, Sundargarh Dist., Orissa', '7894461995', '7894461995', '7894461995', '44'),
 (55, 'Nabarangapur', 'ICICI Bank Ltd., Shivashankar Complex, Near Rammandir, Main Road, Nabarangapur, Orissa - 764059', '9937016566', '9937016566', '9937016566', '45'),
 (56, 'Chandrasekharpur, Bhubaneswar', 'ICICI Bank Ltd., Plot No.26, Dist Centre, Chandrasekharpur, Bhubaneswar - 751016, Khurda Dist., Orissa', '9937087222', '9937087222', '9937087222', '17'),
 (57, 'Duburi', 'ICICI Bank Ltd., Near Kapileshwar High School, AT-Duburi,PS -Kalinganagar, Duburi - 755026, Jajpur Dist., Orissa', '9178466749', '9178466749', '9178466749', '46'),
@@ -149,7 +139,6 @@ INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manag
 (84, 'Athamallik', 'ICICI Bank Ltd., AT-Block Development Office, Athamalik - 759125, Dist.-Angul, Orissa', '7752006119', '7752006119', '7752006119', '63'),
 (85, 'Cuttack - CDA', 'ICICI Bank Ltd., Plot B/1358, Sector-6, CDA, Cuttack - 753014, Odisha', '7752006165', '7752006165', '7752006165', '88'),
 (86, 'Gadigaon', 'ICICI Bank Ltd., Gr Floor, Sirsapal Chaak,Chitrada, Gadigaon - 757018, District - Mayurbhanj, Orissa', '7752006139', '7752006139', '7752006139', '64'),
-(87, 'Kujanga', '"ICICI Bank Ltd., AT-Kujang, Near Satsang Mandir, Kujanga - 754141, Jagatsinghpur Dist., Orissa"', '9937207767', '9937207767', '9937207767', '65'),
 (88, 'Jamardiha', 'ICICI Bank Ltd., BDO, Poudi Bhuyan Development Authority, AT PO : Jamardiha - 759119, Dist. Angul, Orissa', '7064656288', '7064656288', '7064656288', '66'),
 (89, 'Muniguda', 'ICICI Bank Ltd., Ram Mandir Square, Main Road, Sri Krishna Enclave, Muniguda - 765020, Dist. Rayagada, Orissa', '7752006128', '7752006128', '7752006128', '67'),
 (90, 'Bhedabahal', 'ICICI Bank Ltd., Bhedabahal - 770073, Dist. - Sundergarh, Orissa', '9178467443', '9178467443', '9178467443', '69'),
@@ -170,12 +159,12 @@ INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manag
 (105, 'Pattamundai', 'ICICI Bank Ltd., Gajanan Market Complex, Plot No. 1329, Main Road, Pattamundai, Pincode - 754215, Kendrapara Dist., Odisha', '9861178816', '9861178816', '9861178816', '83'),
 (106, 'Balinga', 'ICICI Bank Ltd.,  M/s Mahanadi Coalfields Limited, MCL, Basundhara, Garjan Bahal, Balinga, Pincode - 770076, Sundargarh Dist., Odisha', '7752006158', '7752006158', '7752006158', '84'),
 (107, 'Pratap Sasan', 'ICICI Bank Ltd., AT Pratap Sasan, Near Balakati Bazar, PO Balakati, PS Balianta, Khurda Dist., Pincode - 752100, Odisha', '9178466649', '9178466649', '9178466649', '85'),
-(108, 'Panchapada', '"ICICI Bank Ltd., Rajiv Gandhi Sewa Kendra, Panchapada, Chandbali, Pincode - 756133, Bhadrak Dist., Odisha"', '9178467446', '9178467446', '9178467446', '86'),
-(109, 'Jayapur', '"ICICI Bank Ltd., AT-Jayapur, PO-Sakhigopal, PS-Satyabadi, Pincode - 752014, Puri Dist., Odisha"', '7894461959', '7894461959', '7894461959', '87'),
+(108, 'Panchapada', 'ICICI Bank Ltd., Rajiv Gandhi Sewa Kendra, Panchapada, Chandbali, Pincode - 756133, Bhadrak Dist., Odisha', '9178467446', '9178467446', '9178467446', '86'),
+(109, 'Jayapur', 'ICICI Bank Ltd., AT-Jayapur, PO-Sakhigopal, PS-Satyabadi, Pincode - 752014, Puri Dist., Odisha', '7894461959', '7894461959', '7894461959', '87'),
 (110, 'Vivekanandamarg', 'ICICI Bank Ltd., Plot No. 2130/4711, TKR Complex,Vivekananda Marg, Bhubaneswar - 751002, Orissa', '9178462015', '9178462015', '9178462015', '17'),
 (111, 'Mahanandi Vihar, Cuttack', 'ICICI Bank Ltd., Plot No.5, Mahanadi Vihar, Post Nayabazaar, Cuttack-753004, Orissa', '7752006124', '7752006124', '7752006124', '88'),
-(112, 'Jharsuguda', '"ICICI Bank Ltd. Jharsuguda Main Branch, Plot No.-956, Kali Mandir Road, Jharsuguda-752055, Orissa"', '9937013281', '9937013281', '9937013281', '20'),
-(113, 'Kujanga', '"ICICI Bank Ltd., AT-Kujang, Near Satsang Mandir, Kujanga - 754141, Jagatsinghpur Dist., Orissa"', '9937207767', '9937207767', '9937207767', '65'),
+(112, 'Jharsuguda', 'ICICI Bank Ltd. Jharsuguda Main Branch, Plot No.-956, Kali Mandir Road, Jharsuguda-752055, Orissa', '9937013281', '9937013281', '9937013281', '20'),
+(113, 'Kujanga', 'ICICI Bank Ltd., AT-Kujang, Near Satsang Mandir, Kujanga - 754141, Jagatsinghpur Dist., Orissa', '9937207767', '9937207767', '9937207767', '65'),
 (114, 'Balangir', 'ICICI Bank Ltd., (RMAG), Railway Station Road,Tikrapara, Bolangir- 767001, Orissa', '9178466603', '9178466603', '9178466603', '22');
 
 -- --------------------------------------------------------
@@ -339,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `coffee_shops` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `coffee_shops`
@@ -348,7 +337,8 @@ CREATE TABLE IF NOT EXISTS `coffee_shops` (
 INSERT INTO `coffee_shops` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
 (1, 'mishra`s cofee', NULL, 'badadanda ,puri', '9652365478', '9856325698', '9856325417', '9986521452', 'www.mishracofee.com', '3', NULL, NULL, '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
 (2, 'sahoo`s cofee', NULL, 'mangala sahi ,puri', '9856365214', '9866523652', '9874521546', '9856965236', 'www.sahoocofee.com', '2', NULL, NULL, '1,3,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'name1', 'content', 'address', '9898989898', '8989898989', '8989898989', '8989898989', 'www.mm.com', '3', NULL, NULL, '1,2', 1, 'img/hotels.jpg', 'img/hotels.jpg');
+(3, 'name1', 'content', 'address', '9898989898', '8989898989', '8989898989', '8989898989', 'www.mm.com', '3', NULL, NULL, '1,2', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(4, 'coffee test', 'null', 'null', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '3', 8, 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -433,20 +423,19 @@ CREATE TABLE IF NOT EXISTS `fast_aid` (
   `name` varchar(100) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `contact` varchar(100) DEFAULT NULL,
-  `authority` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
-  `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `fast_aid`
 --
 
-INSERT INTO `fast_aid` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'Fast Aid 1', 'mangala sahi  , puri', '9632565236', 'Mr. ramesh', 1, 'img/hotels.jpg'),
-(2, 'Fast Aid2', 'badadanda , puri', '9632565236', 'Mr.Dinesh', 1, 'img/hotels.jpg'),
-(3, 'Fast Aid 3', 'belabhumi ', '9632565236', 'Mr. Rajesh', 1, 'img/hotels.jpg');
+INSERT INTO `fast_aid` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
+(1, 'Fast Aid 1', 'mangala sahi  , puri', '9632565236', 1),
+(2, 'Fast Aid2', 'badadanda , puri', '9632565236', 1),
+(3, 'Fast Aid 3', 'belabhumi ', '9632565236', 1),
+(4, 'test', 'address', '9999999999', 1);
 
 -- --------------------------------------------------------
 
@@ -528,16 +517,17 @@ CREATE TABLE IF NOT EXISTS `guest_house` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `guest_house`
 --
 
 INSERT INTO `guest_house` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Sahoo guest house', NULL, 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(1, 'Sahoo guest house', NULL, 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'null', 'img/hotels.jpg'),
 (2, 'Mishra Guest house', NULL, 'Dutta tota , puri', '9856325632', '9856325632', '9854125632', '9856325415', 'www.mishrahouse.com', '4', '2,3,4', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'rrr', 'content', 'address', '9898989898', '89898989898', '9898989898', '89898989898', 'www.gu.com', '3', '1,3', 4, 'img/hotels.jpg', 'img/hotels.jpg');
+(3, 'rrr', 'content', 'address', '9898989898', '89898989898', '9898989898', '89898989898', 'www.gu.com', '3', '1,3', 4, 'img/hotels.jpg', 'img/hotels.jpg'),
+(4, 'guest 3', 'content', 'address', '9586523625', NULL, NULL, NULL, 'null', '0', '4,6', 4, 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -550,20 +540,19 @@ CREATE TABLE IF NOT EXISTS `hospital` (
   `name` varchar(100) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `contact` varchar(100) DEFAULT NULL,
-  `authority` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
-  `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `hospital`
 --
 
-INSERT INTO `hospital` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'Suraksya hospital', 'Dutta tota', '9632565236', 'Mr. rajesh', 1, 'img/hotels.jpg'),
-(2, 'Ayush hospital', 'Dutta tota', '9632565236', 'Mr. Rajesh', 1, 'img/hotels.jpg'),
-(3, 'Aryan hospitals', 'Dutta tota', '9632565236', 'Mr. Rajesh', 1, 'img/hotels.jpg');
+INSERT INTO `hospital` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
+(1, 'Suraksya hospital', 'Dutta tota', '9632565236', 1),
+(2, 'Ayush hospital', 'Dutta tota', '9632565236', 1),
+(3, 'Aryan hospitals', 'Dutta tota', '9632565236', 1),
+(4, 'test', 'address', '9652365214', 1);
 
 -- --------------------------------------------------------
 
@@ -598,9 +587,9 @@ CREATE TABLE IF NOT EXISTS `hotels` (
 --
 
 INSERT INTO `hotels` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(27, 'NAME', 'content', 'address', '111', '222', '333', NULL, NULL, 'null', 'null', 'null', '0', '2,5', 1, 'null', 'null'),
-(28, 'name2', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '0', '2,5', 1, 'null', 'null'),
-(29, 'name4', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '0', '5,6', 1, 'null', 'null');
+(27, 'NAME', 'content', 'address', '111', '222', '333', NULL, NULL, 'null', 'null', 'null', '3.5', '2,5', 1, 'null', 'null'),
+(28, 'name2', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '2', '2,5', 1, 'null', 'null'),
+(29, 'name4', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '1', '5,6', 1, 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -738,7 +727,7 @@ CREATE TABLE IF NOT EXISTS `resturants` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `resturants`
@@ -747,7 +736,8 @@ CREATE TABLE IF NOT EXISTS `resturants` (
 INSERT INTO `resturants` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
 (1, 'Muskaan resturants', NULL, 'Dutta tota', '9856326523', '9856325632', '9854125632', '9856325415', 'www.muskan.com', '4', NULL, NULL, '2,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
 (2, 'Trupti restutants', NULL, 'Dutta tota', '9658541256', '9856323652', '9858965236', '9652147852', 'www.trupti.com', '3', NULL, NULL, '1,2,3', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'rrr', 'content', 'address', '98989898', '98989898', '98989898', '989898988', 'www.mm.com', '2', NULL, NULL, '2,3', 4, 'img/hotels.jpg', 'img/hotels.jpg');
+(3, 'rrr', 'content', 'address', '98989898', '98989898', '98989898', '989898988', 'www.mm.com', '2', NULL, NULL, '2,3', 4, 'img/hotels.jpg', 'img/hotels.jpg'),
+(4, 'Resturant test', 'null', 'null', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '6', 7, 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -839,7 +829,7 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `temp_accomodation`
@@ -848,7 +838,8 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
 INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `start_price`, `end_price`, `contact_no`, `authority`, `cityId`, `icon_image`) VALUES
 (1, 'seva dharmasala', 'Dutta tota', NULL, NULL, '9652365214', 'Mr. Arjuna', 1, 'img/hotels.jpg'),
 (2, 'asha dharmasala', 'Vip road', NULL, NULL, '9856326523', 'Mr. Dilip', 1, 'img/hotels.jpg'),
-(3, 'sdasdasdasd', 'asdasd', 100, 1000, '98989898', 'sdfsdf', 4, 'img/hotels.jpg');
+(3, 'sdasdasdasd', 'asdasd', 100, 1000, '98989898', 'sdfsdf', 4, 'img/hotels.jpg'),
+(4, 'temo2', 'address', 0, 0, '9652363256', 'null', 5, 'null');
 
 -- --------------------------------------------------------
 
@@ -949,19 +940,18 @@ CREATE TABLE IF NOT EXISTS `trauma_care` (
   `name` varchar(100) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `contact` varchar(100) DEFAULT NULL,
-  `authority` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
-  `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `trauma_care`
 --
 
-INSERT INTO `trauma_care` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'Dipti truma care', 'vip road', '9632565236', 'Mr . Asis', 1, 'img/hotels.jpg'),
-(2, 'asha trauma care', 'temple road', '9632565236', 'Mr. Santosh', 1, 'img/hotels.jpg');
+INSERT INTO `trauma_care` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
+(1, 'Dipti truma care', 'vip road', '9632565236', 1),
+(2, 'asha trauma care', 'temple road', '9632565236', 1),
+(3, 'test', 'address', '9999999999', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
