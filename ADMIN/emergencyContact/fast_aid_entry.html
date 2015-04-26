@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<script type="text/javascript" src="../libs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<h3>Fast Aid entry form</h3>
+</head>
+<body ng-controller="fastAidController" ng-init="init()">
+	<div id="preloader" ng-show="showPreLoader"></div>
+	<table>
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" ng-model="name" /></td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td><textarea type="text" ng-model="address" /> </textarea> </td>
+		</tr>
+		<tr>
+			<td>Contact:</td>
+			<td><input type="text" ng-model="contact" /></td>
+		</tr>
+		
+		<tr>
+			<td> city :</td>
+			<td>
+				<select ng-model="city" ng-disabled="true">
+					<option value="{{city}}" ng-selected="true">{{city}}</option>
+				</select>
+
+			</td>
+		</tr>
+		<tr>
+
+			<td><input type="button" value="submit" ng-click="onSubmit()" /></td>
+		</tr>
+		
+	</table>
+	<script type="text/javascript">
+		var app = angular.module("app",[]);
+		app.controller("fastAidController",["$scope","$http",function($scope,$http) {
+			//$scope.cities = ['Puri','Bhubaneswar','Delhi'];
+			$scope.city = "puri"
+			$scope.showPreLoader = false;
+			// $scope.serviceApiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			$scope.serviceApiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+			
+			
+			$scope.onSubmit = function(){
+				if(!$scope.name || $scope.name=='') $scope.name = "null";
+				if(!$scope.address || $scope.address=='') $scope.address = "null";
+				if(!$scope.contact || $scope.contact=='') $scope.contact = "null";
+
+				
+				$scope.showPreLoader = true;
+	            var _responsePromise = $http.get($scope.serviceApiPath+'reqmethod=postSelectedEmergencyContact&tableType=fast_aid&name='+$scope.name+'&address='+$scope.address+'&contact='+$scope.contact+'&city='+$scope.city).then(function(pRes) {
+	            	$scope.showPreLoader = false;
+	            	alert(pRes.data.data);
+	            });
+			}
+		}]);
+	</script>
+
+
+
+</body>
+</html>

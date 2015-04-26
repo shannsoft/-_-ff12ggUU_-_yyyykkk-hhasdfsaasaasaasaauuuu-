@@ -1380,18 +1380,39 @@ header('Access-Control-Allow-Origin: *');
             $rows  = $this->executeGenericDQLQuery($sql);
             for($i=0 ; $i<sizeof($rows);$i++)
            {
-              $parkingDetails[$i]['id'] = $rows[$i]['id'];
-              $parkingDetails[$i]['name'] = $rows[$i]['name'];
-              $parkingDetails[$i]['address'] = $rows[$i]['address'];
-              $parkingDetails[$i]['contact'] = $rows[$i]['contact'];
-              $parkingDetails[$i]['authority'] = $rows[$i]['authority'];
-              $parkingDetails[$i]['CityName'] = $rows[$i]['CityName'];
-              $parkingDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
+              $emergencyContacts[$i]['id'] = $rows[$i]['id'];
+              $emergencyContacts[$i]['name'] = $rows[$i]['name'];
+              $emergencyContacts[$i]['address'] = $rows[$i]['address'];
+              $emergencyContacts[$i]['contact'] = $rows[$i]['contact'];
+              // $emergencyContacts[$i]['authority'] = $rows[$i]['authority'];
+              // $emergencyContacts[$i]['CityName'] = $rows[$i]['CityName'];
+              // $emergencyContacts[$i]['icon_image'] = $rows[$i]['icon_image'];
 
            }
-            $this->response($this->json($parkingDetails), 200);
+            $this->response($this->json($emergencyContacts), 200);
 
         }
+        // used to post selected emergency contact deatils that would be selected from 
+        // health care and sanitation options
+        // possible values - hospitals, trauma care , toilets etc.
+        // the type of table to be accessed would be come from the request itself
+        public function postSelectedEmergencyContact(){
+            $tableType =  $this->_request['tableType'];
+            $name =  $this->_request['name'];
+            $address =  $this->_request['address'];
+            $contact =  $this->_request['contact'];
+            $cityId = $this->getCityIdByName($this->_request['city']);
+
+            $sql = "insert into $tableType(name,address,contact,cityId) values('$name','$address','$contact',$cityId)";
+            // echo $sql;
+            $rows  = $this->executeGenericInsertQuery($sql);
+           $response = array();
+           $response['status'] = "success";
+           $response['data'] = "$tableType inserted successfully";
+            $this->response($this->json($response), 200);
+
+        }
+
         public function fetchLocalAuthorities(){
           // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
           $sql = "select * from local_authorities";
