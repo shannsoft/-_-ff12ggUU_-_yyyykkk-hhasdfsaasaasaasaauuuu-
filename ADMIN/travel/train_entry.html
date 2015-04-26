@@ -18,19 +18,42 @@
 		</tr>
 		<tr>
 			<td>From Station :</td>
-			<td><select ng-model="fromCity"><option ng-selected="$index == 0" ng-repeat="item in cities" value="{{item}}">{{item}}</option></select></td>
+			<td>
+				<select ng-model="fromState" ng-change="onSelectFromState(fromState)">
+					<option  value="select State" ng-selected="true">select State</option>
+					<option  ng-repeat="state in states" value="{{state}}">{{state}}</option>
+				</select>
+			</td>
+			<td>
+				<select ng-model="fromCity">
+					<option  value="select City" ng-selected="true">select City</option>
+					<option ng-selected="$index == 0" ng-repeat="item in fromCities" value="{{item}}">{{item}}</option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>To Station :</td>
-			<td><select ng-model="toCity"><option ng-selected="$index == 0" ng-repeat="item in cities" value="{{item}}">{{item}}</option></select></td>
+			<td>
+				<select ng-model="toState" ng-change="onSelectToState(toState)">
+					<option  value="select State" ng-selected="true">select State</option>
+					<option  ng-repeat="state in states" value="{{state}}">{{state}}</option>
+				</select>
+			</td>
+			<td>
+				<select ng-model="toCity">
+					<option  value="select City" ng-selected="true">select City</option>
+					<option ng-selected="$index == 0" ng-repeat="item in toCities" value="{{item}}">{{item}}</option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td>Departure:</td>
-			<td><input type="text" name="startTime" ng-model="depValue"/></td>
+			<td><input type="text" name="startTime" ng-model="depValue"/>ex.(03:00)</td>
+			
 		</tr>
 		<tr>
 			<td>Arrive : </td>
-			<td><input type="text" name="endTime" ng-model="arrValue"/></td>
+			<td><input type="text" name="endTime" ng-model="arrValue"/>ex.(21:00)</td>
 		</tr>
 			<td>Schedule : </td>
 			<td><span ng-repeat="day in days">{{day.name}} : <input type="checkbox" ng-model="day.status"></span></td>
@@ -63,19 +86,62 @@
 					{id:6,name:"Saturday",status:false},
 					{id:7,name:"Sunday",status:false}
 			];
-			$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-			//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+			$scope.states = [];
+			$scope.fromCities = [];
+			$scope.toCities = [];
+			$scope.fromCity = '';
+			$scope.toCity = '';
+			// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.getCities =function()
-			{	$scope.cities=[];
-				var response =  $http.get($scope.apiPath+"reqmethod=getCity").then(function(pRes){
+			{	
+				var response =  $http.get($scope.apiPath+"reqmethod=getAllCity").then(function(pRes){
 					var citiDetails = pRes.data;
 			        angular.forEach(citiDetails,function(city,index){
-		                $scope.cities.push(city.CityName);
+		                $scope.fromCities.push(city.cityName);
+		                $scope.toCities.push(city.cityName);
 		            });
+	                $scope.fromCity = $scope.fromCities[0];
+	                $scope.toCity = $scope.toCities[0];
 				});
 				console.log($scope.cities);
 			}
+			$scope.getStates = function(){
+				var response =  $http.get($scope.apiPath+"reqmethod=getStates").then(function(pRes){
+					for(i in pRes.data)
+					{
+						
+		                $scope.states.push(pRes.data[i].StateName);
+					}
+				});
+			}
+			$scope.onSelectFromState = function(pState) {
+				$scope.fromCities = [];
+				if(pState == 'select State') pState = undefined;
+				var response =  $http.get($scope.apiPath+"reqmethod=getCity&state="+pState).then(function(pRes){
+					var citiDetails = pRes.data;
+			        angular.forEach(citiDetails,function(city,index){
+		                $scope.fromCities.push(city.CityName);
+		                //$scope.toCities.push(city.cityName);
+		            });
+				$scope.fromCity = $scope.fromCities[0];
+				});
+				// console.log($scope.cities);
+			}
+			$scope.onSelectToState = function(pState) {
+		        $scope.toCities=[];
+				if(pState == 'select State') pState = undefined;
+				var response =  $http.get($scope.apiPath+"reqmethod=getCity&state="+pState).then(function(pRes){
+					var citiDetails = pRes.data;
+			        angular.forEach(citiDetails,function(city,index){
+		                $scope.toCities.push(city.CityName);
+		            });
+				$scope.toCity = $scope.toCities[0];
+				});
+				// console.log(pState);
+			}
 			$scope.init = function(){
+				$scope.getStates();
 				$scope.getCities();
 			}
 			$scope.onSubmit = function(){
@@ -87,13 +153,13 @@
 				else
 					days.push(0);
 				});
-				console.log($scope.trainNumber);
-				console.log($scope.trainName);
-				console.log($scope.fromCity);
-				console.log($scope.toCity);
-				console.log($scope.depValue);
-				console.log($scope.arrValue);
-				console.log(days);
+				// console.log($scope.trainNumber);
+				// console.log($scope.trainName);
+				// console.log($scope.fromCity);
+				// console.log($scope.toCity);
+				// console.log($scope.depValue);
+				// console.log($scope.arrValue);
+				// console.log(days);
 	             var _responsePromise = $http.get($scope.apiPath+'reqmethod=postTrainDetails&trainNumber='+$scope.trainNumber+'&trainName='+$scope.trainName+'&fromCity='+$scope.fromCity+'&toCity='+$scope.toCity+'&depValue='+$scope.depValue+'&arrValue='+$scope.arrValue+'&days='+days+'&trainUrl='+$scope.trainUrl).then(function(pRes){
 	             	 alert(pRes.data.data);
 	             	$scope.showPreLoader = false;

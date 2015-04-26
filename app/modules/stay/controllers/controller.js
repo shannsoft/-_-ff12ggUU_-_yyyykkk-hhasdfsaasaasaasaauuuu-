@@ -56,10 +56,15 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     
     $scope.createArr = function(num) {
        var starArr = [];
-       for(var i=0;i<num;i++)
+       var num = num.toString();
+       num = num.split(".");
+       //console.log(num);
+
+       for(var i=0;i<num[0];i++)
        {
-        starArr.push(i);
+        starArr.push("fa fa-star"); // looping thorugh full star class
        }
+       if(num[1]) starArr.push("fa fa-star-half");  // adding class of half  star
        return starArr;
     }
     $scope.hotelFacility = function(hotelObj)

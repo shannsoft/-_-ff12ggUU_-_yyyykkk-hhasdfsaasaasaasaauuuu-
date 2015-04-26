@@ -43,11 +43,16 @@
 			   </div><!--col-50 end-->
 			   <div class="col col-25">
 			     <div class="rating"> 
-			     	<i class="fa fa-star" ng-repeat="star in createArr(selectedHotel.category)">
+			     	<i class="{{star}}" ng-repeat="star in createArr(selectedHotel.category) track by $index">
 			     	</i>
 			     </div>
 			   </div><!--col-50 end-->
 			 </div><!--row end-->
+			 <div class="row facilities-hotel">
+			    <p>
+ 					{{selectedHotel.content}}
+				</p>
+			 </div>
 				 <div class="row facilities-hotel">
 					   <div class="col col-60">
 							<ul> 

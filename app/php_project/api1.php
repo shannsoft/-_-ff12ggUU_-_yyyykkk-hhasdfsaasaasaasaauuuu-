@@ -193,12 +193,13 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getStates()
         {	
-            $countryName = $this->_request['country'];
+            // $countryName = $this->_request['country'] 
+            isset($this->_request['country']) ? $countryName = $this->_request['country'] : $countryName = 'india';
             $sql="SELECT * FROM states s";
-            if($countryName!='' && $countryName!='undefined')
-            {
+            //if($countryName!='' && $countryName!='undefined')
+            //{
                 $sql.=" join country c on s.CountryID = c.ContryID where c.CountryName = '".$countryName."'";
-            }
+           // }
             //echo $sql;
        			$rows = $this->executeGenericDQLQuery($sql);
     			$statesDetails = array();
@@ -240,7 +241,7 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getCity()
         {	
-              isset($this->_request['state']) ? $stateName = $this->_request['state'] :  $stateName = "odisha";
+              isset($this->_request['state'])  || $this->_request['state'] != 'undefined'? $stateName = $this->_request['state'] :  $stateName = "odisha";
             	$sql="SELECT * FROM city c ";
                 // if($stateName!='' && $stateName!='undefined')
                 // {

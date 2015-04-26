@@ -34,7 +34,7 @@
 			       <li> <i class="fa fa-building"></i>{{hotel.hotelName}}</li>
 				   <li> <i class="fa fa-map-marker"> </i> {{hotel.address}}</li>
 				 	<li class="rating-outpage">
-				    	<i class="fa fa-star" ng-repeat="star in createArr(hotel.category)"> </i>
+				    	<i class="{{star}}" ng-repeat="star in createArr(hotel.category) track by $index"> </i>
 				    </li>
 
 			   </ul>
