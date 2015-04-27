@@ -91,8 +91,8 @@
 			$scope.toCities = [];
 			$scope.fromCity = '';
 			$scope.toCity = '';
-			// $scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
-			$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
+			$scope.apiPath = 'http://goappssolutions.com/Nabakalebara/app/php_project/api.php?';
+			//$scope.apiPath = 'http://localhost/Nabakalebara/app/php_project/api1.php?';
 			$scope.getCities =function()
 			{	
 				var response =  $http.get($scope.apiPath+"reqmethod=getAllCity").then(function(pRes){

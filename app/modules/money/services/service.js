@@ -1,7 +1,7 @@
 AppRoot.factory('MoneyService',['$http','AppConfig','$rootScope', function($http,AppConfig,$rootScope) {
 	return{
    		getCity : function(){
-        var response = $http.get(AppConfig.apiPath+'reqmethod=getCity');
+        var response = $http.get(AppConfig.apiPath+'reqmethod=getCity&state=odisha');
         return response;
       },
       getBranchList : function(pData){

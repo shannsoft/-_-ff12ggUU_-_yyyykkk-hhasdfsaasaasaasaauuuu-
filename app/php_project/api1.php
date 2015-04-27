@@ -241,7 +241,7 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getCity()
         {	
-              isset($this->_request['state'])  || $this->_request['state'] != 'undefined'? $stateName = $this->_request['state'] :  $stateName = "odisha";
+              isset($this->_request['state'])  && $this->_request['state'] != 'undefined'? $stateName = $this->_request['state'] :  $stateName = "odisha";
             	$sql="SELECT * FROM city c ";
                 // if($stateName!='' && $stateName!='undefined')
                 // {
