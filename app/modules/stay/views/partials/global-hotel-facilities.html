@@ -76,7 +76,7 @@
 					   </div><!--col-50 end-->
 				 </div><!--facilities-hotel end-->
 		
-			   <div class="row facilities-hotel">
+			   <!-- <div class="row facilities-hotel">
 		          <div class="col col-90">
 			        <h2 class="hf-heading">Conference hall(Capacity and rent if available) with A.C and Non A.c</h2>
 					  <ul>
@@ -84,11 +84,10 @@
 						<li>Capacity:100 #####</li>
 						<li>Rent:100 ###</li>
 					 </ul>
-			      </div><!--col-50 end-->
+			      </div>
 				  <div class="col col-10">
-			      </div><!--col-50 end-->
-			 </div><!--row end-->
-			 
+			      </div>
+			 </div> -->			 
 			 
 			   <div class="row facilities-hotel">
 		          <div class="col col-90">
@@ -120,7 +119,12 @@
 			        <h2 class="hf-heading">Contacts</h2>
 					  <ul>
 					    <li>{{selectedHotel.hotelName}}</li>
-						<li >Ph:<span ng-if="selectedHotel.phone1!= 'No Data Available'"> ({{selectedHotel.phone1}}) </span> <span ng-if="selectedHotel.contacts.phone2!= 'No Data Available'"> {{selectedHotel.contacts.phone2}} </span></li>
+						<li >
+							Ph:<span ng-if="selectedHotel.stdCode!= 'No Data Available'"> ({{selectedHotel.stdCode}}) </span> 
+							<span ng-if="selectedHotel.phone1!= 'No Data Available'"> {{selectedHotel.phone1}} ,</span>
+							<span ng-if="selectedHotel.phone2!= 'No Data Available'"> {{selectedHotel.phone2}} ,</span>
+							<span ng-if="selectedHotel.phone3!= 'No Data Available'"> {{selectedHotel.phone3}} ,</span>
+						</li>
 						<li>Fax:{{selectedHotel.fax}}</li>
 					 </ul>
 			      </div><!--col-50 end-->

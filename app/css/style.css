@@ -412,5 +412,10 @@ padding-left:0.5em;
 .notification_info .list h2{font-size:14px;letter-spacing:0.7px;padding:3px 0px;}
 .notification_info .list li{font-size:13.5px;letter-spacing:0.7px;line-height:30px;}
 
+/*coming  soon*/
+.m-t-xl{
+  margin-top: 31%;
+}
+
 /*---Notification css--- end-*/
 
