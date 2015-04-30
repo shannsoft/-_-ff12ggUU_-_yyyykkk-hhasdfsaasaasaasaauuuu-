@@ -241,8 +241,9 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getCity()
         {	
-              isset($this->_request['state'])  || $this->_request['state'] != 'undefined'? $stateName = $this->_request['state'] :  $stateName = "odisha";
-            	$sql="SELECT * FROM city c ";
+
+              isset($this->_request['state'])  && $this->_request['state'] != 'undefined' ? $stateName = $this->_request['state'] :  $stateName = "odisha";
+              $sql="SELECT * FROM city c ";
                 // if($stateName!='' && $stateName!='undefined')
                 // {
                     $sql.=" join states s on c.StateID = s.StateID where s.StateName='".$stateName."'";
@@ -325,7 +326,7 @@ header('Access-Control-Allow-Origin: *');
          
           $sql="select distinct h.id hotelId , h.Name hotelName , h.content content ,h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
                 "h.Mobile mobile , h.Fax fax , h.Email email , h.Website webSite , h.reservation_authority reservationAuthority ,".
-                "h.Category category , h.Facilities facilitites , h.CityId cityId , h.icon_image iconImg, h.home_image homeImg , c.CityName".
+                "h.Category category , h.Facilities facilitites , h.CityId cityId , h.icon_image iconImg, h.home_image homeImg , c.CityName ,c.STDCode stdCode".
                  " from hotels h" .
                  " join city c on c.CityID = h.CityId  ".
                  "  join hotel_rooms hr on hr.hotel_id= h.id";
@@ -358,6 +359,7 @@ header('Access-Control-Allow-Origin: *');
             $hotelDetails[$i]['category'] = ($rows[$i]['category'] == null) ? 0 : $rows[$i]['category'] ;
             $hotelDetails[$i]['iconImg'] = ($rows[$i]['iconImg'] == null || $rows[$i]['iconImg'] == "null") ? "img/not_found.jpg" : $rows[$i]['iconImg'];
             $hotelDetails[$i]['homeImg'] = ($rows[$i]['homeImg'] == null || $rows[$i]['homeImg'] == "null") ? "img/not_found.jpg" :$rows[$i]['homeImg'];
+            $hotelDetails[$i]['stdCode'] = $rows[$i]['stdCode'];
             
             $hotelDetails[$i]['facilitites'] = $this->getFacilitiesByIds($rows[$i]['facilitites']);
             $hotelDetails[$i]['roomDetails'] = $this->getRoomDetailsById($rows[$i]['hotelId']);
@@ -1380,39 +1382,18 @@ header('Access-Control-Allow-Origin: *');
             $rows  = $this->executeGenericDQLQuery($sql);
             for($i=0 ; $i<sizeof($rows);$i++)
            {
-              $emergencyContacts[$i]['id'] = $rows[$i]['id'];
-              $emergencyContacts[$i]['name'] = $rows[$i]['name'];
-              $emergencyContacts[$i]['address'] = $rows[$i]['address'];
-              $emergencyContacts[$i]['contact'] = $rows[$i]['contact'];
-              // $emergencyContacts[$i]['authority'] = $rows[$i]['authority'];
-              // $emergencyContacts[$i]['CityName'] = $rows[$i]['CityName'];
-              // $emergencyContacts[$i]['icon_image'] = $rows[$i]['icon_image'];
+              $parkingDetails[$i]['id'] = $rows[$i]['id'];
+              $parkingDetails[$i]['name'] = $rows[$i]['name'];
+              $parkingDetails[$i]['address'] = $rows[$i]['address'];
+              $parkingDetails[$i]['contact'] = $rows[$i]['contact'];
+              $parkingDetails[$i]['authority'] = $rows[$i]['authority'];
+              $parkingDetails[$i]['CityName'] = $rows[$i]['CityName'];
+              $parkingDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
 
            }
-            $this->response($this->json($emergencyContacts), 200);
+            $this->response($this->json($parkingDetails), 200);
 
         }
-        // used to post selected emergency contact deatils that would be selected from 
-        // health care and sanitation options
-        // possible values - hospitals, trauma care , toilets etc.
-        // the type of table to be accessed would be come from the request itself
-        public function postSelectedEmergencyContact(){
-            $tableType =  $this->_request['tableType'];
-            $name =  $this->_request['name'];
-            $address =  $this->_request['address'];
-            $contact =  $this->_request['contact'];
-            $cityId = $this->getCityIdByName($this->_request['city']);
-
-            $sql = "insert into $tableType(name,address,contact,cityId) values('$name','$address','$contact',$cityId)";
-            // echo $sql;
-            $rows  = $this->executeGenericInsertQuery($sql);
-           $response = array();
-           $response['status'] = "success";
-           $response['data'] = "$tableType inserted successfully";
-            $this->response($this->json($response), 200);
-
-        }
-
         public function fetchLocalAuthorities(){
           // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
           $sql = "select * from local_authorities";

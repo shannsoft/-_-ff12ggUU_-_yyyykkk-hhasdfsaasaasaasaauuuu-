@@ -84,6 +84,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     $scope.getSelectedHotel = function()
     {
       $scope.selectedHotel = StayService.getSelectedHotel();
+	  console.log($scope.selectedHotel);
 
     }
     $scope.showEmail = function(){

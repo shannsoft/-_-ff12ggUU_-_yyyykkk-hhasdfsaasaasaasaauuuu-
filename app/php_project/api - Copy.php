@@ -193,12 +193,13 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getStates()
         {	
-            $countryName = $this->_request['country'];
+            // $countryName = $this->_request['country'] 
+            isset($this->_request['country']) ? $countryName = $this->_request['country'] : $countryName = 'india';
             $sql="SELECT * FROM states s";
-            if($countryName!='' && $countryName!='undefined')
-            {
+            //if($countryName!='' && $countryName!='undefined')
+            //{
                 $sql.=" join country c on s.CountryID = c.ContryID where c.CountryName = '".$countryName."'";
-            }
+           // }
             //echo $sql;
        			$rows = $this->executeGenericDQLQuery($sql);
     			$statesDetails = array();
@@ -240,7 +241,7 @@ header('Access-Control-Allow-Origin: *');
         }
         public function getCity()
         {	
-              isset($this->_request['state']) ? $stateName = $this->_request['state'] :  $stateName = "odisha";
+              isset($this->_request['state'])  || $this->_request['state'] != 'undefined'? $stateName = $this->_request['state'] :  $stateName = "odisha";
             	$sql="SELECT * FROM city c ";
                 // if($stateName!='' && $stateName!='undefined')
                 // {
@@ -1118,14 +1119,14 @@ header('Access-Control-Allow-Origin: *');
             $day =  $this->_request['day'];
             $sourceCity =  $this->_request['sourceCity'];
             $destinationCity =  $this->_request['destinationCity'];
-            if ($day=='' && $sourceCity=='')
+            if ($day=='' && $destinationCity=='')
               $sql="select * from flight";
-            else if($day=='' && $sourceCity!='')
-              $sql="select * from flight where FromAirport = '$sourceCity' OR ToAirport = '$sourceCity'";
-            else if($day!='' && $sourceCity=='')
+            else if($day=='' && $destinationCity!='')
+              $sql="select * from flight where ToAirport = '$destinationCity'";
+            else if($day!='' && $destinationCity=='')
               $sql="select * from flight where $day = 1";
-            else if($day!='' && $sourceCity!='')
-              $sql="select * from flight where $day = 1 AND FromAirport = '$sourceCity' OR ToAirport = '$sourceCity'";
+            else if($day!='' && $destinationCity!='')
+              $sql="select * from flight where $day = 1 AND ToAirport = '$destinationCity'";
             $rows = $this->executeGenericDQLQuery($sql);
             $flightDetails= array();
             for($i=0 ; $i<sizeof($rows);$i++)
@@ -1379,18 +1380,39 @@ header('Access-Control-Allow-Origin: *');
             $rows  = $this->executeGenericDQLQuery($sql);
             for($i=0 ; $i<sizeof($rows);$i++)
            {
-              $parkingDetails[$i]['id'] = $rows[$i]['id'];
-              $parkingDetails[$i]['name'] = $rows[$i]['name'];
-              $parkingDetails[$i]['address'] = $rows[$i]['address'];
-              $parkingDetails[$i]['contact'] = $rows[$i]['contact'];
-              $parkingDetails[$i]['authority'] = $rows[$i]['authority'];
-              $parkingDetails[$i]['CityName'] = $rows[$i]['CityName'];
-              $parkingDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
+              $emergencyContacts[$i]['id'] = $rows[$i]['id'];
+              $emergencyContacts[$i]['name'] = $rows[$i]['name'];
+              $emergencyContacts[$i]['address'] = $rows[$i]['address'];
+              $emergencyContacts[$i]['contact'] = $rows[$i]['contact'];
+              // $emergencyContacts[$i]['authority'] = $rows[$i]['authority'];
+              // $emergencyContacts[$i]['CityName'] = $rows[$i]['CityName'];
+              // $emergencyContacts[$i]['icon_image'] = $rows[$i]['icon_image'];
 
            }
-            $this->response($this->json($parkingDetails), 200);
+            $this->response($this->json($emergencyContacts), 200);
 
         }
+        // used to post selected emergency contact deatils that would be selected from 
+        // health care and sanitation options
+        // possible values - hospitals, trauma care , toilets etc.
+        // the type of table to be accessed would be come from the request itself
+        public function postSelectedEmergencyContact(){
+            $tableType =  $this->_request['tableType'];
+            $name =  $this->_request['name'];
+            $address =  $this->_request['address'];
+            $contact =  $this->_request['contact'];
+            $cityId = $this->getCityIdByName($this->_request['city']);
+
+            $sql = "insert into $tableType(name,address,contact,cityId) values('$name','$address','$contact',$cityId)";
+            // echo $sql;
+            $rows  = $this->executeGenericInsertQuery($sql);
+           $response = array();
+           $response['status'] = "success";
+           $response['data'] = "$tableType inserted successfully";
+            $this->response($this->json($response), 200);
+
+        }
+
         public function fetchLocalAuthorities(){
           // $sql = "select * from local_authorities join city c on local_authorities.cityId = 1";
           $sql = "select * from local_authorities";
