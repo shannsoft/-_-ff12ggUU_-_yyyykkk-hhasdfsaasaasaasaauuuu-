@@ -46,7 +46,7 @@
 			  <div class="row facilities-hotel facility">
 			    <div class="col col-50">
 			     <ul>
-				     <p ng-repeat="facility in selectedGuestHouse.Facilities"> <i class="fa fa-car"></i>{{facility}}</p>
+				     <p ng-repeat="facility in selectedGuestHouse.Facilities"> <i class="{{facility.font_class}}"></i>{{facility.facility}}</p>
 					 
 				 </ul>
 				 </div><!--col-50 end-->

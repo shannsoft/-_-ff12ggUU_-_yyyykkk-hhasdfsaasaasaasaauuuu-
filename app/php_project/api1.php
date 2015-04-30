@@ -391,7 +391,10 @@ header('Access-Control-Allow-Origin: *');
             $rows = $this->executeGenericDQLQuery($sql);
             for($i=0;$i<sizeof($rows);$i++)
             {
-              array_push($arr, $rows[$i]['facility']);
+              //array_push($arr, $rows[$i]['facility']);
+              $arr[$i]['facility'] = $rows[$i]['facility'];
+              $arr[$i]['font_class'] = $rows[$i]['font_class'];
+
             }
             return $arr;
         }
@@ -913,6 +916,7 @@ header('Access-Control-Allow-Origin: *');
             $guestHouseDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
             $guestHouseDetails[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
             $guestHouseDetails[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
+            $guestHouseDetails[$i]['stdCode'] =$rows[$i]['STDCode'];
             
 
           

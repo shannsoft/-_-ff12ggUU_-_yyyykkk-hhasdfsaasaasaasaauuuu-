@@ -93,7 +93,7 @@
 		          <div class="col col-90">
 			        <h2 class="hf-heading">Facilities Available</h2>
 					  <ul>
-					    <li>{{selectedHotel.facilitites.toString()}}</li>
+					    <li ng-repeat="facility in selectedHotel.facilitites">{{facility.facility}}</li>
 						
 					 </ul>
 			      </div><!--col-50 end-->

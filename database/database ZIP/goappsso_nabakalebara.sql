@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2015 at 05:17 PM
+-- Generation Time: Apr 30, 2015 at 09:49 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -396,7 +396,8 @@ INSERT INTO `drinking_water` (`id`, `name`, `address`, `contact`, `authority`, `
 
 CREATE TABLE IF NOT EXISTS `facilities` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
-  `facility` varchar(100) NOT NULL DEFAULT '0',
+  `facility` varchar(100) DEFAULT NULL,
+  `font_class` varchar(100) DEFAULT 'fa fa-exclamation-triangle',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
@@ -404,13 +405,13 @@ CREATE TABLE IF NOT EXISTS `facilities` (
 -- Dumping data for table `facilities`
 --
 
-INSERT INTO `facilities` (`id`, `facility`) VALUES
-(1, 'parkng'),
-(2, 'gym'),
-(3, 'bar'),
-(4, 'resturant'),
-(5, 'conference room'),
-(6, 'wi fi');
+INSERT INTO `facilities` (`id`, `facility`, `font_class`) VALUES
+(1, 'parkng', 'fa fa-car'),
+(2, 'gym', 'fa fa-exclamation-triangle'),
+(3, 'bar', 'fa fa-beer'),
+(4, 'resturant', 'fa fa-building-o'),
+(5, 'conference room', 'fa fa-users'),
+(6, 'wi fi', 'fa fa-wifi');
 
 -- --------------------------------------------------------
 
@@ -754,14 +755,6 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `day` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `schedule`
---
-
-INSERT INTO `schedule` (`id`, `schedule_name`, `schedule_content`, `start_time`, `end_time`, `day`) VALUES
-(1, 'Snana', 'sri Jagannath Snana puja', '6am', '7am', 'monday'),
-(2, 'Arati puja', 'Sri Jagannath Arati puja', '7am', '7a8', 'tuesday');
 
 -- --------------------------------------------------------
 

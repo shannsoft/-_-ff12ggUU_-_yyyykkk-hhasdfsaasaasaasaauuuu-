@@ -48,7 +48,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh 
 			  <div class="row facilities-hotel facility">
 			    <div class="col col-50">
 			     <ul>
-				     <p ng-repeat="facility in selectedCoffeeShop.Facilities"> <i class="fa fa-car"></i> Facility 1</p>
+				     <p ng-repeat="facility in selectedCoffeeShop.Facilities"> <i class="{{facility.font_class}}"></i> {{facility.facility}}</p>
 				 </ul>
 				 </div><!--col-50 end-->
 				 
