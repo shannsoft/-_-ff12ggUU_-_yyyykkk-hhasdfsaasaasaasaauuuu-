@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.8
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 30, 2015 at 09:49 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Host: localhost
+-- Generation Time: May 06, 2015 at 10:45 PM
+-- Server version: 5.5.37-cll
+-- PHP Version: 5.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `goappsso_nabakalebara`
 --
-CREATE DATABASE IF NOT EXISTS `goappsso_nabakalebara` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `goappsso_nabakalebara`;
 
 -- --------------------------------------------------------
 
@@ -56,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `branches` (
   `forex_manager` varchar(20) DEFAULT NULL,
   `city_id` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=115 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=114 ;
 
 --
 -- Dumping data for table `branches`
@@ -106,7 +104,7 @@ INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manag
 (50, 'Baripada', 'ICICI Bank Ltd., Popular Clinic, Badabazar, Baripada-757001, Mayurbhanj Dist., Orissa.', '9937014159', '9937014159', '9937014159', '43'),
 (51, 'Raurkela', 'ICICI Bank Ltd., Brindaban Complex, Panposh Road, Civil Township, Rourkela - 769004, Sundagarh Dist., Orissa.', '9937036930', '9937036930', '9937036930', '8'),
 (52, 'Chowdhury Bazaar, Cuttack', 'ICICI Bank Ltd, Main Road, Opp. Union Bank Of India, Chowdhury Bazaar, Cuttack - 753001, Orissa.', '9937090850', '9937090850', '9937090850', '88'),
-(53, 'Rajagangapur', 'ICICI Bank Ltd., Weekly Market, Main Road, Rajgangapur  - 770017, Sundargarh Dist., Orissa', '7894461995', '7894461995', '7894461995', '36'),
+(53, 'Rajagangapur', 'ICICI Bank Ltd., Weekly Market, Main Road, Rajgangapur  - 770017, Sundargarh Dist., Orissa', '7894461995', '7894461995', '7894461995', '44'),
 (55, 'Nabarangapur', 'ICICI Bank Ltd., Shivashankar Complex, Near Rammandir, Main Road, Nabarangapur, Orissa - 764059', '9937016566', '9937016566', '9937016566', '45'),
 (56, 'Chandrasekharpur, Bhubaneswar', 'ICICI Bank Ltd., Plot No.26, Dist Centre, Chandrasekharpur, Bhubaneswar - 751016, Khurda Dist., Orissa', '9937087222', '9937087222', '9937087222', '17'),
 (57, 'Duburi', 'ICICI Bank Ltd., Near Kapileshwar High School, AT-Duburi,PS -Kalinganagar, Duburi - 755026, Jajpur Dist., Orissa', '9178466749', '9178466749', '9178466749', '46'),
@@ -163,9 +161,7 @@ INSERT INTO `branches` (`id`, `Name`, `address`, `contact_number`, `branch_manag
 (109, 'Jayapur', 'ICICI Bank Ltd., AT-Jayapur, PO-Sakhigopal, PS-Satyabadi, Pincode - 752014, Puri Dist., Odisha', '7894461959', '7894461959', '7894461959', '87'),
 (110, 'Vivekanandamarg', 'ICICI Bank Ltd., Plot No. 2130/4711, TKR Complex,Vivekananda Marg, Bhubaneswar - 751002, Orissa', '9178462015', '9178462015', '9178462015', '17'),
 (111, 'Mahanandi Vihar, Cuttack', 'ICICI Bank Ltd., Plot No.5, Mahanadi Vihar, Post Nayabazaar, Cuttack-753004, Orissa', '7752006124', '7752006124', '7752006124', '88'),
-(112, 'Jharsuguda', 'ICICI Bank Ltd. Jharsuguda Main Branch, Plot No.-956, Kali Mandir Road, Jharsuguda-752055, Orissa', '9937013281', '9937013281', '9937013281', '20'),
-(113, 'Kujanga', 'ICICI Bank Ltd., AT-Kujang, Near Satsang Mandir, Kujanga - 754141, Jagatsinghpur Dist., Orissa', '9937207767', '9937207767', '9937207767', '65'),
-(114, 'Balangir', 'ICICI Bank Ltd., (RMAG), Railway Station Road,Tikrapara, Bolangir- 767001, Orissa', '9178466603', '9178466603', '9178466603', '22');
+(113, 'Kujanga', 'ICICI Bank Ltd., AT-Kujang, Near Satsang Mandir, Kujanga - 754141, Jagatsinghpur Dist., Orissa', '9937207767', '9937207767', '9937207767', '65');
 
 -- --------------------------------------------------------
 
@@ -218,7 +214,6 @@ INSERT INTO `city` (`CityID`, `CityName`, `StateID`, `CountryID`, `STDCode`) VAL
 (3, 'hydrabad', 3, 1, 234),
 (4, 'balasore', 1, 1, 674),
 (5, 'Bhadrak', 1, 1, 674),
-(90, 'test1', 1, 1, 6352),
 (7, 'Khurda', 1, 1, 751001),
 (8, 'Rourkela', 1, 1, 661),
 (9, 'Mumbai', 5, 1, 22),
@@ -328,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `coffee_shops` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `coffee_shops`
@@ -338,7 +333,13 @@ INSERT INTO `coffee_shops` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone
 (1, 'mishra`s cofee', NULL, 'badadanda ,puri', '9652365478', '9856325698', '9856325417', '9986521452', 'www.mishracofee.com', '3', NULL, NULL, '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
 (2, 'sahoo`s cofee', NULL, 'mangala sahi ,puri', '9856365214', '9866523652', '9874521546', '9856965236', 'www.sahoocofee.com', '2', NULL, NULL, '1,3,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
 (3, 'name1', 'content', 'address', '9898989898', '8989898989', '8989898989', '8989898989', 'www.mm.com', '3', NULL, NULL, '1,2', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(4, 'coffee test', 'null', 'null', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '3', 8, 'null', 'null');
+(4, 'Cafe Coffee Day', 'Cafe Coffee Day', 'Muncipal Market, Grand Road,Puri', NULL, NULL, NULL, NULL, 'www.cafecoffeeday.com', '0', NULL, NULL, '1,6', 1, 'http://images.jdmagicbox.com/upload_test/mumbai/16/022p8004816/logo/c4f5f350d09167e356e4d25a3d09c6e6.jpg', 'http://images.jdmagicbox.com/upload_test/mumbai/16/022p8004816/logo/c4f5f350d09167e356e4d25a3d09c6e6.jpg'),
+(5, 'Harrys Cafe & Restaurant', 'Harrys Cafe & Restaurant', 'Lotus Hotel, Chakratirtha Road, Puri - 752002', '227033', NULL, NULL, '9437753675', 'null', '0', NULL, NULL, '1', 1, 'null', 'null'),
+(6, 'Orissa bakery', 'Orissa bakery', 'Water Works Road, Puri Station Road, Puri - 752002, Near Dav School', '223275', NULL, NULL, '8895266440', 'null', '0', NULL, NULL, '1', 1, 'null', 'null'),
+(7, 'Akshay Tea Stall', 'Akshay Tea Stall', 'Mochi Sahi, Puri', '9938496919', NULL, NULL, '9938496919', 'null', '0', NULL, NULL, '1', 1, 'null', 'null'),
+(8, 'Misti', 'Misti', 'VIP Road, Pur', '222388', NULL, NULL, '8763492584', 'null', '0', NULL, NULL, '1', 1, 'null', 'null'),
+(9, 'Raju Tea Stall', 'Raju Tea Stall', 'Mochi Sahi Chhak, Puri', '9338105885', NULL, NULL, '9338105885', 'null', '0', NULL, NULL, '1', 1, 'null', 'null'),
+(10, 'Pooja Tea Stall', 'Pooja Tea Stall', 'Harihara Square, Puri', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -396,8 +397,7 @@ INSERT INTO `drinking_water` (`id`, `name`, `address`, `contact`, `authority`, `
 
 CREATE TABLE IF NOT EXISTS `facilities` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
-  `facility` varchar(100) DEFAULT NULL,
-  `font_class` varchar(100) DEFAULT 'fa fa-exclamation-triangle',
+  `facility` varchar(100) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
@@ -405,13 +405,13 @@ CREATE TABLE IF NOT EXISTS `facilities` (
 -- Dumping data for table `facilities`
 --
 
-INSERT INTO `facilities` (`id`, `facility`, `font_class`) VALUES
-(1, 'parkng', 'fa fa-car'),
-(2, 'gym', 'fa fa-exclamation-triangle'),
-(3, 'bar', 'fa fa-beer'),
-(4, 'resturant', 'fa fa-building-o'),
-(5, 'conference room', 'fa fa-users'),
-(6, 'wi fi', 'fa fa-wifi');
+INSERT INTO `facilities` (`id`, `facility`) VALUES
+(1, 'parkng'),
+(2, 'gym'),
+(3, 'bar'),
+(4, 'resturant'),
+(5, 'conference room'),
+(6, 'wi fi');
 
 -- --------------------------------------------------------
 
@@ -426,17 +426,14 @@ CREATE TABLE IF NOT EXISTS `fast_aid` (
   `contact` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `fast_aid`
 --
 
 INSERT INTO `fast_aid` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
-(1, 'Fast Aid 1', 'mangala sahi  , puri', '9632565236', 1),
-(2, 'Fast Aid2', 'badadanda , puri', '9632565236', 1),
-(3, 'Fast Aid 3', 'belabhumi ', '9632565236', 1),
-(4, 'test', 'address', '9999999999', 1);
+(1, 'Fast Aid 1', 'mangala sahi  , puri', '9632565236', 1);
 
 -- --------------------------------------------------------
 
@@ -460,15 +457,27 @@ CREATE TABLE IF NOT EXISTS `flight` (
   `Friday` int(1) NOT NULL,
   `Saturday` int(1) NOT NULL,
   PRIMARY KEY (`FlightID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data for table `flight`
 --
 
 INSERT INTO `flight` (`FlightID`, `FlightNumber`, `FlightName`, `FromAirport`, `ToAirport`, `StartsAt`, `ReachesAt`, `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`) VALUES
-(1, '6E 368', 'Indigo', 'Bhubaneswar', 'New Delhi', '21:25', '23:35', 0, 1, 0, 1, 0, 1, 0),
-(3, '6E 369', 'Reliance', 'Bangalore', 'BBSR', '21:25', '23:35', 0, 1, 0, 1, 0, 1, 0);
+(26, '6E 265', 'IndiGo Airlines', 'Bhubaneswar', 'Hydrabad', '7:15 pm', '8:50 pm', 1, 1, 1, 1, 1, 1, 1),
+(27, '6E 263', 'IndiGo Airlines', 'Bhubaneswar', 'Hydrabad', '10:15 am', '11:50 am', 1, 1, 1, 1, 1, 1, 1),
+(20, '6E 256', 'IndiGo Airlines', 'Bhubaneswar', 'Delhi', '9:40 am', '11:35 am', 1, 1, 1, 1, 1, 1, 1),
+(21, '6E 258', 'IndiGo Airlines', 'Bhubaneswar', 'Delhi', '6:55 pm', '8:55 pm', 1, 1, 1, 1, 1, 1, 1),
+(22, 'AI 9602', 'Air India', 'Bhubaneswar', 'Delhi', '12:30 pm', '2:25 pm', 1, 1, 1, 0, 1, 1, 1),
+(23, 'AI 0878', 'Air India', 'Bhubaneswar', 'Delhi', '2:00 pm', '4:00 pm', 1, 1, 1, 1, 1, 1, 1),
+(24, 'AI 0474', 'Air India', 'Bhubaneswar', 'Delhi', '8:05 pm', '10:05 pm', 1, 1, 1, 1, 1, 1, 1),
+(11, 'AI 0670', 'Air India', 'Bhubaneswar', 'Mumbai', '1:10 pm', '3:20 pm', 1, 1, 1, 1, 1, 1, 1),
+(12, '6E 293', 'IndiGo Airlines', 'Bhubaneswar', 'Mumbai', '8:50 am', '11:10 am', 1, 1, 1, 1, 1, 1, 1),
+(13, '6E 263', 'IndiGo Airlines', 'Bhubaneswar', 'Mumbai', '10:15 am', '1:45 pm', 1, 1, 1, 1, 1, 1, 1),
+(14, '6E 511', 'IndiGo Airlines', 'Bhubaneswar', 'Kolkata', '10:45 am', '11:40 am', 1, 1, 1, 1, 1, 1, 1),
+(15, '6E 294', 'IndiGo Airlines', 'Bhubaneswar', 'Kolkata', '7:25 pm', '8:20 pm', 1, 1, 1, 1, 1, 1, 1),
+(16, 'AI 9780', 'Air India', 'Bhubaneswar', 'Kolkata', '7:35 pm', '9:05 pm', 1, 1, 1, 1, 1, 1, 1),
+(17, 'S2 3865', 'Jet Airways Konnect Flight', 'Bhubaneswar', 'Kolkata', '6:25 pm', '7:40 pm', 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -518,17 +527,15 @@ CREATE TABLE IF NOT EXISTS `guest_house` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `guest_house`
 --
 
 INSERT INTO `guest_house` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Sahoo guest house', NULL, 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'null', 'img/hotels.jpg'),
-(2, 'Mishra Guest house', NULL, 'Dutta tota , puri', '9856325632', '9856325632', '9854125632', '9856325415', 'www.mishrahouse.com', '4', '2,3,4', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'rrr', 'content', 'address', '9898989898', '89898989898', '9898989898', '89898989898', 'www.gu.com', '3', '1,3', 4, 'img/hotels.jpg', 'img/hotels.jpg'),
-(4, 'guest 3', 'content', 'address', '9586523625', NULL, NULL, NULL, 'null', '0', '4,6', 4, 'null', 'null');
+(1, 'Sahoo guest house', NULL, 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(2, 'Mishra Guest house', NULL, 'Dutta tota , puri', '9856325632', '9856325632', '9854125632', '9856325415', 'www.mishrahouse.com', '4', '2,3,4', 1, 'img/hotels.jpg', 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -543,17 +550,14 @@ CREATE TABLE IF NOT EXISTS `hospital` (
   `contact` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `hospital`
 --
 
 INSERT INTO `hospital` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
-(1, 'Suraksya hospital', 'Dutta tota', '9632565236', 1),
-(2, 'Ayush hospital', 'Dutta tota', '9632565236', 1),
-(3, 'Aryan hospitals', 'Dutta tota', '9632565236', 1),
-(4, 'test', 'address', '9652365214', 1);
+(1, 'Suraksya hospital', 'Dutta tota', '9632565236', 1);
 
 -- --------------------------------------------------------
 
@@ -581,16 +585,33 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `hotels`
 --
 
 INSERT INTO `hotels` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(27, 'NAME', 'content', 'address', '111', '222', '333', NULL, NULL, 'null', 'null', 'null', '3.5', '2,5', 1, 'null', 'null'),
-(28, 'name2', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '2', '2,5', 1, 'null', 'null'),
-(29, 'name4', 'content', 'address', NULL, NULL, NULL, NULL, NULL, 'null', 'null', 'null', '1', '5,6', 1, 'null', 'null');
+(30, 'Hotel Toshali Sands,', 'Toshali Sands Resort Puri, best accommodation in puri proudly boasts of introducing many new trends in the hospitality industry of India. We are the first hotels & resorts in Jagannath Puri', 'Puri Konark Marine Drive, Puri-2', '250572', '250571', '250573', NULL, '250899', 'bbsr@toshali.in', 'http://www.toshalisands.com', 'Manager', '3', '1,2,3,4,5,6', 1, 'http://www.toshalisands.com/banner/aerial-view.jpg', 'http://www.toshalisands.com/banner/aerial-view.jpg'),
+(37, 'Hotel Arya Palace,', 'null', 'Chakra Tirtha Road, Puri.', '232688', '232689', NULL, NULL, NULL, 'null', 'null', 'Manager', '2', '1,4', 1, 'http://img.yatra.com/content/images/xhotel/hotelgfx/IN-BHU-YAT-42536131/11_Hotel-Building-2.jpeg', 'http://img.yatra.com/content/images/xhotel/hotelgfx/IN-BHU-YAT-42536131/11_Hotel-Building-2.jpeg'),
+(31, 'Hotel May Fair Beach Resort', 'Heavenly settings overlooking the Puri Beach and unique panorama are all that make MAYFAIR Heritage Puri the 3 Star luxury beach resort to accommodate in the reign of Lord Jagannath.', 'Chakra Tirtha Road, Puri', '227800', NULL, NULL, NULL, '224242', 'puri@mayfairhotels.com', 'http://www.mayfairhotels.com/index.html', 'Manager', '3', '1,2,3,4,5,6', 1, 'http://www.mayfairhotels.com/images/MAYFAIR_Puri_T1.jpg', 'http://www.mayfairhotels.com/images/MAYFAIR_Puri_T1.jpg'),
+(32, 'Hotel Hans Coco Palms', 'Set in idyllic surroundings, in what is one of Indiaâ€™s best kept secrets â€“ the sea shore of Orissa â€“ The Hans Coco Palms at Puri is a haven of peace, serenity and cultural delights. The experien', 'Baliapanda, Puri', '230038', '230951', '230952', NULL, '230165', 'Hanscocopalms@hanshotels.com', 'http://www.hanshotels.com/puri/index.html', 'Manager', '3', '1,2,3,4,5,6', 1, 'http://www.hanshotels.com/puri/images/flash-1.jpg', 'http://www.hanshotels.com/puri/images/flash-1.jpg'),
+(33, 'Hotel Shakti International', 'Shakti- The mother Goddess is considered to be the personification of cosmic energy in its dynamic form. It is believed that Shakti is Her power and energy with which the Universe is Created, Preserve', 'VIP Road, Puri-752001', '222388', '222488', NULL, NULL, '228784', 'reservations@shaktiinternational.in', 'http://www.shaktiinternational.in/', 'Manager', '3', '1,3,4,6', 1, 'http://www.shaktiinternational.in/css/images/1.jpg', 'http://www.shaktiinternational.in/css/images/1.jpg'),
+(34, 'Hotel Ananya Resorts', 'Ananya Resorts offer luxurious accomodation, world-class ammenities, impeccable services, excellent hospitality, state-of-the-art business facility and fun-filled recreational activities.', 'Bankimuhan,VIP Road, Puri', '220031', '220032', NULL, NULL, NULL, 'info@ananyaresorts.in', 'www.ananyaresorts.in', 'Manager', '2', '1,3,4,5,6', 1, 'http://lh3.googleusercontent.com/-d43VvB5YeH4/UQezhvFAhQI/AAAAAAAAABE/qKwvKpCDwsU/s120-c/DSC_2745.JPG', 'http://lh3.googleusercontent.com/-d43VvB5YeH4/UQezhvFAhQI/AAAAAAAAABE/qKwvKpCDwsU/s120-c/DSC_2745.JPG'),
+(35, 'Hotel Anjana Resort', 'Hotel Anjana Resort', 'Gopal Ballav Road, Puri', '222117', NULL, NULL, NULL, NULL, 'null', 'null', 'Manager', '2', '1,4,6', 1, 'http://media-cdn.tripadvisor.com/media/photo-o/03/d4/f6/07/anjana-resort-hotel.jpg', 'http://media-cdn.tripadvisor.com/media/photo-o/03/d4/f6/07/anjana-resort-hotel.jpg'),
+(36, 'AMS Holiday Inn,', 'AMS Holiday Inn', 'Gourbar Sahi,\nSwargadwar,Puri', '8599884109', NULL, NULL, '8599884109', NULL, 'null', 'null', 'Manager', '2', '1,4', 1, 'http://travelandleisure.co.in/images/amsholiday.png', 'http://travelandleisure.co.in/images/amsholiday.png'),
+(38, 'Hotel Ashray', 'Hotel Ashray is situated near The Bay Of Bangle and a wakeable distance from femous Lord Jagannath temple. Its has 28 luxerous rooms with all modern amenity.', 'Infront Of Sankaracharya Gobardhan Matha\nSankaracharya Lane\nSwargadwar,Puri', '231742', '254142', NULL, NULL, '254142', 'hotelashraypuri@gmail.com', 'http://www.hotelashray.in/home.html', 'Manager', '2', '1', 1, 'http://www.hotelashray.in/css/images/slide-image.jpg', 'http://www.hotelashray.in/css/images/slide-image.jpg'),
+(39, 'Hotel Asian Inn,', 'Asian Inn Beach Resort is located on the Golden Beach of Puri. It has 31 well furnished sea facing rooms with glass faÃ§ade.', 'New Marine Drive Road, Baliapanda, Puri, Odisha 752001', '231307', '231347', NULL, NULL, NULL, 'puri@hotelasianinn.com', 'http://www.hotelasianinn.in/', 'Manager', '2', '1,4', 1, 'http://www.hotelasianinn.in/images/hotel_asian_inn-puri.jpg', 'http://www.hotelasianinn.in/images/hotel_asian_inn-puri.jpg'),
+(40, 'Hotel Banga Laxmi,', 'Being the essential part of the hospitality sector we â€œHotel Bangalaxmiâ€, is one of the eminent organization engaged in providing Hotel Services', 'New Marine Drive Road, \nSwargadwar,Puri', '230711', '231811', NULL, NULL, NULL, 'hotelbangalaxmi@gmail.com', 'www.hotelbangalaxmi.com', 'Manager', '2', '1,3,4,6', 1, 'http://hotelbangalaxmi.com/images/1.jpg', 'http://hotelbangalaxmi.com/images/1.jpg'),
+(41, 'Blue Lily Beach Resort', 'The land of Mahaprabhu Lord Jagannath, monumental and the magnificent shrine at Puri, Odisha, beckons pilgrimage and the leisure travelers, since time immortal. \nThe waves of the deep blue sea, is vir', 'Sipasarubali,Baliapanda,Puri', '9583003751', NULL, NULL, NULL, NULL, 'reservation@bluelilybeachresort.com', 'http://bluelilybeachresort.com/', 'null', '2', '1,3,4', 1, 'http://bluelilybeachresort.com/gallery/s21.jpg', 'http://bluelilybeachresort.com/gallery/s21.jpg'),
+(42, 'Hotel Bideshi Ghar', 'New Hotel Bidesh Ghar is a nicely established budget hotel property which is famous for its service and warm hospitality.', 'Swargadwar, Puri', '9776108844', NULL, NULL, NULL, NULL, 'director@bideshghar.com', 'www.bideshghar.com', 'Manager', '2', '1,4', 1, 'http://www.bideshghar.com/resturant_files/vlb_thumbnails0/loby02.jpg', 'http://www.bideshghar.com/resturant_files/vlb_thumbnails0/loby02.jpg'),
+(43, 'Hotel Camellia,', 'Camellia Puri Resort Hotel is situated in the land of Lord Jagannath a place for pilgrimage and for a sea side holiday. The hotel is right across from the sea beach, from where one can hear the sound ', 'New Marine Drive Road,Puri', '231424', NULL, NULL, NULL, NULL, 'camellia.hotelresorts@gmail.com', 'www.cameliagroup.org', 'Manager', '0', '1,4', 1, 'http://hotelcamellia.com/images/1.jpg', 'http://hotelcamellia.com/images/1.jpg'),
+(44, 'The Chanakya BNR hotel', 'Chanakya-BNR hotel is spread over about three acres of land just adjacent to the sea beach.', 'Chakratritha Road,, Puri, Odisha 752002', '223006', NULL, NULL, NULL, NULL, 'booking@orissatourism.org', 'http://www.orissatourism.org/hotels-puri/chanakya-', 'Manager', '2', '1,4,5', 1, 'http://www.orissatourism.org/images/chankya-bnr-puri.jpg', 'http://www.orissatourism.org/images/chankya-bnr-puri.jpg'),
+(45, 'Hotel The Chariot', 'Secluded in the lap of a natural lagoon at the Bay of Bengal, The Chariot is an oasis of tranquility where luxury reaches its new heights.', 'Sipasurabali,\nPuri-752001', '7381035022', NULL, NULL, NULL, NULL, 'sales@thechariotpuri.com', 'www.thechariotpuri.com', 'Manager', '2', '1,3,4,5', 1, 'http://www.thechariotpuri.com/images/thechariot/banner-images/home-page/the-chariot-puri-1.jpg', 'http://www.thechariotpuri.com/images/thechariot/banner-images/home-page/the-chariot-puri-1.jpg'),
+(46, 'Dalmia Atithi Vihar', 'null', 'C.T. Road Puri Dist. Orissa - 752002', '225557', NULL, NULL, NULL, NULL, 'hotel-dalmia-atithi-vihar-puri-2@hotelsgds.com', 'http://hotel-dalmia-atithi-vihar-puri.hotelsgds.co', 'Manager', '3', '1,4,5', 1, 'http://www.holidayiq.com/uploadimagesresorts/Puri-10742_4_des.jpg', 'http://www.holidayiq.com/uploadimagesresorts/Puri-10742_4_des.jpg'),
+(47, 'Hotel Deep Resort,', 'Deep Resort is excellently located on Puri sea beach in Odisha (Orissa) with most of the rooms facing the sea and having attached balcony. This hotel in Puri is located at 5 minutes drive from Lord Ja', 'Sea-Beach, Puri', '220848', NULL, NULL, NULL, NULL, 'reservation@deepresorts.com', 'http://www.deepresorts.com/index.html', 'Manager', '2', '1,4,5', 1, 'http://www.deepresorts.com/resorts_puri/puri-hotel-01.jpg', 'http://www.deepresorts.com/resorts_puri/puri-hotel-01.jpg'),
+(48, 'Hotel Deepak', 'The location of Hotel Deepak places it at a distance of .5 kilometers from the Railway station and just a 3 kilometer from the Puri Jagannath Temple.', 'CT Road, Puri', '222370', NULL, NULL, NULL, NULL, 'reservation@hoteldeeepak.com', 'www.hoteldeepak.com', 'null', '0', '1,4', 1, 'http://www.hoteldeepak.com/images/hotel-deepak-001.jpg', 'http://www.hoteldeepak.com/images/hotel-deepak-001.jpg'),
+(49, 'Hotel Dolphin,', 'We introduce ourselves as reputed Group of Hotels located across the Eastern India providing our valued guests with the world class service at reasonable costs since 1980', 'Swargadwar Road, Puri,', '9938872137', NULL, NULL, NULL, NULL, 'null', 'http://www.hoteldolphin.in/', 'Manager', '2', '1,4', 1, 'http://educetechnologic.com/hoteldolphin/Puri%20Script/images/joint%201.jpg', 'http://educetechnologic.com/hoteldolphin/Puri%20Script/images/joint%201.jpg');
 
 -- --------------------------------------------------------
 
@@ -606,7 +627,7 @@ CREATE TABLE IF NOT EXISTS `hotel_rooms` (
   `PriceEnds` int(11) NOT NULL,
   `hotel_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=146 ;
 
 --
 -- Dumping data for table `hotel_rooms`
@@ -624,8 +645,112 @@ INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `Price
 (31, 'Villa', 0, 0, 0, 28),
 (30, 'Exclusive Deluxe', 0, 0, 0, 28),
 (29, 'Cottage', 0, 0, 0, 28),
-(28, 'Deluxe Room', 11, 100, 100, 28),
-(27, 'Deluxe Room', 100, 1000, 10000, 27);
+(40, 'Deluxe Room', 43, 5400, 8400, 30),
+(41, 'Cottage', 42, 6700, 9700, 30),
+(42, 'Exclusive Deluxe', 10, 8600, 11600, 30),
+(43, 'Villa', 9, 11700, 14700, 30),
+(44, 'Exclusive Villa', 4, 13500, 16500, 30),
+(45, 'Extra Bed', 0, 1300, 2800, 30),
+(46, 'Deluxe Room', 9, 10000, 0, 31),
+(47, 'Cottage', 21, 12000, 0, 31),
+(48, 'Exclusive Deluxe', 0, 0, 0, 31),
+(49, 'Villa', 4, 15000, 0, 31),
+(50, 'Exclusive Villa', 0, 0, 0, 31),
+(51, 'Extra Bed', 0, 0, 0, 31),
+(52, 'Deluxe Room', 36, 8000, 0, 32),
+(53, 'Cottage', 1, 14000, 0, 32),
+(54, 'Exclusive Deluxe', 0, 0, 0, 32),
+(55, 'Deluxe Room', 34, 3500, 4000, 33),
+(56, 'Cottage', 0, 0, 0, 33),
+(57, 'Exclusive Deluxe', 2, 4000, 4500, 33),
+(58, 'Villa', 0, 0, 0, 33),
+(59, 'Exclusive Villa', 0, 0, 0, 33),
+(60, 'Extra Bed', 0, 600, 0, 33),
+(61, 'Deluxe Room', 40, 4000, 0, 34),
+(62, 'Cottage', 0, 0, 0, 34),
+(63, 'Exclusive Deluxe', 10, 5000, 0, 34),
+(64, 'Villa', 2, 8000, 0, 34),
+(65, 'Exclusive Villa', 0, 0, 0, 34),
+(66, 'Extra Bed', 0, 1000, 0, 34),
+(67, 'Deluxe Room', 9, 900, 1300, 35),
+(68, 'Cottage', 10, 1200, 1800, 35),
+(69, 'Exclusive Deluxe', 8, 1500, 0, 35),
+(70, 'Villa', 0, 0, 0, 35),
+(71, 'Exclusive Villa', 0, 0, 0, 35),
+(72, 'Extra Bed', 0, 0, 0, 35),
+(73, 'Deluxe Room', 7, 500, 600, 36),
+(74, 'Cottage', 0, 0, 0, 36),
+(75, 'Exclusive Deluxe', 8, 1000, 1200, 36),
+(76, 'Villa', 0, 0, 0, 36),
+(77, 'Exclusive Villa', 0, 0, 0, 36),
+(78, 'Extra Bed', 0, 0, 0, 36),
+(79, 'Deluxe Room', 10, 1400, 0, 37),
+(80, 'Cottage', 4, 2500, 0, 37),
+(81, 'Exclusive Deluxe', 13, 2000, 0, 37),
+(82, 'Deluxe Room', 12, 900, 1200, 38),
+(83, 'Deluxe Room', 24, 2500, 0, 39),
+(84, 'Cottage', 0, 0, 0, 39),
+(85, 'Exclusive Deluxe', 6, 3500, 0, 39),
+(86, 'Villa', 0, 0, 0, 39),
+(87, 'Exclusive Villa', 0, 0, 0, 39),
+(88, 'Extra Bed', 0, 0, 0, 39),
+(89, 'Deluxe Room', 21, 900, 1500, 40),
+(90, 'Cottage', 0, 0, 0, 40),
+(91, 'Exclusive Deluxe', 25, 2400, 3500, 40),
+(92, 'Villa', 0, 0, 0, 40),
+(93, 'Exclusive Villa', 0, 0, 0, 40),
+(94, 'Extra Bed', 0, 0, 0, 40),
+(95, 'Deluxe Room', 120, 3800, 4500, 41),
+(96, 'Cottage', 1, 8500, 0, 41),
+(97, 'Exclusive Deluxe', 0, 0, 0, 41),
+(98, 'Deluxe Room', 19, 1000, 2300, 42),
+(99, 'Cottage', 0, 0, 0, 42),
+(100, 'Exclusive Deluxe', 11, 1600, 2300, 42),
+(101, 'Villa', 0, 0, 0, 42),
+(102, 'Exclusive Villa', 0, 0, 0, 42),
+(103, 'Extra Bed', 0, 0, 0, 42),
+(104, 'Deluxe Room', 34, 2300, 3300, 43),
+(105, 'Cottage', 0, 0, 0, 43),
+(106, 'Exclusive Deluxe', 3, 5200, 0, 43),
+(107, 'Villa', 2, 6300, 0, 43),
+(108, 'Exclusive Villa', 0, 0, 0, 43),
+(109, 'Extra Bed', 0, 0, 0, 43),
+(110, 'Deluxe Room', 36, 3650, 0, 44),
+(111, 'Cottage', 0, 0, 0, 44),
+(112, 'Exclusive Deluxe', 0, 0, 0, 44),
+(113, 'Villa', 0, 0, 0, 44),
+(114, 'Exclusive Villa', 0, 0, 0, 44),
+(115, 'Extra Bed', 0, 0, 0, 44),
+(116, 'Deluxe Room', 34, 5000, 0, 45),
+(117, 'Cottage', 0, 0, 0, 45),
+(118, 'Exclusive Deluxe', 68, 5500, 7500, 45),
+(119, 'Villa', 20, 7500, 0, 45),
+(120, 'Exclusive Villa', 15, 8500, 0, 45),
+(121, 'Extra Bed', 0, 0, 0, 45),
+(122, 'Deluxe Room', 20, 1500, 1800, 46),
+(123, 'Cottage', 0, 0, 0, 46),
+(124, 'Exclusive Deluxe', 3, 2400, 3000, 46),
+(125, 'Villa', 0, 0, 0, 46),
+(126, 'Exclusive Villa', 0, 0, 0, 46),
+(127, 'Extra Bed', 0, 0, 0, 46),
+(128, 'Deluxe Room', 30, 1200, 2000, 47),
+(129, 'Cottage', 0, 0, 0, 47),
+(130, 'Exclusive Deluxe', 17, 1800, 2500, 47),
+(131, 'Villa', 0, 0, 0, 47),
+(132, 'Exclusive Villa', 0, 0, 0, 47),
+(133, 'Extra Bed', 0, 0, 0, 47),
+(134, 'Deluxe Room', 20, 850, 1500, 48),
+(135, 'Cottage', 0, 0, 0, 48),
+(136, 'Exclusive Deluxe', 0, 0, 0, 48),
+(137, 'Villa', 0, 0, 0, 48),
+(138, 'Exclusive Villa', 0, 0, 0, 48),
+(139, 'Extra Bed', 0, 0, 0, 48),
+(140, 'Deluxe Room', 5, 700, 1000, 49),
+(141, 'Cottage', 0, 0, 0, 49),
+(142, 'Exclusive Deluxe', 23, 1250, 2000, 49),
+(143, 'Villa', 0, 0, 0, 49),
+(144, 'Exclusive Villa', 0, 0, 0, 49),
+(145, 'Extra Bed', 0, 0, 0, 49);
 
 -- --------------------------------------------------------
 
@@ -661,7 +786,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
   `title` varchar(50) DEFAULT NULL,
   `detail` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `notification`
@@ -669,14 +794,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
 
 INSERT INTO `notification` (`id`, `title`, `detail`) VALUES
 (11, 'Traffic notice', 'Notice for puri traffic updates'),
-(12, 'Police updates', 'Notice for puri police control room'),
-(13, 'heaing1', 'content1'),
-(14, 'heading2', 'content2'),
-(15, 'heading3', 'content3'),
-(16, 'heading4', 'content4'),
-(17, 'hhh', 'hhh'),
-(18, 'mmm', 'mmm'),
-(19, 'Emergency Notification', 'asdsadasdsa');
+(12, 'Police updates', 'Notice for puri police control room');
 
 -- --------------------------------------------------------
 
@@ -728,7 +846,7 @@ CREATE TABLE IF NOT EXISTS `resturants` (
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `resturants`
@@ -737,8 +855,22 @@ CREATE TABLE IF NOT EXISTS `resturants` (
 INSERT INTO `resturants` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
 (1, 'Muskaan resturants', NULL, 'Dutta tota', '9856326523', '9856325632', '9854125632', '9856325415', 'www.muskan.com', '4', NULL, NULL, '2,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
 (2, 'Trupti restutants', NULL, 'Dutta tota', '9658541256', '9856323652', '9858965236', '9652147852', 'www.trupti.com', '3', NULL, NULL, '1,2,3', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'rrr', 'content', 'address', '98989898', '98989898', '98989898', '989898988', 'www.mm.com', '2', NULL, NULL, '2,3', 4, 'img/hotels.jpg', 'img/hotels.jpg'),
-(4, 'Resturant test', 'null', 'null', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '6', 7, 'null', 'null');
+(4, 'chung wah restaurant', 'If you crave for authentic Chinese food in Puri, do try the Chung Wah', 'VIP Road,Puri', '223647', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://images.ixigo.com/image/upload/t_medium,f_auto/chung-wah-restaurant-images-photos-512deeb8e4b0f3660be9d624.jpg', 'http://images.ixigo.com/image/upload/t_medium,f_auto/chung-wah-restaurant-images-photos-512deeb8e4b0f3660be9d624.jpg'),
+(5, 'The Gajapati', 'The Gajapati', 'C T Road, Puri', '223968', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1,4', 1, 'http://media-cdn.tripadvisor.com/media/photo-s/04/a8/bb/8d/the-gajapati.jpg', 'http://media-cdn.tripadvisor.com/media/photo-s/04/a8/bb/8d/the-gajapati.jpg'),
+(6, 'Bhojohori manna', 'Nice authentic bengali food', 'Hotel Greenery\nGopal Ballav Road\nSea Beach, Puri', '8280033332', NULL, NULL, '8280033332', 'http://bhojohorimanna.com/restaurant-info/location', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/05/0b/08/08/bhojohori-manna.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/05/0b/08/08/bhojohori-manna.jpg'),
+(7, 'Fusion', 'null', 'Chakratirtha Road, \nPuri-752002', '223968', NULL, NULL, NULL, 'null', '0', NULL, NULL, '', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/04/82/14/95/fusion.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/04/82/14/95/fusion.jpg'),
+(8, 'Honey Bee Bakery & Pizzeria', 'Honey Bee Bakery & Pizzeria', 'Chakra Tirtha Rd, Puri,', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'https://mw2.google.com/mw-panoramio/photos/small/103069096.jpg', 'https://mw2.google.com/mw-panoramio/photos/small/103069096.jpg'),
+(9, 'Bakers Boutique', 'Bakers Boutique', 'Holiday Resort, Chakra Tirtha Rd, Puri', '8658171111', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/04/a8/b9/3b/bakers-boutique.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/04/a8/b9/3b/bakers-boutique.jpg'),
+(10, 'Pink House', 'Pink House', 'Chakra Tirtha Road, Puri, Odisha 752002', '222253', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N'),
+(11, 'Wildgrass Restaurant', 'Wildgrass Restaurant', 'VIP Rd, Puri, Odisha 752001', '9437023656', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'https://lh5.googleusercontent.com/-BbDChF2u7_c/VDSfnOjgXkI/AAAAAAAAEn8/gd6nzf6LQzc/s213-k-no/Wildgrass%2BRestaurant', 'https://lh5.googleusercontent.com/-BbDChF2u7_c/VDSfnOjgXkI/AAAAAAAAEn8/gd6nzf6LQzc/s213-k-no/Wildgrass%2BRestaurant'),
+(12, 'New Parijat Restaurant', 'New Parijat Restaurant', 'Sea Beach, Puri, Odisha 752001', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/03/03/2a/0c/new-parijat-restaurant.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/03/03/2a/0c/new-parijat-restaurant.jpg'),
+(13, 'AQUARIUM - Multi Cuisine Restaurant & Bar !', 'Savour international delicacies amidst aqua vibes!\nAquarium, the mesmerising multi-cuisine restaurant boasts of a well-stocked bar and a huge aquarium which is centrally placed in such a way so as to ', 'Mayfair Hotel Puri, Chakratirtha Road,', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1,3,6', 1, 'http://www.mayfairhotels.com/mayfair-puri/images/Wine_Dine_MAYFAIR_Puri_P3.jpg', 'http://www.mayfairhotels.com/mayfair-puri/images/Wine_Dine_MAYFAIR_Puri_P3.jpg'),
+(14, 'Radhika Restaurant', 'Radhika Restaurant', 'New Marine Drive Road | Baliapanda, Puri 752001,', '231324', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-s/03/b7/55/97/radhika-restaurant.jpg', 'http://media-cdn.tripadvisor.com/media/photo-s/03/b7/55/97/radhika-restaurant.jpg'),
+(15, 'Jabari Garden', 'The restaurant has a lovely garden decorated with fairy lights, and the staff were all very friendly and helpful.', 'Near Bedihanuman Temple, CT Road, Puri, India', '8338882514', NULL, NULL, '8338882514', 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/07/20/93/98/jabari-garden.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/07/20/93/98/jabari-garden.jpg'),
+(16, 'Victoria Club Hotel', 'fabulous restaurant with ausome ambiance.. class apartâ€', 'Sea Beach, Puri 752001, India', '222005', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/07/3c/b7/5f/cascade.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/07/3c/b7/5f/cascade.jpg'),
+(17, 'Vithal Kamat', 'excellent quality of foodâ€', 'Sea Beach Road, Puri, India', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://e2.tacdn.com/img2/x.gif', 'http://e2.tacdn.com/img2/x.gif'),
+(18, 'Peace Restaurant', 'â€œGreat place for continentalâ€', 'CT Rd, Puri, India', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-s/03/5f/b7/f6/the-muesli-is-a-fruity.jpg', 'http://media-cdn.tripadvisor.com/media/photo-s/03/5f/b7/f6/the-muesli-is-a-fruity.jpg'),
+(19, 'BIDESH GHAR', 'â€œBengali Restaurentâ€', 'Swargadwar | In Front of Kali Wadi, Puri 752001, India', '9776108844', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-s/06/e1/de/e2/getlstd-property-photo.jpg', 'http://media-cdn.tripadvisor.com/media/photo-s/06/e1/de/e2/getlstd-property-photo.jpg');
 
 -- --------------------------------------------------------
 
@@ -754,7 +886,16 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `end_time` varchar(50) NOT NULL,
   `day` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `schedule_name`, `schedule_content`, `start_time`, `end_time`, `day`) VALUES
+(1, 'Snana', 'sri Jagannath Snana puja', '6am', '7am', 'monday'),
+(2, 'Arati puja', 'Sri Jagannath Arati puja', '7am', '7a8', 'tuesday'),
+(5, 'Dwarfita and Mangal Arati', '"The first ritualThe First ritual of the day is ceremonial opening of the doors,scheduled time for opening of the doors is 5 AM.or before that. On some specific occasions, suchas - Aswina Ekadasi (next day after Dasahara)to Kartik Purnima and from Dhanu Sankranti toMakar Sankranti Dwarfita time is from 2 AM to3 AM in the morning"', '5:00 AM', '6:00AM', '');
 
 -- --------------------------------------------------------
 
@@ -822,7 +963,7 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `temp_accomodation`
@@ -830,9 +971,7 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
 
 INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `start_price`, `end_price`, `contact_no`, `authority`, `cityId`, `icon_image`) VALUES
 (1, 'seva dharmasala', 'Dutta tota', NULL, NULL, '9652365214', 'Mr. Arjuna', 1, 'img/hotels.jpg'),
-(2, 'asha dharmasala', 'Vip road', NULL, NULL, '9856326523', 'Mr. Dilip', 1, 'img/hotels.jpg'),
-(3, 'sdasdasdasd', 'asdasd', 100, 1000, '98989898', 'sdfsdf', 4, 'img/hotels.jpg'),
-(4, 'temo2', 'address', 0, 0, '9652363256', 'null', 5, 'null');
+(2, 'asha dharmasala', 'Vip road', NULL, NULL, '9856326523', 'Mr. Dilip', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -849,7 +988,7 @@ CREATE TABLE IF NOT EXISTS `toilet` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `toilet`
@@ -857,8 +996,7 @@ CREATE TABLE IF NOT EXISTS `toilet` (
 
 INSERT INTO `toilet` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
 (1, 'Sahoo`s toilet', 'vip road , puri', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg'),
-(2, 'Panda`s toilet', 'Dutta tota', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg'),
-(3, 'toilet 1', 'dutta tota', '985632145', 'authority', 4, 'img/hotels.jpg');
+(2, 'Panda`s toilet', 'Dutta tota', '9658632154', 'Mr. Sankar', 1, 'img/hotels.jpg');
 
 -- --------------------------------------------------------
 
@@ -935,16 +1073,14 @@ CREATE TABLE IF NOT EXISTS `trauma_care` (
   `contact` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `trauma_care`
 --
 
 INSERT INTO `trauma_care` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
-(1, 'Dipti truma care', 'vip road', '9632565236', 1),
-(2, 'asha trauma care', 'temple road', '9632565236', 1),
-(3, 'test', 'address', '9999999999', 1);
+(1, 'Dipti truma care', 'vip road', '9632565236', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

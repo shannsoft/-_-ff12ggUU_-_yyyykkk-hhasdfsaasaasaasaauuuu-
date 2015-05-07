@@ -322,22 +322,23 @@ header('Access-Control-Allow-Origin: *');
         {
 
          $startPrice = intval ($this->_request['startPrice']);
-         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1;
+         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : $startPrice;
          
           $sql="select distinct h.id hotelId , h.Name hotelName , h.content content ,h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
                 "h.Mobile mobile , h.Fax fax , h.Email email , h.Website webSite , h.reservation_authority reservationAuthority ,".
                 "h.Category category , h.Facilities facilitites , h.CityId cityId , h.icon_image iconImg, h.home_image homeImg , c.CityName ,c.STDCode stdCode".
                  " from hotels h" .
                  " join city c on c.CityID = h.CityId  ".
-                 "  join hotel_rooms hr on hr.hotel_id= h.id";
+                 "  join hotel_rooms hr on hr.hotel_id= h.id ";
                //echo $sql;
          if($startPrice!="undefined")
          {
 
            $sql .= "  where hr.PriceStarts>=$startPrice ";
-           if($endPrice > 0) // in case of out bound condition
-              $sql .=" and hr.PriceEnds<= $endPrice";
+           if($endPrice >= $startPrice) // in case of out bound condition
+              $sql .=" and hr.PriceEnds<= $endPrice ";
          }
+         $sql .=" and hr.room_type<>'Extra Bed'";
           //echo $sql;
          $hotelDetails = array();
           $rows = $this->executeGenericDQLQuery($sql);
@@ -906,6 +907,7 @@ header('Access-Control-Allow-Origin: *');
       
             $guestHouseDetails[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
             $guestHouseDetails[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $guestHouseDetails[$i]['content'] =($rows[$i]['content'] == null || $rows[$i]['content'] =="null") ? "No Data Available" : $rows[$i]['content'] ;
             $guestHouseDetails[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
             $guestHouseDetails[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
             $guestHouseDetails[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
@@ -944,6 +946,7 @@ header('Access-Control-Allow-Origin: *');
 
             $resturantDetails[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
             $resturantDetails[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $resturantDetails[$i]['content'] =($rows[$i]['content'] == null || $rows[$i]['content'] =="null") ? "No Data Available" : $rows[$i]['content'] ;
             $resturantDetails[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
             $resturantDetails[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
             $resturantDetails[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
@@ -983,6 +986,7 @@ header('Access-Control-Allow-Origin: *');
 
             $coffeeShops[$i]['Name'] =($rows[$i]['Name'] == null || $rows[$i]['Name'] =="null") ? "No Data Available" : $rows[$i]['Name'] ;
             $coffeeShops[$i]['Address'] =($rows[$i]['Address'] == null || $rows[$i]['Address'] =="null") ? "No Data Available" : $rows[$i]['Address'] ;
+            $coffeeShops[$i]['content'] =($rows[$i]['content'] == null || $rows[$i]['content'] =="null") ? "No Data Available" : $rows[$i]['content'] ;
             $coffeeShops[$i]['Phone1'] =($rows[$i]['Phone1'] == null || $rows[$i]['Phone1'] =="null") ? "No Data Available" : $rows[$i]['Phone1'] ;
             $coffeeShops[$i]['Phone2'] =($rows[$i]['Phone2'] == null || $rows[$i]['Phone2'] =="null") ? "No Data Available" : $rows[$i]['Phone2'] ;
             $coffeeShops[$i]['Phone3'] =($rows[$i]['Phone3'] == null || $rows[$i]['Phone3'] =="null") ? "No Data Available" : $rows[$i]['Phone3'] ;
@@ -1390,9 +1394,9 @@ header('Access-Control-Allow-Origin: *');
               $parkingDetails[$i]['name'] = $rows[$i]['name'];
               $parkingDetails[$i]['address'] = $rows[$i]['address'];
               $parkingDetails[$i]['contact'] = $rows[$i]['contact'];
-              $parkingDetails[$i]['authority'] = $rows[$i]['authority'];
+              //$parkingDetails[$i]['authority'] = $rows[$i]['authority'];
               $parkingDetails[$i]['CityName'] = $rows[$i]['CityName'];
-              $parkingDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
+              // $parkingDetails[$i]['icon_image'] = $rows[$i]['icon_image'];
 
            }
             $this->response($this->json($parkingDetails), 200);
