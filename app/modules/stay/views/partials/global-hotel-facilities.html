@@ -24,9 +24,9 @@
 				  </div><!--call-about end-->
 			   </div><!--col-40 end-->
 			    <div class="col col-25">
-				<div class="email-about" ng-click="showEmail()">
+				<div class="email-about" ng-click="showEmail()" ng-if="selectedHotel.email && selectedHotel.email!='No Data Available' ">
 				  <h2> <a href=""> <i class="fa fa-paper-plane"></i> Email </a> </h2>
-				  </div><!--call-about end-->
+				 </div><!--call-about end-->
 			   </div><!--col-40 end-->
 			    <div class="col col-25">
 			      <div class="map-about" ng-click="viewOnMap(selectedHotel.address)">

@@ -121,6 +121,7 @@ angular.module("money").controller("moneyController",['$scope','$rootScope','App
     }
     /* codes for currency convert ends*/
     $scope.viewOnMap = function(address){ 
+      // alert(address);
       $scope.$emit(MainEvent.INIT_MAP,{data : address});
     }
 

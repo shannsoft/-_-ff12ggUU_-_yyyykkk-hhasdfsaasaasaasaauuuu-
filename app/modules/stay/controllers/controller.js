@@ -19,6 +19,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
         {label:"Temporary Accomodation",detailPage:"#temp-accomdation-details",contentUrl:"modules/stay/views/partials/temp-accomdation-details.html" , iconImgPath: "img/accomodation.jpg"}
       ];
       $scope.priceRange = ["200-1000","1000-2000","2000-3000","3000-4000","4000-above"];
+      $scope.guestHouseRange = ["200-300","300-400","400-above"];
     }
 
 
@@ -132,7 +133,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     $scope.selectedGuestHouse = {};
     $scope.fetchGuestHouseDetails = function(pPrice){
       //if(!pName) pName = '';
-      if(!pPrice) pPrice = '';
+     // if(!pPrice) pPrice = '';
 
       var startPrice,endPrice;
       if(!pPrice) pPrice = '';
@@ -140,9 +141,9 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       {
         pPrice = pPrice.split("-");
         startPrice = pPrice[0];
-        startPrice=="4000" ? endPrice = undefined : endPrice=pPrice[1];
+        startPrice=="400" ? endPrice = undefined : endPrice=pPrice[1];
       }
-      $scope
+      
       StayService.fetchGuestHouse(startPrice,endPrice).then(function(pRes){
           $scope.guestHouseList = [];
           $scope.guestHouseList = pRes.data;
@@ -245,5 +246,10 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
     $scope.viewOnMap = function(address){ 
       $scope.$emit(MainEvent.INIT_MAP,{data : address});
     }
+
+    /*$scope.getNumber = function(data,obj,no)
+    {
+      console.log(":::::::::::::::::::::::::::::::        "+data,obj,no);
+    }*/
   	
 }]);

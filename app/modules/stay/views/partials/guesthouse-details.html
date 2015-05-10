@@ -6,7 +6,21 @@
 
 	<ion-view class="pane">
         <ion-content class="has-header">
-		 
+		 <div class="row  top-margin">
+		   <div class="col col-100 ">
+		    <form class="list list-inset">
+			 <label class="item item-input item-select">
+              <div class="input-label">
+               Search 
+              </div>
+				<select ng-model="price" ng-options="price for price in guestHouseRange" ng-change="fetchGuestHouseDetails(price)">
+					<option ng-selected="true" value="">By Price</option>
+				</select>
+             </label>
+			</form>
+		   </div><!--col-30 end-->
+		   
+		  </div><!--title-nabakalebara end-->
 		  <div class="row money-dashboard contacts-dashboard hotel-details"
 		        ng-repeat="house in guestHouseList">
 		     <a  class="col col-25" ng-click="guestHouseFacility(house)">

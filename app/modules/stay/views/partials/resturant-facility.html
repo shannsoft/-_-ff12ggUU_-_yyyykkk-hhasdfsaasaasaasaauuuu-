@@ -25,7 +25,8 @@
 			   
 			    <div class="col col-35">
 				 <div class="call-about" >
-				   <h2>  <a href="tel:{{selectedResturant.Phone1}}"> <i class="fa fa-phone"></i> Call </a> </h2>
+				   <!-- <h2>  <a href="tel:{{selectedResturant.Phone1}}" ng-click="getNumber($root.getNumber(selectedResturant,selectedResturant.Phone1))"> <i class="fa fa-phone"></i> Call </a> </h2> -->
+				   <h2>  <a href="tel:{{$root.getNumber(selectedResturant,selectedResturant.Phone1)}}"> <i class="fa fa-phone"></i> Call </a> </h2>
 				  </div><!--call-about end-->
 			   </div><!--col-40 end-->
 			  
@@ -35,9 +36,9 @@
 			   <div class="col col-70">
 			      <h2>{{selectedResturant.Name}}</h2>
 			   </div><!--col-50 end-->
-			   <div class="col col-25">
+			   <!-- <div class="col col-25">
 			     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half"></i> </div>
-			   </div><!--col-50 end-->
+			   </div> -->
 			 </div><!--row end-->
 			 <div class="row facilities-hotel">
 			    <p>
