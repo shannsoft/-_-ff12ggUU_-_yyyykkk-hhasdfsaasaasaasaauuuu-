@@ -5,9 +5,13 @@ AppRoot.controller("MainController", ['$scope','$rootScope', function ($scope,$r
 		
 		if(pNumber)
 		{
-			if(pNumber.length <= 10 && pObj.stdCode)
+			if(pObj && pNumber.length < 10 && pObj.stdCode)
 			{
 				pNumber = pObj.stdCode+""+pNumber;
+			}
+			else if(pNumber.length >= 10)
+			{
+				pNumber ="+91"+pNumber;
 			}
 			
 		}

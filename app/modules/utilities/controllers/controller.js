@@ -8,8 +8,8 @@ angular.module("events").controller("utilitiesController",['$scope','$rootScope'
       $scope.heading = 'Utilities';
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.utilityOptionList = [
-        {detailLink:"#/",contentUrl:"modules/utilities/views/partials/toilet-details.html",icon:"img/event.jpg",utilityName:"Toilet",address:"Puri mangalapur"},
-    		{detailLink:"#/",contentUrl:"modules/utilities/views/partials/drinking-water-details.html",icon:"img/event.jpg",utilityName:"Drinking Water",address:"Puri bus stand"}
+        {detailLink:"#/",contentUrl:"modules/utilities/views/partials/toilet-details.html",icon:"img/toilet.png",utilityName:"Toilet",address:"Puri mangalapur"},
+    		{detailLink:"#/",contentUrl:"modules/utilities/views/partials/drinking-water-details.html",icon:"img/drinkingWater.png",utilityName:"Drinking Water",address:"Puri bus stand"}
   		
   	  ];
     }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 06, 2015 at 10:45 PM
+-- Generation Time: May 11, 2015 at 08:33 PM
 -- Server version: 5.5.37-cll
 -- PHP Version: 5.4.23
 
@@ -202,17 +202,17 @@ CREATE TABLE IF NOT EXISTS `city` (
   `CountryID` int(11) NOT NULL,
   `STDCode` int(11) NOT NULL,
   PRIMARY KEY (`CityID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=93 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=113 ;
 
 --
 -- Dumping data for table `city`
 --
 
 INSERT INTO `city` (`CityID`, `CityName`, `StateID`, `CountryID`, `STDCode`) VALUES
-(1, 'puri', 1, 1, 965),
+(1, 'Puri', 1, 1, 965),
 (2, 'Kolkata', 2, 1, 563),
-(3, 'hydrabad', 3, 1, 234),
-(4, 'balasore', 1, 1, 674),
+(3, 'Hydrabad', 3, 1, 234),
+(4, 'Balasore', 1, 1, 674),
 (5, 'Bhadrak', 1, 1, 674),
 (7, 'Khurda', 1, 1, 751001),
 (8, 'Rourkela', 1, 1, 661),
@@ -296,7 +296,27 @@ INSERT INTO `city` (`CityID`, `CityName`, `StateID`, `CountryID`, `STDCode`) VAL
 (86, 'Panchapada', 1, 1, 4567),
 (87, 'Jayapur', 1, 1, 5467),
 (88, 'Cuttack', 1, 1, 671),
-(89, 'Valsad', 7, 1, 1234);
+(89, 'Valsad', 7, 1, 1234),
+(93, 'Bikaner', 8, 1, 12345),
+(94, 'Kolkatta', 9, 1, 33),
+(95, 'OKHA', 10, 1, 12345),
+(96, 'Kolkata Santragachi Junction', 9, 1, 3451),
+(97, 'Tirupati', 11, 1, 3456),
+(98, 'Jodhpur', 8, 1, 1234),
+(99, 'Guwahati', 12, 1, 7867),
+(100, 'Jaynagar', 13, 1, 2345),
+(101, 'Patna JN', 13, 1, 23455),
+(102, 'Yesvantpur Junction', 14, 1, 4567),
+(103, 'Durg Junction', 15, 1, 56567),
+(104, 'Ahmedabad Junction', 10, 1, 1233),
+(105, 'Chennai Central', 16, 1, 7876),
+(106, 'Surat', 7, 1, 2324),
+(107, 'Gandhidham BG', 10, 1, 45465),
+(108, 'Sealdah', 9, 1, 4546),
+(109, 'Hatia', 17, 1, 4566),
+(110, 'Haridwar Junction', 18, 1, 4546),
+(111, 'Kamakhya', 12, 1, 5467),
+(112, 'Shirdi', 5, 1, 5467);
 
 -- --------------------------------------------------------
 
@@ -317,22 +337,20 @@ CREATE TABLE IF NOT EXISTS `coffee_shops` (
   `Category` varchar(50) DEFAULT NULL,
   `start_price` int(5) DEFAULT NULL,
   `end_price` int(5) DEFAULT NULL,
-  `Facilities` varchar(100) DEFAULT NULL,
+  `Facilities` varchar(100) DEFAULT '0',
   `CityId` int(11) DEFAULT NULL,
   `icon_image` varchar(200) DEFAULT NULL,
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `coffee_shops`
 --
 
 INSERT INTO `coffee_shops` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'mishra`s cofee', NULL, 'badadanda ,puri', '9652365478', '9856325698', '9856325417', '9986521452', 'www.mishracofee.com', '3', NULL, NULL, '1,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(2, 'sahoo`s cofee', NULL, 'mangala sahi ,puri', '9856365214', '9866523652', '9874521546', '9856965236', 'www.sahoocofee.com', '2', NULL, NULL, '1,3,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(3, 'name1', 'content', 'address', '9898989898', '8989898989', '8989898989', '8989898989', 'www.mm.com', '3', NULL, NULL, '1,2', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
+(11, 'DOMINOS', 'Dominoâ€™s vision is focused on " Exceptional people on a mission to be the best pizza delivery company in the world!" We are committed to bringing fun, happiness and convenience to lives of our consu', 'HOTEL SEA POINT,  VIP ROAD, HARIHAR CHOWK PURI,', '662100', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://www.dominos.co.in/files/upload/images/cb4229ca765590d1724895fbc3ef15e1.jpg', 'http://www.dominos.co.in/files/upload/images/cb4229ca765590d1724895fbc3ef15e1.jpg'),
 (4, 'Cafe Coffee Day', 'Cafe Coffee Day', 'Muncipal Market, Grand Road,Puri', NULL, NULL, NULL, NULL, 'www.cafecoffeeday.com', '0', NULL, NULL, '1,6', 1, 'http://images.jdmagicbox.com/upload_test/mumbai/16/022p8004816/logo/c4f5f350d09167e356e4d25a3d09c6e6.jpg', 'http://images.jdmagicbox.com/upload_test/mumbai/16/022p8004816/logo/c4f5f350d09167e356e4d25a3d09c6e6.jpg'),
 (5, 'Harrys Cafe & Restaurant', 'Harrys Cafe & Restaurant', 'Lotus Hotel, Chakratirtha Road, Puri - 752002', '227033', NULL, NULL, '9437753675', 'null', '0', NULL, NULL, '1', 1, 'null', 'null'),
 (6, 'Orissa bakery', 'Orissa bakery', 'Water Works Road, Puri Station Road, Puri - 752002, Near Dav School', '223275', NULL, NULL, '8895266440', 'null', '0', NULL, NULL, '1', 1, 'null', 'null'),
@@ -378,16 +396,20 @@ CREATE TABLE IF NOT EXISTS `drinking_water` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `drinking_water`
 --
 
 INSERT INTO `drinking_water` (`id`, `name`, `address`, `contact`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'Drinking water', 'mangala sahi , puri', '9856521452', 'Mr. ramesh', 1, 'img/hotels.jpg'),
-(2, 'drinking Water', 'badadanda , puri', '9856326523', 'Mr. Dinesh', 1, 'img/hotels.jpg'),
-(3, 'drinking warer1', 'dutta tota', '958652362', 'Mr. Dillip', 4, 'img/hotels.jpg');
+(4, 'Drinking water point 1', 'Shree Jagannath TEMPLE OFFICE,Badadanda', '', '', 1, ''),
+(5, 'Drinking Water Point 2', 'Srikrushna Cinema Gali, Badadanda', '', '', 1, ''),
+(6, 'Drinking Water Point 3', 'Near Indian Bank  Gali, Badadanda', '', '', 1, ''),
+(7, 'Drinking Water Point 4', 'Marchikot Chaka, Badadanda', '', '', 1, ''),
+(8, 'Drinking Water Point 5', 'Near Town Thana ,Badadanda', '', '', 1, ''),
+(9, 'Drinking Water Point 6', 'Near Market Chaka,Badadanda', '', '', 1, ''),
+(10, 'Drinking Water Point 7', 'Near Mausi Maa Mandir, Badadanda', '', '', 1, '');
 
 -- --------------------------------------------------------
 
@@ -397,7 +419,8 @@ INSERT INTO `drinking_water` (`id`, `name`, `address`, `contact`, `authority`, `
 
 CREATE TABLE IF NOT EXISTS `facilities` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
-  `facility` varchar(100) NOT NULL DEFAULT '0',
+  `facility` varchar(100) DEFAULT NULL,
+  `font_class` varchar(100) DEFAULT 'fa fa-exclamation-triangle',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
@@ -405,13 +428,13 @@ CREATE TABLE IF NOT EXISTS `facilities` (
 -- Dumping data for table `facilities`
 --
 
-INSERT INTO `facilities` (`id`, `facility`) VALUES
-(1, 'parkng'),
-(2, 'gym'),
-(3, 'bar'),
-(4, 'resturant'),
-(5, 'conference room'),
-(6, 'wi fi');
+INSERT INTO `facilities` (`id`, `facility`, `font_class`) VALUES
+(1, 'parkng', 'fa fa-car'),
+(2, 'gym', 'fa fa-exclamation-triangle'),
+(3, 'bar', 'fa fa-beer'),
+(4, 'resturant', 'fa fa-building-o'),
+(5, 'conference room', 'fa fa-users'),
+(6, 'wi fi', 'fa fa-wifi');
 
 -- --------------------------------------------------------
 
@@ -426,14 +449,15 @@ CREATE TABLE IF NOT EXISTS `fast_aid` (
   `contact` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `fast_aid`
 --
 
 INSERT INTO `fast_aid` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
-(1, 'Fast Aid 1', 'mangala sahi  , puri', '9632565236', 1);
+(1, 'Fast Aid 1', 'mangala sahi  , puri', '9632565236', 1),
+(2, 'fast 10', 'address 10', '9652521452', 1);
 
 -- --------------------------------------------------------
 
@@ -515,27 +539,51 @@ CREATE TABLE IF NOT EXISTS `guest_house` (
   `Name` varchar(100) NOT NULL,
   `content` varchar(200) DEFAULT NULL,
   `Address` varchar(500) DEFAULT NULL,
+  `startPrice` int(5) DEFAULT '0',
+  `endPrice` int(5) DEFAULT '0',
   `Phone1` varchar(20) DEFAULT NULL,
   `Phone2` varchar(20) DEFAULT NULL,
   `Phone3` varchar(20) DEFAULT NULL,
   `Mobile` varchar(20) DEFAULT NULL,
   `Website` varchar(50) DEFAULT NULL,
   `Category` varchar(50) DEFAULT NULL,
-  `Facilities` varchar(100) DEFAULT NULL,
+  `Facilities` varchar(100) DEFAULT '0',
   `CityId` int(11) DEFAULT NULL,
   `icon_image` varchar(200) DEFAULT NULL,
   `home_image` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `guest_house`
 --
 
-INSERT INTO `guest_house` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Sahoo guest house', NULL, 'Dutta tota', '9856325632', '9856325632', '9874521456', '9696325415', 'www.sahoohotel.com', '4', '1,5', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(2, 'Mishra Guest house', NULL, 'Dutta tota , puri', '9856325632', '9856325632', '9854125632', '9856325415', 'www.mishrahouse.com', '4', '2,3,4', 1, 'img/hotels.jpg', 'img/hotels.jpg');
+INSERT INTO `guest_house` (`id`, `Name`, `content`, `Address`, `startPrice`, `endPrice`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
+(5, 'Ashraya Lodge', 'Budget Lodge', 'Gundicha Temple,\nGrand Road,Puri\n(infront of Bus stand )', 300, 350, '220424', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(6, 'Hotel Abhisekh', 'Budget lodge', 'Gopaballav  Road \nPuri', 300, 800, '320820', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(7, 'Akash Guest House,', 'Budget lodge', 'Swargadwar, Puri,', 200, 350, '220776', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(8, 'Akash International', 'Budget lodge', 'C.T.Road,Puri.', 100, 1500, '224204', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(9, 'Amantran Lodge,', 'Budget lodge', 'Swargadwar, Puri', 100, 300, '231070', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(10, 'Hotel Annapurna', 'Budget lodge', 'Gopalballav Road\nPuri-752001', 225, 325, '7377060636', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(11, 'Ashoka  Lodge', 'Budget lodge', 'Grand Road, Puri', 150, 250, '226993', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(12, 'Ashirbad Lodge', 'Budget lodge', 'Swargadwar,Puri', 250, 250, '377665231', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(13, 'Baba Lodge', 'Budget lodge', 'Dalamandap Sahi,Puri', 150, 300, '9861187856', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(14, 'Baby Lodge', 'Budget lodge', 'Gopal Ballav Road, Puri', 200, 700, '222923', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(15, 'Baikuntha Dham', 'Budget lodge', 'Dolamandap Sahi,\nTemple Road\nPuri-752001', 350, 1050, '9861371617', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(16, 'Balabhadra Atithi Bhawan', 'Budget lodge', 'Marichikot Square,\nGrand Road, Puri', 200, 350, '9861234260', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(17, 'Balananda Tirthashram', 'Budget lodge', 'Sea Beach, Puri', 325, 700, '222561', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(18, 'Hotel Basanti', 'Budget lodge', 'Dandimal Sahi, \nPuri', 300, 600, '223793', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(19, 'Hotel Bay Breeze', 'Budget lodge', 'C.T. Road, Puri', 300, 550, '226449', NULL, NULL, NULL, 'baybreezehotel@gmail.com', '0', '1', 1, 'null', 'null'),
+(20, 'Bay La Lodge', 'Budget lodge', 'C.T.Road, Puri', 200, 300, '220460', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(21, 'Hotel Beach View', 'Budget lodge', 'Chakratirtha Road, \nPuri', 150, 450, '233690', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(22, 'Beenu Guest House, (SagarAssociates)', 'Budget lodge', 'Gourbar Sahi, Puri', 400, 1200, '231389', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(23, 'Bhanuvila  Lodge', 'Budget lodge', 'Swargadwar,Puri', 200, 300, '9861185543', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(24, 'Bharati Lodge', 'Budget lodge', 'Grand Road, Puri', 100, 300, '222582', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(25, 'Hotel Bhudevi', 'Budget lodge', 'Near Bharat Sevasramsangha Library,Swargadwar,Puri', 400, 700, '221366', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(26, 'Bihar Atithi Bhawan', 'Budget lodge', 'Grand Road,Puri', 300, 1000, '225330', '2330066', NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(27, 'Binapani Lodge', 'Budget lodge', 'Swargadwar,Puri', 150, 300, '231219', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null'),
+(28, 'Bishnupriya Lodge', 'Budget lodge', 'Grand Road,Puri', 250, 400, '9853393887', NULL, NULL, NULL, 'null', '0', '1', 1, 'null', 'null');
 
 -- --------------------------------------------------------
 
@@ -550,14 +598,18 @@ CREATE TABLE IF NOT EXISTS `hospital` (
   `contact` varchar(100) DEFAULT NULL,
   `cityId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `hospital`
 --
 
 INSERT INTO `hospital` (`id`, `name`, `address`, `contact`, `cityId`) VALUES
-(1, 'Suraksya hospital', 'Dutta tota', '9632565236', 1);
+(2, 'E 24 Hospital Pvt Ltd', 'Mochi Sahi Square, Puri', '9040021999', 1),
+(3, 'Sanjibani Hospital', 'Bus Stand Out Gate, Puri - 752002', '220509', 1),
+(4, 'Sibananda Nursing Home', 'Grand Road, Baniasahi, Puri - 752002', '9937382716', 1),
+(5, 'Gopinath Hospital', 'Block Square, Sakhigopal, Puri - 752014', '9437199477', 1),
+(6, 'Sri Jagannath Medical Educational', 'Baseli Sahi,Puri-752001', '230890', 1);
 
 -- --------------------------------------------------------
 
@@ -579,7 +631,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
   `Website` varchar(50) DEFAULT NULL,
   `reservation_authority` varchar(100) DEFAULT NULL,
   `Category` varchar(50) DEFAULT NULL,
-  `Facilities` varchar(100) DEFAULT NULL,
+  `Facilities` varchar(100) DEFAULT '0',
   `CityId` int(11) DEFAULT NULL,
   `icon_image` varchar(200) DEFAULT NULL,
   `home_image` varchar(200) DEFAULT NULL,
@@ -592,7 +644,7 @@ CREATE TABLE IF NOT EXISTS `hotels` (
 --
 
 INSERT INTO `hotels` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Fax`, `Email`, `Website`, `reservation_authority`, `Category`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(30, 'Hotel Toshali Sands,', 'Toshali Sands Resort Puri, best accommodation in puri proudly boasts of introducing many new trends in the hospitality industry of India. We are the first hotels & resorts in Jagannath Puri', 'Puri Konark Marine Drive, Puri-2', '250572', '250571', '250573', NULL, '250899', 'bbsr@toshali.in', 'http://www.toshalisands.com', 'Manager', '3', '1,2,3,4,5,6', 1, 'http://www.toshalisands.com/banner/aerial-view.jpg', 'http://www.toshalisands.com/banner/aerial-view.jpg'),
+(30, 'Hotel Toshali Sands,', 'Toshali Sands Resort Puri, best accommodation in puri proudly boasts of introducing many new trends in the hospitality industry of India. We are the first hotels & resorts in Jagannath Puri', 'Puri Konark Marine Drive, Puri-2', '250572', '250571', '250573', NULL, '250899', 'bbsr@toshali.in', 'http://www.toshalisands.com', 'Manager', '4', '1,2,3,4,5,6', 1, 'http://www.toshalisands.com/banner/aerial-view.jpg', 'http://www.toshalisands.com/banner/aerial-view.jpg'),
 (37, 'Hotel Arya Palace,', 'null', 'Chakra Tirtha Road, Puri.', '232688', '232689', NULL, NULL, NULL, 'null', 'null', 'Manager', '2', '1,4', 1, 'http://img.yatra.com/content/images/xhotel/hotelgfx/IN-BHU-YAT-42536131/11_Hotel-Building-2.jpeg', 'http://img.yatra.com/content/images/xhotel/hotelgfx/IN-BHU-YAT-42536131/11_Hotel-Building-2.jpeg'),
 (31, 'Hotel May Fair Beach Resort', 'Heavenly settings overlooking the Puri Beach and unique panorama are all that make MAYFAIR Heritage Puri the 3 Star luxury beach resort to accommodate in the reign of Lord Jagannath.', 'Chakra Tirtha Road, Puri', '227800', NULL, NULL, NULL, '224242', 'puri@mayfairhotels.com', 'http://www.mayfairhotels.com/index.html', 'Manager', '3', '1,2,3,4,5,6', 1, 'http://www.mayfairhotels.com/images/MAYFAIR_Puri_T1.jpg', 'http://www.mayfairhotels.com/images/MAYFAIR_Puri_T1.jpg'),
 (32, 'Hotel Hans Coco Palms', 'Set in idyllic surroundings, in what is one of Indiaâ€™s best kept secrets â€“ the sea shore of Orissa â€“ The Hans Coco Palms at Puri is a haven of peace, serenity and cultural delights. The experien', 'Baliapanda, Puri', '230038', '230951', '230952', NULL, '230165', 'Hanscocopalms@hanshotels.com', 'http://www.hanshotels.com/puri/index.html', 'Manager', '3', '1,2,3,4,5,6', 1, 'http://www.hanshotels.com/puri/images/flash-1.jpg', 'http://www.hanshotels.com/puri/images/flash-1.jpg'),
@@ -634,13 +686,11 @@ CREATE TABLE IF NOT EXISTS `hotel_rooms` (
 --
 
 INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `PriceEnds`, `hotel_id`) VALUES
-(39, 'Extra Bed', 0, 0, 0, 29),
 (38, 'Exclusive Villa', 0, 0, 0, 29),
 (37, 'Villa', 0, 0, 0, 29),
 (36, 'Exclusive Deluxe', 0, 0, 0, 29),
 (35, 'Cottage', 100, 1000, 2000, 29),
 (34, 'Deluxe Room', 0, 0, 0, 29),
-(33, 'Extra Bed', 0, 0, 0, 28),
 (32, 'Exclusive Villa', 0, 0, 0, 28),
 (31, 'Villa', 0, 0, 0, 28),
 (30, 'Exclusive Deluxe', 0, 0, 0, 28),
@@ -650,107 +700,91 @@ INSERT INTO `hotel_rooms` (`id`, `room_type`, `NoOfRooms`, `PriceStarts`, `Price
 (42, 'Exclusive Deluxe', 10, 8600, 11600, 30),
 (43, 'Villa', 9, 11700, 14700, 30),
 (44, 'Exclusive Villa', 4, 13500, 16500, 30),
-(45, 'Extra Bed', 0, 1300, 2800, 30),
-(46, 'Deluxe Room', 9, 10000, 0, 31),
-(47, 'Cottage', 21, 12000, 0, 31),
+(46, 'Deluxe Room', 9, 10000, 10000, 31),
+(47, 'Cottage', 21, 12000, 12000, 31),
 (48, 'Exclusive Deluxe', 0, 0, 0, 31),
-(49, 'Villa', 4, 15000, 0, 31),
+(49, 'Villa', 4, 15000, 15000, 31),
 (50, 'Exclusive Villa', 0, 0, 0, 31),
-(51, 'Extra Bed', 0, 0, 0, 31),
-(52, 'Deluxe Room', 36, 8000, 0, 32),
-(53, 'Cottage', 1, 14000, 0, 32),
+(52, 'Deluxe Room', 36, 8000, 8000, 32),
+(53, 'Cottage', 1, 14000, 14000, 32),
 (54, 'Exclusive Deluxe', 0, 0, 0, 32),
 (55, 'Deluxe Room', 34, 3500, 4000, 33),
 (56, 'Cottage', 0, 0, 0, 33),
 (57, 'Exclusive Deluxe', 2, 4000, 4500, 33),
 (58, 'Villa', 0, 0, 0, 33),
 (59, 'Exclusive Villa', 0, 0, 0, 33),
-(60, 'Extra Bed', 0, 600, 0, 33),
-(61, 'Deluxe Room', 40, 4000, 0, 34),
+(61, 'Deluxe Room', 40, 4000, 4000, 34),
 (62, 'Cottage', 0, 0, 0, 34),
-(63, 'Exclusive Deluxe', 10, 5000, 0, 34),
-(64, 'Villa', 2, 8000, 0, 34),
+(63, 'Exclusive Deluxe', 10, 5000, 5000, 34),
+(64, 'Villa', 2, 8000, 8000, 34),
 (65, 'Exclusive Villa', 0, 0, 0, 34),
-(66, 'Extra Bed', 0, 1000, 0, 34),
 (67, 'Deluxe Room', 9, 900, 1300, 35),
 (68, 'Cottage', 10, 1200, 1800, 35),
-(69, 'Exclusive Deluxe', 8, 1500, 0, 35),
+(69, 'Exclusive Deluxe', 8, 1500, 1500, 35),
 (70, 'Villa', 0, 0, 0, 35),
 (71, 'Exclusive Villa', 0, 0, 0, 35),
-(72, 'Extra Bed', 0, 0, 0, 35),
 (73, 'Deluxe Room', 7, 500, 600, 36),
 (74, 'Cottage', 0, 0, 0, 36),
 (75, 'Exclusive Deluxe', 8, 1000, 1200, 36),
 (76, 'Villa', 0, 0, 0, 36),
 (77, 'Exclusive Villa', 0, 0, 0, 36),
-(78, 'Extra Bed', 0, 0, 0, 36),
-(79, 'Deluxe Room', 10, 1400, 0, 37),
-(80, 'Cottage', 4, 2500, 0, 37),
+(79, 'Deluxe Room', 10, 1400, 1400, 37),
+(80, 'Cottage', 4, 2500, 2500, 37),
 (81, 'Exclusive Deluxe', 13, 2000, 0, 37),
 (82, 'Deluxe Room', 12, 900, 1200, 38),
-(83, 'Deluxe Room', 24, 2500, 0, 39),
+(83, 'Deluxe Room', 24, 2500, 2500, 39),
 (84, 'Cottage', 0, 0, 0, 39),
-(85, 'Exclusive Deluxe', 6, 3500, 0, 39),
+(85, 'Exclusive Deluxe', 6, 3500, 3500, 39),
 (86, 'Villa', 0, 0, 0, 39),
 (87, 'Exclusive Villa', 0, 0, 0, 39),
-(88, 'Extra Bed', 0, 0, 0, 39),
 (89, 'Deluxe Room', 21, 900, 1500, 40),
 (90, 'Cottage', 0, 0, 0, 40),
 (91, 'Exclusive Deluxe', 25, 2400, 3500, 40),
 (92, 'Villa', 0, 0, 0, 40),
 (93, 'Exclusive Villa', 0, 0, 0, 40),
-(94, 'Extra Bed', 0, 0, 0, 40),
 (95, 'Deluxe Room', 120, 3800, 4500, 41),
-(96, 'Cottage', 1, 8500, 0, 41),
+(96, 'Cottage', 1, 8500, 8500, 41),
 (97, 'Exclusive Deluxe', 0, 0, 0, 41),
 (98, 'Deluxe Room', 19, 1000, 2300, 42),
 (99, 'Cottage', 0, 0, 0, 42),
 (100, 'Exclusive Deluxe', 11, 1600, 2300, 42),
 (101, 'Villa', 0, 0, 0, 42),
 (102, 'Exclusive Villa', 0, 0, 0, 42),
-(103, 'Extra Bed', 0, 0, 0, 42),
 (104, 'Deluxe Room', 34, 2300, 3300, 43),
 (105, 'Cottage', 0, 0, 0, 43),
-(106, 'Exclusive Deluxe', 3, 5200, 0, 43),
-(107, 'Villa', 2, 6300, 0, 43),
+(106, 'Exclusive Deluxe', 3, 5200, 5200, 43),
+(107, 'Villa', 2, 6300, 6300, 43),
 (108, 'Exclusive Villa', 0, 0, 0, 43),
-(109, 'Extra Bed', 0, 0, 0, 43),
-(110, 'Deluxe Room', 36, 3650, 0, 44),
+(110, 'Deluxe Room', 36, 3650, 3650, 44),
 (111, 'Cottage', 0, 0, 0, 44),
 (112, 'Exclusive Deluxe', 0, 0, 0, 44),
 (113, 'Villa', 0, 0, 0, 44),
 (114, 'Exclusive Villa', 0, 0, 0, 44),
-(115, 'Extra Bed', 0, 0, 0, 44),
-(116, 'Deluxe Room', 34, 5000, 0, 45),
+(116, 'Deluxe Room', 34, 5000, 5000, 45),
 (117, 'Cottage', 0, 0, 0, 45),
 (118, 'Exclusive Deluxe', 68, 5500, 7500, 45),
-(119, 'Villa', 20, 7500, 0, 45),
-(120, 'Exclusive Villa', 15, 8500, 0, 45),
-(121, 'Extra Bed', 0, 0, 0, 45),
+(119, 'Villa', 20, 7500, 7500, 45),
+(120, 'Exclusive Villa', 15, 8500, 8500, 45),
 (122, 'Deluxe Room', 20, 1500, 1800, 46),
 (123, 'Cottage', 0, 0, 0, 46),
 (124, 'Exclusive Deluxe', 3, 2400, 3000, 46),
 (125, 'Villa', 0, 0, 0, 46),
 (126, 'Exclusive Villa', 0, 0, 0, 46),
-(127, 'Extra Bed', 0, 0, 0, 46),
 (128, 'Deluxe Room', 30, 1200, 2000, 47),
 (129, 'Cottage', 0, 0, 0, 47),
 (130, 'Exclusive Deluxe', 17, 1800, 2500, 47),
 (131, 'Villa', 0, 0, 0, 47),
 (132, 'Exclusive Villa', 0, 0, 0, 47),
-(133, 'Extra Bed', 0, 0, 0, 47),
 (134, 'Deluxe Room', 20, 850, 1500, 48),
 (135, 'Cottage', 0, 0, 0, 48),
 (136, 'Exclusive Deluxe', 0, 0, 0, 48),
 (137, 'Villa', 0, 0, 0, 48),
 (138, 'Exclusive Villa', 0, 0, 0, 48),
-(139, 'Extra Bed', 0, 0, 0, 48),
 (140, 'Deluxe Room', 5, 700, 1000, 49),
 (141, 'Cottage', 0, 0, 0, 49),
 (142, 'Exclusive Deluxe', 23, 1250, 2000, 49),
 (143, 'Villa', 0, 0, 0, 49),
-(144, 'Exclusive Villa', 0, 0, 0, 49),
-(145, 'Extra Bed', 0, 0, 0, 49);
+(144, 'Exclusive Villa', 0, 0, 0, 49);
 
 -- --------------------------------------------------------
 
@@ -840,7 +874,7 @@ CREATE TABLE IF NOT EXISTS `resturants` (
   `Category` varchar(50) DEFAULT NULL,
   `start_price` int(5) DEFAULT NULL,
   `end_price` int(5) DEFAULT NULL,
-  `Facilities` varchar(100) DEFAULT NULL,
+  `Facilities` varchar(100) DEFAULT '0',
   `CityId` int(11) DEFAULT NULL,
   `icon_image` varchar(200) DEFAULT NULL,
   `home_image` varchar(200) DEFAULT NULL,
@@ -853,15 +887,13 @@ CREATE TABLE IF NOT EXISTS `resturants` (
 --
 
 INSERT INTO `resturants` (`id`, `Name`, `content`, `Address`, `Phone1`, `Phone2`, `Phone3`, `Mobile`, `Website`, `Category`, `start_price`, `end_price`, `Facilities`, `CityId`, `icon_image`, `home_image`) VALUES
-(1, 'Muskaan resturants', NULL, 'Dutta tota', '9856326523', '9856325632', '9854125632', '9856325415', 'www.muskan.com', '4', NULL, NULL, '2,4,6', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
-(2, 'Trupti restutants', NULL, 'Dutta tota', '9658541256', '9856323652', '9858965236', '9652147852', 'www.trupti.com', '3', NULL, NULL, '1,2,3', 1, 'img/hotels.jpg', 'img/hotels.jpg'),
 (4, 'chung wah restaurant', 'If you crave for authentic Chinese food in Puri, do try the Chung Wah', 'VIP Road,Puri', '223647', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://images.ixigo.com/image/upload/t_medium,f_auto/chung-wah-restaurant-images-photos-512deeb8e4b0f3660be9d624.jpg', 'http://images.ixigo.com/image/upload/t_medium,f_auto/chung-wah-restaurant-images-photos-512deeb8e4b0f3660be9d624.jpg'),
 (5, 'The Gajapati', 'The Gajapati', 'C T Road, Puri', '223968', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1,4', 1, 'http://media-cdn.tripadvisor.com/media/photo-s/04/a8/bb/8d/the-gajapati.jpg', 'http://media-cdn.tripadvisor.com/media/photo-s/04/a8/bb/8d/the-gajapati.jpg'),
 (6, 'Bhojohori manna', 'Nice authentic bengali food', 'Hotel Greenery\nGopal Ballav Road\nSea Beach, Puri', '8280033332', NULL, NULL, '8280033332', 'http://bhojohorimanna.com/restaurant-info/location', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/05/0b/08/08/bhojohori-manna.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/05/0b/08/08/bhojohori-manna.jpg'),
-(7, 'Fusion', 'null', 'Chakratirtha Road, \nPuri-752002', '223968', NULL, NULL, NULL, 'null', '0', NULL, NULL, '', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/04/82/14/95/fusion.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/04/82/14/95/fusion.jpg'),
+(7, 'Fusion', 'null', 'Chakratirtha Road, \nPuri-752002', '223968', NULL, NULL, NULL, 'null', '0', NULL, NULL, '0', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/04/82/14/95/fusion.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/04/82/14/95/fusion.jpg'),
 (8, 'Honey Bee Bakery & Pizzeria', 'Honey Bee Bakery & Pizzeria', 'Chakra Tirtha Rd, Puri,', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'https://mw2.google.com/mw-panoramio/photos/small/103069096.jpg', 'https://mw2.google.com/mw-panoramio/photos/small/103069096.jpg'),
 (9, 'Bakers Boutique', 'Bakers Boutique', 'Holiday Resort, Chakra Tirtha Rd, Puri', '8658171111', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/04/a8/b9/3b/bakers-boutique.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/04/a8/b9/3b/bakers-boutique.jpg'),
-(10, 'Pink House', 'Pink House', 'Chakra Tirtha Road, Puri, Odisha 752002', '222253', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N'),
+(10, 'Pink House', 'Pink House', 'Chakra Tirtha Road, Puri, Odisha 752002', '222253', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://i.ytimg.com/vi/XND9cb5k7KM/hqdefault.jpg', 'http://i.ytimg.com/vi/XND9cb5k7KM/hqdefault.jpg'),
 (11, 'Wildgrass Restaurant', 'Wildgrass Restaurant', 'VIP Rd, Puri, Odisha 752001', '9437023656', NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'https://lh5.googleusercontent.com/-BbDChF2u7_c/VDSfnOjgXkI/AAAAAAAAEn8/gd6nzf6LQzc/s213-k-no/Wildgrass%2BRestaurant', 'https://lh5.googleusercontent.com/-BbDChF2u7_c/VDSfnOjgXkI/AAAAAAAAEn8/gd6nzf6LQzc/s213-k-no/Wildgrass%2BRestaurant'),
 (12, 'New Parijat Restaurant', 'New Parijat Restaurant', 'Sea Beach, Puri, Odisha 752001', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1', 1, 'http://media-cdn.tripadvisor.com/media/photo-l/03/03/2a/0c/new-parijat-restaurant.jpg', 'http://media-cdn.tripadvisor.com/media/photo-l/03/03/2a/0c/new-parijat-restaurant.jpg'),
 (13, 'AQUARIUM - Multi Cuisine Restaurant & Bar !', 'Savour international delicacies amidst aqua vibes!\nAquarium, the mesmerising multi-cuisine restaurant boasts of a well-stocked bar and a huge aquarium which is centrally placed in such a way so as to ', 'Mayfair Hotel Puri, Chakratirtha Road,', NULL, NULL, NULL, NULL, 'null', '0', NULL, NULL, '1,3,6', 1, 'http://www.mayfairhotels.com/mayfair-puri/images/Wine_Dine_MAYFAIR_Puri_P3.jpg', 'http://www.mayfairhotels.com/mayfair-puri/images/Wine_Dine_MAYFAIR_Puri_P3.jpg'),
@@ -895,7 +927,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
 INSERT INTO `schedule` (`id`, `schedule_name`, `schedule_content`, `start_time`, `end_time`, `day`) VALUES
 (1, 'Snana', 'sri Jagannath Snana puja', '6am', '7am', 'monday'),
 (2, 'Arati puja', 'Sri Jagannath Arati puja', '7am', '7a8', 'tuesday'),
-(5, 'Dwarfita and Mangal Arati', '"The first ritualThe First ritual of the day is ceremonial opening of the doors,scheduled time for opening of the doors is 5 AM.or before that. On some specific occasions, suchas - Aswina Ekadasi (next day after Dasahara)to Kartik Purnima and from Dhanu Sankranti toMakar Sankranti Dwarfita time is from 2 AM to3 AM in the morning"', '5:00 AM', '6:00AM', '');
+(5, 'Dwarfita and Mangal Arati', 'The first ritualThe First ritual of the day is ceremonial opening of the doors,scheduled time for opening of the doors is 5 AM.or before that. On some specific occasions, suchas - Aswina Ekadasi (next day after Dasahara)to Kartik Purnima and from Dhanu Sankranti toMakar Sankranti Dwarfita time is from 2 AM to3 AM in the morning', '5:00 AM', '6:00AM', '');
 
 -- --------------------------------------------------------
 
@@ -908,7 +940,7 @@ CREATE TABLE IF NOT EXISTS `states` (
   `StateName` varchar(50) NOT NULL,
   `CountryID` int(11) NOT NULL,
   PRIMARY KEY (`StateID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `states`
@@ -921,7 +953,18 @@ INSERT INTO `states` (`StateID`, `StateName`, `CountryID`) VALUES
 (4, 'lahore', 4),
 (5, 'Maharastra', 1),
 (6, 'New Delhi', 1),
-(7, 'Gujrat', 1);
+(7, 'Gujrat', 1),
+(8, 'Rajasthan', 1),
+(9, 'WB', 1),
+(10, 'Gujarat', 1),
+(11, 'Andhra Pradesh', 1),
+(12, 'Assam', 1),
+(13, 'Bihar', 1),
+(14, 'Karnataka', 1),
+(15, 'Chhattisgarh', 1),
+(16, 'Tamilnadu', 1),
+(17, 'Jharkhand', 1),
+(18, 'Uttarakhand', 1);
 
 -- --------------------------------------------------------
 
@@ -963,15 +1006,37 @@ CREATE TABLE IF NOT EXISTS `temp_accomodation` (
   `cityId` int(11) NOT NULL DEFAULT '0',
   `icon_image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `temp_accomodation`
 --
 
 INSERT INTO `temp_accomodation` (`id`, `name`, `address`, `start_price`, `end_price`, `contact_no`, `authority`, `cityId`, `icon_image`) VALUES
-(1, 'seva dharmasala', 'Dutta tota', NULL, NULL, '9652365214', 'Mr. Arjuna', 1, 'img/hotels.jpg'),
-(2, 'asha dharmasala', 'Vip road', NULL, NULL, '9856326523', 'Mr. Dilip', 1, 'img/hotels.jpg');
+(3, 'Talabania Area- Capacity 1,00,000', 'Talabania, Puri', 0, 0, 'null', 'DIst Admin', 1, 'null'),
+(4, 'SCS Staff Colony-Capacity 1,50,000', 'SCS Staff Colony,Talabania Area, Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(5, 'Kumbharapada OutPost- Capacity 40,000', 'Kumbharapada OutPost,Talabania Area, Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(6, 'Gundicha Mandir (Bus Stand)- Capacity 30,000', 'Gundicha Mandir (Bus Stand),Grand Road,puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(7, 'Bagala Dharmasala- Capacity 10,000', 'Bagala Dharmasala ,Grand Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(8, 'Jagannath Ballava -Capacity 5,000', 'Jagannath Ballava,Grand Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(9, 'OSRTC (Narendra Kona) -Capacity 20,000', 'OSRTC (Narendra Kona),Grand Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(10, 'Aquarium -Capacity 30,000', 'Aquarium,Chakratirtha Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(11, 'BNR front -Capacity 1,00,000', 'BNR front,Chakratirtha Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(12, 'Sunar Gouranga- Capacity 20,000', 'Sunar Gouranga,Chakratirtha Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(13, 'Bank of Baroda front- Capacity 5,000', 'Bank of Baroda front, VIP road , Puri', 0, 0, 'null', 'DIst Admin', 1, 'null'),
+(14, 'B.S. High School- Capacity 20,000', 'B.S. High School\nVIP Road, Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(15, 'Ayurvedic College- Capacity 10,000', 'Ayurvedic College, VIP Road Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(16, 'Zilla School , Capacity 30,000', 'Zilla School,VIP Road Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(17, 'SCS College(Inner Field)- Capacity 80,000', 'SCS College(Inner Field), VIP Road, Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(18, 'Sipasarubali (Tata Hatchery) - Capacity 20,000', 'Sipasarubali (Tata Hatchery),Loknath,Sipasirubali, Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(19, 'Samanga - Capacity 40,000', 'Samanga,Loknath,Sipasirubali, Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(20, 'Florish India Capacity 20,000', 'Florish India ,Loknath,Sipasirubali, Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(21, 'ODESA Bhawan side -Capacity 20,000', 'ODESA Bhawan side,Loknath,Sipasirubali,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(22, 'Gadadhar High School -Capacity 10,000', 'Gadadhar High School,Loknath,Sipasirubali,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(23, 'Baseli Sahi P.S. Capacity 5,000', 'Baseli Sahi P.S,Loknath,Sipasirubali,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(24, 'Chhapan Chhak- Capacity 20,000', 'Chhapan Chhak,Loknath,Sipasirubali,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(25, 'Jamindar Palace (back side) - Capacity 40,000', 'Jamindar Palace,Sea Beach & Beach Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null'),
+(26, 'Nilachal Ashok (Inner back side) -Capacity 50,000', 'Nilachal Ashok,Sea Beach & Beach Road,Puri', 0, 0, 'null', 'Dist Admin', 1, 'null');
 
 -- --------------------------------------------------------
 
@@ -1044,21 +1109,56 @@ CREATE TABLE IF NOT EXISTS `train` (
   `Saturday` tinyint(4) NOT NULL,
   `Sunday` tinyint(4) NOT NULL,
   PRIMARY KEY (`TrainID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
 
 --
 -- Dumping data for table `train`
 --
 
 INSERT INTO `train` (`TrainID`, `TrainNumber`, `TrainName`, `FromStation`, `ToStation`, `StartAt`, `ReachesAt`, `WebLink`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) VALUES
-(1, 47544, 'Puri - Rourkela Passenger', 'Puri', 'Rourkela', '03:30:00', '20:25:00', ' http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html', 1, 0, 1, 0, 1, 0, 0),
-(2, 12743, 'Puri - Surat Weekly Express', 'Hyderabad', 'Puri', '19:45:00', '03:20:00', 'http://www.prokerala.com/travel/indian-railway/trains/puri-surat-wkly-express-1275.html', 1, 0, 1, 0, 1, 0, 0),
+(1, 58132, 'Puri - Rourkela Passenger', 'Puri', 'Rourkela', '03:30:00', '20:25:00', ' http://www.prokerala.com/travel/indian-railway/trains/puri-rourkela-passenger-5076.html', 1, 1, 1, 1, 1, 1, 1),
 (9, 18416, 'Puri - Kendujhargarh - Barbil Express', 'puri', 'Barbil', '06:15', '', 'http://www.prokerala.com/travel/indian-railway/trains/puri-kdjr-express-1273.html', 1, 1, 1, 1, 1, 1, 1),
-(10, 18414, 'Puri - Paradip Express', 'Select City', 'Paradip', '06:15', '', 'http://www.prokerala.com/travel/indian-railway/trains/bbs-prdp-inter-city-express-137.html', 1, 1, 1, 1, 1, 1, 1),
-(11, 58417, 'Puri - Gunupur Passenger', 'Select City', 'Gunupur', '08:00', '', 'http://www.prokerala.com/travel/indian-railway/trains/puri-gunupur-passenger-5129.html', 1, 1, 1, 1, 1, 1, 1),
-(12, 58410, 'Puri - Khurda Road Passenger', 'Select City', 'Khurda', '23:50', '01:20', 'http://www.prokerala.com/travel/indian-railway/trains/puri-khurda-road-passenger-5124.html', 1, 1, 1, 1, 1, 1, 1),
-(13, 22890, 'Puri Digha Super Fast Express', 'Select City', 'Digha', '23:35', '09:30', 'http://www.prokerala.com/travel/indian-railway/trains/puri-super-fast-express-1603.html', 0, 0, 0, 0, 0, 1, 0),
-(14, 22878, 'Puri Digha Express', 'Select City', 'puri', '23:35', '09:30', 'http://www.prokerala.com/travel/indian-railway/trains/puri-digha-express-2514.html', 0, 0, 1, 0, 0, 0, 0);
+(10, 18414, 'Puri - Paradip Express', 'Puri', 'Paradip', '06:15', '', 'http://www.prokerala.com/travel/indian-railway/trains/bbs-prdp-inter-city-express-137.html', 1, 1, 1, 1, 1, 1, 1),
+(11, 58417, 'Puri - Gunupur Passenger', 'Puri', 'Gunupur', '08:00', '', 'http://www.prokerala.com/travel/indian-railway/trains/puri-gunupur-passenger-5129.html', 1, 1, 1, 1, 1, 1, 1),
+(12, 58410, 'Puri - Khurda Road Passenger', 'Puri', 'Khurda', '23:50', '01:20', 'http://www.prokerala.com/travel/indian-railway/trains/puri-khurda-road-passenger-5124.html', 1, 1, 1, 1, 1, 1, 1),
+(13, 22890, 'Puri Digha Super Fast Express', 'Puri', 'Digha', '23:35', '09:30', 'http://www.prokerala.com/travel/indian-railway/trains/puri-super-fast-express-1603.html', 0, 0, 0, 0, 0, 1, 0),
+(14, 22878, 'Puri Digha Express', 'Puri', 'Digha', '23:35', '09:30', 'http://www.prokerala.com/travel/indian-railway/trains/puri-digha-express-2514.html', 0, 0, 1, 0, 0, 0, 0),
+(16, 12584, 'Puri Valsad Express', 'Puri', 'Valsad', '05:00', '19:50', 'http://www.prokerala.com/travel/indian-railway/trains/puri-valsad-express-1607.html', 0, 0, 0, 0, 0, 0, 1),
+(17, 22866, 'Puri Mumbai LTT Super Fast Express', 'Puri', 'Mumbai', '05:30', '13:35 Next day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-mumbai-ltt-super-fast-express-2506.html', 0, 1, 0, 0, 0, 0, 0),
+(18, 14710, 'Puri - Bikaner Express', 'Puri', 'Bikaner', '05:30', '22:30 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-bikaner-express-2556.html', 0, 0, 1, 0, 0, 0, 0),
+(19, 12278, 'Puri - Howrah Duronto', 'Puri', 'Kolkatta', '06:00', '13:45', 'http://www.prokerala.com/travel/indian-railway/trains/puri-howrah-duronto-1465.html', 1, 1, 0, 1, 1, 1, 1),
+(20, 58416, 'Puri - Cuttack Passenger', 'Puri', 'Cuttack', '08:00', '11:05', 'http://www.prokerala.com/travel/indian-railway/trains/puri-cuttack-passenger-5128.html', 1, 1, 1, 1, 1, 1, 1),
+(21, 18401, 'Puri- - Okha-express', 'Puri', 'OKHA', '09:05', '13:55', 'http://www.prokerala.com/travel/indian-railway/trains/puri-okha-express-2012.html', 0, 0, 0, 0, 0, 0, 1),
+(22, 58002, 'Puri Santragachi Passenger', 'Puri', 'Kolkata Santragachi Junction', '09:45', '01:45', 'http://www.prokerala.com/travel/indian-railway/trains/puri-santragachi-passenger-5034.html', 1, 1, 1, 1, 1, 1, 1),
+(23, 12875, 'Neelachal Express', 'Puri', 'New Delhi', '10:55', '21:45', 'http://www.prokerala.com/travel/indian-railway/trains/neelachal-express-1219.html', 0, 1, 0, 0, 1, 0, 1),
+(24, 12815, 'Puri - New Delhi Express', 'Puri', 'New Delhi', '10:55', '17:05 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-new-delhi-express-1686.html', 1, 0, 1, 1, 0, 1, 0),
+(25, 12822, 'Dhauli Express', 'Puri', 'Kolkatta', '11:50', '20:15', 'http://www.prokerala.com/travel/indian-railway/trains/dhauli-express-451.html', 1, 1, 1, 1, 1, 1, 1),
+(26, 17479, 'Puri Tpty Express', 'Puri', 'Tirupati', '12:25', '16:35 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-tpty-express-1975.html', 1, 0, 1, 1, 1, 0, 1),
+(27, 18473, 'Puri - Jodhpur Express', 'Puri', 'Jodhpur', '13:30', '12:00 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-jodhpur-express-2021.html', 0, 0, 1, 0, 0, 0, 0),
+(28, 15639, 'Puri - Guwahati Express', 'Puri', 'Guwahati', '14:00', '22:10 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-guwahati-express-1861.html', 0, 1, 0, 0, 0, 0, 0),
+(29, 18419, 'Puri - Darbhanga Express', 'Puri', 'Jaynagar', '14:00', '13:30 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-darbhanga-express-1270.html', 0, 0, 0, 1, 0, 0, 0),
+(30, 18449, 'Baidyanath Dham Express', 'Puri', 'Patna JN', '14:00', '10:00 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/baidyanath-dham-express-126.html', 1, 0, 0, 0, 0, 0, 0),
+(31, 22883, 'Puri Yesvantpur Garib Rath', 'Puri', 'Yesvantpur Junction', '15:00', '20:00 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-yesvantpur-garib-rath-2292.html', 0, 0, 0, 0, 1, 0, 0),
+(32, 18304, 'Puri - Sambalpur Intercity Express', 'Puri', 'Sambalpur', '15:20', '22:10', 'http://www.prokerala.com/travel/indian-railway/trains/puri-sambalpur-intercity-express-2009.html', 1, 1, 1, 1, 1, 1, 1),
+(33, 58414, 'Puri - Talcher Passenger', 'Puri', 'Talcher', '16:15', '22:25', 'http://www.prokerala.com/travel/indian-railway/trains/puri-talcher-passenger-5126.html', 1, 1, 1, 1, 1, 1, 1),
+(34, 18425, 'Puri - Durg Express', 'Puri', 'Durg Junction', '17:15', '09:45 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-durg-express-189.html', 1, 1, 1, 1, 1, 1, 1),
+(35, 12843, 'Puri - Ahmedabad Express', 'Puri', 'Ahmedabad Junction', '17:30', '07:25 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/ahmedabad-express-39.html', 0, 1, 0, 1, 1, 1, 0),
+(36, 22859, 'Puri Chennai Express', 'Puri', 'Chennai Central', '17:30', '14:55 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-chennai-express-2503.html', 0, 0, 0, 0, 0, 0, 1),
+(37, 58408, 'Puri - Khurda Road Passenger', 'Puri', 'Khurda', '17:45', '19:15', 'http://www.prokerala.com/travel/indian-railway/trains/puri-khurda-road-passenger-5122.html', 1, 1, 1, 1, 1, 1, 1),
+(38, 18405, 'Puri - Ahmedabad Express', 'Puri', 'Ahmedabad Junction', '18:20', '07:25 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-ahmedabad-express-2013.html', 0, 0, 1, 0, 0, 0, 0),
+(39, 22827, 'Puri - Surat Express', 'Puri', 'Surat', '19:45', '03:20', 'http://www.prokerala.com/travel/indian-railway/trains/puri-surat-express-2489.html', 0, 0, 0, 0, 0, 0, 1),
+(40, 12994, 'Puri Gandhidham Express', 'Puri', 'Gandhidham BG', '19:45', '13:20 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-gandhidham-bg-express-2241.html', 1, 0, 0, 0, 0, 0, 0),
+(41, 22202, 'Puri - Sealdah Duronto Express', 'Puri', 'Sealdah', '19:45', '04:00', 'http://www.prokerala.com/travel/indian-railway/trains/puri-sealdah-duronto-express-2317.html', 0, 1, 0, 1, 0, 1, 0),
+(42, 12838, 'Puri - Howrah Express', 'Puri', 'Kolkatta', '20:00', '04:50', 'http://www.prokerala.com/travel/indian-railway/trains/puri-howrah-express-1692.html', 1, 1, 1, 1, 1, 1, 1),
+(43, 18452, 'Tapaswini Express', 'Puri', 'Hatia', '20:35', '11:40 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/tapaswini-express-2018.html', 1, 1, 1, 1, 1, 1, 1),
+(44, 18477, 'Utkal Express', 'Puri', 'Haridwar Junction', '20:55', '20:55', 'http://www.prokerala.com/travel/indian-railway/trains/utkal-express-2022.html', 1, 1, 1, 1, 1, 1, 1),
+(45, 12801, 'Purushottam Express', 'Puri', 'New Delhi', '21:45', '04:50 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/purushottam-express-1678.html', 1, 1, 1, 1, 1, 1, 1),
+(46, 12896, 'Puri - Howrah Express', 'Puri', 'Kolkatta', '22:15', '07:05', 'http://www.prokerala.com/travel/indian-railway/trains/puri-howrah-express-1711.html', 0, 0, 0, 1, 0, 0, 0),
+(47, 15643, 'Puri - Kamakhya Express', 'Puri', 'Kamakhya', '22:15', '05:00 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-kamakhya-express-1862.html', 0, 0, 0, 0, 0, 1, 0),
+(48, 18407, 'Puri - Sainagar Shirdi Express', 'Puri', 'Shirdi', '22:15', '08:25 Next Day', 'http://www.prokerala.com/travel/indian-railway/trains/puri-sainagar-shirdi-express-2651.html', 0, 0, 0, 0, 1, 0, 0),
+(49, 12882, 'Puri - Howrah Garib Rath', 'Puri', 'Kolkatta', '22:15', '07:05', 'http://www.prokerala.com/travel/indian-railway/trains/puri-howrah-garib-rath-1705.html', 1, 0, 1, 0, 0, 0, 0),
+(50, 12888, 'Puri - Howrah Express', 'Puri', 'Kolkatta', '22:15', '07:05', 'http://www.prokerala.com/travel/indian-railway/trains/puri-howrah-express-1708.html', 0, 0, 0, 0, 0, 0, 1),
+(51, 22836, 'Puri - Kolkata Shalimar Super Fast Express', 'Puri', 'Kolkatta', '22:15', '07:20', 'http://www.prokerala.com/travel/indian-railway/trains/puri-kolkata-shalimar-super-fast-express-2120.html', 0, 1, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 

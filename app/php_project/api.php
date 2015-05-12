@@ -322,7 +322,8 @@ header('Access-Control-Allow-Origin: *');
         {
 
          $startPrice = intval ($this->_request['startPrice']);
-         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : $startPrice;
+         // $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : $startPrice;
+         $endPrice = $this->_request['endPrice'] != "undefined" ? intval ($this->_request['endPrice']) : -1; // -1 where the end orice is exceeds limit
          
           $sql="select distinct h.id hotelId , h.Name hotelName , h.content content ,h.Address address , h.Phone1 phone1 , h.Phone2 phone2, h.Phone3 phone3 ,".
                 "h.Mobile mobile , h.Fax fax , h.Email email , h.Website webSite , h.reservation_authority reservationAuthority ,".
@@ -335,10 +336,10 @@ header('Access-Control-Allow-Origin: *');
          {
 
            $sql .= "  where hr.PriceStarts>=$startPrice ";
-           if($endPrice >= $startPrice) // in case of out bound condition
-              $sql .=" and hr.PriceEnds<= $endPrice ";
+           if($endPrice >= $startPrice && $endPrice!=-1) // in case of out bound condition
+              $sql .=" and hr.PriceEnds<= $endPrice";
          }
-         $sql .=" and hr.room_type<>'Extra Bed'";
+         
           //echo $sql;
          $hotelDetails = array();
           $rows = $this->executeGenericDQLQuery($sql);
@@ -438,15 +439,17 @@ header('Access-Control-Allow-Origin: *');
           
           //echo "Name: $name \n\nContact no: $mobile \n\nAddress: $address\n\nEmail: $email ";
 
-            // $sender = "nabakalebara@goappsolutions.com";
-            // $receiver = $toEmail;
-           $sender = "cet.rajendra2010@gmail.com";
-            $receiver = "rajendrasahoo@riaxe.com";
+            $sender = "nabakalebara@goappsolutions.com";
+            $receiver = "rajendrasahoo@riaxe.com ";
+            if($toEmail && $toEmail!=NULL)
+              $receiver = ",".$toEmail;
+           // $sender = "cet.rajendra2010@gmail.com";
+           //  $receiver = "rajendrasahoo@riaxe.com";
              
 
           //  $client_ip = $_SERVER['REMOTE_ADDR'];
             
-            $email_body = "Name: $enquiryName \n\nContact no: $enquiryContact \n\Query : $enquiryQuery ";
+            $email_body = "Name: $enquiryName \n\nContact no: $enquiryContact \n Query : $enquiryQuery ";
             
             $email_body_auto_reply = "Hello $enquiryName, \nThank you for sending us message. Your message is highly valuble and essential for us.We will contact you soon . \n\n\nThanks & Regards, \n $sender ";
             
@@ -683,7 +686,7 @@ header('Access-Control-Allow-Origin: *');
               $cityId = $this->getCityIdByName($guestHouseData['city']);
               //$cityId = 1;
               // insert guest_house details
-              $sql = "insert into guest_house(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image) values('".$guestHouseData['name']."','".$guestHouseData['content']."','".$guestHouseData['address']."' , ".$guestHouseData['phone1'].",".$guestHouseData['phone2'].",".$guestHouseData['phone3'].",".$guestHouseData['mobile'].",'".$guestHouseData['webSite']."',".$guestHouseData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$guestHouseData['iconImgPath']."','".$guestHouseData['iconImgPath']."')";
+              $sql = "insert into guest_house(Name,content,Address,Phone1,Phone2,Phone3,Mobile,Website,Category,Facilities,CityId,icon_image,home_image,startPrice,endPrice) values('".$guestHouseData['name']."','".$guestHouseData['content']."','".$guestHouseData['address']."' , ".$guestHouseData['phone1'].",".$guestHouseData['phone2'].",".$guestHouseData['phone3'].",".$guestHouseData['mobile'].",'".$guestHouseData['webSite']."',".$guestHouseData['starCount'].",'".$facilitiesIds."',".$cityId.",'".$guestHouseData['iconImgPath']."','".$guestHouseData['iconImgPath']."',".$guestHouseData['startPrice'].",".$guestHouseData['endPrice'].")";
 
               $guestHouseId = $this->executeGenericInsertQuery($sql);
               $response['status'] = "success";
@@ -895,9 +898,9 @@ header('Access-Control-Allow-Origin: *');
           $sql = "select * from guest_house g join city c on g.CityId = c.CityID";
           if($startPrice!="undefined")
           {
-            $sql.="  where g.start_price>=$startPrice ";
-            if($endPrice != -1 )
-              $sql.=" and g.end_price<=$endPrice";
+            $sql.="  where g.startPrice>=$startPrice ";
+            if($startPrice >= $endPrice && $endPrice != -1 )
+              $sql.=" and g.endPrice<=$endPrice";
           }
 
           $rows = $this->executeGenericDQLQuery($sql);
@@ -955,6 +958,7 @@ header('Access-Control-Allow-Origin: *');
             $resturantDetails[$i]['Category'] =($rows[$i]['Category'] == null) ? 0 : $rows[$i]['Category'] ;
             $resturantDetails[$i]['Facilities'] =$this->getFacilitiesByIds($rows[$i]['Facilities']);
             $resturantDetails[$i]['CityId'] =$rows[$i]['CityId'] ;
+            $resturantDetails[$i]['stdCode'] =$rows[$i]['STDCode'] ;
             $resturantDetails[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
             $resturantDetails[$i]['home_image'] =($rows[$i]['home_image'] == null || $rows[$i]['home_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['home_image'] ;
             
@@ -1032,7 +1036,7 @@ header('Access-Control-Allow-Origin: *');
             $tempAccm[$i]['contact'] =($rows[$i]['contact_no'] == null || $rows[$i]['contact_no'] =="null") ? "No Data Available" : $rows[$i]['contact_no'] ;
             $tempAccm[$i]['authority'] =($rows[$i]['authority'] == null || $rows[$i]['authority'] =="null") ? "No Data Available" : $rows[$i]['authority'] ;
             $tempAccm[$i]['cityId'] =$rows[$i]['cityId'] ;
-            $tempAccm[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/not_found.jpg" : $rows[$i]['icon_image'] ;
+            $tempAccm[$i]['icon_image'] =($rows[$i]['icon_image'] == null || $rows[$i]['icon_image'] =="null") ? "img/acomodation.png" : $rows[$i]['icon_image'] ;
            }
           $this->response($this->json($tempAccm), 200);
 
@@ -1051,7 +1055,7 @@ header('Access-Control-Allow-Origin: *');
             $tiolets[$i]['address'] =$rows[$i]['address'] ;
             $tiolets[$i]['contact'] =$rows[$i]['contact'] ;
             $tiolets[$i]['authority'] =$rows[$i]['authority'] ;
-            $tiolets[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $tiolets[$i]['icon_image'] = 'img/toilet.png';
             $tiolets[$i]['cityId'] =$rows[$i]['cityId'] ;
            }
           $this->response($this->json($tiolets), 200);
@@ -1071,7 +1075,7 @@ header('Access-Control-Allow-Origin: *');
             $tiolets[$i]['address'] =$rows[$i]['address'] ;
             $tiolets[$i]['contact'] =$rows[$i]['contact'] ;
             $tiolets[$i]['authority'] =$rows[$i]['authority'] ;
-            $tiolets[$i]['icon_image'] =$rows[$i]['icon_image'] ;
+            $tiolets[$i]['icon_image'] = 'img/drinkingWater.png';
             $tiolets[$i]['cityId'] =$rows[$i]['cityId'] ;
            }
           $this->response($this->json($tiolets), 200);
@@ -1458,6 +1462,23 @@ header('Access-Control-Allow-Origin: *');
           $response['status'] = "success";
           $response['data'] = "Temple admin added successfully !";
           $this->response($this->json($response), 200);  
+        }
+
+        public function postSelectedEmergencyContact(){
+            $tableType =  $this->_request['tableType'];
+            $name =  $this->_request['name'];
+            $address =  $this->_request['address'];
+            $contact =  $this->_request['contact'];
+            $cityId = $this->getCityIdByName($this->_request['city']);
+
+            $sql = "insert into $tableType(name,address,contact,cityId) values('$name','$address','$contact',$cityId)";
+            // echo $sql;
+            $rows  = $this->executeGenericInsertQuery($sql);
+           $response = array();
+           $response['status'] = "success";
+           $response['data'] = "$tableType inserted successfully";
+            $this->response($this->json($response), 200);
+
         }
 
         /*codes for emergency contact ends*/

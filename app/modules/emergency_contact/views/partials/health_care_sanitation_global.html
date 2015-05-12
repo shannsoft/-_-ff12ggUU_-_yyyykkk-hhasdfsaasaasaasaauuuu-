@@ -19,7 +19,7 @@
 					    <div class="right_map">
 				      		<p> <a ng-click="viewOnMap(content.address)"> 
 					      	<i class="fa fa-map-marker"></i>
-						    View Map</a> </p><p><a href="tel:{{content.contact}}"> 
+						    View Map</a> </p><p><a href="tel:{{$root.getNumber({stdCode:'06752'},content.contact)}}"> 
 					      <i class="fa fa-phone"></i>
 						    {{content.contact}}</a> </p>
 					    </div>
