@@ -21,7 +21,7 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-train",info:"Auto Rickshaw (Three Wheelers)"},
         {contentUrl:"modules/travel/views/partials/traffic-details.html",iconClass:"fa fa-motorcycle",info:"Two Wheelers"}
       ];
-      $scope.flightcities = [{cityName:"Delhi"},
+        $scope.flightcities = [{cityName:"Delhi"},
                             {cityName:"Kolkata"},
                             {cityName:"Mumbai"},
                             {cityName:"Bangalore"},
@@ -29,6 +29,9 @@ angular.module("travel").controller("travelController",['$scope','$rootScope','A
                             {cityName:"Port blair"},
                             {cityName:"Chennai"},
                             {cityName:"Visakhapatnam"}
+                            ];
+
+        $scope.traincities = [{cityName:"Rourkela"},{cityName:"Mumbai"},{cityName:"Valsad"},{cityName:"Bikaner "},{cityName:"Kolkatta"},{cityName:"Barbil"},{cityName:"Paradip"},{cityName:"Gunupur"},{cityName:"Cuttack"},{cityName:"OKHA"},{cityName:"Kolkata Santragachi Junction"},{cityName:"New Delhi"},{cityName:"Tirupati"},{cityName:"Jodhpur Junction"},{cityName:"Guwahati"},{cityName:"Jaynagar"},{cityName:"Patna JN"},{cityName:"Yesvantpur Junction"},{cityName:"Sambalpur"},{cityName:"Talcher"},{cityName:"Durg Junction"},{cityName:"Ahmedabad Junction"},{cityName:"Chennai Central"},{cityName:"Khurda"},{cityName:"Surat"},{cityName:"Gandhidham BG"},{cityName:"Sealdah"},{cityName:"Hatia"},{cityName:"Haridwar Junction"},{cityName:"Kamakhya"},{cityName:"Shirdi"},{cityName:"Digha"},
                             ];
       $scope.cities = [];
       MainService.getAllCity().then(function(pRes) {

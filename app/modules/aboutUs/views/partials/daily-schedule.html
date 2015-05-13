@@ -1,3 +1,4 @@
+<p class="schedule-time"><i class="fa fa-clock-o"></i> {{schedule.start_time}} 
 <div>
 	<ion-view class="pane">
 	        <ion-content class="has-header">
@@ -17,11 +18,11 @@
 				
 			 </div> 
 			 </div> -->
-			  <div class="row money-dashboard contacts-dashboard temple-schedule" ng-repeat="nabaSchedule in nabaScheduleList">
+			  <div class="row money-dashboard contacts-dashboard temple-schedule" ng-repeat="nabaSchedule in dailyScheduleList">
 				 <div class="col col-100"> 
 				   <div>
 				      <h2>{{nabaSchedule.heading}}</h2>
-					  <p class="schedule-time"><i class="fa fa-calendar"></i>{{nabaSchedule.date}}</p><p class="schedule-desc">{{nabaSchedule.schedule_content}}</p>
+					  <p class="schedule-time"><i class="fa fa-clock-o"></i> {{nabaSchedule.date}}</p><p class="schedule-desc">{{nabaSchedule.schedule_content}}</p>
 				   </div><!--col-50 end-->
 				 </div>
 			  </div><!--row end-->
