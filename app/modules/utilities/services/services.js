@@ -7,9 +7,14 @@ AppRoot.factory('UtilityService',['$http','AppConfig','$rootScope', function($ht
 	 fetchDrinkingWater = function(){
 	 	var response = $http.get(AppConfig.apiPath+"reqmethod=fetchDrinkingWater");
       return response;
-	 };
+	 },
+	 getNotification = function(){
+            var response = $http.get(AppConfig.apiPath+"reqmethod=getNotification");
+            return response;
+      };
       return{
       	fetchToilets:fetchToilets,
-      	fetchDrinkingWater:fetchDrinkingWater
+      	fetchDrinkingWater:fetchDrinkingWater,
+      	getNotification : getNotification
       }
 }]);

@@ -131,6 +131,11 @@ AppRoot.config(function($routeProvider) {
 				controller  : 'routeMapController'
 
 			})
+			.when('/notification', {
+				templateUrl : 'modules/utilities/views/partials/view.html',
+				controller  : 'utilitiesController'
+
+			})
 			.when('/', {
 				templateUrl : 'views/view.html',
 				controller  : 'MainController'

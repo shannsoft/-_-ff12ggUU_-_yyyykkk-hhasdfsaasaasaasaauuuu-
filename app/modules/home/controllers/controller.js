@@ -11,13 +11,14 @@ angular.module("home").controller("homeController",['$scope','$rootScope','MainS
 
   $scope.homeInit = function(){
     $scope.contentUrl = HomeService.getContentUrl();
-    MainService.showLoaders();
+    MainService.hideLoaders();
+    /*MainService.showLoaders();
     HomeService.getNotification().then(function(pRes){
           MainService.hideLoaders();
           $scope.notifications = pRes.data;
           // storing notification in model , to access in every controller
           AppModelService.setNotification($scope.notifications);
-      });
+    });*/
     //HomeService.setContentUrl('modules/home/views/partials/mainMenu.html');
     $scope.heading = HomeService.getHeading();
     $scope.menuOptionList = AppModelService.getMenuOptions();

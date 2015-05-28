@@ -17,6 +17,7 @@ AppRoot.factory('AppModelService',['$http','AppConfig','$rootScope', function($h
         {detailLink:"#offline-map",icon:"fa fa-map-marker",info:"Offline Map"},         
         {detailLink:"#aboutUs",icon:"fa fa-file-text",info:"About Nabkalebara"},        
         {detailLink:"#template-schedule",icon:"fa fa-calendar",info:"Temple Schedule"},         
+        {detailLink:"#notification",icon:"fa fa-envelope",info:"Notification"}         
     ],
     getMenuOptions = function(){
          return menuOptionList;

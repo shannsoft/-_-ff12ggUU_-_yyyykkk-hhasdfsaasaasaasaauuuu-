@@ -1,9 +1,10 @@
 angular.module("events").controller("utilitiesController",['$scope','$rootScope','AppModelService','UtilityService','MainService', function ($scope,$rootScope,AppModelService,UtilityService,MainService){
   	$scope.tiolets = [];
+    $scope.notifications = '';
     $scope.contentUrl='modules/utilities/views/partials/utilities-lower.html';
     $scope.initUtilities = function(){
       console.log("initUtilities");
-      $scope.notifications = AppModelService.getNotification();
+      
       $scope.contentUrl='modules/utilities/views/partials/utilities-lower.html';
       $scope.heading = 'Utilities';
       $scope.menuOptionList = AppModelService.getMenuOptions();
@@ -12,6 +13,17 @@ angular.module("events").controller("utilitiesController",['$scope','$rootScope'
     		{detailLink:"#/",contentUrl:"modules/utilities/views/partials/drinking-water-details.html",icon:"img/drinkingWater.png",utilityName:"Drinking Water",address:"Puri bus stand"}
   		
   	  ];
+    }
+    
+    $scope.fetchNotification = function(){
+      $scope.contentUrl='modules/utilities/views/partials/noti-lower.html';
+      $scope.heading = 'Notification';
+      $scope.menuOptionList = AppModelService.getMenuOptions();
+      MainService.showLoaders();
+      UtilityService.getNotification().then(function(pRes){
+            MainService.hideLoaders();
+            $scope.notifications = pRes.data;
+      });
     }
     $scope.fetchToilets = function(pName,pCity){
       if(!pName) pName='';
