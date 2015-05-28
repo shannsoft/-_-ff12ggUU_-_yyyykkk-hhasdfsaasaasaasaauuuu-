@@ -16,6 +16,12 @@ angular.module("routeMap").controller("routeMapController",['$scope','$rootScope
       $scope.menuOptionList = AppModelService.getMenuOptions();
       $scope.initializeMap();
     }
+    $scope.initofflineMap = function(){
+      $scope.notifications = AppModelService.getNotification();
+      $scope.contentUrl='modules/routeMap/views/partials/offline-map-lower.html';
+      $scope.heading = 'Offline Map';
+      $scope.menuOptionList = AppModelService.getMenuOptions();
+    }
 
     $scope.initializeMap = function(){
       if (!navigator.geolocation){

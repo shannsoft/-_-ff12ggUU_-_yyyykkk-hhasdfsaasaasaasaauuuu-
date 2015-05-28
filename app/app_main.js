@@ -126,6 +126,11 @@ AppRoot.config(function($routeProvider) {
 				controller  : 'routeMapController'
 
 			})
+			.when('/offline-map', {
+				templateUrl : 'modules/routeMap/views/partials/view.html',
+				controller  : 'routeMapController'
+
+			})
 			.when('/', {
 				templateUrl : 'views/view.html',
 				controller  : 'MainController'
