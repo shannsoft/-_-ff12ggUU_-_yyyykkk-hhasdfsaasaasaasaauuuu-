@@ -43,9 +43,7 @@ angular.module("stay").controller("stayController",['$scope','$rootScope','$time
       StayService.fetchHotels(startPrice,endPrice).then(function(pRes){
           $scope.hotels = [];
           $scope.hotels = pRes.data;
-          MainService.hideLoaders();
-         // console.log($scope.hotels);
-          
+          MainService.hideLoaders();          
       });
     }
     /*$scope.hotels = [

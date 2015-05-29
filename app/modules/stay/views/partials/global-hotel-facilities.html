@@ -20,7 +20,7 @@
 			   </div><!--col-40 end-->
 			    <div class="col col-25">
 				 <div class="call-about">
-				   <h2> <a href="tel:{{$root.getNumber(selectedHotel,selectedHotel.Phone1)}}"> <i class="fa fa-phone"></i> Call </a> </h2>
+				   <h2> <a href="tel:{{$root.getNumber(selectedHotel,selectedHotel.phone1)}}"> <i class="fa fa-phone"></i> Call </a> </h2>
 				  </div><!--call-about end-->
 			   </div><!--col-40 end-->
 			    <div class="col col-25">
@@ -121,9 +121,9 @@
 					    <li>{{selectedHotel.hotelName}}</li>
 						<li >
 							Ph:<span ng-if="selectedHotel.stdCode!= 'No Data Available'"> ({{selectedHotel.stdCode}}) </span> 
-							<span ng-if="selectedHotel.phone1!= 'No Data Available'"> {{selectedHotel.phone1}} ,</span>
-							<span ng-if="selectedHotel.phone2!= 'No Data Available'"> {{selectedHotel.phone2}} ,</span>
-							<span ng-if="selectedHotel.phone3!= 'No Data Available'"> {{selectedHotel.phone3}} ,</span>
+							<span ng-if="selectedHotel.Phone1!= 'No Data Available'"> {{selectedHotel.Phone1}} ,</span>
+							<span ng-if="selectedHotel.Phone2!= 'No Data Available'"> {{selectedHotel.Phone2}} ,</span>
+							<span ng-if="selectedHotel.Phone3!= 'No Data Available'"> {{selectedHotel.Phone3}} ,</span>
 						</li>
 						<li>Fax:{{selectedHotel.fax}}</li>
 					 </ul>
