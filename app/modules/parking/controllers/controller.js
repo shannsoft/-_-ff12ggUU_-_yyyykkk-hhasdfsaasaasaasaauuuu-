@@ -19,7 +19,7 @@ angular.module("parking").controller("parkingController",['$scope','$rootScope',
         MainService.showLoaders();
         ParkingService.getParkingDetails(pParkingtype).then(function(pRes){
            MainService.hideLoaders();
-            ParkingService.setGlobalContent(pRes.data[0]);  // as response returns as array
+            ParkingService.setGlobalContent(pRes.data);  // as response returns as array
             $scope.heading = pParkingtype;
             $scope.contentUrl = 'modules/parking/views/partials/parking-global.html';
         });
